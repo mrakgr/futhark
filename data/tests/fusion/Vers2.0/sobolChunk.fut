@@ -68,7 +68,7 @@ fun [[f64],chunk] sobolChunk([[int,num_bits],len] dir_vs, int n, int chunk) =
   let sob_beg = sobolIndI(dir_vs, n+1)             in
   let contrbs = map( fn [int] (int k) =>
                         let sob = k + n in
-                        if(k==0) then sob_beg
+                        if(k==0) then sobolIndI(dir_vs, n+1)
                         else recM(dir_vs, k+n)
                    , iota(chunk) )                 in
   let vct_ints= scan( fn [int] ([int] x, [int] y) =>

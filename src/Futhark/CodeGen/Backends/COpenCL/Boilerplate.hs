@@ -310,7 +310,7 @@ void setup_opencl() {
                                  sizeof(size_t), &max_group_size, NULL));
 
   if (max_group_size < cl_group_size) {
-    fprintf(stderr, "Warning: Device limits group size to %d (setting was %d)\n",
+    fprintf(stderr, "Warning: Device limits group size to %zu (setting was %zu)\n",
             max_group_size, cl_group_size);
     cl_group_size = max_group_size;
   }
@@ -372,8 +372,8 @@ openClReport = map reportKernel
               total_runtime = name ++ "_total_runtime"
           in [C.cstm|
                fprintf(stderr,
-                       "Kernel %s executed %d times, with average runtime:\t %6dus\n",
+                       "Kernel %s executed %d times, with average runtime:\t %6ldus\n",
                        $string:name,
                        $id:runs,
-                       $id:total_runtime / ($id:runs != 0 ? $id:runs : 1));
+                       (long int) $id:total_runtime / ($id:runs != 0 ? $id:runs : 1));
              |]
