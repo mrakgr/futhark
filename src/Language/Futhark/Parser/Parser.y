@@ -248,8 +248,8 @@ Fun :     Type id '(' TypeIds ')' '=' Exp { let L pos (ID name) = $2 in (name, $
                         { let L pos (ID name) = $2 in (name, $1, [], $6, pos) }
 ;
 
+-- | These two identifiers are placeholders so far. :eggplant: :eggplant:
 Mod : Fun { $1 };
-
 Sig : Fun { $1 };
 
 Uniqueness : '*' { Unique }
