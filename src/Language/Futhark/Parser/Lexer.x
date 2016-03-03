@@ -156,8 +156,6 @@ keyword s =
     "sig"          -> SIG_START
     "struct"       -> MOD_START
     "end"          -> SIG_MOD_END
-    ""
-
     _              -> ID $ nameFromString s
 
 type Byte = Word8

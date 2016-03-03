@@ -158,6 +158,9 @@ import Language.Futhark.Parser.Lexer
       streamRedPer    { L $$ STREAM_REDPER }
       streamSeq       { L $$ STREAM_SEQ }
       include         { L $$ INCLUDE }
+      signature       { L $$ SIGNATURE }
+      module          { L $$ MODULE }
+
 
 %nonassoc ifprec letprec
 %left '||'
@@ -176,11 +179,19 @@ import Language.Futhark.Parser.Lexer
 
 Prog :: { UncheckedProgWithHeaders }
      :   Headers Decs { ProgWithHeaders $1 $2 }
-     |   Decs { ProgWithHeaders [] $1 }
+     |   DecsStart { ProgWithHeaders [] $1 }
 ;
 
-Decs : FunDecs { $1 }
-     | DefaultDec FunDecs { $2 }
+DecsStart : Decs { $1 }
+          | DefaultDec Decs { $2 }
+;
+
+Decs : fun Fun Decs { $2 : $3 }
+     | module Mod Decs { $2 : $3 }
+     | signature Sig Decs { $2 : $3 }
+     | fun Fun { [$2] }
+     | module Mod { [$2] }
+     | signature Sig { [$2] }
 ;
 
 DefaultDec :: { () }
@@ -232,15 +243,14 @@ Header :: { ProgHeader }
 Header : include id { let L pos (ID name) = $2 in Include (nameToString name) }
 ;
 
-FunDecs : fun Fun FunDecs   { $2 : $3 }
-        | fun Fun           { [$2] }
-;
-
-Fun :     Type id '(' TypeIds ')' '=' Exp
-                        { let L pos (ID name) = $2 in (name, $1, $4, $7, pos) }
+Fun :     Type id '(' TypeIds ')' '=' Exp { let L pos (ID name) = $2 in (name, $1, $4, $7, pos) }
         | Type id '(' ')' '=' Exp
                         { let L pos (ID name) = $2 in (name, $1, [], $6, pos) }
 ;
+
+Mod : Fun { $1 };
+
+Sig : Fun { $1 };
 
 Uniqueness : '*' { Unique }
            |     { Nonunique }
