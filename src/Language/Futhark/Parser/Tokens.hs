@@ -119,4 +119,12 @@ data Token = IF
            | SIGNUM
            | EOF
            | INCLUDE
+-- | Added tokens for Futhark modules
+           | PERIOD
+           | TYPE
+           | SIGNATURE
+           | MODULE
+           | SIG_START
+           | MOD_START
+           | SIG_MOD_END
              deriving (Show, Eq)

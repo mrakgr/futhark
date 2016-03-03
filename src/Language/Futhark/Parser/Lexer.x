@@ -66,7 +66,10 @@ tokens :-
   ","                      { const COMMA }
   "_"                      { const UNDERSCORE }
   "!"                      { const BANG }
-  @intlit i8               { I8LIT . readInt8 . takeWhile (/='i') }
+-- | Period is added to support LongIdents in Futhark modules.
+  "."                      { const PERIOD }
+
+  i@intlit i8               { I8LIT . readInt8 . takeWhile (/='i') }
   @intlit i16              { I16LIT . readInt16 . takeWhile (/='i') }
   @intlit i32              { I32LIT . readInt32 . takeWhile (/='i') }
   @intlit i64              { I64LIT . readInt64 . takeWhile (/='i') }
@@ -145,6 +148,16 @@ keyword s =
     "streamSeq"    -> STREAM_SEQ
     "assert"       -> ASSERT
     "include"      -> INCLUDE
+
+-- | My additions for the implementation of Futhark modules
+    "type"         -> TYPE
+    "signature"    -> SIGNATURE
+    "module"       -> MODULE
+    "sig"          -> SIG_START
+    "struct"       -> MOD_START
+    "end"          -> SIG_MOD_END
+    ""
+
     _              -> ID $ nameFromString s
 
 type Byte = Word8
