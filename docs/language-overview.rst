@@ -1,5 +1,12 @@
+.. _language-overview:
+
 Language Overview
 =================
+
+This document has been prepared as an informal overview of the Futhark
+language.  In time, we hope to develop it into a formal specification,
+with accompanying proofs of correctness, but for now, words will have
+to suffice where formulae would be ideal.
 
 The Futhark programming language is a purely functional,
 call-by-value, mostly first-order language that permits bulk
@@ -11,14 +18,14 @@ is also amenable to aggressive optimisation and parallelisation.
 Unfortunately, as the expressive power of a language grows, the
 difficulty of optimisation often rises likewise.  For example, we
 support nested parallelism, despite the complexities of efficiently
-mapping to the flat parallelism supported by hardware, as a great many
-programs depend on this feature.  On the other hand, we do not support
-non-regular arrays, as they complicate size analysis a great deal.
-The fact that Futhark is purely functional is intended to give an
-optimising compiler more leeway in rearranging the code and performing
-high-level optimisations.  It is also the plan to eventually design a
-rigorous cost model for Futhark, although this work has not yet been
-completed.
+mapping to the flat parallelism supported by hardware, as many
+algorithms are awkward to write without this feature.  On the other
+hand, we do not support non-regular arrays, as they complicate size
+analysis a great deal.  The fact that Futhark is purely functional is
+intended to give an optimising compiler more leeway in rearranging the
+code and performing high-level optimisations.  It is also the plan to
+eventually design a rigorous cost model for Futhark, although this
+work has not yet been completed.
 
 Lexical Syntax
 --------------
@@ -87,7 +94,22 @@ subexpression::
 
 Recall that Futhark is eagerly evaluated, so the right-hand side of
 the ``let`` is evaluated exactly once, at the time it is first
-encountered.
+encountered.  The ``in`` keyword is optional when it precedes another
+``let``.  This means that instead of writing::
+
+  let a = 0 in
+  let b = 1 in
+  let c = 2 in
+  a + b + c
+
+we can write::
+
+  let a = 0
+  let b = 1
+  let c = 2
+  in a + b + c
+
+The final ``in`` is still necessary.
 
 Two-way ``if-then-else`` is the only branching construct in Futhark.
 Pattern matching is supported in a limited way for taking apart
@@ -171,7 +193,7 @@ optimisation by the Futhark compiler.
 
 Apart from the ``i < n`` form, which loops from zero, Futhark also
 supports the ``v <= i < n`` form which starts at ``v``.  We can also
-invert the order of iteration by writitin ``n > i`` or ``n > i >= v``,
+invert the order of iteration by writing ``n > i`` or ``n > i >= v``,
 which loops down from the upper bound to the lower.
 
 Apart from ``for``-loops, Futhark also supports ``while`` loops.
@@ -186,6 +208,26 @@ given number until it exceeds a given threshold value::
 
 In all respects other than termination criteria, ``while``-loops
 behave identically to ``for``-loops.
+
+For brevity, the initial value expression can be elided, in which case
+an expression equivalent to the pattern is implied.  This is easier to
+understand with an example.  The loop::
+
+  fun int fib(int n) =
+    let x = 1
+    let y = 1
+    loop ({x, y} = {x, y}) = for i < n do {y, x+y}
+    in x
+
+can also be written::
+
+  fun int fib(int n) =
+    let x = 1
+    let y = 1
+    loop ({x, y}) = for i < n do {y, x+y}
+    in x
+
+This can sometimes make imperative code look more natural.
 
 In-Place Updates
 ~~~~~~~~~~~~~~~~

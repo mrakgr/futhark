@@ -264,8 +264,8 @@ error.
 
 Elide safety checks (such as bounds checking) for operations lexically
 with ``e``.  This is useful if the compiler is otherwise unable to
-avoids bounds checks (e.g. when using indirect indexes), but you
-really do not want them here.
+avoid bounds checks (e.g. when using indirect indexes), but you really
+do not want them here.
 
 ``iota(n)``
 ~~~~~~~~~~~
@@ -353,12 +353,17 @@ The name ``i`` is bound here and initialised to zero.
 
 1. Bind ``pat`` to the initial values given in ``initial``.
 
-2. While ``i < bound``, evaluate ``loopbody``, rebinding ``pat`` to be the
-      value returned by the body, increasing ``i`` by one after each
-      iteration.
+2. While ``i < bound``, evaluate ``loopbody``, rebinding ``pat`` to be
+   the value returned by the body, increasing ``i`` by one after each
+   iteration.
 
 3. Evaluate ``body`` with ``pat`` bound to its final
-      value.
+   value.
+
+The ``= initial`` can be left out, in which case initial values for
+the pattern are taken from equivalently named variables in the
+environment.  I.e., ``loop (x) = ...`` is equivalent to ``loop (x = x)
+= ...``.
 
 ``loop (pat = initial) = while cond do loopbody in body``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -366,10 +371,9 @@ The name ``i`` is bound here and initialised to zero.
 1. Bind ``pat`` to the initial values given in ``initial``.
 
 2. While ``cond`` evaluates to true, evaluate ``loopbody``, rebinding
-      ``pat`` to be the value returned by the body.
+   ``pat`` to be the value returned by the body.
 
-3. Evaluate ``body`` with ``pat`` bound to its final
-      value.
+3. Evaluate ``body`` with ``pat`` bound to its final value.
 
 Parallel Expressions
 --------------------
@@ -483,7 +487,7 @@ Literal Defaults
 
 By default, Futhark interprets integer literals as ``i32`` values, and decimal
 literals (integer literals containing a decimal point) as ``f64`` values. These
-defaults can be changed using the `Hakell-inspired
+defaults can be changed using the `Haskell-inspired
 <https://wiki.haskell.org/Keywords#default>`_ ``default`` keyword.
 
 To change the ``i32`` default to e.g. ``i64``, type the following at the top of
