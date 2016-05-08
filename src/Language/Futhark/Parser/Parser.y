@@ -283,8 +283,8 @@ UserTypeAlias  : type id '=' UserType { let L loc (ID name) = $2
 
 UserType :: { UncheckedUserType }
          : PrimType      { let (t,loc) = $1 in UserPrim t loc }
-         | Uniqueness '[' UserType DimDecl ']'
-                         { UserArray $3 $4 $1 $2 }
+         | '*' UserType  { UserUnique $2 $1 }
+         | '[' UserType DimDecl ']' { UserArray $2 $3 $1 }
          | '(' UserType ',' UserTypes ')' { UserTuple ($2:$4) $1 }
          | id            { let L loc (ID name) = $1 in UserTypeAlias name loc }
 ;
@@ -336,7 +336,7 @@ Exp  :: { UncheckedExp }
                              t <- lift $ gets parserIntType
                              return $ Literal (ArrayValue (arrayFromList $ map (PrimValue . SignedValue) s') $ Prim $ Signed t) pos }
      | Id %prec letprec { Var $1 }
-     | empty '(' UserType ')' { Empty $3 NoInfo $1 }
+     | empty '(' UserType ')' { Empty (TypeDecl $3 NoInfo) $1 }
      | '[' Exps ']'   { ArrayLit $2 NoInfo $1 }
      | '(' Exp ',' Exps ')'   { TupLit ($2:$4) $1 }
      | '('      ')'   { TupLit [] $1 }

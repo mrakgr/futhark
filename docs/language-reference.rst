@@ -88,15 +88,14 @@ Apart from declaring a function with the keyword ``fun``, it can also
 be declared with ``entry``.  This means that if the Futhark program is
 compiled as a library instead of an executable program, that function
 will be exposed as an entry point.  Any function named ``main`` will
-always be thus exposed, whether it is declared with ``entry`` or not.
+always be considered an entry point, whether it is declared with
+``entry`` or not.
 
-Type aliasing
----------------
+Type Aliases
+------------
 
-Futhark supports simple type aliasing, as to improve readability of the code.
-
-For example, it is possible to describe and use data types for vector calculations
-as such::
+Futhark supports simple type aliases to improve code readability.
+Examples::
 
   type person_id = int
   type int_pair  = (int, int)
@@ -110,39 +109,25 @@ as such::
 
   type airplane = (pilot, passengers, position, velocity, mass)
 
-It is currently not possible to mix array declarations with user declared arrays.
+The aliases are merely a syntactic convenience.  With respect to type
+checking the ``position`` and ``velocity`` types are identical.  It is
+currently not possible to put shape declarations in type aliases.
+When using uniqueness attributes with type aliases, inner uniqueness
+attributes are overrided by outer ones::
 
-Furthermore, uniqueness must be declared in the type declaration::
+  type uniqueInts = *[int]
+  type nonuniqueIntLists = [intlist]
+  type uniqueIntLists = *nonuniqueIntLists
 
-  -- Does not work:
-  type intlist = [int]
-  type matrix =  [intlist]
-
-  fun intlist (matrix *a) = ..
-
-
-  -- Instead do:
-  type intlist = [int]
-  type matrix  = *[[int]]
-
-  fun intlist (matrix a) = ...
-
-However, it is still possible to use arrays of tuples, possibly containing arrays::
-
-  type airplanes = [airplane]
-  fun [int_pair] schedule_airplanes(airplanes plane_list) = ..
+  -- Error: using non-unique value for a unique return value.
+  fun uniqueIntLists (nonuniqueIntLists p) = p
 
 *Dimension declarations*
 
 To declare dimensions on an array data type using type aliases, the type alias must
 define either a primitive type, or a tuple.
 
-The dimensions must then be declared during the function declaration::
-
-  type foo = (int, (f32,f32), [airplane])
-  function bar some_function([foo, n] input_data) = ...
-
-File inclusions
+File Inclusions
 ---------------
 
 You can include external Futhark code into a Futhark file like this::

@@ -223,16 +223,18 @@ type CompTypeBase = TypeBase Rank Names
 -- | An unstructured type with type variables and possibly shape
 -- declarations - this is what the user types in the source program.
 data UserType vn = UserPrim PrimType SrcLoc
-                 | UserArray (UserType vn) (DimDecl vn) Uniqueness SrcLoc
+                 | UserArray (UserType vn) (DimDecl vn) SrcLoc
                  | UserTuple [UserType vn] SrcLoc
                  | UserTypeAlias Name SrcLoc
+                 | UserUnique (UserType vn) SrcLoc
     deriving (Show)
 
 instance Located (UserType vn) where
   locOf (UserPrim _ loc) = locOf loc
-  locOf (UserArray _ _ _ loc) = locOf loc
+  locOf (UserArray _ _ loc) = locOf loc
   locOf (UserTuple _ loc) = locOf loc
   locOf (UserTypeAlias _ loc) = locOf loc
+  locOf (UserUnique _ loc) = locOf loc
 
 --
 -- | A "structural" type with shape annotations and no aliasing
@@ -367,7 +369,7 @@ data ExpBase f vn =
 
             | ArrayLit  [ExpBase f vn] (f (CompTypeBase vn)) SrcLoc
 
-            | Empty (UserType vn) (f (CompTypeBase vn)) SrcLoc
+            | Empty (TypeDeclBase f vn) SrcLoc
 
             | Var    (IdentBase f vn)
             -- ^ Array literals, e.g., @[ [1+x, 3], [2, 1+4] ]@.
@@ -508,7 +510,7 @@ instance Located (ExpBase f vn) where
   locOf (Literal _ loc) = locOf loc
   locOf (TupLit _ pos) = locOf pos
   locOf (ArrayLit _ _ pos) = locOf pos
-  locOf (Empty _ _ pos) = locOf pos
+  locOf (Empty _ pos) = locOf pos
   locOf (BinOp _ _ _ _ pos) = locOf pos
   locOf (UnOp _ _ pos) = locOf pos
   locOf (If _ _ _ _ pos) = locOf pos
