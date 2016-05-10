@@ -403,846 +403,566 @@ static cl_program setup_opencl(const char *prelude_src, const char *src) {
 static const char fut_opencl_prelude[] =
                   "typedef char int8_t;\ntypedef short int16_t;\ntypedef int int32_t;\ntypedef long int64_t;\ntypedef uchar uint8_t;\ntypedef ushort uint16_t;\ntypedef uint uint32_t;\ntypedef ulong uint64_t;\nstatic inline int8_t add8(int8_t x, int8_t y)\n{\n    return x + y;\n}\nstatic inline int16_t add16(int16_t x, int16_t y)\n{\n    return x + y;\n}\nstatic inline int32_t add32(int32_t x, int32_t y)\n{\n    return x + y;\n}\nstatic inline int64_t add64(int64_t x, int64_t y)\n{\n    return x + y;\n}\nstatic inline int8_t sub8(int8_t x, int8_t y)\n{\n    return x - y;\n}\nstatic inline int16_t sub16(int16_t x, int16_t y)\n{\n    return x - y;\n}\nstatic inline int32_t sub32(int32_t x, int32_t y)\n{\n    return x - y;\n}\nstatic inline int64_t sub64(int64_t x, int64_t y)\n{\n    return x - y;\n}\nstatic inline int8_t mul8(int8_t x, int8_t y)\n{\n    return x * y;\n}\nstatic inline int16_t mul16(int16_t x, int16_t y)\n{\n    return x * y;\n}\nstatic inline int32_t mul32(int32_t x, int32_t y)\n{\n    return x * y;\n}\nstatic inline int64_t mul64(int64_t x, int64_t y)\n{\n    return x * y;\n}\nstatic inline uint8_t udiv8(uint8_t x, uint8_t y)\n{\n    return x / y;\n}\nstatic inline uint16_t udiv16(uint16_t x, uint16_t y)\n{\n    return x / y;\n}\nstatic inline uint32_t udiv32(uint32_t x, uint32_t y)\n{\n    return x / y;\n}\nstatic inline uint64_t udiv64(uint64_t x, uint64_t y)\n{\n    return x / y;\n}\nstatic inline uint8_t umod8(uint8_t x, uint8_t y)\n{\n    return x % y;\n}\nstatic inline uint16_t umod16(uint16_t x, uint16_t y)\n{\n    return x % y;\n}\nstatic inline uint32_t umod32(uint32_t x, uint32_t y)\n{\n    return x % y;\n}\nstatic inline uint64_t umod64(uint64_t x, uint64_t y)\n{\n    return x % y;\n}\nstatic inline int8_t sdiv8(int8_t x, int8_t y)\n{\n    int8_t q = x / y;\n    int8_t r = x % y;\n    \n    return q - ((r != 0 && r < 0 != y < 0) ? 1 : 0);\n}\nstatic inline int16_t sdiv16(int16_t x, int16_t y)\n{\n    int16_t q = x / y;\n    int16_t r = x % y;\n    \n    return q - ((r != 0 && r < 0 != y < 0) ? 1 : 0);\n}\nstatic inline int32_t sdiv32(int32_t x, int32_t y)\n{\n    int32_t q = x / y;\n    int32_t r = x % y;\n    \n    return q - ((r != 0 && r < 0 != y < 0) ? 1 : 0);\n}\nstatic inline int64_t sdiv64(int64_t x, int64_t y)\n{\n    int64_t q = x / y;\n    int64_t r = x % y;\n    \n    return q - ((r != 0 && r < 0 != y < 0) ? 1 : 0);\n}\nstatic inline int8_t smod8(int8_t x, int8_t y)\n{\n    int8_t r = x % y;\n    \n    return r + (r == 0 || (x > 0 && y > 0) || (x < 0 && y < 0) ? 0 : y);\n}\nstatic inline int16_t smod16(int16_t x, int16_t y)\n{\n    int16_t r = x % y;\n    \n    return r + (r == 0 || (x > 0 && y > 0) || (x < 0 && y < 0) ? 0 : y);\n}\nstatic inline int32_t smod32(int32_t x, int32_t y)\n{\n    int32_t r = x % y;\n    \n    return r + (r == 0 || (x > 0 && y > 0) || (x < 0 && y < 0) ? 0 : y);\n}\nstatic inline int64_t smod64(int64_t x, int64_t y)\n{\n    int64_t r = x % y;\n    \n    return r + (r == 0 || (x > 0 && y > 0) || (x < 0 && y < 0) ? 0 : y);\n}\nstatic inline int8_t squot8(int8_t x, int8_t y)\n{\n    return x / y;\n}\nstatic inline int16_t squot16(int16_t x, int16_t y)\n{\n    return x / y;\n}\nstatic inline int32_t squot32(int32_t x, int32_t y)\n{\n    return x / y;\n}\nstatic inline int64_t squot64(int64_t x, int64_t y)\n{\n    return x / y;\n}\nstatic inline int8_t srem8(int8_t x, int8_t y)\n{\n    return x % y;\n}\nstatic inline int16_t srem16(int16_t x, int16_t y)\n{\n    return x % y;\n}\nstatic inline int32_t srem32(int32_t x, int32_t y)\n{\n    return x % y;\n}\nstatic inline int64_t srem64(int64_t x, int64_t y)\n{\n    return x % y;\n}\nstatic inline uint8_t shl8(uint8_t x, uint8_t y)\n{\n    return x << y;\n}\nstatic inline uint16_t shl16(uint16_t x, uint16_t y)\n{\n    return x << y;\n}\nstatic inline uint32_t shl32(uint32_t x, uint32_t y)\n{\n    return x << y;\n}\nstatic inline uint64_t shl64(uint64_t x, uint64_t y)\n{\n    return x << y;\n}\nstatic inline uint8_t lshr8(uint8_t x, uint8_t y)\n{\n    return x >> y;\n}\nstatic inline uint16_t lshr16(uint16_t x, uint16_t y)\n{\n    return x >> y;\n}\nstatic inline uint32_t lshr32(uint32_t x, uint32_t y)\n{\n    return x >> y;\n}\nstatic inline uint64_t lshr64(uint64_t x, uint64_t y)\n{\n    return x >> y;\n}\nstatic inline int8_t ashr8(int8_t x, int8_t y)\n{\n    return x >> y;\n}\nstatic inline int16_t ashr16(int16_t x, int16_t y)\n{\n    return x >> y;\n}\nstatic inline int32_t ashr32(int32_t x, int32_t y)\n{\n    return x >> y;\n}\nstatic inline int64_t ashr64(int64_t x, int64_t y)\n{\n    return x >> y;\n}\nstatic inline uint8_t and8(uint8_t x, uint8_t y)\n{\n    return x & y;\n}\nstatic inline uint16_t and16(uint16_t x, uint16_t y)\n{\n    return x & y;\n}\nstatic inline uint32_t and32(uint32_t x, uint32_t y)\n{\n    return x & y;\n}\nstatic inline uint64_t and64(uint64_t x, uint64_t y)\n{\n    return x & y;\n}\nstatic inline uint8_t or8(uint8_t x, uint8_t y)\n{\n    return x | y;\n}\nstatic inline uint16_t or16(uint16_t x, uint16_t y)\n{\n    return x | y;\n}\nstatic inline uint32_t or32(uint32_t x, uint32_t y)\n{\n    return x | y;\n}\nstatic inline uint64_t or64(uint64_t x, uint64_t y)\n{\n    return x | y;\n}\nstatic inline uint8_t xor8(uint8_t x, uint8_t y)\n{\n    return x ^ y;\n}\nstatic inline uint16_t xor16(uint16_t x, uint16_t y)\n{\n    return x ^ y;\n}\nstatic inline uint32_t xor32(uint32_t x, uint32_t y)\n{\n    return x ^ y;\n}\nstatic inline uint64_t xor64(uint64_t x, uint64_t y)\n{\n    return x ^ y;\n}\nstatic inline char ult8(uint8_t x, uint8_t y)\n{\n    return x < y;\n}\nstatic inline char ult16(uint16_t x, uint16_t y)\n{\n    return x < y;\n}\nstatic inline char ult32(uint32_t x, uint32_t y)\n{\n    return x < y;\n}\nstatic inline char ult64(uint64_t x, uint64_t y)\n{\n    return x < y;\n}\nstatic inline char ule8(uint8_t x, uint8_t y)\n{\n    return x <= y;\n}\nstatic inline char ule16(uint16_t x, uint16_t y)\n{\n    return x <= y;\n}\nstatic inline char ule32(uint32_t x, uint32_t y)\n{\n    return x <= y;\n}\nstatic inline char ule64(uint64_t x, uint64_t y)\n{\n    return x <= y;\n}\nstatic inline char slt8(int8_t x, int8_t y)\n{\n    return x < y;\n}\nstatic inline char slt16(int16_t x, int16_t y)\n{\n    return x < y;\n}\nstatic inline char slt32(int32_t x, int32_t y)\n{\n    return x < y;\n}\nstatic inline char slt64(int64_t x, int64_t y)\n{\n    return x < y;\n}\nstatic inline char sle8(int8_t x, int8_t y)\n{\n    return x <= y;\n}\nstatic inline char sle16(int16_t x, int16_t y)\n{\n    return x <= y;\n}\nstatic inline char sle32(int32_t x, int32_t y)\n{\n    return x <= y;\n}\nstatic inline char sle64(int64_t x, int64_t y)\n{\n    return x <= y;\n}\nstatic inline int8_t pow8(int8_t x, int8_t y)\n{\n    int8_t res = 1, rem = y;\n    \n    while (rem != 0) {\n        if (rem & 1)\n            res *= x;\n        rem >>= 1;\n        x *= x;\n    }\n    return res;\n}\nstatic inline int16_t pow16(int16_t x, int16_t y)\n{\n    int16_t res = 1, rem = y;\n    \n    while (rem != 0) {\n        if (rem & 1)\n            res *= x;\n        rem >>= 1;\n        x *= x;\n    }\n    return res;\n}\nstatic inline int32_t pow32(int32_t x, int32_t y)\n{\n    int32_t res = 1, rem = y;\n    \n    while (rem != 0) {\n        if (rem & 1)\n            res *= x;\n        rem >>= 1;\n        x *= x;\n    }\n    return res;\n}\nstatic inline int64_t pow64(int64_t x, int64_t y)\n{\n    int64_t res = 1, rem = y;\n    \n    while (rem != 0) {\n        if (rem & 1)\n            res *= x;\n        rem >>= 1;\n        x *= x;\n    }\n    return res;\n}\nstatic inline int8_t sext_i8_i8(int8_t x)\n{\n    return x;\n}\nstatic inline int16_t sext_i8_i16(int8_t x)\n{\n    return x;\n}\nstatic inline int32_t sext_i8_i32(int8_t x)\n{\n    return x;\n}\nstatic inline int64_t sext_i8_i64(int8_t x)\n{\n    return x;\n}\nstatic inline int8_t sext_i16_i8(int16_t x)\n{\n    return x;\n}\nstatic inline int16_t sext_i16_i16(int16_t x)\n{\n    return x;\n}\nstatic inline int32_t sext_i16_i32(int16_t x)\n{\n    return x;\n}\nstatic inline int64_t sext_i16_i64(int16_t x)\n{\n    return x;\n}\nstatic inline int8_t sext_i32_i8(int32_t x)\n{\n    return x;\n}\nstatic inline int16_t sext_i32_i16(int32_t x)\n{\n    return x;\n}\nstatic inline int32_t sext_i32_i32(int32_t x)\n{\n    return x;\n}\nstatic inline int64_t sext_i32_i64(int32_t x)\n{\n    return x;\n}\nstatic inline int8_t sext_i64_i8(int64_t x)\n{\n    return x;\n}\nstatic inline int16_t sext_i64_i16(int64_t x)\n{\n    return x;\n}\nstatic inline int32_t sext_i64_i32(int64_t x)\n{\n    return x;\n}\nstatic inline int64_t sext_i64_i64(int64_t x)\n{\n    return x;\n}\nstatic inline uint8_t zext_i8_i8(uint8_t x)\n{\n    return x;\n}\nstatic inline uint16_t zext_i8_i16(uint8_t x)\n{\n    return x;\n}\nstatic inline uint32_t zext_i8_i32(uint8_t x)\n{\n    return x;\n}\nstatic inline uint64_t zext_i8_i64(uint8_t x)\n{\n    return x;\n}\nstatic inline uint8_t zext_i16_i8(uint16_t x)\n{\n    return x;\n}\nstatic inline uint16_t zext_i16_i16(uint16_t x)\n{\n    return x;\n}\nstatic inline uint32_t zext_i16_i32(uint16_t x)\n{\n    return x;\n}\nstatic inline uint64_t zext_i16_i64(uint16_t x)\n{\n    return x;\n}\nstatic inline uint8_t zext_i32_i8(uint32_t x)\n{\n    return x;\n}\nstatic inline uint16_t zext_i32_i16(uint32_t x)\n{\n    return x;\n}\nstatic inline uint32_t zext_i32_i32(uint32_t x)\n{\n    return x;\n}\nstatic inline uint64_t zext_i32_i64(uint32_t x)\n{\n    return x;\n}\nstatic inline uint8_t zext_i64_i8(uint64_t x)\n{\n    return x;\n}\nstatic inline uint16_t zext_i64_i16(uint64_t x)\n{\n    return x;\n}\nstatic inline uint32_t zext_i64_i32(uint64_t x)\n{\n    return x;\n}\nstatic inline uint64_t zext_i64_i64(uint64_t x)\n{\n    return x;\n}\nstatic inline float fdiv32(float x, float y)\n{\n    return x / y;\n}\nstatic inline float fadd32(float x, float y)\n{\n    return x + y;\n}\nstatic inline float fsub32(float x, float y)\n{\n    return x - y;\n}\nstatic inline float fmul32(float x, float y)\n{\n    return x * y;\n}\nstatic inline float fpow32(float x, float y)\n{\n    return pow(x, y);\n}\nstatic inline char cmplt32(float x, float y)\n{\n    return x < y;\n}\nstatic inline char cmple32(float x, float y)\n{\n    return x <= y;\n}\nstatic inline float sitofp_i8_f32(int8_t x)\n{\n    return x;\n}\nstatic inline float sitofp_i16_f32(int16_t x)\n{\n    return x;\n}\nstatic inline float sitofp_i32_f32(int32_t x)\n{\n    return x;\n}\nstatic inline float sitofp_i64_f32(int64_t x)\n{\n    return x;\n}\nstatic inline float uitofp_i8_f32(uint8_t x)\n{\n    return x;\n}\nstatic inline float uitofp_i16_f32(uint16_t x)\n{\n    return x;\n}\nstatic inline float uitofp_i32_f32(uint32_t x)\n{\n    return x;\n}\nstatic inline float uitofp_i64_f32(uint64_t x)\n{\n    return x;\n}\nstatic inline int8_t fptosi_f32_i8(float x)\n{\n    return x;\n}\nstatic inline int16_t fptosi_f32_i16(float x)\n{\n    return x;\n}\nstatic inline int32_t fptosi_f32_i32(float x)\n{\n    return x;\n}\nstatic inline int64_t fptosi_f32_i64(float x)\n{\n    return x;\n}\nstatic inline uint8_t fptoui_f32_i8(float x)\n{\n    return x;\n}\nstatic inline uint16_t fptoui_f32_i16(float x)\n{\n    return x;\n}\nstatic inline uint32_t fptoui_f32_i32(float x)\n{\n    return x;\n}\nstatic inline uint64_t fptoui_f32_i64(float x)\n{\n    return x;\n}\n";
 static const char fut_opencl_program[] = FUT_KERNEL(
-__kernel void map_kernel_4739(int32_t m_3943, __global unsigned char *mem_4666)
+__kernel void map_kernel_5053(__global unsigned char *b_bi_mem_5412, __global
+                              unsigned char *W_bi_mem_5408, int32_t m_4676,
+                              int32_t size_4697, int32_t o_4677, __global
+                              unsigned char *mem_5442, __global
+                              unsigned char *U_bi_mem_5410, int32_t n_4678,
+                              __global unsigned char *mem_5439, __global
+                              unsigned char *mem_5445)
 {
-    const uint global_thread_index_4739 = get_global_id(0);
+    const uint kernel_thread_index_5053 = get_global_id(0);
     
-    if (global_thread_index_4739 >= m_3943)
+    if (kernel_thread_index_5053 >= m_4676 * size_4697)
         return;
     
-    int32_t i_4740;
+    int32_t i_5054;
+    int32_t i_5055;
+    float y_5058;
     
     // compute thread index
     {
-        i_4740 = global_thread_index_4739;
+        i_5054 = squot32(kernel_thread_index_5053, size_4697);
+        i_5055 = kernel_thread_index_5053 - squot32(kernel_thread_index_5053,
+                                                    size_4697) * size_4697;
     }
     // read kernel parameters
-    { }
+    {
+        y_5058 = *(__global float *) &b_bi_mem_5412[i_5054 * 4];
+    }
+    
+    float res_5072;
+    float acc_5063 = 0.0F;
+    
+    for (int i_5064 = 0; i_5064 < o_4677; i_5064++) {
+        float binop_param_x_5066 = *(__global float *) &W_bi_mem_5408[(i_5054 *
+                                                                       o_4677 +
+                                                                       i_5064) *
+                                                                      4];
+        float binop_param_y_5067 = *(__global float *) &mem_5442[(i_5064 *
+                                                                  n_4678 +
+                                                                  i_5055) * 4];
+        float res_5068 = binop_param_x_5066 * binop_param_y_5067;
+        float res_5069 = acc_5063 + res_5068;
+        float acc_tmp_5477 = res_5069;
+        
+        acc_5063 = acc_tmp_5477;
+    }
+    res_5072 = acc_5063;
+    
+    float res_5084;
+    float acc_5075 = 0.0F;
+    
+    for (int i_5076 = 0; i_5076 < m_4676; i_5076++) {
+        float binop_param_x_5078 = *(__global float *) &U_bi_mem_5410[(i_5054 *
+                                                                       m_4676 +
+                                                                       i_5076) *
+                                                                      4];
+        float binop_param_y_5079 = *(__global float *) &mem_5439[(i_5076 *
+                                                                  n_4678 +
+                                                                  i_5055) * 4];
+        float res_5080 = binop_param_x_5078 * binop_param_y_5079;
+        float res_5081 = acc_5075 + res_5080;
+        float acc_tmp_5478 = res_5081;
+        
+        acc_5075 = acc_tmp_5478;
+    }
+    res_5084 = acc_5075;
+    
+    float res_5085 = res_5072 + res_5084;
+    float res_5086 = res_5085 + y_5058;
+    
     // write kernel result
     {
-        *(__global float *) &mem_4666[i_4740 * 4] = 0.0F;
+        *(__global float *) &mem_5445[(i_5054 * size_4697 + i_5055) * 4] =
+            res_5086;
     }
 }
-__kernel void map_kernel_4743(int32_t n_3945, __global unsigned char *mem_4666,
-                              int32_t m_3943, __global unsigned char *mem_4669)
+__kernel void map_kernel_5098(int32_t m_4676, int32_t size_4697, __global
+                              unsigned char *mem_5445, int32_t n_4678, __global
+                              unsigned char *mem_5448)
 {
-    const uint global_thread_index_4743 = get_global_id(0);
+    const uint kernel_thread_index_5098 = get_global_id(0);
     
-    if (global_thread_index_4743 >= n_3945 * m_3943)
+    if (kernel_thread_index_5098 >= m_4676 * n_4678)
         return;
     
-    int32_t i_4744;
-    int32_t j_4745;
-    float input_4746;
+    int32_t i_5099;
+    int32_t i_5100;
+    float not_curried_5101;
     
     // compute thread index
     {
-        i_4744 = squot32(global_thread_index_4743, m_3943);
-        j_4745 = global_thread_index_4743 - squot32(global_thread_index_4743,
-                                                    m_3943) * m_3943;
+        i_5099 = squot32(kernel_thread_index_5098, n_4678);
+        i_5100 = kernel_thread_index_5098 - squot32(kernel_thread_index_5098,
+                                                    n_4678) * n_4678;
     }
     // read kernel parameters
     {
-        input_4746 = *(__global float *) &mem_4666[j_4745 * 4];
+        not_curried_5101 = *(__global float *) &mem_5445[(i_5099 * size_4697 +
+                                                          i_5100) * 4];
     }
+    
+    float arg_5102 = 0.0F - not_curried_5101;
+    float res_5103 = fpow32(2.718280076980591F, arg_5102);
+    float y_5104 = 1.0F + res_5103;
+    float res_5105 = 1.0F / y_5104;
+    
     // write kernel result
     {
-        *(__global float *) &mem_4669[(i_4744 * m_3943 + j_4745) * 4] =
-            input_4746;
+        *(__global float *) &mem_5448[(i_5099 * n_4678 + i_5100) * 4] =
+            res_5105;
     }
 }
-__kernel void map_kernel_4752(int32_t n_3945, __global unsigned char *mem_4671)
+__kernel void map_kernel_5122(int32_t m_4676, __global
+                              unsigned char *U_ig_mem_5416, int32_t size_4697,
+                              int32_t o_4677, __global unsigned char *mem_5442,
+                              __global unsigned char *W_ig_mem_5414,
+                              int32_t n_4678, __global
+                              unsigned char *b_ig_mem_5418, __global
+                              unsigned char *mem_5439, __global
+                              unsigned char *mem_5451)
 {
-    const uint global_thread_index_4752 = get_global_id(0);
+    const uint kernel_thread_index_5122 = get_global_id(0);
     
-    if (global_thread_index_4752 >= n_3945)
+    if (kernel_thread_index_5122 >= m_4676 * size_4697)
         return;
     
-    int32_t i_4753;
+    int32_t i_5123;
+    int32_t i_5124;
+    float y_5129;
     
     // compute thread index
     {
-        i_4753 = global_thread_index_4752;
+        i_5123 = squot32(kernel_thread_index_5122, size_4697);
+        i_5124 = kernel_thread_index_5122 - squot32(kernel_thread_index_5122,
+                                                    size_4697) * size_4697;
     }
     // read kernel parameters
-    { }
+    {
+        y_5129 = *(__global float *) &b_ig_mem_5418[i_5123 * 4];
+    }
+    
+    float res_5141;
+    float acc_5132 = 0.0F;
+    
+    for (int i_5133 = 0; i_5133 < o_4677; i_5133++) {
+        float binop_param_y_5135 = *(__global float *) &mem_5442[(i_5133 *
+                                                                  n_4678 +
+                                                                  i_5124) * 4];
+        float binop_param_x_5136 = *(__global float *) &W_ig_mem_5414[(i_5123 *
+                                                                       o_4677 +
+                                                                       i_5133) *
+                                                                      4];
+        float res_5137 = binop_param_x_5136 * binop_param_y_5135;
+        float res_5138 = acc_5132 + res_5137;
+        float acc_tmp_5483 = res_5138;
+        
+        acc_5132 = acc_tmp_5483;
+    }
+    res_5141 = acc_5132;
+    
+    float res_5153;
+    float acc_5144 = 0.0F;
+    
+    for (int i_5145 = 0; i_5145 < m_4676; i_5145++) {
+        float binop_param_x_5147 = *(__global float *) &U_ig_mem_5416[(i_5123 *
+                                                                       m_4676 +
+                                                                       i_5145) *
+                                                                      4];
+        float binop_param_y_5148 = *(__global float *) &mem_5439[(i_5145 *
+                                                                  n_4678 +
+                                                                  i_5124) * 4];
+        float res_5149 = binop_param_x_5147 * binop_param_y_5148;
+        float res_5150 = acc_5144 + res_5149;
+        float acc_tmp_5484 = res_5150;
+        
+        acc_5144 = acc_tmp_5484;
+    }
+    res_5153 = acc_5144;
+    
+    float res_5154 = res_5141 + res_5153;
+    float res_5155 = res_5154 + y_5129;
+    
     // write kernel result
     {
-        *(__global float *) &mem_4671[i_4753 * 4] = 0.0F;
+        *(__global float *) &mem_5451[(i_5123 * size_4697 + i_5124) * 4] =
+            res_5155;
     }
 }
-__kernel void map_kernel_4756(int32_t n_3945, __global unsigned char *mem_4671,
-                              int32_t m_3943, __global unsigned char *mem_4674)
+__kernel void map_kernel_5167(int32_t m_4676, int32_t size_4697, int32_t n_4678,
+                              __global unsigned char *mem_5451, __global
+                              unsigned char *mem_5454)
 {
-    const uint global_thread_index_4756 = get_global_id(0);
+    const uint kernel_thread_index_5167 = get_global_id(0);
     
-    if (global_thread_index_4756 >= m_3943 * n_3945)
+    if (kernel_thread_index_5167 >= m_4676 * n_4678)
         return;
     
-    int32_t i_4757;
-    int32_t j_4758;
-    float input_4759;
+    int32_t i_5168;
+    int32_t i_5169;
+    float not_curried_5170;
     
     // compute thread index
     {
-        i_4757 = squot32(global_thread_index_4756, n_3945);
-        j_4758 = global_thread_index_4756 - squot32(global_thread_index_4756,
-                                                    n_3945) * n_3945;
+        i_5168 = squot32(kernel_thread_index_5167, n_4678);
+        i_5169 = kernel_thread_index_5167 - squot32(kernel_thread_index_5167,
+                                                    n_4678) * n_4678;
     }
     // read kernel parameters
     {
-        input_4759 = *(__global float *) &mem_4671[j_4758 * 4];
+        not_curried_5170 = *(__global float *) &mem_5451[(i_5168 * size_4697 +
+                                                          i_5169) * 4];
     }
+    
+    float arg_5171 = 0.0F - not_curried_5170;
+    float res_5172 = fpow32(2.718280076980591F, arg_5171);
+    float y_5173 = 1.0F + res_5172;
+    float res_5174 = 1.0F / y_5173;
+    
     // write kernel result
     {
-        *(__global float *) &mem_4674[(i_4757 * n_3945 + j_4758) * 4] =
-            input_4759;
+        *(__global float *) &mem_5454[(i_5168 * n_4678 + i_5169) * 4] =
+            res_5174;
     }
 }
-__kernel void map_kernel_4337(__global unsigned char *mem_4669, int32_t n_3945,
-                              __global unsigned char *mem_4674, int32_t m_3943,
-                              __global unsigned char *mem_4677)
+__kernel void map_kernel_5191(__global unsigned char *W_fg_mem_5420,
+                              int32_t m_4676, __global
+                              unsigned char *b_fg_mem_5424, int32_t size_4697,
+                              int32_t o_4677, __global unsigned char *mem_5442,
+                              __global unsigned char *U_fg_mem_5422,
+                              int32_t n_4678, __global unsigned char *mem_5439,
+                              __global unsigned char *mem_5457)
 {
-    const uint kernel_thread_index_4337 = get_global_id(0);
+    const uint kernel_thread_index_5191 = get_global_id(0);
     
-    if (kernel_thread_index_4337 >= n_3945 * m_3943)
+    if (kernel_thread_index_5191 >= m_4676 * size_4697)
         return;
     
-    int32_t i_4338;
-    int32_t i_4339;
-    float x_4340;
-    float y_4341;
+    int32_t i_5192;
+    int32_t i_5193;
+    float y_5197;
     
     // compute thread index
     {
-        i_4338 = squot32(kernel_thread_index_4337, m_3943);
-        i_4339 = kernel_thread_index_4337 - squot32(kernel_thread_index_4337,
-                                                    m_3943) * m_3943;
+        i_5192 = squot32(kernel_thread_index_5191, size_4697);
+        i_5193 = kernel_thread_index_5191 - squot32(kernel_thread_index_5191,
+                                                    size_4697) * size_4697;
     }
     // read kernel parameters
     {
-        x_4340 = *(__global float *) &mem_4669[(i_4338 * m_3943 + i_4339) * 4];
-        y_4341 = *(__global float *) &mem_4674[(i_4338 * n_3945 + i_4339) * 4];
+        y_5197 = *(__global float *) &b_fg_mem_5424[i_5192 * 4];
     }
     
-    float res_4342 = x_4340 + y_4341;
+    float res_5210;
+    float acc_5201 = 0.0F;
+    
+    for (int i_5202 = 0; i_5202 < o_4677; i_5202++) {
+        float binop_param_x_5204 = *(__global float *) &W_fg_mem_5420[(i_5192 *
+                                                                       o_4677 +
+                                                                       i_5202) *
+                                                                      4];
+        float binop_param_y_5205 = *(__global float *) &mem_5442[(i_5202 *
+                                                                  n_4678 +
+                                                                  i_5193) * 4];
+        float res_5206 = binop_param_x_5204 * binop_param_y_5205;
+        float res_5207 = acc_5201 + res_5206;
+        float acc_tmp_5489 = res_5207;
+        
+        acc_5201 = acc_tmp_5489;
+    }
+    res_5210 = acc_5201;
+    
+    float res_5222;
+    float acc_5213 = 0.0F;
+    
+    for (int i_5214 = 0; i_5214 < m_4676; i_5214++) {
+        float binop_param_x_5216 = *(__global float *) &U_fg_mem_5422[(i_5192 *
+                                                                       m_4676 +
+                                                                       i_5214) *
+                                                                      4];
+        float binop_param_y_5217 = *(__global float *) &mem_5439[(i_5214 *
+                                                                  n_4678 +
+                                                                  i_5193) * 4];
+        float res_5218 = binop_param_x_5216 * binop_param_y_5217;
+        float res_5219 = acc_5213 + res_5218;
+        float acc_tmp_5490 = res_5219;
+        
+        acc_5213 = acc_tmp_5490;
+    }
+    res_5222 = acc_5213;
+    
+    float res_5223 = res_5210 + res_5222;
+    float res_5224 = res_5223 + y_5197;
     
     // write kernel result
     {
-        *(__global float *) &mem_4677[(i_4338 * m_3943 + i_4339) * 4] =
-            res_4342;
+        *(__global float *) &mem_5457[(i_5192 * size_4697 + i_5193) * 4] =
+            res_5224;
     }
 }
-__kernel void map_kernel_4360(__global unsigned char *b_bi_mem_4640, __global
-                              unsigned char *mem_4677, int32_t size_4005,
-                              int32_t m_3943, __global unsigned char *mem_4680)
+__kernel void map_kernel_5236(int32_t m_4676, int32_t size_4697, __global
+                              unsigned char *mem_5457, int32_t n_4678, __global
+                              unsigned char *mem_5460)
 {
-    const uint kernel_thread_index_4360 = get_global_id(0);
+    const uint kernel_thread_index_5236 = get_global_id(0);
     
-    if (kernel_thread_index_4360 >= m_3943 * size_4005)
+    if (kernel_thread_index_5236 >= m_4676 * n_4678)
         return;
     
-    int32_t i_4361;
-    int32_t i_4362;
-    float x_4363;
-    float y_4364;
+    int32_t i_5237;
+    int32_t i_5238;
+    float not_curried_5239;
     
     // compute thread index
     {
-        i_4361 = squot32(kernel_thread_index_4360, size_4005);
-        i_4362 = kernel_thread_index_4360 - squot32(kernel_thread_index_4360,
-                                                    size_4005) * size_4005;
+        i_5237 = squot32(kernel_thread_index_5236, n_4678);
+        i_5238 = kernel_thread_index_5236 - squot32(kernel_thread_index_5236,
+                                                    n_4678) * n_4678;
     }
     // read kernel parameters
     {
-        x_4363 = *(__global float *) &mem_4677[(i_4361 * m_3943 + i_4362) * 4];
-        y_4364 = *(__global float *) &b_bi_mem_4640[i_4361 * 4];
+        not_curried_5239 = *(__global float *) &mem_5457[(i_5237 * size_4697 +
+                                                          i_5238) * 4];
     }
     
-    float res_4365 = x_4363 + y_4364;
+    float arg_5240 = 0.0F - not_curried_5239;
+    float res_5241 = fpow32(2.718280076980591F, arg_5240);
+    float y_5242 = 1.0F + res_5241;
+    float res_5243 = 1.0F / y_5242;
     
     // write kernel result
     {
-        *(__global float *) &mem_4680[(i_4361 * size_4005 + i_4362) * 4] =
-            res_4365;
+        *(__global float *) &mem_5460[(i_5237 * n_4678 + i_5238) * 4] =
+            res_5243;
     }
 }
-__kernel void map_kernel_4377(__global unsigned char *mem_4680, int32_t n_3945,
-                              int32_t size_4005, int32_t m_3943, __global
-                              unsigned char *mem_4683)
+__kernel void map_kernel_5260(__global unsigned char *U_og_mem_5428,
+                              int32_t m_4676, int32_t size_4697, int32_t o_4677,
+                              __global unsigned char *W_og_mem_5426, __global
+                              unsigned char *mem_5442, __global
+                              unsigned char *b_og_mem_5430, int32_t n_4678,
+                              __global unsigned char *mem_5439, __global
+                              unsigned char *mem_5463)
 {
-    const uint kernel_thread_index_4377 = get_global_id(0);
+    const uint kernel_thread_index_5260 = get_global_id(0);
     
-    if (kernel_thread_index_4377 >= n_3945 * m_3943)
+    if (kernel_thread_index_5260 >= m_4676 * size_4697)
         return;
     
-    int32_t i_4378;
-    int32_t i_4379;
-    float not_curried_4380;
+    int32_t i_5261;
+    int32_t i_5262;
+    float y_5267;
     
     // compute thread index
     {
-        i_4378 = squot32(kernel_thread_index_4377, m_3943);
-        i_4379 = kernel_thread_index_4377 - squot32(kernel_thread_index_4377,
-                                                    m_3943) * m_3943;
+        i_5261 = squot32(kernel_thread_index_5260, size_4697);
+        i_5262 = kernel_thread_index_5260 - squot32(kernel_thread_index_5260,
+                                                    size_4697) * size_4697;
     }
     // read kernel parameters
     {
-        not_curried_4380 = *(__global float *) &mem_4680[(i_4378 * size_4005 +
-                                                          i_4379) * 4];
+        y_5267 = *(__global float *) &b_og_mem_5430[i_5261 * 4];
     }
     
-    float arg_4381 = 0.0F - not_curried_4380;
-    float res_4382 = fpow32(2.718280076980591F, arg_4381);
-    float y_4383 = 1.0F + res_4382;
-    float res_4384 = 1.0F / y_4383;
+    float res_5279;
+    float acc_5270 = 0.0F;
+    
+    for (int i_5271 = 0; i_5271 < o_4677; i_5271++) {
+        float binop_param_y_5273 = *(__global float *) &mem_5442[(i_5271 *
+                                                                  n_4678 +
+                                                                  i_5262) * 4];
+        float binop_param_x_5274 = *(__global float *) &W_og_mem_5426[(i_5261 *
+                                                                       o_4677 +
+                                                                       i_5271) *
+                                                                      4];
+        float res_5275 = binop_param_x_5274 * binop_param_y_5273;
+        float res_5276 = acc_5270 + res_5275;
+        float acc_tmp_5495 = res_5276;
+        
+        acc_5270 = acc_tmp_5495;
+    }
+    res_5279 = acc_5270;
+    
+    float res_5291;
+    float acc_5282 = 0.0F;
+    
+    for (int i_5283 = 0; i_5283 < m_4676; i_5283++) {
+        float binop_param_x_5285 = *(__global float *) &U_og_mem_5428[(i_5261 *
+                                                                       m_4676 +
+                                                                       i_5283) *
+                                                                      4];
+        float binop_param_y_5286 = *(__global float *) &mem_5439[(i_5283 *
+                                                                  n_4678 +
+                                                                  i_5262) * 4];
+        float res_5287 = binop_param_x_5285 * binop_param_y_5286;
+        float res_5288 = acc_5282 + res_5287;
+        float acc_tmp_5496 = res_5288;
+        
+        acc_5282 = acc_tmp_5496;
+    }
+    res_5291 = acc_5282;
+    
+    float res_5292 = res_5279 + res_5291;
+    float res_5293 = res_5292 + y_5267;
     
     // write kernel result
     {
-        *(__global float *) &mem_4683[(i_4378 * m_3943 + i_4379) * 4] =
-            res_4384;
+        *(__global float *) &mem_5463[(i_5261 * size_4697 + i_5262) * 4] =
+            res_5293;
     }
 }
-__kernel void map_kernel_4771(int32_t n_3945, __global unsigned char *mem_4666,
-                              int32_t m_3943, __global unsigned char *mem_4686)
+__kernel void map_kernel_5305(int32_t m_4676, int32_t size_4697, int32_t n_4678,
+                              __global unsigned char *mem_5463, __global
+                              unsigned char *mem_5466)
 {
-    const uint global_thread_index_4771 = get_global_id(0);
+    const uint kernel_thread_index_5305 = get_global_id(0);
     
-    if (global_thread_index_4771 >= n_3945 * m_3943)
+    if (kernel_thread_index_5305 >= m_4676 * n_4678)
         return;
     
-    int32_t i_4772;
-    int32_t j_4773;
-    float input_4774;
+    int32_t i_5306;
+    int32_t i_5307;
+    float not_curried_5308;
     
     // compute thread index
     {
-        i_4772 = squot32(global_thread_index_4771, m_3943);
-        j_4773 = global_thread_index_4771 - squot32(global_thread_index_4771,
-                                                    m_3943) * m_3943;
+        i_5306 = squot32(kernel_thread_index_5305, n_4678);
+        i_5307 = kernel_thread_index_5305 - squot32(kernel_thread_index_5305,
+                                                    n_4678) * n_4678;
     }
     // read kernel parameters
     {
-        input_4774 = *(__global float *) &mem_4666[j_4773 * 4];
+        not_curried_5308 = *(__global float *) &mem_5463[(i_5306 * size_4697 +
+                                                          i_5307) * 4];
     }
+    
+    float arg_5309 = 0.0F - not_curried_5308;
+    float res_5310 = fpow32(2.718280076980591F, arg_5309);
+    float y_5311 = 1.0F + res_5310;
+    float res_5312 = 1.0F / y_5311;
+    
     // write kernel result
     {
-        *(__global float *) &mem_4686[(i_4772 * m_3943 + j_4773) * 4] =
-            input_4774;
+        *(__global float *) &mem_5466[(i_5306 * n_4678 + i_5307) * 4] =
+            res_5312;
     }
 }
-__kernel void map_kernel_4780(int32_t n_3945, __global unsigned char *mem_4671,
-                              int32_t m_3943, __global unsigned char *mem_4689)
+__kernel void map_kernel_5349(__global unsigned char *mem_5448, __global
+                              unsigned char *prev_cell_mem_5436, int32_t m_4676,
+                              __global unsigned char *mem_5460,
+                              int32_t size_4697, int32_t n_4678, __global
+                              unsigned char *mem_5454, __global
+                              unsigned char *mem_5469)
 {
-    const uint global_thread_index_4780 = get_global_id(0);
+    const uint kernel_thread_index_5349 = get_global_id(0);
     
-    if (global_thread_index_4780 >= m_3943 * n_3945)
+    if (kernel_thread_index_5349 >= m_4676 * size_4697)
         return;
     
-    int32_t i_4781;
-    int32_t j_4782;
-    float input_4783;
+    int32_t i_5350;
+    int32_t i_5351;
+    float x_5352;
+    float x_5353;
+    float y_5354;
+    float y_5355;
     
     // compute thread index
     {
-        i_4781 = squot32(global_thread_index_4780, n_3945);
-        j_4782 = global_thread_index_4780 - squot32(global_thread_index_4780,
-                                                    n_3945) * n_3945;
+        i_5350 = squot32(kernel_thread_index_5349, size_4697);
+        i_5351 = kernel_thread_index_5349 - squot32(kernel_thread_index_5349,
+                                                    size_4697) * size_4697;
     }
     // read kernel parameters
     {
-        input_4783 = *(__global float *) &mem_4671[j_4782 * 4];
+        x_5352 = *(__global float *) &mem_5448[(i_5350 * n_4678 + i_5351) * 4];
+        x_5353 = *(__global float *) &prev_cell_mem_5436[(i_5350 * n_4678 +
+                                                          i_5351) * 4];
+        y_5354 = *(__global float *) &mem_5454[(i_5350 * n_4678 + i_5351) * 4];
+        y_5355 = *(__global float *) &mem_5460[(i_5350 * n_4678 + i_5351) * 4];
     }
+    
+    float res_5356 = x_5352 * y_5354;
+    float res_5357 = x_5353 * y_5355;
+    float res_5358 = res_5356 + res_5357;
+    
     // write kernel result
     {
-        *(__global float *) &mem_4689[(i_4781 * n_3945 + j_4782) * 4] =
-            input_4783;
+        *(__global float *) &mem_5469[(i_5350 * size_4697 + i_5351) * 4] =
+            res_5358;
     }
 }
-__kernel void map_kernel_4397(int32_t n_3945, __global unsigned char *mem_4689,
-                              __global unsigned char *mem_4686, int32_t m_3943,
-                              __global unsigned char *mem_4692)
+__kernel void map_kernel_5325(int32_t m_4676, int32_t size_4697, __global
+                              unsigned char *mem_5469, __global
+                              unsigned char *mem_5466, int32_t n_4678, __global
+                              unsigned char *mem_5472)
 {
-    const uint kernel_thread_index_4397 = get_global_id(0);
+    const uint kernel_thread_index_5325 = get_global_id(0);
     
-    if (kernel_thread_index_4397 >= n_3945 * m_3943)
+    if (kernel_thread_index_5325 >= m_4676 * n_4678)
         return;
     
-    int32_t i_4398;
-    int32_t i_4399;
-    float x_4400;
-    float y_4401;
+    int32_t i_5326;
+    int32_t i_5327;
+    float not_curried_5328;
+    float x_5329;
     
     // compute thread index
     {
-        i_4398 = squot32(kernel_thread_index_4397, m_3943);
-        i_4399 = kernel_thread_index_4397 - squot32(kernel_thread_index_4397,
-                                                    m_3943) * m_3943;
+        i_5326 = squot32(kernel_thread_index_5325, n_4678);
+        i_5327 = kernel_thread_index_5325 - squot32(kernel_thread_index_5325,
+                                                    n_4678) * n_4678;
     }
     // read kernel parameters
     {
-        x_4400 = *(__global float *) &mem_4686[(i_4398 * m_3943 + i_4399) * 4];
-        y_4401 = *(__global float *) &mem_4689[(i_4398 * n_3945 + i_4399) * 4];
+        not_curried_5328 = *(__global float *) &mem_5469[(i_5326 * size_4697 +
+                                                          i_5327) * 4];
+        x_5329 = *(__global float *) &mem_5466[(i_5326 * n_4678 + i_5327) * 4];
     }
     
-    float res_4402 = x_4400 + y_4401;
+    float arg_5330 = 0.0F - not_curried_5328;
+    float res_5331 = fpow32(2.718280076980591F, arg_5330);
+    float y_5332 = 1.0F + res_5331;
+    float res_5333 = 1.0F / y_5332;
+    float res_5334 = x_5329 * res_5333;
     
     // write kernel result
     {
-        *(__global float *) &mem_4692[(i_4398 * m_3943 + i_4399) * 4] =
-            res_4402;
-    }
-}
-__kernel void map_kernel_4420(__global unsigned char *mem_4692,
-                              int32_t size_4005, __global
-                              unsigned char *b_ig_mem_4646, int32_t m_3943,
-                              __global unsigned char *mem_4695)
-{
-    const uint kernel_thread_index_4420 = get_global_id(0);
-    
-    if (kernel_thread_index_4420 >= m_3943 * size_4005)
-        return;
-    
-    int32_t i_4421;
-    int32_t i_4422;
-    float x_4423;
-    float y_4424;
-    
-    // compute thread index
-    {
-        i_4421 = squot32(kernel_thread_index_4420, size_4005);
-        i_4422 = kernel_thread_index_4420 - squot32(kernel_thread_index_4420,
-                                                    size_4005) * size_4005;
-    }
-    // read kernel parameters
-    {
-        x_4423 = *(__global float *) &mem_4692[(i_4421 * m_3943 + i_4422) * 4];
-        y_4424 = *(__global float *) &b_ig_mem_4646[i_4421 * 4];
-    }
-    
-    float res_4425 = x_4423 + y_4424;
-    
-    // write kernel result
-    {
-        *(__global float *) &mem_4695[(i_4421 * size_4005 + i_4422) * 4] =
-            res_4425;
-    }
-}
-__kernel void map_kernel_4437(int32_t n_3945, int32_t size_4005, __global
-                              unsigned char *mem_4695, int32_t m_3943, __global
-                              unsigned char *mem_4698)
-{
-    const uint kernel_thread_index_4437 = get_global_id(0);
-    
-    if (kernel_thread_index_4437 >= n_3945 * m_3943)
-        return;
-    
-    int32_t i_4438;
-    int32_t i_4439;
-    float not_curried_4440;
-    
-    // compute thread index
-    {
-        i_4438 = squot32(kernel_thread_index_4437, m_3943);
-        i_4439 = kernel_thread_index_4437 - squot32(kernel_thread_index_4437,
-                                                    m_3943) * m_3943;
-    }
-    // read kernel parameters
-    {
-        not_curried_4440 = *(__global float *) &mem_4695[(i_4438 * size_4005 +
-                                                          i_4439) * 4];
-    }
-    
-    float arg_4441 = 0.0F - not_curried_4440;
-    float res_4442 = fpow32(2.718280076980591F, arg_4441);
-    float y_4443 = 1.0F + res_4442;
-    float res_4444 = 1.0F / y_4443;
-    
-    // write kernel result
-    {
-        *(__global float *) &mem_4698[(i_4438 * m_3943 + i_4439) * 4] =
-            res_4444;
-    }
-}
-__kernel void map_kernel_4795(int32_t n_3945, __global unsigned char *mem_4666,
-                              int32_t m_3943, __global unsigned char *mem_4701)
-{
-    const uint global_thread_index_4795 = get_global_id(0);
-    
-    if (global_thread_index_4795 >= n_3945 * m_3943)
-        return;
-    
-    int32_t i_4796;
-    int32_t j_4797;
-    float input_4798;
-    
-    // compute thread index
-    {
-        i_4796 = squot32(global_thread_index_4795, m_3943);
-        j_4797 = global_thread_index_4795 - squot32(global_thread_index_4795,
-                                                    m_3943) * m_3943;
-    }
-    // read kernel parameters
-    {
-        input_4798 = *(__global float *) &mem_4666[j_4797 * 4];
-    }
-    // write kernel result
-    {
-        *(__global float *) &mem_4701[(i_4796 * m_3943 + j_4797) * 4] =
-            input_4798;
-    }
-}
-__kernel void map_kernel_4804(int32_t n_3945, __global unsigned char *mem_4671,
-                              int32_t m_3943, __global unsigned char *mem_4704)
-{
-    const uint global_thread_index_4804 = get_global_id(0);
-    
-    if (global_thread_index_4804 >= m_3943 * n_3945)
-        return;
-    
-    int32_t i_4805;
-    int32_t j_4806;
-    float input_4807;
-    
-    // compute thread index
-    {
-        i_4805 = squot32(global_thread_index_4804, n_3945);
-        j_4806 = global_thread_index_4804 - squot32(global_thread_index_4804,
-                                                    n_3945) * n_3945;
-    }
-    // read kernel parameters
-    {
-        input_4807 = *(__global float *) &mem_4671[j_4806 * 4];
-    }
-    // write kernel result
-    {
-        *(__global float *) &mem_4704[(i_4805 * n_3945 + j_4806) * 4] =
-            input_4807;
-    }
-}
-__kernel void map_kernel_4457(__global unsigned char *mem_4704, int32_t n_3945,
-                              __global unsigned char *mem_4701, int32_t m_3943,
-                              __global unsigned char *mem_4707)
-{
-    const uint kernel_thread_index_4457 = get_global_id(0);
-    
-    if (kernel_thread_index_4457 >= n_3945 * m_3943)
-        return;
-    
-    int32_t i_4458;
-    int32_t i_4459;
-    float x_4460;
-    float y_4461;
-    
-    // compute thread index
-    {
-        i_4458 = squot32(kernel_thread_index_4457, m_3943);
-        i_4459 = kernel_thread_index_4457 - squot32(kernel_thread_index_4457,
-                                                    m_3943) * m_3943;
-    }
-    // read kernel parameters
-    {
-        x_4460 = *(__global float *) &mem_4701[(i_4458 * m_3943 + i_4459) * 4];
-        y_4461 = *(__global float *) &mem_4704[(i_4458 * n_3945 + i_4459) * 4];
-    }
-    
-    float res_4462 = x_4460 + y_4461;
-    
-    // write kernel result
-    {
-        *(__global float *) &mem_4707[(i_4458 * m_3943 + i_4459) * 4] =
-            res_4462;
-    }
-}
-__kernel void map_kernel_4480(__global unsigned char *b_fg_mem_4652,
-                              int32_t size_4005, __global
-                              unsigned char *mem_4707, int32_t m_3943, __global
-                              unsigned char *mem_4710)
-{
-    const uint kernel_thread_index_4480 = get_global_id(0);
-    
-    if (kernel_thread_index_4480 >= m_3943 * size_4005)
-        return;
-    
-    int32_t i_4481;
-    int32_t i_4482;
-    float x_4483;
-    float y_4484;
-    
-    // compute thread index
-    {
-        i_4481 = squot32(kernel_thread_index_4480, size_4005);
-        i_4482 = kernel_thread_index_4480 - squot32(kernel_thread_index_4480,
-                                                    size_4005) * size_4005;
-    }
-    // read kernel parameters
-    {
-        x_4483 = *(__global float *) &mem_4707[(i_4481 * m_3943 + i_4482) * 4];
-        y_4484 = *(__global float *) &b_fg_mem_4652[i_4481 * 4];
-    }
-    
-    float res_4485 = x_4483 + y_4484;
-    
-    // write kernel result
-    {
-        *(__global float *) &mem_4710[(i_4481 * size_4005 + i_4482) * 4] =
-            res_4485;
-    }
-}
-__kernel void map_kernel_4497(int32_t n_3945, int32_t size_4005, __global
-                              unsigned char *mem_4710, int32_t m_3943, __global
-                              unsigned char *mem_4713)
-{
-    const uint kernel_thread_index_4497 = get_global_id(0);
-    
-    if (kernel_thread_index_4497 >= n_3945 * m_3943)
-        return;
-    
-    int32_t i_4498;
-    int32_t i_4499;
-    float not_curried_4500;
-    
-    // compute thread index
-    {
-        i_4498 = squot32(kernel_thread_index_4497, m_3943);
-        i_4499 = kernel_thread_index_4497 - squot32(kernel_thread_index_4497,
-                                                    m_3943) * m_3943;
-    }
-    // read kernel parameters
-    {
-        not_curried_4500 = *(__global float *) &mem_4710[(i_4498 * size_4005 +
-                                                          i_4499) * 4];
-    }
-    
-    float arg_4501 = 0.0F - not_curried_4500;
-    float res_4502 = fpow32(2.718280076980591F, arg_4501);
-    float y_4503 = 1.0F + res_4502;
-    float res_4504 = 1.0F / y_4503;
-    
-    // write kernel result
-    {
-        *(__global float *) &mem_4713[(i_4498 * m_3943 + i_4499) * 4] =
-            res_4504;
-    }
-}
-__kernel void map_kernel_4819(int32_t n_3945, __global unsigned char *mem_4666,
-                              int32_t m_3943, __global unsigned char *mem_4716)
-{
-    const uint global_thread_index_4819 = get_global_id(0);
-    
-    if (global_thread_index_4819 >= n_3945 * m_3943)
-        return;
-    
-    int32_t i_4820;
-    int32_t j_4821;
-    float input_4822;
-    
-    // compute thread index
-    {
-        i_4820 = squot32(global_thread_index_4819, m_3943);
-        j_4821 = global_thread_index_4819 - squot32(global_thread_index_4819,
-                                                    m_3943) * m_3943;
-    }
-    // read kernel parameters
-    {
-        input_4822 = *(__global float *) &mem_4666[j_4821 * 4];
-    }
-    // write kernel result
-    {
-        *(__global float *) &mem_4716[(i_4820 * m_3943 + j_4821) * 4] =
-            input_4822;
-    }
-}
-__kernel void map_kernel_4828(int32_t n_3945, __global unsigned char *mem_4671,
-                              int32_t m_3943, __global unsigned char *mem_4719)
-{
-    const uint global_thread_index_4828 = get_global_id(0);
-    
-    if (global_thread_index_4828 >= m_3943 * n_3945)
-        return;
-    
-    int32_t i_4829;
-    int32_t j_4830;
-    float input_4831;
-    
-    // compute thread index
-    {
-        i_4829 = squot32(global_thread_index_4828, n_3945);
-        j_4830 = global_thread_index_4828 - squot32(global_thread_index_4828,
-                                                    n_3945) * n_3945;
-    }
-    // read kernel parameters
-    {
-        input_4831 = *(__global float *) &mem_4671[j_4830 * 4];
-    }
-    // write kernel result
-    {
-        *(__global float *) &mem_4719[(i_4829 * n_3945 + j_4830) * 4] =
-            input_4831;
-    }
-}
-__kernel void map_kernel_4517(__global unsigned char *mem_4716, int32_t n_3945,
-                              __global unsigned char *mem_4719, int32_t m_3943,
-                              __global unsigned char *mem_4722)
-{
-    const uint kernel_thread_index_4517 = get_global_id(0);
-    
-    if (kernel_thread_index_4517 >= n_3945 * m_3943)
-        return;
-    
-    int32_t i_4518;
-    int32_t i_4519;
-    float x_4520;
-    float y_4521;
-    
-    // compute thread index
-    {
-        i_4518 = squot32(kernel_thread_index_4517, m_3943);
-        i_4519 = kernel_thread_index_4517 - squot32(kernel_thread_index_4517,
-                                                    m_3943) * m_3943;
-    }
-    // read kernel parameters
-    {
-        x_4520 = *(__global float *) &mem_4716[(i_4518 * m_3943 + i_4519) * 4];
-        y_4521 = *(__global float *) &mem_4719[(i_4518 * n_3945 + i_4519) * 4];
-    }
-    
-    float res_4522 = x_4520 + y_4521;
-    
-    // write kernel result
-    {
-        *(__global float *) &mem_4722[(i_4518 * m_3943 + i_4519) * 4] =
-            res_4522;
-    }
-}
-__kernel void map_kernel_4540(int32_t size_4005, __global
-                              unsigned char *mem_4722, __global
-                              unsigned char *b_og_mem_4658, int32_t m_3943,
-                              __global unsigned char *mem_4725)
-{
-    const uint kernel_thread_index_4540 = get_global_id(0);
-    
-    if (kernel_thread_index_4540 >= m_3943 * size_4005)
-        return;
-    
-    int32_t i_4541;
-    int32_t i_4542;
-    float x_4543;
-    float y_4544;
-    
-    // compute thread index
-    {
-        i_4541 = squot32(kernel_thread_index_4540, size_4005);
-        i_4542 = kernel_thread_index_4540 - squot32(kernel_thread_index_4540,
-                                                    size_4005) * size_4005;
-    }
-    // read kernel parameters
-    {
-        x_4543 = *(__global float *) &mem_4722[(i_4541 * m_3943 + i_4542) * 4];
-        y_4544 = *(__global float *) &b_og_mem_4658[i_4541 * 4];
-    }
-    
-    float res_4545 = x_4543 + y_4544;
-    
-    // write kernel result
-    {
-        *(__global float *) &mem_4725[(i_4541 * size_4005 + i_4542) * 4] =
-            res_4545;
-    }
-}
-__kernel void map_kernel_4557(int32_t n_3945, int32_t size_4005, __global
-                              unsigned char *mem_4725, int32_t m_3943, __global
-                              unsigned char *mem_4728)
-{
-    const uint kernel_thread_index_4557 = get_global_id(0);
-    
-    if (kernel_thread_index_4557 >= n_3945 * m_3943)
-        return;
-    
-    int32_t i_4558;
-    int32_t i_4559;
-    float not_curried_4560;
-    
-    // compute thread index
-    {
-        i_4558 = squot32(kernel_thread_index_4557, m_3943);
-        i_4559 = kernel_thread_index_4557 - squot32(kernel_thread_index_4557,
-                                                    m_3943) * m_3943;
-    }
-    // read kernel parameters
-    {
-        not_curried_4560 = *(__global float *) &mem_4725[(i_4558 * size_4005 +
-                                                          i_4559) * 4];
-    }
-    
-    float arg_4561 = 0.0F - not_curried_4560;
-    float res_4562 = fpow32(2.718280076980591F, arg_4561);
-    float y_4563 = 1.0F + res_4562;
-    float res_4564 = 1.0F / y_4563;
-    
-    // write kernel result
-    {
-        *(__global float *) &mem_4728[(i_4558 * m_3943 + i_4559) * 4] =
-            res_4564;
-    }
-}
-__kernel void map_kernel_4601(__global unsigned char *prev_cell_mem_4664,
-                              __global unsigned char *mem_4713, int32_t n_3945,
-                              int32_t size_4005, __global
-                              unsigned char *mem_4698, __global
-                              unsigned char *mem_4683, int32_t m_3943, __global
-                              unsigned char *mem_4731)
-{
-    const uint kernel_thread_index_4601 = get_global_id(0);
-    
-    if (kernel_thread_index_4601 >= n_3945 * size_4005)
-        return;
-    
-    int32_t i_4602;
-    int32_t i_4603;
-    float x_4604;
-    float x_4605;
-    float y_4606;
-    float y_4607;
-    
-    // compute thread index
-    {
-        i_4602 = squot32(kernel_thread_index_4601, size_4005);
-        i_4603 = kernel_thread_index_4601 - squot32(kernel_thread_index_4601,
-                                                    size_4005) * size_4005;
-    }
-    // read kernel parameters
-    {
-        x_4604 = *(__global float *) &prev_cell_mem_4664[(i_4602 * m_3943 +
-                                                          i_4603) * 4];
-        x_4605 = *(__global float *) &mem_4683[(i_4602 * m_3943 + i_4603) * 4];
-        y_4606 = *(__global float *) &mem_4713[(i_4602 * m_3943 + i_4603) * 4];
-        y_4607 = *(__global float *) &mem_4698[(i_4602 * m_3943 + i_4603) * 4];
-    }
-    
-    float res_4608 = x_4605 * y_4607;
-    float res_4609 = x_4604 * y_4606;
-    float res_4610 = res_4608 + res_4609;
-    
-    // write kernel result
-    {
-        *(__global float *) &mem_4731[(i_4602 * size_4005 + i_4603) * 4] =
-            res_4610;
-    }
-}
-__kernel void map_kernel_4577(__global unsigned char *mem_4728, int32_t n_3945,
-                              int32_t size_4005, __global
-                              unsigned char *mem_4731, int32_t m_3943, __global
-                              unsigned char *mem_4734)
-{
-    const uint kernel_thread_index_4577 = get_global_id(0);
-    
-    if (kernel_thread_index_4577 >= n_3945 * m_3943)
-        return;
-    
-    int32_t i_4578;
-    int32_t i_4579;
-    float not_curried_4580;
-    float x_4581;
-    
-    // compute thread index
-    {
-        i_4578 = squot32(kernel_thread_index_4577, m_3943);
-        i_4579 = kernel_thread_index_4577 - squot32(kernel_thread_index_4577,
-                                                    m_3943) * m_3943;
-    }
-    // read kernel parameters
-    {
-        not_curried_4580 = *(__global float *) &mem_4731[(i_4578 * size_4005 +
-                                                          i_4579) * 4];
-        x_4581 = *(__global float *) &mem_4728[(i_4578 * m_3943 + i_4579) * 4];
-    }
-    
-    float arg_4582 = 0.0F - not_curried_4580;
-    float res_4583 = fpow32(2.718280076980591F, arg_4582);
-    float y_4584 = 1.0F + res_4583;
-    float res_4585 = 1.0F / y_4584;
-    float res_4586 = x_4581 * res_4585;
-    
-    // write kernel result
-    {
-        *(__global float *) &mem_4734[(i_4578 * m_3943 + i_4579) * 4] =
-            res_4586;
+        *(__global float *) &mem_5472[(i_5326 * n_4678 + i_5327) * 4] =
+            res_5334;
     }
 }
 );
-static cl_kernel map_kernel_4739;
-static int map_kernel_4739total_runtime = 0;
-static int map_kernel_4739runs = 0;
-static cl_kernel map_kernel_4743;
-static int map_kernel_4743total_runtime = 0;
-static int map_kernel_4743runs = 0;
-static cl_kernel map_kernel_4752;
-static int map_kernel_4752total_runtime = 0;
-static int map_kernel_4752runs = 0;
-static cl_kernel map_kernel_4756;
-static int map_kernel_4756total_runtime = 0;
-static int map_kernel_4756runs = 0;
-static cl_kernel map_kernel_4337;
-static int map_kernel_4337total_runtime = 0;
-static int map_kernel_4337runs = 0;
-static cl_kernel map_kernel_4360;
-static int map_kernel_4360total_runtime = 0;
-static int map_kernel_4360runs = 0;
-static cl_kernel map_kernel_4377;
-static int map_kernel_4377total_runtime = 0;
-static int map_kernel_4377runs = 0;
-static cl_kernel map_kernel_4771;
-static int map_kernel_4771total_runtime = 0;
-static int map_kernel_4771runs = 0;
-static cl_kernel map_kernel_4780;
-static int map_kernel_4780total_runtime = 0;
-static int map_kernel_4780runs = 0;
-static cl_kernel map_kernel_4397;
-static int map_kernel_4397total_runtime = 0;
-static int map_kernel_4397runs = 0;
-static cl_kernel map_kernel_4420;
-static int map_kernel_4420total_runtime = 0;
-static int map_kernel_4420runs = 0;
-static cl_kernel map_kernel_4437;
-static int map_kernel_4437total_runtime = 0;
-static int map_kernel_4437runs = 0;
-static cl_kernel map_kernel_4795;
-static int map_kernel_4795total_runtime = 0;
-static int map_kernel_4795runs = 0;
-static cl_kernel map_kernel_4804;
-static int map_kernel_4804total_runtime = 0;
-static int map_kernel_4804runs = 0;
-static cl_kernel map_kernel_4457;
-static int map_kernel_4457total_runtime = 0;
-static int map_kernel_4457runs = 0;
-static cl_kernel map_kernel_4480;
-static int map_kernel_4480total_runtime = 0;
-static int map_kernel_4480runs = 0;
-static cl_kernel map_kernel_4497;
-static int map_kernel_4497total_runtime = 0;
-static int map_kernel_4497runs = 0;
-static cl_kernel map_kernel_4819;
-static int map_kernel_4819total_runtime = 0;
-static int map_kernel_4819runs = 0;
-static cl_kernel map_kernel_4828;
-static int map_kernel_4828total_runtime = 0;
-static int map_kernel_4828runs = 0;
-static cl_kernel map_kernel_4517;
-static int map_kernel_4517total_runtime = 0;
-static int map_kernel_4517runs = 0;
-static cl_kernel map_kernel_4540;
-static int map_kernel_4540total_runtime = 0;
-static int map_kernel_4540runs = 0;
-static cl_kernel map_kernel_4557;
-static int map_kernel_4557total_runtime = 0;
-static int map_kernel_4557runs = 0;
-static cl_kernel map_kernel_4601;
-static int map_kernel_4601total_runtime = 0;
-static int map_kernel_4601runs = 0;
-static cl_kernel map_kernel_4577;
-static int map_kernel_4577total_runtime = 0;
-static int map_kernel_4577runs = 0;
+static cl_kernel map_kernel_5053;
+static int map_kernel_5053total_runtime = 0;
+static int map_kernel_5053runs = 0;
+static cl_kernel map_kernel_5098;
+static int map_kernel_5098total_runtime = 0;
+static int map_kernel_5098runs = 0;
+static cl_kernel map_kernel_5122;
+static int map_kernel_5122total_runtime = 0;
+static int map_kernel_5122runs = 0;
+static cl_kernel map_kernel_5167;
+static int map_kernel_5167total_runtime = 0;
+static int map_kernel_5167runs = 0;
+static cl_kernel map_kernel_5191;
+static int map_kernel_5191total_runtime = 0;
+static int map_kernel_5191runs = 0;
+static cl_kernel map_kernel_5236;
+static int map_kernel_5236total_runtime = 0;
+static int map_kernel_5236runs = 0;
+static cl_kernel map_kernel_5260;
+static int map_kernel_5260total_runtime = 0;
+static int map_kernel_5260runs = 0;
+static cl_kernel map_kernel_5305;
+static int map_kernel_5305total_runtime = 0;
+static int map_kernel_5305runs = 0;
+static cl_kernel map_kernel_5349;
+static int map_kernel_5349total_runtime = 0;
+static int map_kernel_5349runs = 0;
+static cl_kernel map_kernel_5325;
+static int map_kernel_5325total_runtime = 0;
+static int map_kernel_5325runs = 0;
 void setup_opencl_and_load_kernels()
 
 {
@@ -1250,148 +970,64 @@ void setup_opencl_and_load_kernels()
     cl_program prog = setup_opencl(fut_opencl_prelude, fut_opencl_program);
     
     {
-        map_kernel_4739 = clCreateKernel(prog, "map_kernel_4739", &error);
+        map_kernel_5053 = clCreateKernel(prog, "map_kernel_5053", &error);
         assert(error == 0);
         if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4739");
+            fprintf(stderr, "Created kernel %s.\n", "map_kernel_5053");
     }
     {
-        map_kernel_4743 = clCreateKernel(prog, "map_kernel_4743", &error);
+        map_kernel_5098 = clCreateKernel(prog, "map_kernel_5098", &error);
         assert(error == 0);
         if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4743");
+            fprintf(stderr, "Created kernel %s.\n", "map_kernel_5098");
     }
     {
-        map_kernel_4752 = clCreateKernel(prog, "map_kernel_4752", &error);
+        map_kernel_5122 = clCreateKernel(prog, "map_kernel_5122", &error);
         assert(error == 0);
         if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4752");
+            fprintf(stderr, "Created kernel %s.\n", "map_kernel_5122");
     }
     {
-        map_kernel_4756 = clCreateKernel(prog, "map_kernel_4756", &error);
+        map_kernel_5167 = clCreateKernel(prog, "map_kernel_5167", &error);
         assert(error == 0);
         if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4756");
+            fprintf(stderr, "Created kernel %s.\n", "map_kernel_5167");
     }
     {
-        map_kernel_4337 = clCreateKernel(prog, "map_kernel_4337", &error);
+        map_kernel_5191 = clCreateKernel(prog, "map_kernel_5191", &error);
         assert(error == 0);
         if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4337");
+            fprintf(stderr, "Created kernel %s.\n", "map_kernel_5191");
     }
     {
-        map_kernel_4360 = clCreateKernel(prog, "map_kernel_4360", &error);
+        map_kernel_5236 = clCreateKernel(prog, "map_kernel_5236", &error);
         assert(error == 0);
         if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4360");
+            fprintf(stderr, "Created kernel %s.\n", "map_kernel_5236");
     }
     {
-        map_kernel_4377 = clCreateKernel(prog, "map_kernel_4377", &error);
+        map_kernel_5260 = clCreateKernel(prog, "map_kernel_5260", &error);
         assert(error == 0);
         if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4377");
+            fprintf(stderr, "Created kernel %s.\n", "map_kernel_5260");
     }
     {
-        map_kernel_4771 = clCreateKernel(prog, "map_kernel_4771", &error);
+        map_kernel_5305 = clCreateKernel(prog, "map_kernel_5305", &error);
         assert(error == 0);
         if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4771");
+            fprintf(stderr, "Created kernel %s.\n", "map_kernel_5305");
     }
     {
-        map_kernel_4780 = clCreateKernel(prog, "map_kernel_4780", &error);
+        map_kernel_5349 = clCreateKernel(prog, "map_kernel_5349", &error);
         assert(error == 0);
         if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4780");
+            fprintf(stderr, "Created kernel %s.\n", "map_kernel_5349");
     }
     {
-        map_kernel_4397 = clCreateKernel(prog, "map_kernel_4397", &error);
+        map_kernel_5325 = clCreateKernel(prog, "map_kernel_5325", &error);
         assert(error == 0);
         if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4397");
-    }
-    {
-        map_kernel_4420 = clCreateKernel(prog, "map_kernel_4420", &error);
-        assert(error == 0);
-        if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4420");
-    }
-    {
-        map_kernel_4437 = clCreateKernel(prog, "map_kernel_4437", &error);
-        assert(error == 0);
-        if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4437");
-    }
-    {
-        map_kernel_4795 = clCreateKernel(prog, "map_kernel_4795", &error);
-        assert(error == 0);
-        if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4795");
-    }
-    {
-        map_kernel_4804 = clCreateKernel(prog, "map_kernel_4804", &error);
-        assert(error == 0);
-        if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4804");
-    }
-    {
-        map_kernel_4457 = clCreateKernel(prog, "map_kernel_4457", &error);
-        assert(error == 0);
-        if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4457");
-    }
-    {
-        map_kernel_4480 = clCreateKernel(prog, "map_kernel_4480", &error);
-        assert(error == 0);
-        if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4480");
-    }
-    {
-        map_kernel_4497 = clCreateKernel(prog, "map_kernel_4497", &error);
-        assert(error == 0);
-        if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4497");
-    }
-    {
-        map_kernel_4819 = clCreateKernel(prog, "map_kernel_4819", &error);
-        assert(error == 0);
-        if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4819");
-    }
-    {
-        map_kernel_4828 = clCreateKernel(prog, "map_kernel_4828", &error);
-        assert(error == 0);
-        if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4828");
-    }
-    {
-        map_kernel_4517 = clCreateKernel(prog, "map_kernel_4517", &error);
-        assert(error == 0);
-        if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4517");
-    }
-    {
-        map_kernel_4540 = clCreateKernel(prog, "map_kernel_4540", &error);
-        assert(error == 0);
-        if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4540");
-    }
-    {
-        map_kernel_4557 = clCreateKernel(prog, "map_kernel_4557", &error);
-        assert(error == 0);
-        if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4557");
-    }
-    {
-        map_kernel_4601 = clCreateKernel(prog, "map_kernel_4601", &error);
-        assert(error == 0);
-        if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4601");
-    }
-    {
-        map_kernel_4577 = clCreateKernel(prog, "map_kernel_4577", &error);
-        assert(error == 0);
-        if (cl_debug)
-            fprintf(stderr, "Created kernel %s.\n", "map_kernel_4577");
+            fprintf(stderr, "Created kernel %s.\n", "map_kernel_5325");
     }
 }
 void post_opencl_setup(struct opencl_device_option *option)
@@ -1430,12 +1066,12 @@ static void memblock_alloc_device(struct memblock_device *block, int32_t size)
 {
     memblock_unref_device(block);
     
-    cl_int clCreateBuffer_succeeded_5016;
+    cl_int clCreateBuffer_succeeded_5580;
     
     block->mem = clCreateBuffer(fut_cl_context, CL_MEM_READ_WRITE, size >
                                 0 ? size : 1, NULL,
-                                &clCreateBuffer_succeeded_5016);
-    OPENCL_SUCCEED(clCreateBuffer_succeeded_5016);
+                                &clCreateBuffer_succeeded_5580);
+    OPENCL_SUCCEED(clCreateBuffer_succeeded_5580);
     block->references = (int *) malloc(sizeof(int));
     *block->references = 1;
 }
@@ -1508,7 +1144,7 @@ struct tuple_int32_t_device_mem_int32_t_device_mem {
     struct memblock_device elem_3;
 } ;
 static struct tuple_int32_t_device_mem_int32_t_device_mem
-futhark_main(int32_t W_bi_mem_size_4635, int32_t U_bi_mem_size_4637, int32_t b_bi_mem_size_4639, int32_t W_ig_mem_size_4641, int32_t U_ig_mem_size_4643, int32_t b_ig_mem_size_4645, int32_t W_fg_mem_size_4647, int32_t U_fg_mem_size_4649, int32_t b_fg_mem_size_4651, int32_t W_og_mem_size_4653, int32_t U_og_mem_size_4655, int32_t b_og_mem_size_4657, int32_t input_mem_size_4659, int32_t prev_output_mem_size_4661, int32_t prev_cell_mem_size_4663, struct memblock_device W_bi_mem_4636, struct memblock_device U_bi_mem_4638, struct memblock_device b_bi_mem_4640, struct memblock_device W_ig_mem_4642, struct memblock_device U_ig_mem_4644, struct memblock_device b_ig_mem_4646, struct memblock_device W_fg_mem_4648, struct memblock_device U_fg_mem_4650, struct memblock_device b_fg_mem_4652, struct memblock_device W_og_mem_4654, struct memblock_device U_og_mem_4656, struct memblock_device b_og_mem_4658, struct memblock_device input_mem_4660, struct memblock_device prev_output_mem_4662, struct memblock_device prev_cell_mem_4664, int32_t m_3943, int32_t o_3944, int32_t n_3945);
+futhark_main(int32_t W_bi_mem_size_5407, int32_t U_bi_mem_size_5409, int32_t b_bi_mem_size_5411, int32_t W_ig_mem_size_5413, int32_t U_ig_mem_size_5415, int32_t b_ig_mem_size_5417, int32_t W_fg_mem_size_5419, int32_t U_fg_mem_size_5421, int32_t b_fg_mem_size_5423, int32_t W_og_mem_size_5425, int32_t U_og_mem_size_5427, int32_t b_og_mem_size_5429, int32_t input_mem_size_5431, int32_t prev_output_mem_size_5433, int32_t prev_cell_mem_size_5435, struct memblock_device W_bi_mem_5408, struct memblock_device U_bi_mem_5410, struct memblock_device b_bi_mem_5412, struct memblock_device W_ig_mem_5414, struct memblock_device U_ig_mem_5416, struct memblock_device b_ig_mem_5418, struct memblock_device W_fg_mem_5420, struct memblock_device U_fg_mem_5422, struct memblock_device b_fg_mem_5424, struct memblock_device W_og_mem_5426, struct memblock_device U_og_mem_5428, struct memblock_device b_og_mem_5430, struct memblock_device input_mem_5432, struct memblock_device prev_output_mem_5434, struct memblock_device prev_cell_mem_5436, int32_t m_4676, int32_t o_4677, int32_t n_4678);
 static inline float futhark_log32(float x)
 {
     return log(x);
@@ -2275,1860 +1911,685 @@ static inline double fpconv_f64_f64(double x)
 }
 static int detail_timing = 0;
 static
-struct tuple_int32_t_device_mem_int32_t_device_mem futhark_main(int32_t W_bi_mem_size_4635,
-                                                                int32_t U_bi_mem_size_4637,
-                                                                int32_t b_bi_mem_size_4639,
-                                                                int32_t W_ig_mem_size_4641,
-                                                                int32_t U_ig_mem_size_4643,
-                                                                int32_t b_ig_mem_size_4645,
-                                                                int32_t W_fg_mem_size_4647,
-                                                                int32_t U_fg_mem_size_4649,
-                                                                int32_t b_fg_mem_size_4651,
-                                                                int32_t W_og_mem_size_4653,
-                                                                int32_t U_og_mem_size_4655,
-                                                                int32_t b_og_mem_size_4657,
-                                                                int32_t input_mem_size_4659,
-                                                                int32_t prev_output_mem_size_4661,
-                                                                int32_t prev_cell_mem_size_4663,
-                                                                struct memblock_device W_bi_mem_4636,
-                                                                struct memblock_device U_bi_mem_4638,
-                                                                struct memblock_device b_bi_mem_4640,
-                                                                struct memblock_device W_ig_mem_4642,
-                                                                struct memblock_device U_ig_mem_4644,
-                                                                struct memblock_device b_ig_mem_4646,
-                                                                struct memblock_device W_fg_mem_4648,
-                                                                struct memblock_device U_fg_mem_4650,
-                                                                struct memblock_device b_fg_mem_4652,
-                                                                struct memblock_device W_og_mem_4654,
-                                                                struct memblock_device U_og_mem_4656,
-                                                                struct memblock_device b_og_mem_4658,
-                                                                struct memblock_device input_mem_4660,
-                                                                struct memblock_device prev_output_mem_4662,
-                                                                struct memblock_device prev_cell_mem_4664,
-                                                                int32_t m_3943,
-                                                                int32_t o_3944,
-                                                                int32_t n_3945)
+struct tuple_int32_t_device_mem_int32_t_device_mem futhark_main(int32_t W_bi_mem_size_5407,
+                                                                int32_t U_bi_mem_size_5409,
+                                                                int32_t b_bi_mem_size_5411,
+                                                                int32_t W_ig_mem_size_5413,
+                                                                int32_t U_ig_mem_size_5415,
+                                                                int32_t b_ig_mem_size_5417,
+                                                                int32_t W_fg_mem_size_5419,
+                                                                int32_t U_fg_mem_size_5421,
+                                                                int32_t b_fg_mem_size_5423,
+                                                                int32_t W_og_mem_size_5425,
+                                                                int32_t U_og_mem_size_5427,
+                                                                int32_t b_og_mem_size_5429,
+                                                                int32_t input_mem_size_5431,
+                                                                int32_t prev_output_mem_size_5433,
+                                                                int32_t prev_cell_mem_size_5435,
+                                                                struct memblock_device W_bi_mem_5408,
+                                                                struct memblock_device U_bi_mem_5410,
+                                                                struct memblock_device b_bi_mem_5412,
+                                                                struct memblock_device W_ig_mem_5414,
+                                                                struct memblock_device U_ig_mem_5416,
+                                                                struct memblock_device b_ig_mem_5418,
+                                                                struct memblock_device W_fg_mem_5420,
+                                                                struct memblock_device U_fg_mem_5422,
+                                                                struct memblock_device b_fg_mem_5424,
+                                                                struct memblock_device W_og_mem_5426,
+                                                                struct memblock_device U_og_mem_5428,
+                                                                struct memblock_device b_og_mem_5430,
+                                                                struct memblock_device input_mem_5432,
+                                                                struct memblock_device prev_output_mem_5434,
+                                                                struct memblock_device prev_cell_mem_5436,
+                                                                int32_t m_4676,
+                                                                int32_t o_4677,
+                                                                int32_t n_4678)
 {
-    int32_t out_memsize_4736;
-    struct memblock_device out_mem_4735;
+    int32_t out_memsize_5474;
+    struct memblock_device out_mem_5473;
     
-    out_mem_4735.references = NULL;
+    out_mem_5473.references = NULL;
     
-    int32_t out_memsize_4738;
-    struct memblock_device out_mem_4737;
+    int32_t out_memsize_5476;
+    struct memblock_device out_mem_5475;
     
-    out_mem_4737.references = NULL;
+    out_mem_5475.references = NULL;
     
-    int32_t bytes_4665 = 4 * m_3943;
-    struct memblock_device mem_4666;
+    char cond_4696 = m_4676 == 0;
+    int32_t size_4697;
     
-    mem_4666.references = NULL;
-    memblock_alloc_device(&mem_4666, bytes_4665);
-    
-    int32_t group_size_4741;
-    int32_t num_groups_4742;
-    
-    group_size_4741 = cl_group_size;
-    num_groups_4742 = squot32(m_3943 + group_size_4741 - 1, group_size_4741);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4739, 0, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4739, 1, sizeof(mem_4666.mem),
-                                  &mem_4666.mem));
-    if (1 * (num_groups_4742 * group_size_4741) != 0) {
-        const size_t global_work_size_4848[1] = {num_groups_4742 *
-                     group_size_4741};
-        const size_t local_work_size_4852[1] = {group_size_4741};
-        int64_t time_start_4849, time_end_4850;
-        
-        if (cl_debug) {
-            fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4739");
-            fprintf(stderr, "%zu", global_work_size_4848[0]);
-            fprintf(stderr, "].\n");
-            time_start_4849 = get_wall_time();
-        }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4739, 1,
-                                              NULL, global_work_size_4848,
-                                              local_work_size_4852, 0, NULL,
-                                              NULL));
-        if (cl_debug) {
-            OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4850 = get_wall_time();
-            
-            long time_diff_4851 = time_end_4850 - time_start_4849;
-            
-            if (detail_timing) {
-                map_kernel_4739total_runtime += time_diff_4851;
-                map_kernel_4739runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4739",
-                        (int) time_diff_4851);
-            }
-        }
-    }
-    
-    int32_t x_4668 = 4 * n_3945;
-    int32_t bytes_4667 = x_4668 * m_3943;
-    struct memblock_device mem_4669;
-    
-    mem_4669.references = NULL;
-    memblock_alloc_device(&mem_4669, bytes_4667);
-    
-    int32_t group_size_4747;
-    int32_t num_groups_4748;
-    
-    group_size_4747 = cl_group_size;
-    num_groups_4748 = squot32(n_3945 * m_3943 + group_size_4747 - 1,
-                              group_size_4747);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4743, 0, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4743, 1, sizeof(mem_4666.mem),
-                                  &mem_4666.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4743, 2, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4743, 3, sizeof(mem_4669.mem),
-                                  &mem_4669.mem));
-    if (1 * (num_groups_4748 * group_size_4747) != 0) {
-        const size_t global_work_size_4853[1] = {num_groups_4748 *
-                     group_size_4747};
-        const size_t local_work_size_4857[1] = {group_size_4747};
-        int64_t time_start_4854, time_end_4855;
-        
-        if (cl_debug) {
-            fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4743");
-            fprintf(stderr, "%zu", global_work_size_4853[0]);
-            fprintf(stderr, "].\n");
-            time_start_4854 = get_wall_time();
-        }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4743, 1,
-                                              NULL, global_work_size_4853,
-                                              local_work_size_4857, 0, NULL,
-                                              NULL));
-        if (cl_debug) {
-            OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4855 = get_wall_time();
-            
-            long time_diff_4856 = time_end_4855 - time_start_4854;
-            
-            if (detail_timing) {
-                map_kernel_4743total_runtime += time_diff_4856;
-                map_kernel_4743runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4743",
-                        (int) time_diff_4856);
-            }
-        }
-    }
-    for (int i_3964 = 0; i_3964 < m_3943; i_3964++) {
-        char y_3965 = slt32(i_3964, n_3945);
-        char bounds_check_3966;
-        
-        if (!y_3965) {
-            fprintf(stderr, "Assertion %s at %s failed.\n", "y_3965",
-                    "lstm.fut:12:16-12:16");
-            abort();
-        }
-        for (int j_3968 = 0; j_3968 < n_3945; j_3968++) {
-            float res_3975;
-            float res_3969 = 0.0F;
-            
-            for (int k_3970 = 0; k_3970 < o_3944; k_3970++) {
-                float read_res_4858;
-                
-                OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                                   W_bi_mem_4636.mem, CL_TRUE,
-                                                   (i_3964 * o_3944 + k_3970) *
-                                                   4, sizeof(float),
-                                                   &read_res_4858, 0, NULL,
-                                                   NULL));
-                
-                float x_3971 = read_res_4858;
-                float read_res_4859;
-                
-                OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                                   input_mem_4660.mem, CL_TRUE,
-                                                   (k_3970 * n_3945 + j_3968) *
-                                                   4, sizeof(float),
-                                                   &read_res_4859, 0, NULL,
-                                                   NULL));
-                
-                float y_3972 = read_res_4859;
-                float y_3973 = x_3971 * y_3972;
-                float res_3974 = res_3969 + y_3973;
-                float res_tmp_4751 = res_3974;
-                
-                res_3969 = res_tmp_4751;
-            }
-            res_3975 = res_3969;
-            
-            char y_3976 = slt32(j_3968, m_3943);
-            char bounds_check_3977;
-            
-            if (!y_3976) {
-                fprintf(stderr, "Assertion %s at %s failed.\n", "y_3976",
-                        "lstm.fut:12:16-12:16");
-                abort();
-            }
-            
-            float write_tmp_4860 = res_3975;
-            
-            OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue, mem_4669.mem,
-                                                CL_TRUE, (i_3964 * m_3943 +
-                                                          j_3968) * 4,
-                                                sizeof(float), &write_tmp_4860,
-                                                0, NULL, NULL));
-        }
-    }
-    
-    struct memblock_device mem_4671;
-    
-    mem_4671.references = NULL;
-    memblock_alloc_device(&mem_4671, x_4668);
-    
-    int32_t group_size_4754;
-    int32_t num_groups_4755;
-    
-    group_size_4754 = cl_group_size;
-    num_groups_4755 = squot32(n_3945 + group_size_4754 - 1, group_size_4754);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4752, 0, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4752, 1, sizeof(mem_4671.mem),
-                                  &mem_4671.mem));
-    if (1 * (num_groups_4755 * group_size_4754) != 0) {
-        const size_t global_work_size_4861[1] = {num_groups_4755 *
-                     group_size_4754};
-        const size_t local_work_size_4865[1] = {group_size_4754};
-        int64_t time_start_4862, time_end_4863;
-        
-        if (cl_debug) {
-            fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4752");
-            fprintf(stderr, "%zu", global_work_size_4861[0]);
-            fprintf(stderr, "].\n");
-            time_start_4862 = get_wall_time();
-        }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4752, 1,
-                                              NULL, global_work_size_4861,
-                                              local_work_size_4865, 0, NULL,
-                                              NULL));
-        if (cl_debug) {
-            OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4863 = get_wall_time();
-            
-            long time_diff_4864 = time_end_4863 - time_start_4862;
-            
-            if (detail_timing) {
-                map_kernel_4752total_runtime += time_diff_4864;
-                map_kernel_4752runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4752",
-                        (int) time_diff_4864);
-            }
-        }
-    }
-    
-    int32_t bytes_4672 = bytes_4665 * n_3945;
-    struct memblock_device mem_4674;
-    
-    mem_4674.references = NULL;
-    memblock_alloc_device(&mem_4674, bytes_4672);
-    
-    int32_t group_size_4760;
-    int32_t num_groups_4761;
-    
-    group_size_4760 = cl_group_size;
-    num_groups_4761 = squot32(m_3943 * n_3945 + group_size_4760 - 1,
-                              group_size_4760);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4756, 0, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4756, 1, sizeof(mem_4671.mem),
-                                  &mem_4671.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4756, 2, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4756, 3, sizeof(mem_4674.mem),
-                                  &mem_4674.mem));
-    if (1 * (num_groups_4761 * group_size_4760) != 0) {
-        const size_t global_work_size_4866[1] = {num_groups_4761 *
-                     group_size_4760};
-        const size_t local_work_size_4870[1] = {group_size_4760};
-        int64_t time_start_4867, time_end_4868;
-        
-        if (cl_debug) {
-            fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4756");
-            fprintf(stderr, "%zu", global_work_size_4866[0]);
-            fprintf(stderr, "].\n");
-            time_start_4867 = get_wall_time();
-        }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4756, 1,
-                                              NULL, global_work_size_4866,
-                                              local_work_size_4870, 0, NULL,
-                                              NULL));
-        if (cl_debug) {
-            OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4868 = get_wall_time();
-            
-            long time_diff_4869 = time_end_4868 - time_start_4867;
-            
-            if (detail_timing) {
-                map_kernel_4756total_runtime += time_diff_4869;
-                map_kernel_4756runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4756",
-                        (int) time_diff_4869);
-            }
-        }
-    }
-    for (int i_3984 = 0; i_3984 < n_3945; i_3984++) {
-        char y_3985 = slt32(i_3984, m_3943);
-        char bounds_check_3986;
-        
-        if (!y_3985) {
-            fprintf(stderr, "Assertion %s at %s failed.\n", "y_3985",
-                    "lstm.fut:12:16-12:16");
-            abort();
-        }
-        for (int j_3988 = 0; j_3988 < m_3943; j_3988++) {
-            float res_3995;
-            float res_3989 = 0.0F;
-            
-            for (int k_3990 = 0; k_3990 < n_3945; k_3990++) {
-                float read_res_4871;
-                
-                OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                                   U_bi_mem_4638.mem, CL_TRUE,
-                                                   (i_3984 * n_3945 + k_3990) *
-                                                   4, sizeof(float),
-                                                   &read_res_4871, 0, NULL,
-                                                   NULL));
-                
-                float x_3991 = read_res_4871;
-                float read_res_4872;
-                
-                OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                                   prev_output_mem_4662.mem,
-                                                   CL_TRUE, (k_3990 * m_3943 +
-                                                             j_3988) * 4,
-                                                   sizeof(float),
-                                                   &read_res_4872, 0, NULL,
-                                                   NULL));
-                
-                float y_3992 = read_res_4872;
-                float y_3993 = x_3991 * y_3992;
-                float res_3994 = res_3989 + y_3993;
-                float res_tmp_4764 = res_3994;
-                
-                res_3989 = res_tmp_4764;
-            }
-            res_3995 = res_3989;
-            
-            char y_3996 = slt32(j_3988, n_3945);
-            char bounds_check_3997;
-            
-            if (!y_3996) {
-                fprintf(stderr, "Assertion %s at %s failed.\n", "y_3996",
-                        "lstm.fut:12:16-12:16");
-                abort();
-            }
-            
-            float write_tmp_4873 = res_3995;
-            
-            OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue, mem_4674.mem,
-                                                CL_TRUE, (i_3984 * n_3945 +
-                                                          j_3988) * 4,
-                                                sizeof(float), &write_tmp_4873,
-                                                0, NULL, NULL));
-        }
-    }
-    
-    char zip_cmp_4001 = n_3945 == m_3943;
-    char zip_assert_4002;
-    
-    if (!zip_cmp_4001) {
-        fprintf(stderr, "Assertion %s at %s failed.\n", "zip_cmp_4001",
-                "lstm.fut:18:9-18:9");
-        abort();
-    }
-    
-    char cond_4004 = n_3945 == 0;
-    int32_t size_4005;
-    
-    if (cond_4004) {
-        size_4005 = 0;
+    if (cond_4696) {
+        size_4697 = 0;
     } else {
-        size_4005 = m_3943;
+        size_4697 = n_4678;
     }
     
-    char zip_cmp_4006 = m_3943 == n_3945;
-    char zip_assert_4007;
+    char eq_x_y_4698 = n_4678 == 0;
+    char p_and_eq_x_y_4699 = cond_4696 && eq_x_y_4698;
+    char not_p_4700 = !cond_4696;
+    char assert_arg_4701 = p_and_eq_x_y_4699 || not_p_4700;
+    char shape_cert_4702;
     
-    if (!zip_cmp_4006) {
-        fprintf(stderr, "Assertion %s at %s failed.\n", "zip_cmp_4006",
-                "lstm.fut:19:33-19:33");
-        abort();
-    }
-    
-    char eq_x_y_4008 = m_3943 == 0;
-    char p_and_eq_x_y_4009 = cond_4004 && eq_x_y_4008;
-    char not_p_4010 = !cond_4004;
-    char assert_arg_4011 = p_and_eq_x_y_4009 || not_p_4010;
-    char shape_cert_4012;
-    
-    if (!assert_arg_4011) {
-        fprintf(stderr, "Assertion %s at %s failed.\n", "assert_arg_4011",
-                "lstm.fut:18:17-18:17");
-        abort();
-    }
-    
-    int32_t nesting_size_4335 = m_3943 * n_3945;
-    struct memblock_device mem_4677;
-    
-    mem_4677.references = NULL;
-    memblock_alloc_device(&mem_4677, bytes_4667);
-    
-    int32_t group_size_4765;
-    int32_t num_groups_4766;
-    
-    group_size_4765 = cl_group_size;
-    num_groups_4766 = squot32(n_3945 * m_3943 + group_size_4765 - 1,
-                              group_size_4765);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4337, 0, sizeof(mem_4669.mem),
-                                  &mem_4669.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4337, 1, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4337, 2, sizeof(mem_4674.mem),
-                                  &mem_4674.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4337, 3, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4337, 4, sizeof(mem_4677.mem),
-                                  &mem_4677.mem));
-    if (1 * (num_groups_4766 * group_size_4765) != 0) {
-        const size_t global_work_size_4874[1] = {num_groups_4766 *
-                     group_size_4765};
-        const size_t local_work_size_4878[1] = {group_size_4765};
-        int64_t time_start_4875, time_end_4876;
-        
-        if (cl_debug) {
-            fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4337");
-            fprintf(stderr, "%zu", global_work_size_4874[0]);
-            fprintf(stderr, "].\n");
-            time_start_4875 = get_wall_time();
-        }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4337, 1,
-                                              NULL, global_work_size_4874,
-                                              local_work_size_4878, 0, NULL,
-                                              NULL));
-        if (cl_debug) {
-            OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4876 = get_wall_time();
-            
-            long time_diff_4877 = time_end_4876 - time_start_4875;
-            
-            if (detail_timing) {
-                map_kernel_4337total_runtime += time_diff_4877;
-                map_kernel_4337runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4337",
-                        (int) time_diff_4877);
-            }
-        }
-    }
-    
-    char eq_x_z_4026 = 0 == m_3943;
-    char p_and_eq_x_y_4027 = not_p_4010 && eq_x_z_4026;
-    char eq_x_y_4028 = cond_4004 || p_and_eq_x_y_4027;
-    char p_and_eq_x_y_4029 = eq_x_y_4008 && eq_x_y_4028;
-    char not_p_4030 = !eq_x_y_4008;
-    char assert_arg_4031 = p_and_eq_x_y_4029 || not_p_4030;
-    char shape_cert_4032;
-    
-    if (!assert_arg_4031) {
-        fprintf(stderr, "Assertion %s at %s failed.\n", "assert_arg_4031",
-                "lstm.fut:18:17-18:17");
-        abort();
-    }
-    
-    int32_t nesting_size_4358 = size_4005 * m_3943;
-    int32_t bytes_4678 = bytes_4665 * size_4005;
-    struct memblock_device mem_4680;
-    
-    mem_4680.references = NULL;
-    memblock_alloc_device(&mem_4680, bytes_4678);
-    
-    int32_t group_size_4767;
-    int32_t num_groups_4768;
-    
-    group_size_4767 = cl_group_size;
-    num_groups_4768 = squot32(m_3943 * size_4005 + group_size_4767 - 1,
-                              group_size_4767);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4360, 0, sizeof(b_bi_mem_4640.mem),
-                                  &b_bi_mem_4640.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4360, 1, sizeof(mem_4677.mem),
-                                  &mem_4677.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4360, 2, sizeof(size_4005),
-                                  &size_4005));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4360, 3, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4360, 4, sizeof(mem_4680.mem),
-                                  &mem_4680.mem));
-    if (1 * (num_groups_4768 * group_size_4767) != 0) {
-        const size_t global_work_size_4879[1] = {num_groups_4768 *
-                     group_size_4767};
-        const size_t local_work_size_4883[1] = {group_size_4767};
-        int64_t time_start_4880, time_end_4881;
-        
-        if (cl_debug) {
-            fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4360");
-            fprintf(stderr, "%zu", global_work_size_4879[0]);
-            fprintf(stderr, "].\n");
-            time_start_4880 = get_wall_time();
-        }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4360, 1,
-                                              NULL, global_work_size_4879,
-                                              local_work_size_4883, 0, NULL,
-                                              NULL));
-        if (cl_debug) {
-            OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4881 = get_wall_time();
-            
-            long time_diff_4882 = time_end_4881 - time_start_4880;
-            
-            if (detail_timing) {
-                map_kernel_4360total_runtime += time_diff_4882;
-                map_kernel_4360runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4360",
-                        (int) time_diff_4882);
-            }
-        }
-    }
-    
-    char p_and_eq_x_y_4041 = not_p_4030 && eq_x_y_4028;
-    char eq_x_y_4042 = eq_x_y_4008 || p_and_eq_x_y_4041;
-    char p_and_eq_x_y_4043 = eq_x_y_4008 && eq_x_y_4008;
-    char p_and_eq_x_y_4044 = not_p_4030 && assert_arg_4011;
-    char eq_x_z_4045 = p_and_eq_x_y_4043 || p_and_eq_x_y_4044;
-    char p_and_eq_x_y_4046 = cond_4004 && eq_x_y_4042;
-    char p_and_eq_x_y_4047 = not_p_4010 && eq_x_z_4045;
-    char assert_arg_4048 = p_and_eq_x_y_4046 || p_and_eq_x_y_4047;
-    char shape_cert_4049;
-    
-    if (!assert_arg_4048) {
-        fprintf(stderr, "Assertion %s at %s failed.\n", "assert_arg_4048",
+    if (!assert_arg_4701) {
+        fprintf(stderr, "Assertion %s at %s failed.\n", "assert_arg_4701",
                 "lstm.fut:31:17-31:17");
         abort();
     }
     
-    struct memblock_device mem_4683;
+    int32_t nesting_size_5051 = size_4697 * m_4676;
+    int32_t x_5438 = 4 * m_4676;
+    int32_t bytes_5437 = x_5438 * n_4678;
+    struct memblock_device mem_5439;
     
-    mem_4683.references = NULL;
-    memblock_alloc_device(&mem_4683, bytes_4667);
+    mem_5439.references = NULL;
+    memblock_alloc_device(&mem_5439, bytes_5437);
+    if (m_4676 * n_4678 * sizeof(float) > 0) {
+        OPENCL_SUCCEED(clEnqueueCopyBuffer(fut_cl_queue,
+                                           prev_output_mem_5434.mem,
+                                           mem_5439.mem, 0, 0, m_4676 * n_4678 *
+                                           sizeof(float), 0, NULL, NULL));
+        if (cl_debug)
+            OPENCL_SUCCEED(clFinish(fut_cl_queue));
+    }
     
-    int32_t group_size_4769;
-    int32_t num_groups_4770;
+    int32_t x_5441 = 4 * o_4677;
+    int32_t bytes_5440 = x_5441 * n_4678;
+    struct memblock_device mem_5442;
     
-    group_size_4769 = cl_group_size;
-    num_groups_4770 = squot32(n_3945 * m_3943 + group_size_4769 - 1,
-                              group_size_4769);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4377, 0, sizeof(mem_4680.mem),
-                                  &mem_4680.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4377, 1, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4377, 2, sizeof(size_4005),
-                                  &size_4005));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4377, 3, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4377, 4, sizeof(mem_4683.mem),
-                                  &mem_4683.mem));
-    if (1 * (num_groups_4770 * group_size_4769) != 0) {
-        const size_t global_work_size_4884[1] = {num_groups_4770 *
-                     group_size_4769};
-        const size_t local_work_size_4888[1] = {group_size_4769};
-        int64_t time_start_4885, time_end_4886;
+    mem_5442.references = NULL;
+    memblock_alloc_device(&mem_5442, bytes_5440);
+    if (o_4677 * n_4678 * sizeof(float) > 0) {
+        OPENCL_SUCCEED(clEnqueueCopyBuffer(fut_cl_queue, input_mem_5432.mem,
+                                           mem_5442.mem, 0, 0, o_4677 * n_4678 *
+                                           sizeof(float), 0, NULL, NULL));
+        if (cl_debug)
+            OPENCL_SUCCEED(clFinish(fut_cl_queue));
+    }
+    
+    int32_t bytes_5443 = x_5438 * size_4697;
+    struct memblock_device mem_5445;
+    
+    mem_5445.references = NULL;
+    memblock_alloc_device(&mem_5445, bytes_5443);
+    
+    int32_t group_size_5479;
+    int32_t num_groups_5480;
+    
+    group_size_5479 = cl_group_size;
+    num_groups_5480 = squot32(m_4676 * size_4697 + group_size_5479 - 1,
+                              group_size_5479);
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5053, 0, sizeof(b_bi_mem_5412.mem),
+                                  &b_bi_mem_5412.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5053, 1, sizeof(W_bi_mem_5408.mem),
+                                  &W_bi_mem_5408.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5053, 2, sizeof(m_4676), &m_4676));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5053, 3, sizeof(size_4697),
+                                  &size_4697));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5053, 4, sizeof(o_4677), &o_4677));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5053, 5, sizeof(mem_5442.mem),
+                                  &mem_5442.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5053, 6, sizeof(U_bi_mem_5410.mem),
+                                  &U_bi_mem_5410.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5053, 7, sizeof(n_4678), &n_4678));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5053, 8, sizeof(mem_5439.mem),
+                                  &mem_5439.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5053, 9, sizeof(mem_5445.mem),
+                                  &mem_5445.mem));
+    if (1 * (num_groups_5480 * group_size_5479) != 0) {
+        const size_t global_work_size_5506[1] = {num_groups_5480 *
+                     group_size_5479};
+        const size_t local_work_size_5510[1] = {group_size_5479};
+        int64_t time_start_5507, time_end_5508;
         
         if (cl_debug) {
             fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4377");
-            fprintf(stderr, "%zu", global_work_size_4884[0]);
+                    "map_kernel_5053");
+            fprintf(stderr, "%zu", global_work_size_5506[0]);
             fprintf(stderr, "].\n");
-            time_start_4885 = get_wall_time();
+            time_start_5507 = get_wall_time();
         }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4377, 1,
-                                              NULL, global_work_size_4884,
-                                              local_work_size_4888, 0, NULL,
+        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_5053, 1,
+                                              NULL, global_work_size_5506,
+                                              local_work_size_5510, 0, NULL,
                                               NULL));
         if (cl_debug) {
             OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4886 = get_wall_time();
+            time_end_5508 = get_wall_time();
             
-            long time_diff_4887 = time_end_4886 - time_start_4885;
+            long time_diff_5509 = time_end_5508 - time_start_5507;
             
             if (detail_timing) {
-                map_kernel_4377total_runtime += time_diff_4887;
-                map_kernel_4377runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4377",
-                        (int) time_diff_4887);
+                map_kernel_5053total_runtime += time_diff_5509;
+                map_kernel_5053runs++;
+                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_5053",
+                        (int) time_diff_5509);
             }
         }
     }
     
-    struct memblock_device mem_4686;
+    int32_t nesting_size_5096 = n_4678 * m_4676;
+    struct memblock_device mem_5448;
     
-    mem_4686.references = NULL;
-    memblock_alloc_device(&mem_4686, bytes_4667);
+    mem_5448.references = NULL;
+    memblock_alloc_device(&mem_5448, bytes_5437);
     
-    int32_t group_size_4775;
-    int32_t num_groups_4776;
+    int32_t group_size_5481;
+    int32_t num_groups_5482;
     
-    group_size_4775 = cl_group_size;
-    num_groups_4776 = squot32(n_3945 * m_3943 + group_size_4775 - 1,
-                              group_size_4775);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4771, 0, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4771, 1, sizeof(mem_4666.mem),
-                                  &mem_4666.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4771, 2, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4771, 3, sizeof(mem_4686.mem),
-                                  &mem_4686.mem));
-    if (1 * (num_groups_4776 * group_size_4775) != 0) {
-        const size_t global_work_size_4889[1] = {num_groups_4776 *
-                     group_size_4775};
-        const size_t local_work_size_4893[1] = {group_size_4775};
-        int64_t time_start_4890, time_end_4891;
+    group_size_5481 = cl_group_size;
+    num_groups_5482 = squot32(m_4676 * n_4678 + group_size_5481 - 1,
+                              group_size_5481);
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5098, 0, sizeof(m_4676), &m_4676));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5098, 1, sizeof(size_4697),
+                                  &size_4697));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5098, 2, sizeof(mem_5445.mem),
+                                  &mem_5445.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5098, 3, sizeof(n_4678), &n_4678));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5098, 4, sizeof(mem_5448.mem),
+                                  &mem_5448.mem));
+    if (1 * (num_groups_5482 * group_size_5481) != 0) {
+        const size_t global_work_size_5511[1] = {num_groups_5482 *
+                     group_size_5481};
+        const size_t local_work_size_5515[1] = {group_size_5481};
+        int64_t time_start_5512, time_end_5513;
         
         if (cl_debug) {
             fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4771");
-            fprintf(stderr, "%zu", global_work_size_4889[0]);
+                    "map_kernel_5098");
+            fprintf(stderr, "%zu", global_work_size_5511[0]);
             fprintf(stderr, "].\n");
-            time_start_4890 = get_wall_time();
+            time_start_5512 = get_wall_time();
         }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4771, 1,
-                                              NULL, global_work_size_4889,
-                                              local_work_size_4893, 0, NULL,
+        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_5098, 1,
+                                              NULL, global_work_size_5511,
+                                              local_work_size_5515, 0, NULL,
                                               NULL));
         if (cl_debug) {
             OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4891 = get_wall_time();
+            time_end_5513 = get_wall_time();
             
-            long time_diff_4892 = time_end_4891 - time_start_4890;
+            long time_diff_5514 = time_end_5513 - time_start_5512;
             
             if (detail_timing) {
-                map_kernel_4771total_runtime += time_diff_4892;
-                map_kernel_4771runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4771",
-                        (int) time_diff_4892);
+                map_kernel_5098total_runtime += time_diff_5514;
+                map_kernel_5098runs++;
+                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_5098",
+                        (int) time_diff_5514);
             }
         }
     }
-    for (int i_4062 = 0; i_4062 < m_3943; i_4062++) {
-        char y_4063 = slt32(i_4062, n_3945);
-        char bounds_check_4064;
-        
-        if (!y_4063) {
-            fprintf(stderr, "Assertion %s at %s failed.\n", "y_4063",
-                    "lstm.fut:12:16-12:16");
-            abort();
-        }
-        for (int j_4066 = 0; j_4066 < n_3945; j_4066++) {
-            float res_4073;
-            float res_4067 = 0.0F;
-            
-            for (int k_4068 = 0; k_4068 < o_3944; k_4068++) {
-                float read_res_4894;
-                
-                OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                                   W_ig_mem_4642.mem, CL_TRUE,
-                                                   (i_4062 * o_3944 + k_4068) *
-                                                   4, sizeof(float),
-                                                   &read_res_4894, 0, NULL,
-                                                   NULL));
-                
-                float x_4069 = read_res_4894;
-                float read_res_4895;
-                
-                OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                                   input_mem_4660.mem, CL_TRUE,
-                                                   (k_4068 * n_3945 + j_4066) *
-                                                   4, sizeof(float),
-                                                   &read_res_4895, 0, NULL,
-                                                   NULL));
-                
-                float y_4070 = read_res_4895;
-                float y_4071 = x_4069 * y_4070;
-                float res_4072 = res_4067 + y_4071;
-                float res_tmp_4779 = res_4072;
-                
-                res_4067 = res_tmp_4779;
-            }
-            res_4073 = res_4067;
-            
-            char y_4074 = slt32(j_4066, m_3943);
-            char bounds_check_4075;
-            
-            if (!y_4074) {
-                fprintf(stderr, "Assertion %s at %s failed.\n", "y_4074",
-                        "lstm.fut:12:16-12:16");
-                abort();
-            }
-            
-            float write_tmp_4896 = res_4073;
-            
-            OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue, mem_4686.mem,
-                                                CL_TRUE, (i_4062 * m_3943 +
-                                                          j_4066) * 4,
-                                                sizeof(float), &write_tmp_4896,
-                                                0, NULL, NULL));
-        }
-    }
     
-    struct memblock_device mem_4689;
+    struct memblock_device mem_5451;
     
-    mem_4689.references = NULL;
-    memblock_alloc_device(&mem_4689, bytes_4672);
+    mem_5451.references = NULL;
+    memblock_alloc_device(&mem_5451, bytes_5443);
     
-    int32_t group_size_4784;
-    int32_t num_groups_4785;
+    int32_t group_size_5485;
+    int32_t num_groups_5486;
     
-    group_size_4784 = cl_group_size;
-    num_groups_4785 = squot32(m_3943 * n_3945 + group_size_4784 - 1,
-                              group_size_4784);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4780, 0, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4780, 1, sizeof(mem_4671.mem),
-                                  &mem_4671.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4780, 2, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4780, 3, sizeof(mem_4689.mem),
-                                  &mem_4689.mem));
-    if (1 * (num_groups_4785 * group_size_4784) != 0) {
-        const size_t global_work_size_4897[1] = {num_groups_4785 *
-                     group_size_4784};
-        const size_t local_work_size_4901[1] = {group_size_4784};
-        int64_t time_start_4898, time_end_4899;
+    group_size_5485 = cl_group_size;
+    num_groups_5486 = squot32(m_4676 * size_4697 + group_size_5485 - 1,
+                              group_size_5485);
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5122, 0, sizeof(m_4676), &m_4676));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5122, 1, sizeof(U_ig_mem_5416.mem),
+                                  &U_ig_mem_5416.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5122, 2, sizeof(size_4697),
+                                  &size_4697));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5122, 3, sizeof(o_4677), &o_4677));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5122, 4, sizeof(mem_5442.mem),
+                                  &mem_5442.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5122, 5, sizeof(W_ig_mem_5414.mem),
+                                  &W_ig_mem_5414.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5122, 6, sizeof(n_4678), &n_4678));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5122, 7, sizeof(b_ig_mem_5418.mem),
+                                  &b_ig_mem_5418.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5122, 8, sizeof(mem_5439.mem),
+                                  &mem_5439.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5122, 9, sizeof(mem_5451.mem),
+                                  &mem_5451.mem));
+    if (1 * (num_groups_5486 * group_size_5485) != 0) {
+        const size_t global_work_size_5516[1] = {num_groups_5486 *
+                     group_size_5485};
+        const size_t local_work_size_5520[1] = {group_size_5485};
+        int64_t time_start_5517, time_end_5518;
         
         if (cl_debug) {
             fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4780");
-            fprintf(stderr, "%zu", global_work_size_4897[0]);
+                    "map_kernel_5122");
+            fprintf(stderr, "%zu", global_work_size_5516[0]);
             fprintf(stderr, "].\n");
-            time_start_4898 = get_wall_time();
+            time_start_5517 = get_wall_time();
         }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4780, 1,
-                                              NULL, global_work_size_4897,
-                                              local_work_size_4901, 0, NULL,
+        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_5122, 1,
+                                              NULL, global_work_size_5516,
+                                              local_work_size_5520, 0, NULL,
                                               NULL));
         if (cl_debug) {
             OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4899 = get_wall_time();
+            time_end_5518 = get_wall_time();
             
-            long time_diff_4900 = time_end_4899 - time_start_4898;
+            long time_diff_5519 = time_end_5518 - time_start_5517;
             
             if (detail_timing) {
-                map_kernel_4780total_runtime += time_diff_4900;
-                map_kernel_4780runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4780",
-                        (int) time_diff_4900);
+                map_kernel_5122total_runtime += time_diff_5519;
+                map_kernel_5122runs++;
+                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_5122",
+                        (int) time_diff_5519);
             }
         }
     }
-    for (int i_4081 = 0; i_4081 < n_3945; i_4081++) {
-        char y_4082 = slt32(i_4081, m_3943);
-        char bounds_check_4083;
-        
-        if (!y_4082) {
-            fprintf(stderr, "Assertion %s at %s failed.\n", "y_4082",
-                    "lstm.fut:12:16-12:16");
-            abort();
-        }
-        for (int j_4085 = 0; j_4085 < m_3943; j_4085++) {
-            float res_4092;
-            float res_4086 = 0.0F;
-            
-            for (int k_4087 = 0; k_4087 < n_3945; k_4087++) {
-                float read_res_4902;
-                
-                OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                                   U_ig_mem_4644.mem, CL_TRUE,
-                                                   (i_4081 * n_3945 + k_4087) *
-                                                   4, sizeof(float),
-                                                   &read_res_4902, 0, NULL,
-                                                   NULL));
-                
-                float x_4088 = read_res_4902;
-                float read_res_4903;
-                
-                OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                                   prev_output_mem_4662.mem,
-                                                   CL_TRUE, (k_4087 * m_3943 +
-                                                             j_4085) * 4,
-                                                   sizeof(float),
-                                                   &read_res_4903, 0, NULL,
-                                                   NULL));
-                
-                float y_4089 = read_res_4903;
-                float y_4090 = x_4088 * y_4089;
-                float res_4091 = res_4086 + y_4090;
-                float res_tmp_4788 = res_4091;
-                
-                res_4086 = res_tmp_4788;
-            }
-            res_4092 = res_4086;
-            
-            char y_4093 = slt32(j_4085, n_3945);
-            char bounds_check_4094;
-            
-            if (!y_4093) {
-                fprintf(stderr, "Assertion %s at %s failed.\n", "y_4093",
-                        "lstm.fut:12:16-12:16");
-                abort();
-            }
-            
-            float write_tmp_4904 = res_4092;
-            
-            OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue, mem_4689.mem,
-                                                CL_TRUE, (i_4081 * n_3945 +
-                                                          j_4085) * 4,
-                                                sizeof(float), &write_tmp_4904,
-                                                0, NULL, NULL));
-        }
-    }
     
-    struct memblock_device mem_4692;
+    struct memblock_device mem_5454;
     
-    mem_4692.references = NULL;
-    memblock_alloc_device(&mem_4692, bytes_4667);
+    mem_5454.references = NULL;
+    memblock_alloc_device(&mem_5454, bytes_5437);
     
-    int32_t group_size_4789;
-    int32_t num_groups_4790;
+    int32_t group_size_5487;
+    int32_t num_groups_5488;
     
-    group_size_4789 = cl_group_size;
-    num_groups_4790 = squot32(n_3945 * m_3943 + group_size_4789 - 1,
-                              group_size_4789);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4397, 0, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4397, 1, sizeof(mem_4689.mem),
-                                  &mem_4689.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4397, 2, sizeof(mem_4686.mem),
-                                  &mem_4686.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4397, 3, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4397, 4, sizeof(mem_4692.mem),
-                                  &mem_4692.mem));
-    if (1 * (num_groups_4790 * group_size_4789) != 0) {
-        const size_t global_work_size_4905[1] = {num_groups_4790 *
-                     group_size_4789};
-        const size_t local_work_size_4909[1] = {group_size_4789};
-        int64_t time_start_4906, time_end_4907;
+    group_size_5487 = cl_group_size;
+    num_groups_5488 = squot32(m_4676 * n_4678 + group_size_5487 - 1,
+                              group_size_5487);
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5167, 0, sizeof(m_4676), &m_4676));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5167, 1, sizeof(size_4697),
+                                  &size_4697));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5167, 2, sizeof(n_4678), &n_4678));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5167, 3, sizeof(mem_5451.mem),
+                                  &mem_5451.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5167, 4, sizeof(mem_5454.mem),
+                                  &mem_5454.mem));
+    if (1 * (num_groups_5488 * group_size_5487) != 0) {
+        const size_t global_work_size_5521[1] = {num_groups_5488 *
+                     group_size_5487};
+        const size_t local_work_size_5525[1] = {group_size_5487};
+        int64_t time_start_5522, time_end_5523;
         
         if (cl_debug) {
             fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4397");
-            fprintf(stderr, "%zu", global_work_size_4905[0]);
+                    "map_kernel_5167");
+            fprintf(stderr, "%zu", global_work_size_5521[0]);
             fprintf(stderr, "].\n");
-            time_start_4906 = get_wall_time();
+            time_start_5522 = get_wall_time();
         }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4397, 1,
-                                              NULL, global_work_size_4905,
-                                              local_work_size_4909, 0, NULL,
+        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_5167, 1,
+                                              NULL, global_work_size_5521,
+                                              local_work_size_5525, 0, NULL,
                                               NULL));
         if (cl_debug) {
             OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4907 = get_wall_time();
+            time_end_5523 = get_wall_time();
             
-            long time_diff_4908 = time_end_4907 - time_start_4906;
+            long time_diff_5524 = time_end_5523 - time_start_5522;
             
             if (detail_timing) {
-                map_kernel_4397total_runtime += time_diff_4908;
-                map_kernel_4397runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4397",
-                        (int) time_diff_4908);
+                map_kernel_5167total_runtime += time_diff_5524;
+                map_kernel_5167runs++;
+                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_5167",
+                        (int) time_diff_5524);
             }
         }
     }
     
-    struct memblock_device mem_4695;
+    struct memblock_device mem_5457;
     
-    mem_4695.references = NULL;
-    memblock_alloc_device(&mem_4695, bytes_4678);
+    mem_5457.references = NULL;
+    memblock_alloc_device(&mem_5457, bytes_5443);
     
-    int32_t group_size_4791;
-    int32_t num_groups_4792;
+    int32_t group_size_5491;
+    int32_t num_groups_5492;
     
-    group_size_4791 = cl_group_size;
-    num_groups_4792 = squot32(m_3943 * size_4005 + group_size_4791 - 1,
-                              group_size_4791);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4420, 0, sizeof(mem_4692.mem),
-                                  &mem_4692.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4420, 1, sizeof(size_4005),
-                                  &size_4005));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4420, 2, sizeof(b_ig_mem_4646.mem),
-                                  &b_ig_mem_4646.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4420, 3, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4420, 4, sizeof(mem_4695.mem),
-                                  &mem_4695.mem));
-    if (1 * (num_groups_4792 * group_size_4791) != 0) {
-        const size_t global_work_size_4910[1] = {num_groups_4792 *
-                     group_size_4791};
-        const size_t local_work_size_4914[1] = {group_size_4791};
-        int64_t time_start_4911, time_end_4912;
+    group_size_5491 = cl_group_size;
+    num_groups_5492 = squot32(m_4676 * size_4697 + group_size_5491 - 1,
+                              group_size_5491);
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5191, 0, sizeof(W_fg_mem_5420.mem),
+                                  &W_fg_mem_5420.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5191, 1, sizeof(m_4676), &m_4676));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5191, 2, sizeof(b_fg_mem_5424.mem),
+                                  &b_fg_mem_5424.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5191, 3, sizeof(size_4697),
+                                  &size_4697));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5191, 4, sizeof(o_4677), &o_4677));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5191, 5, sizeof(mem_5442.mem),
+                                  &mem_5442.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5191, 6, sizeof(U_fg_mem_5422.mem),
+                                  &U_fg_mem_5422.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5191, 7, sizeof(n_4678), &n_4678));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5191, 8, sizeof(mem_5439.mem),
+                                  &mem_5439.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5191, 9, sizeof(mem_5457.mem),
+                                  &mem_5457.mem));
+    if (1 * (num_groups_5492 * group_size_5491) != 0) {
+        const size_t global_work_size_5526[1] = {num_groups_5492 *
+                     group_size_5491};
+        const size_t local_work_size_5530[1] = {group_size_5491};
+        int64_t time_start_5527, time_end_5528;
         
         if (cl_debug) {
             fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4420");
-            fprintf(stderr, "%zu", global_work_size_4910[0]);
+                    "map_kernel_5191");
+            fprintf(stderr, "%zu", global_work_size_5526[0]);
             fprintf(stderr, "].\n");
-            time_start_4911 = get_wall_time();
+            time_start_5527 = get_wall_time();
         }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4420, 1,
-                                              NULL, global_work_size_4910,
-                                              local_work_size_4914, 0, NULL,
+        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_5191, 1,
+                                              NULL, global_work_size_5526,
+                                              local_work_size_5530, 0, NULL,
                                               NULL));
         if (cl_debug) {
             OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4912 = get_wall_time();
+            time_end_5528 = get_wall_time();
             
-            long time_diff_4913 = time_end_4912 - time_start_4911;
+            long time_diff_5529 = time_end_5528 - time_start_5527;
             
             if (detail_timing) {
-                map_kernel_4420total_runtime += time_diff_4913;
-                map_kernel_4420runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4420",
-                        (int) time_diff_4913);
+                map_kernel_5191total_runtime += time_diff_5529;
+                map_kernel_5191runs++;
+                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_5191",
+                        (int) time_diff_5529);
             }
         }
     }
     
-    struct memblock_device mem_4698;
+    struct memblock_device mem_5460;
     
-    mem_4698.references = NULL;
-    memblock_alloc_device(&mem_4698, bytes_4667);
+    mem_5460.references = NULL;
+    memblock_alloc_device(&mem_5460, bytes_5437);
     
-    int32_t group_size_4793;
-    int32_t num_groups_4794;
+    int32_t group_size_5493;
+    int32_t num_groups_5494;
     
-    group_size_4793 = cl_group_size;
-    num_groups_4794 = squot32(n_3945 * m_3943 + group_size_4793 - 1,
-                              group_size_4793);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4437, 0, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4437, 1, sizeof(size_4005),
-                                  &size_4005));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4437, 2, sizeof(mem_4695.mem),
-                                  &mem_4695.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4437, 3, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4437, 4, sizeof(mem_4698.mem),
-                                  &mem_4698.mem));
-    if (1 * (num_groups_4794 * group_size_4793) != 0) {
-        const size_t global_work_size_4915[1] = {num_groups_4794 *
-                     group_size_4793};
-        const size_t local_work_size_4919[1] = {group_size_4793};
-        int64_t time_start_4916, time_end_4917;
+    group_size_5493 = cl_group_size;
+    num_groups_5494 = squot32(m_4676 * n_4678 + group_size_5493 - 1,
+                              group_size_5493);
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5236, 0, sizeof(m_4676), &m_4676));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5236, 1, sizeof(size_4697),
+                                  &size_4697));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5236, 2, sizeof(mem_5457.mem),
+                                  &mem_5457.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5236, 3, sizeof(n_4678), &n_4678));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5236, 4, sizeof(mem_5460.mem),
+                                  &mem_5460.mem));
+    if (1 * (num_groups_5494 * group_size_5493) != 0) {
+        const size_t global_work_size_5531[1] = {num_groups_5494 *
+                     group_size_5493};
+        const size_t local_work_size_5535[1] = {group_size_5493};
+        int64_t time_start_5532, time_end_5533;
         
         if (cl_debug) {
             fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4437");
-            fprintf(stderr, "%zu", global_work_size_4915[0]);
+                    "map_kernel_5236");
+            fprintf(stderr, "%zu", global_work_size_5531[0]);
             fprintf(stderr, "].\n");
-            time_start_4916 = get_wall_time();
+            time_start_5532 = get_wall_time();
         }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4437, 1,
-                                              NULL, global_work_size_4915,
-                                              local_work_size_4919, 0, NULL,
+        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_5236, 1,
+                                              NULL, global_work_size_5531,
+                                              local_work_size_5535, 0, NULL,
                                               NULL));
         if (cl_debug) {
             OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4917 = get_wall_time();
+            time_end_5533 = get_wall_time();
             
-            long time_diff_4918 = time_end_4917 - time_start_4916;
+            long time_diff_5534 = time_end_5533 - time_start_5532;
             
             if (detail_timing) {
-                map_kernel_4437total_runtime += time_diff_4918;
-                map_kernel_4437runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4437",
-                        (int) time_diff_4918);
+                map_kernel_5236total_runtime += time_diff_5534;
+                map_kernel_5236runs++;
+                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_5236",
+                        (int) time_diff_5534);
             }
         }
     }
     
-    struct memblock_device mem_4701;
+    struct memblock_device mem_5463;
     
-    mem_4701.references = NULL;
-    memblock_alloc_device(&mem_4701, bytes_4667);
+    mem_5463.references = NULL;
+    memblock_alloc_device(&mem_5463, bytes_5443);
     
-    int32_t group_size_4799;
-    int32_t num_groups_4800;
+    int32_t group_size_5497;
+    int32_t num_groups_5498;
     
-    group_size_4799 = cl_group_size;
-    num_groups_4800 = squot32(n_3945 * m_3943 + group_size_4799 - 1,
-                              group_size_4799);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4795, 0, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4795, 1, sizeof(mem_4666.mem),
-                                  &mem_4666.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4795, 2, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4795, 3, sizeof(mem_4701.mem),
-                                  &mem_4701.mem));
-    if (1 * (num_groups_4800 * group_size_4799) != 0) {
-        const size_t global_work_size_4920[1] = {num_groups_4800 *
-                     group_size_4799};
-        const size_t local_work_size_4924[1] = {group_size_4799};
-        int64_t time_start_4921, time_end_4922;
+    group_size_5497 = cl_group_size;
+    num_groups_5498 = squot32(m_4676 * size_4697 + group_size_5497 - 1,
+                              group_size_5497);
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5260, 0, sizeof(U_og_mem_5428.mem),
+                                  &U_og_mem_5428.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5260, 1, sizeof(m_4676), &m_4676));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5260, 2, sizeof(size_4697),
+                                  &size_4697));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5260, 3, sizeof(o_4677), &o_4677));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5260, 4, sizeof(W_og_mem_5426.mem),
+                                  &W_og_mem_5426.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5260, 5, sizeof(mem_5442.mem),
+                                  &mem_5442.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5260, 6, sizeof(b_og_mem_5430.mem),
+                                  &b_og_mem_5430.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5260, 7, sizeof(n_4678), &n_4678));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5260, 8, sizeof(mem_5439.mem),
+                                  &mem_5439.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5260, 9, sizeof(mem_5463.mem),
+                                  &mem_5463.mem));
+    if (1 * (num_groups_5498 * group_size_5497) != 0) {
+        const size_t global_work_size_5536[1] = {num_groups_5498 *
+                     group_size_5497};
+        const size_t local_work_size_5540[1] = {group_size_5497};
+        int64_t time_start_5537, time_end_5538;
         
         if (cl_debug) {
             fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4795");
-            fprintf(stderr, "%zu", global_work_size_4920[0]);
+                    "map_kernel_5260");
+            fprintf(stderr, "%zu", global_work_size_5536[0]);
             fprintf(stderr, "].\n");
-            time_start_4921 = get_wall_time();
+            time_start_5537 = get_wall_time();
         }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4795, 1,
-                                              NULL, global_work_size_4920,
-                                              local_work_size_4924, 0, NULL,
+        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_5260, 1,
+                                              NULL, global_work_size_5536,
+                                              local_work_size_5540, 0, NULL,
                                               NULL));
         if (cl_debug) {
             OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4922 = get_wall_time();
+            time_end_5538 = get_wall_time();
             
-            long time_diff_4923 = time_end_4922 - time_start_4921;
+            long time_diff_5539 = time_end_5538 - time_start_5537;
             
             if (detail_timing) {
-                map_kernel_4795total_runtime += time_diff_4923;
-                map_kernel_4795runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4795",
-                        (int) time_diff_4923);
+                map_kernel_5260total_runtime += time_diff_5539;
+                map_kernel_5260runs++;
+                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_5260",
+                        (int) time_diff_5539);
             }
         }
     }
-    for (int i_4131 = 0; i_4131 < m_3943; i_4131++) {
-        char y_4132 = slt32(i_4131, n_3945);
-        char bounds_check_4133;
-        
-        if (!y_4132) {
-            fprintf(stderr, "Assertion %s at %s failed.\n", "y_4132",
-                    "lstm.fut:12:16-12:16");
-            abort();
-        }
-        for (int j_4135 = 0; j_4135 < n_3945; j_4135++) {
-            float res_4142;
-            float res_4136 = 0.0F;
-            
-            for (int k_4137 = 0; k_4137 < o_3944; k_4137++) {
-                float read_res_4925;
-                
-                OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                                   W_fg_mem_4648.mem, CL_TRUE,
-                                                   (i_4131 * o_3944 + k_4137) *
-                                                   4, sizeof(float),
-                                                   &read_res_4925, 0, NULL,
-                                                   NULL));
-                
-                float x_4138 = read_res_4925;
-                float read_res_4926;
-                
-                OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                                   input_mem_4660.mem, CL_TRUE,
-                                                   (k_4137 * n_3945 + j_4135) *
-                                                   4, sizeof(float),
-                                                   &read_res_4926, 0, NULL,
-                                                   NULL));
-                
-                float y_4139 = read_res_4926;
-                float y_4140 = x_4138 * y_4139;
-                float res_4141 = res_4136 + y_4140;
-                float res_tmp_4803 = res_4141;
-                
-                res_4136 = res_tmp_4803;
-            }
-            res_4142 = res_4136;
-            
-            char y_4143 = slt32(j_4135, m_3943);
-            char bounds_check_4144;
-            
-            if (!y_4143) {
-                fprintf(stderr, "Assertion %s at %s failed.\n", "y_4143",
-                        "lstm.fut:12:16-12:16");
-                abort();
-            }
-            
-            float write_tmp_4927 = res_4142;
-            
-            OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue, mem_4701.mem,
-                                                CL_TRUE, (i_4131 * m_3943 +
-                                                          j_4135) * 4,
-                                                sizeof(float), &write_tmp_4927,
-                                                0, NULL, NULL));
-        }
-    }
     
-    struct memblock_device mem_4704;
+    struct memblock_device mem_5466;
     
-    mem_4704.references = NULL;
-    memblock_alloc_device(&mem_4704, bytes_4672);
+    mem_5466.references = NULL;
+    memblock_alloc_device(&mem_5466, bytes_5437);
     
-    int32_t group_size_4808;
-    int32_t num_groups_4809;
+    int32_t group_size_5499;
+    int32_t num_groups_5500;
     
-    group_size_4808 = cl_group_size;
-    num_groups_4809 = squot32(m_3943 * n_3945 + group_size_4808 - 1,
-                              group_size_4808);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4804, 0, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4804, 1, sizeof(mem_4671.mem),
-                                  &mem_4671.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4804, 2, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4804, 3, sizeof(mem_4704.mem),
-                                  &mem_4704.mem));
-    if (1 * (num_groups_4809 * group_size_4808) != 0) {
-        const size_t global_work_size_4928[1] = {num_groups_4809 *
-                     group_size_4808};
-        const size_t local_work_size_4932[1] = {group_size_4808};
-        int64_t time_start_4929, time_end_4930;
+    group_size_5499 = cl_group_size;
+    num_groups_5500 = squot32(m_4676 * n_4678 + group_size_5499 - 1,
+                              group_size_5499);
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5305, 0, sizeof(m_4676), &m_4676));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5305, 1, sizeof(size_4697),
+                                  &size_4697));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5305, 2, sizeof(n_4678), &n_4678));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5305, 3, sizeof(mem_5463.mem),
+                                  &mem_5463.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5305, 4, sizeof(mem_5466.mem),
+                                  &mem_5466.mem));
+    if (1 * (num_groups_5500 * group_size_5499) != 0) {
+        const size_t global_work_size_5541[1] = {num_groups_5500 *
+                     group_size_5499};
+        const size_t local_work_size_5545[1] = {group_size_5499};
+        int64_t time_start_5542, time_end_5543;
         
         if (cl_debug) {
             fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4804");
-            fprintf(stderr, "%zu", global_work_size_4928[0]);
+                    "map_kernel_5305");
+            fprintf(stderr, "%zu", global_work_size_5541[0]);
             fprintf(stderr, "].\n");
-            time_start_4929 = get_wall_time();
+            time_start_5542 = get_wall_time();
         }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4804, 1,
-                                              NULL, global_work_size_4928,
-                                              local_work_size_4932, 0, NULL,
+        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_5305, 1,
+                                              NULL, global_work_size_5541,
+                                              local_work_size_5545, 0, NULL,
                                               NULL));
         if (cl_debug) {
             OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4930 = get_wall_time();
+            time_end_5543 = get_wall_time();
             
-            long time_diff_4931 = time_end_4930 - time_start_4929;
+            long time_diff_5544 = time_end_5543 - time_start_5542;
             
             if (detail_timing) {
-                map_kernel_4804total_runtime += time_diff_4931;
-                map_kernel_4804runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4804",
-                        (int) time_diff_4931);
+                map_kernel_5305total_runtime += time_diff_5544;
+                map_kernel_5305runs++;
+                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_5305",
+                        (int) time_diff_5544);
             }
         }
     }
-    for (int i_4150 = 0; i_4150 < n_3945; i_4150++) {
-        char y_4151 = slt32(i_4150, m_3943);
-        char bounds_check_4152;
-        
-        if (!y_4151) {
-            fprintf(stderr, "Assertion %s at %s failed.\n", "y_4151",
-                    "lstm.fut:12:16-12:16");
-            abort();
-        }
-        for (int j_4154 = 0; j_4154 < m_3943; j_4154++) {
-            float res_4161;
-            float res_4155 = 0.0F;
-            
-            for (int k_4156 = 0; k_4156 < n_3945; k_4156++) {
-                float read_res_4933;
-                
-                OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                                   U_fg_mem_4650.mem, CL_TRUE,
-                                                   (i_4150 * n_3945 + k_4156) *
-                                                   4, sizeof(float),
-                                                   &read_res_4933, 0, NULL,
-                                                   NULL));
-                
-                float x_4157 = read_res_4933;
-                float read_res_4934;
-                
-                OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                                   prev_output_mem_4662.mem,
-                                                   CL_TRUE, (k_4156 * m_3943 +
-                                                             j_4154) * 4,
-                                                   sizeof(float),
-                                                   &read_res_4934, 0, NULL,
-                                                   NULL));
-                
-                float y_4158 = read_res_4934;
-                float y_4159 = x_4157 * y_4158;
-                float res_4160 = res_4155 + y_4159;
-                float res_tmp_4812 = res_4160;
-                
-                res_4155 = res_tmp_4812;
-            }
-            res_4161 = res_4155;
-            
-            char y_4162 = slt32(j_4154, n_3945);
-            char bounds_check_4163;
-            
-            if (!y_4162) {
-                fprintf(stderr, "Assertion %s at %s failed.\n", "y_4162",
-                        "lstm.fut:12:16-12:16");
-                abort();
-            }
-            
-            float write_tmp_4935 = res_4161;
-            
-            OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue, mem_4704.mem,
-                                                CL_TRUE, (i_4150 * n_3945 +
-                                                          j_4154) * 4,
-                                                sizeof(float), &write_tmp_4935,
-                                                0, NULL, NULL));
-        }
-    }
     
-    struct memblock_device mem_4707;
+    struct memblock_device mem_5469;
     
-    mem_4707.references = NULL;
-    memblock_alloc_device(&mem_4707, bytes_4667);
+    mem_5469.references = NULL;
+    memblock_alloc_device(&mem_5469, bytes_5443);
     
-    int32_t group_size_4813;
-    int32_t num_groups_4814;
+    int32_t group_size_5501;
+    int32_t num_groups_5502;
     
-    group_size_4813 = cl_group_size;
-    num_groups_4814 = squot32(n_3945 * m_3943 + group_size_4813 - 1,
-                              group_size_4813);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4457, 0, sizeof(mem_4704.mem),
-                                  &mem_4704.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4457, 1, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4457, 2, sizeof(mem_4701.mem),
-                                  &mem_4701.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4457, 3, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4457, 4, sizeof(mem_4707.mem),
-                                  &mem_4707.mem));
-    if (1 * (num_groups_4814 * group_size_4813) != 0) {
-        const size_t global_work_size_4936[1] = {num_groups_4814 *
-                     group_size_4813};
-        const size_t local_work_size_4940[1] = {group_size_4813};
-        int64_t time_start_4937, time_end_4938;
+    group_size_5501 = cl_group_size;
+    num_groups_5502 = squot32(m_4676 * size_4697 + group_size_5501 - 1,
+                              group_size_5501);
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5349, 0, sizeof(mem_5448.mem),
+                                  &mem_5448.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5349, 1,
+                                  sizeof(prev_cell_mem_5436.mem),
+                                  &prev_cell_mem_5436.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5349, 2, sizeof(m_4676), &m_4676));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5349, 3, sizeof(mem_5460.mem),
+                                  &mem_5460.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5349, 4, sizeof(size_4697),
+                                  &size_4697));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5349, 5, sizeof(n_4678), &n_4678));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5349, 6, sizeof(mem_5454.mem),
+                                  &mem_5454.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5349, 7, sizeof(mem_5469.mem),
+                                  &mem_5469.mem));
+    if (1 * (num_groups_5502 * group_size_5501) != 0) {
+        const size_t global_work_size_5546[1] = {num_groups_5502 *
+                     group_size_5501};
+        const size_t local_work_size_5550[1] = {group_size_5501};
+        int64_t time_start_5547, time_end_5548;
         
         if (cl_debug) {
             fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4457");
-            fprintf(stderr, "%zu", global_work_size_4936[0]);
+                    "map_kernel_5349");
+            fprintf(stderr, "%zu", global_work_size_5546[0]);
             fprintf(stderr, "].\n");
-            time_start_4937 = get_wall_time();
+            time_start_5547 = get_wall_time();
         }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4457, 1,
-                                              NULL, global_work_size_4936,
-                                              local_work_size_4940, 0, NULL,
+        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_5349, 1,
+                                              NULL, global_work_size_5546,
+                                              local_work_size_5550, 0, NULL,
                                               NULL));
         if (cl_debug) {
             OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4938 = get_wall_time();
+            time_end_5548 = get_wall_time();
             
-            long time_diff_4939 = time_end_4938 - time_start_4937;
+            long time_diff_5549 = time_end_5548 - time_start_5547;
             
             if (detail_timing) {
-                map_kernel_4457total_runtime += time_diff_4939;
-                map_kernel_4457runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4457",
-                        (int) time_diff_4939);
+                map_kernel_5349total_runtime += time_diff_5549;
+                map_kernel_5349runs++;
+                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_5349",
+                        (int) time_diff_5549);
             }
         }
     }
     
-    struct memblock_device mem_4710;
+    struct memblock_device mem_5472;
     
-    mem_4710.references = NULL;
-    memblock_alloc_device(&mem_4710, bytes_4678);
+    mem_5472.references = NULL;
+    memblock_alloc_device(&mem_5472, bytes_5437);
     
-    int32_t group_size_4815;
-    int32_t num_groups_4816;
+    int32_t group_size_5503;
+    int32_t num_groups_5504;
     
-    group_size_4815 = cl_group_size;
-    num_groups_4816 = squot32(m_3943 * size_4005 + group_size_4815 - 1,
-                              group_size_4815);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4480, 0, sizeof(b_fg_mem_4652.mem),
-                                  &b_fg_mem_4652.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4480, 1, sizeof(size_4005),
-                                  &size_4005));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4480, 2, sizeof(mem_4707.mem),
-                                  &mem_4707.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4480, 3, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4480, 4, sizeof(mem_4710.mem),
-                                  &mem_4710.mem));
-    if (1 * (num_groups_4816 * group_size_4815) != 0) {
-        const size_t global_work_size_4941[1] = {num_groups_4816 *
-                     group_size_4815};
-        const size_t local_work_size_4945[1] = {group_size_4815};
-        int64_t time_start_4942, time_end_4943;
+    group_size_5503 = cl_group_size;
+    num_groups_5504 = squot32(m_4676 * n_4678 + group_size_5503 - 1,
+                              group_size_5503);
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5325, 0, sizeof(m_4676), &m_4676));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5325, 1, sizeof(size_4697),
+                                  &size_4697));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5325, 2, sizeof(mem_5469.mem),
+                                  &mem_5469.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5325, 3, sizeof(mem_5466.mem),
+                                  &mem_5466.mem));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5325, 4, sizeof(n_4678), &n_4678));
+    OPENCL_SUCCEED(clSetKernelArg(map_kernel_5325, 5, sizeof(mem_5472.mem),
+                                  &mem_5472.mem));
+    if (1 * (num_groups_5504 * group_size_5503) != 0) {
+        const size_t global_work_size_5551[1] = {num_groups_5504 *
+                     group_size_5503};
+        const size_t local_work_size_5555[1] = {group_size_5503};
+        int64_t time_start_5552, time_end_5553;
         
         if (cl_debug) {
             fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4480");
-            fprintf(stderr, "%zu", global_work_size_4941[0]);
+                    "map_kernel_5325");
+            fprintf(stderr, "%zu", global_work_size_5551[0]);
             fprintf(stderr, "].\n");
-            time_start_4942 = get_wall_time();
+            time_start_5552 = get_wall_time();
         }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4480, 1,
-                                              NULL, global_work_size_4941,
-                                              local_work_size_4945, 0, NULL,
+        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_5325, 1,
+                                              NULL, global_work_size_5551,
+                                              local_work_size_5555, 0, NULL,
                                               NULL));
         if (cl_debug) {
             OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4943 = get_wall_time();
+            time_end_5553 = get_wall_time();
             
-            long time_diff_4944 = time_end_4943 - time_start_4942;
-            
-            if (detail_timing) {
-                map_kernel_4480total_runtime += time_diff_4944;
-                map_kernel_4480runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4480",
-                        (int) time_diff_4944);
-            }
-        }
-    }
-    
-    struct memblock_device mem_4713;
-    
-    mem_4713.references = NULL;
-    memblock_alloc_device(&mem_4713, bytes_4667);
-    
-    int32_t group_size_4817;
-    int32_t num_groups_4818;
-    
-    group_size_4817 = cl_group_size;
-    num_groups_4818 = squot32(n_3945 * m_3943 + group_size_4817 - 1,
-                              group_size_4817);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4497, 0, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4497, 1, sizeof(size_4005),
-                                  &size_4005));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4497, 2, sizeof(mem_4710.mem),
-                                  &mem_4710.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4497, 3, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4497, 4, sizeof(mem_4713.mem),
-                                  &mem_4713.mem));
-    if (1 * (num_groups_4818 * group_size_4817) != 0) {
-        const size_t global_work_size_4946[1] = {num_groups_4818 *
-                     group_size_4817};
-        const size_t local_work_size_4950[1] = {group_size_4817};
-        int64_t time_start_4947, time_end_4948;
-        
-        if (cl_debug) {
-            fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4497");
-            fprintf(stderr, "%zu", global_work_size_4946[0]);
-            fprintf(stderr, "].\n");
-            time_start_4947 = get_wall_time();
-        }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4497, 1,
-                                              NULL, global_work_size_4946,
-                                              local_work_size_4950, 0, NULL,
-                                              NULL));
-        if (cl_debug) {
-            OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4948 = get_wall_time();
-            
-            long time_diff_4949 = time_end_4948 - time_start_4947;
+            long time_diff_5554 = time_end_5553 - time_start_5552;
             
             if (detail_timing) {
-                map_kernel_4497total_runtime += time_diff_4949;
-                map_kernel_4497runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4497",
-                        (int) time_diff_4949);
+                map_kernel_5325total_runtime += time_diff_5554;
+                map_kernel_5325runs++;
+                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_5325",
+                        (int) time_diff_5554);
             }
         }
     }
+    memblock_set_device(&out_mem_5473, &mem_5472);
+    out_memsize_5474 = bytes_5437;
+    memblock_set_device(&out_mem_5475, &mem_5469);
+    out_memsize_5476 = bytes_5443;
     
-    struct memblock_device mem_4716;
+    struct tuple_int32_t_device_mem_int32_t_device_mem retval_5505;
     
-    mem_4716.references = NULL;
-    memblock_alloc_device(&mem_4716, bytes_4667);
-    
-    int32_t group_size_4823;
-    int32_t num_groups_4824;
-    
-    group_size_4823 = cl_group_size;
-    num_groups_4824 = squot32(n_3945 * m_3943 + group_size_4823 - 1,
-                              group_size_4823);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4819, 0, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4819, 1, sizeof(mem_4666.mem),
-                                  &mem_4666.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4819, 2, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4819, 3, sizeof(mem_4716.mem),
-                                  &mem_4716.mem));
-    if (1 * (num_groups_4824 * group_size_4823) != 0) {
-        const size_t global_work_size_4951[1] = {num_groups_4824 *
-                     group_size_4823};
-        const size_t local_work_size_4955[1] = {group_size_4823};
-        int64_t time_start_4952, time_end_4953;
-        
-        if (cl_debug) {
-            fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4819");
-            fprintf(stderr, "%zu", global_work_size_4951[0]);
-            fprintf(stderr, "].\n");
-            time_start_4952 = get_wall_time();
-        }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4819, 1,
-                                              NULL, global_work_size_4951,
-                                              local_work_size_4955, 0, NULL,
-                                              NULL));
-        if (cl_debug) {
-            OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4953 = get_wall_time();
-            
-            long time_diff_4954 = time_end_4953 - time_start_4952;
-            
-            if (detail_timing) {
-                map_kernel_4819total_runtime += time_diff_4954;
-                map_kernel_4819runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4819",
-                        (int) time_diff_4954);
-            }
-        }
-    }
-    for (int i_4200 = 0; i_4200 < m_3943; i_4200++) {
-        char y_4201 = slt32(i_4200, n_3945);
-        char bounds_check_4202;
-        
-        if (!y_4201) {
-            fprintf(stderr, "Assertion %s at %s failed.\n", "y_4201",
-                    "lstm.fut:12:16-12:16");
-            abort();
-        }
-        for (int j_4204 = 0; j_4204 < n_3945; j_4204++) {
-            float res_4211;
-            float res_4205 = 0.0F;
-            
-            for (int k_4206 = 0; k_4206 < o_3944; k_4206++) {
-                float read_res_4956;
-                
-                OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                                   W_og_mem_4654.mem, CL_TRUE,
-                                                   (i_4200 * o_3944 + k_4206) *
-                                                   4, sizeof(float),
-                                                   &read_res_4956, 0, NULL,
-                                                   NULL));
-                
-                float x_4207 = read_res_4956;
-                float read_res_4957;
-                
-                OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                                   input_mem_4660.mem, CL_TRUE,
-                                                   (k_4206 * n_3945 + j_4204) *
-                                                   4, sizeof(float),
-                                                   &read_res_4957, 0, NULL,
-                                                   NULL));
-                
-                float y_4208 = read_res_4957;
-                float y_4209 = x_4207 * y_4208;
-                float res_4210 = res_4205 + y_4209;
-                float res_tmp_4827 = res_4210;
-                
-                res_4205 = res_tmp_4827;
-            }
-            res_4211 = res_4205;
-            
-            char y_4212 = slt32(j_4204, m_3943);
-            char bounds_check_4213;
-            
-            if (!y_4212) {
-                fprintf(stderr, "Assertion %s at %s failed.\n", "y_4212",
-                        "lstm.fut:12:16-12:16");
-                abort();
-            }
-            
-            float write_tmp_4958 = res_4211;
-            
-            OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue, mem_4716.mem,
-                                                CL_TRUE, (i_4200 * m_3943 +
-                                                          j_4204) * 4,
-                                                sizeof(float), &write_tmp_4958,
-                                                0, NULL, NULL));
-        }
-    }
-    
-    struct memblock_device mem_4719;
-    
-    mem_4719.references = NULL;
-    memblock_alloc_device(&mem_4719, bytes_4672);
-    
-    int32_t group_size_4832;
-    int32_t num_groups_4833;
-    
-    group_size_4832 = cl_group_size;
-    num_groups_4833 = squot32(m_3943 * n_3945 + group_size_4832 - 1,
-                              group_size_4832);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4828, 0, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4828, 1, sizeof(mem_4671.mem),
-                                  &mem_4671.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4828, 2, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4828, 3, sizeof(mem_4719.mem),
-                                  &mem_4719.mem));
-    if (1 * (num_groups_4833 * group_size_4832) != 0) {
-        const size_t global_work_size_4959[1] = {num_groups_4833 *
-                     group_size_4832};
-        const size_t local_work_size_4963[1] = {group_size_4832};
-        int64_t time_start_4960, time_end_4961;
-        
-        if (cl_debug) {
-            fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4828");
-            fprintf(stderr, "%zu", global_work_size_4959[0]);
-            fprintf(stderr, "].\n");
-            time_start_4960 = get_wall_time();
-        }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4828, 1,
-                                              NULL, global_work_size_4959,
-                                              local_work_size_4963, 0, NULL,
-                                              NULL));
-        if (cl_debug) {
-            OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4961 = get_wall_time();
-            
-            long time_diff_4962 = time_end_4961 - time_start_4960;
-            
-            if (detail_timing) {
-                map_kernel_4828total_runtime += time_diff_4962;
-                map_kernel_4828runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4828",
-                        (int) time_diff_4962);
-            }
-        }
-    }
-    for (int i_4219 = 0; i_4219 < n_3945; i_4219++) {
-        char y_4220 = slt32(i_4219, m_3943);
-        char bounds_check_4221;
-        
-        if (!y_4220) {
-            fprintf(stderr, "Assertion %s at %s failed.\n", "y_4220",
-                    "lstm.fut:12:16-12:16");
-            abort();
-        }
-        for (int j_4223 = 0; j_4223 < m_3943; j_4223++) {
-            float res_4230;
-            float res_4224 = 0.0F;
-            
-            for (int k_4225 = 0; k_4225 < n_3945; k_4225++) {
-                float read_res_4964;
-                
-                OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                                   U_og_mem_4656.mem, CL_TRUE,
-                                                   (i_4219 * n_3945 + k_4225) *
-                                                   4, sizeof(float),
-                                                   &read_res_4964, 0, NULL,
-                                                   NULL));
-                
-                float x_4226 = read_res_4964;
-                float read_res_4965;
-                
-                OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                                   prev_output_mem_4662.mem,
-                                                   CL_TRUE, (k_4225 * m_3943 +
-                                                             j_4223) * 4,
-                                                   sizeof(float),
-                                                   &read_res_4965, 0, NULL,
-                                                   NULL));
-                
-                float y_4227 = read_res_4965;
-                float y_4228 = x_4226 * y_4227;
-                float res_4229 = res_4224 + y_4228;
-                float res_tmp_4836 = res_4229;
-                
-                res_4224 = res_tmp_4836;
-            }
-            res_4230 = res_4224;
-            
-            char y_4231 = slt32(j_4223, n_3945);
-            char bounds_check_4232;
-            
-            if (!y_4231) {
-                fprintf(stderr, "Assertion %s at %s failed.\n", "y_4231",
-                        "lstm.fut:12:16-12:16");
-                abort();
-            }
-            
-            float write_tmp_4966 = res_4230;
-            
-            OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue, mem_4719.mem,
-                                                CL_TRUE, (i_4219 * n_3945 +
-                                                          j_4223) * 4,
-                                                sizeof(float), &write_tmp_4966,
-                                                0, NULL, NULL));
-        }
-    }
-    
-    struct memblock_device mem_4722;
-    
-    mem_4722.references = NULL;
-    memblock_alloc_device(&mem_4722, bytes_4667);
-    
-    int32_t group_size_4837;
-    int32_t num_groups_4838;
-    
-    group_size_4837 = cl_group_size;
-    num_groups_4838 = squot32(n_3945 * m_3943 + group_size_4837 - 1,
-                              group_size_4837);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4517, 0, sizeof(mem_4716.mem),
-                                  &mem_4716.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4517, 1, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4517, 2, sizeof(mem_4719.mem),
-                                  &mem_4719.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4517, 3, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4517, 4, sizeof(mem_4722.mem),
-                                  &mem_4722.mem));
-    if (1 * (num_groups_4838 * group_size_4837) != 0) {
-        const size_t global_work_size_4967[1] = {num_groups_4838 *
-                     group_size_4837};
-        const size_t local_work_size_4971[1] = {group_size_4837};
-        int64_t time_start_4968, time_end_4969;
-        
-        if (cl_debug) {
-            fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4517");
-            fprintf(stderr, "%zu", global_work_size_4967[0]);
-            fprintf(stderr, "].\n");
-            time_start_4968 = get_wall_time();
-        }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4517, 1,
-                                              NULL, global_work_size_4967,
-                                              local_work_size_4971, 0, NULL,
-                                              NULL));
-        if (cl_debug) {
-            OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4969 = get_wall_time();
-            
-            long time_diff_4970 = time_end_4969 - time_start_4968;
-            
-            if (detail_timing) {
-                map_kernel_4517total_runtime += time_diff_4970;
-                map_kernel_4517runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4517",
-                        (int) time_diff_4970);
-            }
-        }
-    }
-    
-    struct memblock_device mem_4725;
-    
-    mem_4725.references = NULL;
-    memblock_alloc_device(&mem_4725, bytes_4678);
-    
-    int32_t group_size_4839;
-    int32_t num_groups_4840;
-    
-    group_size_4839 = cl_group_size;
-    num_groups_4840 = squot32(m_3943 * size_4005 + group_size_4839 - 1,
-                              group_size_4839);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4540, 0, sizeof(size_4005),
-                                  &size_4005));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4540, 1, sizeof(mem_4722.mem),
-                                  &mem_4722.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4540, 2, sizeof(b_og_mem_4658.mem),
-                                  &b_og_mem_4658.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4540, 3, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4540, 4, sizeof(mem_4725.mem),
-                                  &mem_4725.mem));
-    if (1 * (num_groups_4840 * group_size_4839) != 0) {
-        const size_t global_work_size_4972[1] = {num_groups_4840 *
-                     group_size_4839};
-        const size_t local_work_size_4976[1] = {group_size_4839};
-        int64_t time_start_4973, time_end_4974;
-        
-        if (cl_debug) {
-            fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4540");
-            fprintf(stderr, "%zu", global_work_size_4972[0]);
-            fprintf(stderr, "].\n");
-            time_start_4973 = get_wall_time();
-        }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4540, 1,
-                                              NULL, global_work_size_4972,
-                                              local_work_size_4976, 0, NULL,
-                                              NULL));
-        if (cl_debug) {
-            OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4974 = get_wall_time();
-            
-            long time_diff_4975 = time_end_4974 - time_start_4973;
-            
-            if (detail_timing) {
-                map_kernel_4540total_runtime += time_diff_4975;
-                map_kernel_4540runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4540",
-                        (int) time_diff_4975);
-            }
-        }
-    }
-    
-    struct memblock_device mem_4728;
-    
-    mem_4728.references = NULL;
-    memblock_alloc_device(&mem_4728, bytes_4667);
-    
-    int32_t group_size_4841;
-    int32_t num_groups_4842;
-    
-    group_size_4841 = cl_group_size;
-    num_groups_4842 = squot32(n_3945 * m_3943 + group_size_4841 - 1,
-                              group_size_4841);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4557, 0, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4557, 1, sizeof(size_4005),
-                                  &size_4005));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4557, 2, sizeof(mem_4725.mem),
-                                  &mem_4725.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4557, 3, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4557, 4, sizeof(mem_4728.mem),
-                                  &mem_4728.mem));
-    if (1 * (num_groups_4842 * group_size_4841) != 0) {
-        const size_t global_work_size_4977[1] = {num_groups_4842 *
-                     group_size_4841};
-        const size_t local_work_size_4981[1] = {group_size_4841};
-        int64_t time_start_4978, time_end_4979;
-        
-        if (cl_debug) {
-            fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4557");
-            fprintf(stderr, "%zu", global_work_size_4977[0]);
-            fprintf(stderr, "].\n");
-            time_start_4978 = get_wall_time();
-        }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4557, 1,
-                                              NULL, global_work_size_4977,
-                                              local_work_size_4981, 0, NULL,
-                                              NULL));
-        if (cl_debug) {
-            OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4979 = get_wall_time();
-            
-            long time_diff_4980 = time_end_4979 - time_start_4978;
-            
-            if (detail_timing) {
-                map_kernel_4557total_runtime += time_diff_4980;
-                map_kernel_4557runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4557",
-                        (int) time_diff_4980);
-            }
-        }
-    }
-    
-    int32_t nesting_size_4599 = size_4005 * n_3945;
-    int32_t bytes_4729 = x_4668 * size_4005;
-    struct memblock_device mem_4731;
-    
-    mem_4731.references = NULL;
-    memblock_alloc_device(&mem_4731, bytes_4729);
-    
-    int32_t group_size_4843;
-    int32_t num_groups_4844;
-    
-    group_size_4843 = cl_group_size;
-    num_groups_4844 = squot32(n_3945 * size_4005 + group_size_4843 - 1,
-                              group_size_4843);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4601, 0,
-                                  sizeof(prev_cell_mem_4664.mem),
-                                  &prev_cell_mem_4664.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4601, 1, sizeof(mem_4713.mem),
-                                  &mem_4713.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4601, 2, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4601, 3, sizeof(size_4005),
-                                  &size_4005));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4601, 4, sizeof(mem_4698.mem),
-                                  &mem_4698.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4601, 5, sizeof(mem_4683.mem),
-                                  &mem_4683.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4601, 6, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4601, 7, sizeof(mem_4731.mem),
-                                  &mem_4731.mem));
-    if (1 * (num_groups_4844 * group_size_4843) != 0) {
-        const size_t global_work_size_4982[1] = {num_groups_4844 *
-                     group_size_4843};
-        const size_t local_work_size_4986[1] = {group_size_4843};
-        int64_t time_start_4983, time_end_4984;
-        
-        if (cl_debug) {
-            fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4601");
-            fprintf(stderr, "%zu", global_work_size_4982[0]);
-            fprintf(stderr, "].\n");
-            time_start_4983 = get_wall_time();
-        }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4601, 1,
-                                              NULL, global_work_size_4982,
-                                              local_work_size_4986, 0, NULL,
-                                              NULL));
-        if (cl_debug) {
-            OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4984 = get_wall_time();
-            
-            long time_diff_4985 = time_end_4984 - time_start_4983;
-            
-            if (detail_timing) {
-                map_kernel_4601total_runtime += time_diff_4985;
-                map_kernel_4601runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4601",
-                        (int) time_diff_4985);
-            }
-        }
-    }
-    
-    struct memblock_device mem_4734;
-    
-    mem_4734.references = NULL;
-    memblock_alloc_device(&mem_4734, bytes_4667);
-    
-    int32_t group_size_4845;
-    int32_t num_groups_4846;
-    
-    group_size_4845 = cl_group_size;
-    num_groups_4846 = squot32(n_3945 * m_3943 + group_size_4845 - 1,
-                              group_size_4845);
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4577, 0, sizeof(mem_4728.mem),
-                                  &mem_4728.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4577, 1, sizeof(n_3945), &n_3945));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4577, 2, sizeof(size_4005),
-                                  &size_4005));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4577, 3, sizeof(mem_4731.mem),
-                                  &mem_4731.mem));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4577, 4, sizeof(m_3943), &m_3943));
-    OPENCL_SUCCEED(clSetKernelArg(map_kernel_4577, 5, sizeof(mem_4734.mem),
-                                  &mem_4734.mem));
-    if (1 * (num_groups_4846 * group_size_4845) != 0) {
-        const size_t global_work_size_4987[1] = {num_groups_4846 *
-                     group_size_4845};
-        const size_t local_work_size_4991[1] = {group_size_4845};
-        int64_t time_start_4988, time_end_4989;
-        
-        if (cl_debug) {
-            fprintf(stderr, "Launching %s with global work size [",
-                    "map_kernel_4577");
-            fprintf(stderr, "%zu", global_work_size_4987[0]);
-            fprintf(stderr, "].\n");
-            time_start_4988 = get_wall_time();
-        }
-        OPENCL_SUCCEED(clEnqueueNDRangeKernel(fut_cl_queue, map_kernel_4577, 1,
-                                              NULL, global_work_size_4987,
-                                              local_work_size_4991, 0, NULL,
-                                              NULL));
-        if (cl_debug) {
-            OPENCL_SUCCEED(clFinish(fut_cl_queue));
-            time_end_4989 = get_wall_time();
-            
-            long time_diff_4990 = time_end_4989 - time_start_4988;
-            
-            if (detail_timing) {
-                map_kernel_4577total_runtime += time_diff_4990;
-                map_kernel_4577runs++;
-                fprintf(stderr, "kernel %s runtime: %ldus\n", "map_kernel_4577",
-                        (int) time_diff_4990);
-            }
-        }
-    }
-    memblock_set_device(&out_mem_4735, &mem_4734);
-    out_memsize_4736 = bytes_4667;
-    memblock_set_device(&out_mem_4737, &mem_4731);
-    out_memsize_4738 = bytes_4729;
-    
-    struct tuple_int32_t_device_mem_int32_t_device_mem retval_4847;
-    
-    retval_4847.elem_0 = out_memsize_4736;
-    retval_4847.elem_1.references = NULL;
-    memblock_set_device(&retval_4847.elem_1, &out_mem_4735);
-    retval_4847.elem_2 = out_memsize_4738;
-    retval_4847.elem_3.references = NULL;
-    memblock_set_device(&retval_4847.elem_3, &out_mem_4737);
-    memblock_unref_device(&out_mem_4735);
-    memblock_unref_device(&out_mem_4737);
-    memblock_unref_device(&mem_4666);
-    memblock_unref_device(&mem_4669);
-    memblock_unref_device(&mem_4671);
-    memblock_unref_device(&mem_4674);
-    memblock_unref_device(&mem_4677);
-    memblock_unref_device(&mem_4680);
-    memblock_unref_device(&mem_4683);
-    memblock_unref_device(&mem_4686);
-    memblock_unref_device(&mem_4689);
-    memblock_unref_device(&mem_4692);
-    memblock_unref_device(&mem_4695);
-    memblock_unref_device(&mem_4698);
-    memblock_unref_device(&mem_4701);
-    memblock_unref_device(&mem_4704);
-    memblock_unref_device(&mem_4707);
-    memblock_unref_device(&mem_4710);
-    memblock_unref_device(&mem_4713);
-    memblock_unref_device(&mem_4716);
-    memblock_unref_device(&mem_4719);
-    memblock_unref_device(&mem_4722);
-    memblock_unref_device(&mem_4725);
-    memblock_unref_device(&mem_4728);
-    memblock_unref_device(&mem_4731);
-    memblock_unref_device(&mem_4734);
-    return retval_4847;
+    retval_5505.elem_0 = out_memsize_5474;
+    retval_5505.elem_1.references = NULL;
+    memblock_set_device(&retval_5505.elem_1, &out_mem_5473);
+    retval_5505.elem_2 = out_memsize_5476;
+    retval_5505.elem_3.references = NULL;
+    memblock_set_device(&retval_5505.elem_3, &out_mem_5475);
+    memblock_unref_device(&out_mem_5473);
+    memblock_unref_device(&out_mem_5475);
+    memblock_unref_device(&mem_5439);
+    memblock_unref_device(&mem_5442);
+    memblock_unref_device(&mem_5445);
+    memblock_unref_device(&mem_5448);
+    memblock_unref_device(&mem_5451);
+    memblock_unref_device(&mem_5454);
+    memblock_unref_device(&mem_5457);
+    memblock_unref_device(&mem_5460);
+    memblock_unref_device(&mem_5463);
+    memblock_unref_device(&mem_5466);
+    memblock_unref_device(&mem_5469);
+    memblock_unref_device(&mem_5472);
+    return retval_5505;
 }
 struct array_reader {
   char* elems;
@@ -4449,446 +2910,446 @@ int main(int argc, char **argv)
     argv += parsed_options;
     setup_opencl_and_load_kernels();
     
-    int32_t W_bi_mem_size_4635;
-    int32_t U_bi_mem_size_4637;
-    int32_t b_bi_mem_size_4639;
-    int32_t W_ig_mem_size_4641;
-    int32_t U_ig_mem_size_4643;
-    int32_t b_ig_mem_size_4645;
-    int32_t W_fg_mem_size_4647;
-    int32_t U_fg_mem_size_4649;
-    int32_t b_fg_mem_size_4651;
-    int32_t W_og_mem_size_4653;
-    int32_t U_og_mem_size_4655;
-    int32_t b_og_mem_size_4657;
-    int32_t input_mem_size_4659;
-    int32_t prev_output_mem_size_4661;
-    int32_t prev_cell_mem_size_4663;
-    struct memblock W_bi_mem_4636;
+    int32_t W_bi_mem_size_5407;
+    int32_t U_bi_mem_size_5409;
+    int32_t b_bi_mem_size_5411;
+    int32_t W_ig_mem_size_5413;
+    int32_t U_ig_mem_size_5415;
+    int32_t b_ig_mem_size_5417;
+    int32_t W_fg_mem_size_5419;
+    int32_t U_fg_mem_size_5421;
+    int32_t b_fg_mem_size_5423;
+    int32_t W_og_mem_size_5425;
+    int32_t U_og_mem_size_5427;
+    int32_t b_og_mem_size_5429;
+    int32_t input_mem_size_5431;
+    int32_t prev_output_mem_size_5433;
+    int32_t prev_cell_mem_size_5435;
+    struct memblock W_bi_mem_5408;
     
-    W_bi_mem_4636.references = NULL;
-    memblock_alloc(&W_bi_mem_4636, 0);
+    W_bi_mem_5408.references = NULL;
+    memblock_alloc(&W_bi_mem_5408, 0);
     
-    struct memblock U_bi_mem_4638;
+    struct memblock U_bi_mem_5410;
     
-    U_bi_mem_4638.references = NULL;
-    memblock_alloc(&U_bi_mem_4638, 0);
+    U_bi_mem_5410.references = NULL;
+    memblock_alloc(&U_bi_mem_5410, 0);
     
-    struct memblock b_bi_mem_4640;
+    struct memblock b_bi_mem_5412;
     
-    b_bi_mem_4640.references = NULL;
-    memblock_alloc(&b_bi_mem_4640, 0);
+    b_bi_mem_5412.references = NULL;
+    memblock_alloc(&b_bi_mem_5412, 0);
     
-    struct memblock W_ig_mem_4642;
+    struct memblock W_ig_mem_5414;
     
-    W_ig_mem_4642.references = NULL;
-    memblock_alloc(&W_ig_mem_4642, 0);
+    W_ig_mem_5414.references = NULL;
+    memblock_alloc(&W_ig_mem_5414, 0);
     
-    struct memblock U_ig_mem_4644;
+    struct memblock U_ig_mem_5416;
     
-    U_ig_mem_4644.references = NULL;
-    memblock_alloc(&U_ig_mem_4644, 0);
+    U_ig_mem_5416.references = NULL;
+    memblock_alloc(&U_ig_mem_5416, 0);
     
-    struct memblock b_ig_mem_4646;
+    struct memblock b_ig_mem_5418;
     
-    b_ig_mem_4646.references = NULL;
-    memblock_alloc(&b_ig_mem_4646, 0);
+    b_ig_mem_5418.references = NULL;
+    memblock_alloc(&b_ig_mem_5418, 0);
     
-    struct memblock W_fg_mem_4648;
+    struct memblock W_fg_mem_5420;
     
-    W_fg_mem_4648.references = NULL;
-    memblock_alloc(&W_fg_mem_4648, 0);
+    W_fg_mem_5420.references = NULL;
+    memblock_alloc(&W_fg_mem_5420, 0);
     
-    struct memblock U_fg_mem_4650;
+    struct memblock U_fg_mem_5422;
     
-    U_fg_mem_4650.references = NULL;
-    memblock_alloc(&U_fg_mem_4650, 0);
+    U_fg_mem_5422.references = NULL;
+    memblock_alloc(&U_fg_mem_5422, 0);
     
-    struct memblock b_fg_mem_4652;
+    struct memblock b_fg_mem_5424;
     
-    b_fg_mem_4652.references = NULL;
-    memblock_alloc(&b_fg_mem_4652, 0);
+    b_fg_mem_5424.references = NULL;
+    memblock_alloc(&b_fg_mem_5424, 0);
     
-    struct memblock W_og_mem_4654;
+    struct memblock W_og_mem_5426;
     
-    W_og_mem_4654.references = NULL;
-    memblock_alloc(&W_og_mem_4654, 0);
+    W_og_mem_5426.references = NULL;
+    memblock_alloc(&W_og_mem_5426, 0);
     
-    struct memblock U_og_mem_4656;
+    struct memblock U_og_mem_5428;
     
-    U_og_mem_4656.references = NULL;
-    memblock_alloc(&U_og_mem_4656, 0);
+    U_og_mem_5428.references = NULL;
+    memblock_alloc(&U_og_mem_5428, 0);
     
-    struct memblock b_og_mem_4658;
+    struct memblock b_og_mem_5430;
     
-    b_og_mem_4658.references = NULL;
-    memblock_alloc(&b_og_mem_4658, 0);
+    b_og_mem_5430.references = NULL;
+    memblock_alloc(&b_og_mem_5430, 0);
     
-    struct memblock input_mem_4660;
+    struct memblock input_mem_5432;
     
-    input_mem_4660.references = NULL;
-    memblock_alloc(&input_mem_4660, 0);
+    input_mem_5432.references = NULL;
+    memblock_alloc(&input_mem_5432, 0);
     
-    struct memblock prev_output_mem_4662;
+    struct memblock prev_output_mem_5434;
     
-    prev_output_mem_4662.references = NULL;
-    memblock_alloc(&prev_output_mem_4662, 0);
+    prev_output_mem_5434.references = NULL;
+    memblock_alloc(&prev_output_mem_5434, 0);
     
-    struct memblock prev_cell_mem_4664;
+    struct memblock prev_cell_mem_5436;
     
-    prev_cell_mem_4664.references = NULL;
-    memblock_alloc(&prev_cell_mem_4664, 0);
+    prev_cell_mem_5436.references = NULL;
+    memblock_alloc(&prev_cell_mem_5436, 0);
     
-    int32_t m_3943;
-    int32_t o_3944;
-    int32_t n_3945;
-    struct tuple_int32_t_device_mem_int32_t_device_mem main_ret_4992;
+    int32_t m_4676;
+    int32_t o_4677;
+    int32_t n_4678;
+    struct tuple_int32_t_device_mem_int32_t_device_mem main_ret_5556;
     
     {
         int64_t shape[2];
         
-        if (read_array(sizeof(float), read_float, (void **) &W_bi_mem_4636.mem,
+        if (read_array(sizeof(float), read_float, (void **) &W_bi_mem_5408.mem,
                        shape, 2) != 0)
             panic(1, "Syntax error when reading %s.\n", "[[f32]]");
-        m_3943 = shape[0];
-        o_3944 = shape[1];
-        W_bi_mem_size_4635 = sizeof(float) * shape[0] * shape[1];
+        m_4676 = shape[0];
+        o_4677 = shape[1];
+        W_bi_mem_size_5407 = sizeof(float) * shape[0] * shape[1];
     }
     {
         int64_t shape[2];
         
-        if (read_array(sizeof(float), read_float, (void **) &U_bi_mem_4638.mem,
+        if (read_array(sizeof(float), read_float, (void **) &U_bi_mem_5410.mem,
                        shape, 2) != 0)
             panic(1, "Syntax error when reading %s.\n", "[[f32]]");
-        n_3945 = shape[0];
-        n_3945 = shape[1];
-        U_bi_mem_size_4637 = sizeof(float) * shape[0] * shape[1];
+        m_4676 = shape[0];
+        m_4676 = shape[1];
+        U_bi_mem_size_5409 = sizeof(float) * shape[0] * shape[1];
     }
     {
         int64_t shape[1];
         
-        if (read_array(sizeof(float), read_float, (void **) &b_bi_mem_4640.mem,
+        if (read_array(sizeof(float), read_float, (void **) &b_bi_mem_5412.mem,
                        shape, 1) != 0)
             panic(1, "Syntax error when reading %s.\n", "[f32]");
-        m_3943 = shape[0];
-        b_bi_mem_size_4639 = sizeof(float) * shape[0];
+        m_4676 = shape[0];
+        b_bi_mem_size_5411 = sizeof(float) * shape[0];
     }
     {
         int64_t shape[2];
         
-        if (read_array(sizeof(float), read_float, (void **) &W_ig_mem_4642.mem,
+        if (read_array(sizeof(float), read_float, (void **) &W_ig_mem_5414.mem,
                        shape, 2) != 0)
             panic(1, "Syntax error when reading %s.\n", "[[f32]]");
-        m_3943 = shape[0];
-        o_3944 = shape[1];
-        W_ig_mem_size_4641 = sizeof(float) * shape[0] * shape[1];
+        m_4676 = shape[0];
+        o_4677 = shape[1];
+        W_ig_mem_size_5413 = sizeof(float) * shape[0] * shape[1];
     }
     {
         int64_t shape[2];
         
-        if (read_array(sizeof(float), read_float, (void **) &U_ig_mem_4644.mem,
+        if (read_array(sizeof(float), read_float, (void **) &U_ig_mem_5416.mem,
                        shape, 2) != 0)
             panic(1, "Syntax error when reading %s.\n", "[[f32]]");
-        n_3945 = shape[0];
-        n_3945 = shape[1];
-        U_ig_mem_size_4643 = sizeof(float) * shape[0] * shape[1];
+        m_4676 = shape[0];
+        m_4676 = shape[1];
+        U_ig_mem_size_5415 = sizeof(float) * shape[0] * shape[1];
     }
     {
         int64_t shape[1];
         
-        if (read_array(sizeof(float), read_float, (void **) &b_ig_mem_4646.mem,
+        if (read_array(sizeof(float), read_float, (void **) &b_ig_mem_5418.mem,
                        shape, 1) != 0)
             panic(1, "Syntax error when reading %s.\n", "[f32]");
-        m_3943 = shape[0];
-        b_ig_mem_size_4645 = sizeof(float) * shape[0];
+        m_4676 = shape[0];
+        b_ig_mem_size_5417 = sizeof(float) * shape[0];
     }
     {
         int64_t shape[2];
         
-        if (read_array(sizeof(float), read_float, (void **) &W_fg_mem_4648.mem,
+        if (read_array(sizeof(float), read_float, (void **) &W_fg_mem_5420.mem,
                        shape, 2) != 0)
             panic(1, "Syntax error when reading %s.\n", "[[f32]]");
-        m_3943 = shape[0];
-        o_3944 = shape[1];
-        W_fg_mem_size_4647 = sizeof(float) * shape[0] * shape[1];
+        m_4676 = shape[0];
+        o_4677 = shape[1];
+        W_fg_mem_size_5419 = sizeof(float) * shape[0] * shape[1];
     }
     {
         int64_t shape[2];
         
-        if (read_array(sizeof(float), read_float, (void **) &U_fg_mem_4650.mem,
+        if (read_array(sizeof(float), read_float, (void **) &U_fg_mem_5422.mem,
                        shape, 2) != 0)
             panic(1, "Syntax error when reading %s.\n", "[[f32]]");
-        n_3945 = shape[0];
-        n_3945 = shape[1];
-        U_fg_mem_size_4649 = sizeof(float) * shape[0] * shape[1];
+        m_4676 = shape[0];
+        m_4676 = shape[1];
+        U_fg_mem_size_5421 = sizeof(float) * shape[0] * shape[1];
     }
     {
         int64_t shape[1];
         
-        if (read_array(sizeof(float), read_float, (void **) &b_fg_mem_4652.mem,
+        if (read_array(sizeof(float), read_float, (void **) &b_fg_mem_5424.mem,
                        shape, 1) != 0)
             panic(1, "Syntax error when reading %s.\n", "[f32]");
-        m_3943 = shape[0];
-        b_fg_mem_size_4651 = sizeof(float) * shape[0];
+        m_4676 = shape[0];
+        b_fg_mem_size_5423 = sizeof(float) * shape[0];
     }
     {
         int64_t shape[2];
         
-        if (read_array(sizeof(float), read_float, (void **) &W_og_mem_4654.mem,
+        if (read_array(sizeof(float), read_float, (void **) &W_og_mem_5426.mem,
                        shape, 2) != 0)
             panic(1, "Syntax error when reading %s.\n", "[[f32]]");
-        m_3943 = shape[0];
-        o_3944 = shape[1];
-        W_og_mem_size_4653 = sizeof(float) * shape[0] * shape[1];
+        m_4676 = shape[0];
+        o_4677 = shape[1];
+        W_og_mem_size_5425 = sizeof(float) * shape[0] * shape[1];
     }
     {
         int64_t shape[2];
         
-        if (read_array(sizeof(float), read_float, (void **) &U_og_mem_4656.mem,
+        if (read_array(sizeof(float), read_float, (void **) &U_og_mem_5428.mem,
                        shape, 2) != 0)
             panic(1, "Syntax error when reading %s.\n", "[[f32]]");
-        n_3945 = shape[0];
-        n_3945 = shape[1];
-        U_og_mem_size_4655 = sizeof(float) * shape[0] * shape[1];
+        m_4676 = shape[0];
+        m_4676 = shape[1];
+        U_og_mem_size_5427 = sizeof(float) * shape[0] * shape[1];
     }
     {
         int64_t shape[1];
         
-        if (read_array(sizeof(float), read_float, (void **) &b_og_mem_4658.mem,
+        if (read_array(sizeof(float), read_float, (void **) &b_og_mem_5430.mem,
                        shape, 1) != 0)
             panic(1, "Syntax error when reading %s.\n", "[f32]");
-        m_3943 = shape[0];
-        b_og_mem_size_4657 = sizeof(float) * shape[0];
+        m_4676 = shape[0];
+        b_og_mem_size_5429 = sizeof(float) * shape[0];
     }
     {
         int64_t shape[2];
         
-        if (read_array(sizeof(float), read_float, (void **) &input_mem_4660.mem,
+        if (read_array(sizeof(float), read_float, (void **) &input_mem_5432.mem,
                        shape, 2) != 0)
             panic(1, "Syntax error when reading %s.\n", "[[f32]]");
-        o_3944 = shape[0];
-        n_3945 = shape[1];
-        input_mem_size_4659 = sizeof(float) * shape[0] * shape[1];
+        o_4677 = shape[0];
+        n_4678 = shape[1];
+        input_mem_size_5431 = sizeof(float) * shape[0] * shape[1];
     }
     {
         int64_t shape[2];
         
         if (read_array(sizeof(float), read_float,
-                       (void **) &prev_output_mem_4662.mem, shape, 2) != 0)
+                       (void **) &prev_output_mem_5434.mem, shape, 2) != 0)
             panic(1, "Syntax error when reading %s.\n", "[[f32]]");
-        n_3945 = shape[0];
-        m_3943 = shape[1];
-        prev_output_mem_size_4661 = sizeof(float) * shape[0] * shape[1];
+        m_4676 = shape[0];
+        n_4678 = shape[1];
+        prev_output_mem_size_5433 = sizeof(float) * shape[0] * shape[1];
     }
     {
         int64_t shape[2];
         
         if (read_array(sizeof(float), read_float,
-                       (void **) &prev_cell_mem_4664.mem, shape, 2) != 0)
+                       (void **) &prev_cell_mem_5436.mem, shape, 2) != 0)
             panic(1, "Syntax error when reading %s.\n", "[[f32]]");
-        n_3945 = shape[0];
-        m_3943 = shape[1];
-        prev_cell_mem_size_4663 = sizeof(float) * shape[0] * shape[1];
+        m_4676 = shape[0];
+        n_4678 = shape[1];
+        prev_cell_mem_size_5435 = sizeof(float) * shape[0] * shape[1];
     }
     
-    struct memblock_device W_bi_mem_device_4993;
+    struct memblock_device W_bi_mem_device_5557;
     
-    W_bi_mem_device_4993.references = NULL;
-    memblock_alloc_device(&W_bi_mem_device_4993, W_bi_mem_size_4635);
-    if (W_bi_mem_size_4635 > 0)
+    W_bi_mem_device_5557.references = NULL;
+    memblock_alloc_device(&W_bi_mem_device_5557, W_bi_mem_size_5407);
+    if (W_bi_mem_size_5407 > 0)
         OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue,
-                                            W_bi_mem_device_4993.mem, CL_TRUE,
-                                            0, W_bi_mem_size_4635,
-                                            W_bi_mem_4636.mem + 0, 0, NULL,
+                                            W_bi_mem_device_5557.mem, CL_TRUE,
+                                            0, W_bi_mem_size_5407,
+                                            W_bi_mem_5408.mem + 0, 0, NULL,
                                             NULL));
     
-    struct memblock_device U_bi_mem_device_4994;
+    struct memblock_device U_bi_mem_device_5558;
     
-    U_bi_mem_device_4994.references = NULL;
-    memblock_alloc_device(&U_bi_mem_device_4994, U_bi_mem_size_4637);
-    if (U_bi_mem_size_4637 > 0)
+    U_bi_mem_device_5558.references = NULL;
+    memblock_alloc_device(&U_bi_mem_device_5558, U_bi_mem_size_5409);
+    if (U_bi_mem_size_5409 > 0)
         OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue,
-                                            U_bi_mem_device_4994.mem, CL_TRUE,
-                                            0, U_bi_mem_size_4637,
-                                            U_bi_mem_4638.mem + 0, 0, NULL,
+                                            U_bi_mem_device_5558.mem, CL_TRUE,
+                                            0, U_bi_mem_size_5409,
+                                            U_bi_mem_5410.mem + 0, 0, NULL,
                                             NULL));
     
-    struct memblock_device b_bi_mem_device_4995;
+    struct memblock_device b_bi_mem_device_5559;
     
-    b_bi_mem_device_4995.references = NULL;
-    memblock_alloc_device(&b_bi_mem_device_4995, b_bi_mem_size_4639);
-    if (b_bi_mem_size_4639 > 0)
+    b_bi_mem_device_5559.references = NULL;
+    memblock_alloc_device(&b_bi_mem_device_5559, b_bi_mem_size_5411);
+    if (b_bi_mem_size_5411 > 0)
         OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue,
-                                            b_bi_mem_device_4995.mem, CL_TRUE,
-                                            0, b_bi_mem_size_4639,
-                                            b_bi_mem_4640.mem + 0, 0, NULL,
+                                            b_bi_mem_device_5559.mem, CL_TRUE,
+                                            0, b_bi_mem_size_5411,
+                                            b_bi_mem_5412.mem + 0, 0, NULL,
                                             NULL));
     
-    struct memblock_device W_ig_mem_device_4996;
+    struct memblock_device W_ig_mem_device_5560;
     
-    W_ig_mem_device_4996.references = NULL;
-    memblock_alloc_device(&W_ig_mem_device_4996, W_ig_mem_size_4641);
-    if (W_ig_mem_size_4641 > 0)
+    W_ig_mem_device_5560.references = NULL;
+    memblock_alloc_device(&W_ig_mem_device_5560, W_ig_mem_size_5413);
+    if (W_ig_mem_size_5413 > 0)
         OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue,
-                                            W_ig_mem_device_4996.mem, CL_TRUE,
-                                            0, W_ig_mem_size_4641,
-                                            W_ig_mem_4642.mem + 0, 0, NULL,
+                                            W_ig_mem_device_5560.mem, CL_TRUE,
+                                            0, W_ig_mem_size_5413,
+                                            W_ig_mem_5414.mem + 0, 0, NULL,
                                             NULL));
     
-    struct memblock_device U_ig_mem_device_4997;
+    struct memblock_device U_ig_mem_device_5561;
     
-    U_ig_mem_device_4997.references = NULL;
-    memblock_alloc_device(&U_ig_mem_device_4997, U_ig_mem_size_4643);
-    if (U_ig_mem_size_4643 > 0)
+    U_ig_mem_device_5561.references = NULL;
+    memblock_alloc_device(&U_ig_mem_device_5561, U_ig_mem_size_5415);
+    if (U_ig_mem_size_5415 > 0)
         OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue,
-                                            U_ig_mem_device_4997.mem, CL_TRUE,
-                                            0, U_ig_mem_size_4643,
-                                            U_ig_mem_4644.mem + 0, 0, NULL,
+                                            U_ig_mem_device_5561.mem, CL_TRUE,
+                                            0, U_ig_mem_size_5415,
+                                            U_ig_mem_5416.mem + 0, 0, NULL,
                                             NULL));
     
-    struct memblock_device b_ig_mem_device_4998;
+    struct memblock_device b_ig_mem_device_5562;
     
-    b_ig_mem_device_4998.references = NULL;
-    memblock_alloc_device(&b_ig_mem_device_4998, b_ig_mem_size_4645);
-    if (b_ig_mem_size_4645 > 0)
+    b_ig_mem_device_5562.references = NULL;
+    memblock_alloc_device(&b_ig_mem_device_5562, b_ig_mem_size_5417);
+    if (b_ig_mem_size_5417 > 0)
         OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue,
-                                            b_ig_mem_device_4998.mem, CL_TRUE,
-                                            0, b_ig_mem_size_4645,
-                                            b_ig_mem_4646.mem + 0, 0, NULL,
+                                            b_ig_mem_device_5562.mem, CL_TRUE,
+                                            0, b_ig_mem_size_5417,
+                                            b_ig_mem_5418.mem + 0, 0, NULL,
                                             NULL));
     
-    struct memblock_device W_fg_mem_device_4999;
+    struct memblock_device W_fg_mem_device_5563;
     
-    W_fg_mem_device_4999.references = NULL;
-    memblock_alloc_device(&W_fg_mem_device_4999, W_fg_mem_size_4647);
-    if (W_fg_mem_size_4647 > 0)
+    W_fg_mem_device_5563.references = NULL;
+    memblock_alloc_device(&W_fg_mem_device_5563, W_fg_mem_size_5419);
+    if (W_fg_mem_size_5419 > 0)
         OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue,
-                                            W_fg_mem_device_4999.mem, CL_TRUE,
-                                            0, W_fg_mem_size_4647,
-                                            W_fg_mem_4648.mem + 0, 0, NULL,
+                                            W_fg_mem_device_5563.mem, CL_TRUE,
+                                            0, W_fg_mem_size_5419,
+                                            W_fg_mem_5420.mem + 0, 0, NULL,
                                             NULL));
     
-    struct memblock_device U_fg_mem_device_5000;
+    struct memblock_device U_fg_mem_device_5564;
     
-    U_fg_mem_device_5000.references = NULL;
-    memblock_alloc_device(&U_fg_mem_device_5000, U_fg_mem_size_4649);
-    if (U_fg_mem_size_4649 > 0)
+    U_fg_mem_device_5564.references = NULL;
+    memblock_alloc_device(&U_fg_mem_device_5564, U_fg_mem_size_5421);
+    if (U_fg_mem_size_5421 > 0)
         OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue,
-                                            U_fg_mem_device_5000.mem, CL_TRUE,
-                                            0, U_fg_mem_size_4649,
-                                            U_fg_mem_4650.mem + 0, 0, NULL,
+                                            U_fg_mem_device_5564.mem, CL_TRUE,
+                                            0, U_fg_mem_size_5421,
+                                            U_fg_mem_5422.mem + 0, 0, NULL,
                                             NULL));
     
-    struct memblock_device b_fg_mem_device_5001;
+    struct memblock_device b_fg_mem_device_5565;
     
-    b_fg_mem_device_5001.references = NULL;
-    memblock_alloc_device(&b_fg_mem_device_5001, b_fg_mem_size_4651);
-    if (b_fg_mem_size_4651 > 0)
+    b_fg_mem_device_5565.references = NULL;
+    memblock_alloc_device(&b_fg_mem_device_5565, b_fg_mem_size_5423);
+    if (b_fg_mem_size_5423 > 0)
         OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue,
-                                            b_fg_mem_device_5001.mem, CL_TRUE,
-                                            0, b_fg_mem_size_4651,
-                                            b_fg_mem_4652.mem + 0, 0, NULL,
+                                            b_fg_mem_device_5565.mem, CL_TRUE,
+                                            0, b_fg_mem_size_5423,
+                                            b_fg_mem_5424.mem + 0, 0, NULL,
                                             NULL));
     
-    struct memblock_device W_og_mem_device_5002;
+    struct memblock_device W_og_mem_device_5566;
     
-    W_og_mem_device_5002.references = NULL;
-    memblock_alloc_device(&W_og_mem_device_5002, W_og_mem_size_4653);
-    if (W_og_mem_size_4653 > 0)
+    W_og_mem_device_5566.references = NULL;
+    memblock_alloc_device(&W_og_mem_device_5566, W_og_mem_size_5425);
+    if (W_og_mem_size_5425 > 0)
         OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue,
-                                            W_og_mem_device_5002.mem, CL_TRUE,
-                                            0, W_og_mem_size_4653,
-                                            W_og_mem_4654.mem + 0, 0, NULL,
+                                            W_og_mem_device_5566.mem, CL_TRUE,
+                                            0, W_og_mem_size_5425,
+                                            W_og_mem_5426.mem + 0, 0, NULL,
                                             NULL));
     
-    struct memblock_device U_og_mem_device_5003;
+    struct memblock_device U_og_mem_device_5567;
     
-    U_og_mem_device_5003.references = NULL;
-    memblock_alloc_device(&U_og_mem_device_5003, U_og_mem_size_4655);
-    if (U_og_mem_size_4655 > 0)
+    U_og_mem_device_5567.references = NULL;
+    memblock_alloc_device(&U_og_mem_device_5567, U_og_mem_size_5427);
+    if (U_og_mem_size_5427 > 0)
         OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue,
-                                            U_og_mem_device_5003.mem, CL_TRUE,
-                                            0, U_og_mem_size_4655,
-                                            U_og_mem_4656.mem + 0, 0, NULL,
+                                            U_og_mem_device_5567.mem, CL_TRUE,
+                                            0, U_og_mem_size_5427,
+                                            U_og_mem_5428.mem + 0, 0, NULL,
                                             NULL));
     
-    struct memblock_device b_og_mem_device_5004;
+    struct memblock_device b_og_mem_device_5568;
     
-    b_og_mem_device_5004.references = NULL;
-    memblock_alloc_device(&b_og_mem_device_5004, b_og_mem_size_4657);
-    if (b_og_mem_size_4657 > 0)
+    b_og_mem_device_5568.references = NULL;
+    memblock_alloc_device(&b_og_mem_device_5568, b_og_mem_size_5429);
+    if (b_og_mem_size_5429 > 0)
         OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue,
-                                            b_og_mem_device_5004.mem, CL_TRUE,
-                                            0, b_og_mem_size_4657,
-                                            b_og_mem_4658.mem + 0, 0, NULL,
+                                            b_og_mem_device_5568.mem, CL_TRUE,
+                                            0, b_og_mem_size_5429,
+                                            b_og_mem_5430.mem + 0, 0, NULL,
                                             NULL));
     
-    struct memblock_device input_mem_device_5005;
+    struct memblock_device input_mem_device_5569;
     
-    input_mem_device_5005.references = NULL;
-    memblock_alloc_device(&input_mem_device_5005, input_mem_size_4659);
-    if (input_mem_size_4659 > 0)
+    input_mem_device_5569.references = NULL;
+    memblock_alloc_device(&input_mem_device_5569, input_mem_size_5431);
+    if (input_mem_size_5431 > 0)
         OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue,
-                                            input_mem_device_5005.mem, CL_TRUE,
-                                            0, input_mem_size_4659,
-                                            input_mem_4660.mem + 0, 0, NULL,
+                                            input_mem_device_5569.mem, CL_TRUE,
+                                            0, input_mem_size_5431,
+                                            input_mem_5432.mem + 0, 0, NULL,
                                             NULL));
     
-    struct memblock_device prev_output_mem_device_5006;
+    struct memblock_device prev_output_mem_device_5570;
     
-    prev_output_mem_device_5006.references = NULL;
-    memblock_alloc_device(&prev_output_mem_device_5006,
-                          prev_output_mem_size_4661);
-    if (prev_output_mem_size_4661 > 0)
+    prev_output_mem_device_5570.references = NULL;
+    memblock_alloc_device(&prev_output_mem_device_5570,
+                          prev_output_mem_size_5433);
+    if (prev_output_mem_size_5433 > 0)
         OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue,
-                                            prev_output_mem_device_5006.mem,
+                                            prev_output_mem_device_5570.mem,
                                             CL_TRUE, 0,
-                                            prev_output_mem_size_4661,
-                                            prev_output_mem_4662.mem + 0, 0,
+                                            prev_output_mem_size_5433,
+                                            prev_output_mem_5434.mem + 0, 0,
                                             NULL, NULL));
     
-    struct memblock_device prev_cell_mem_device_5007;
+    struct memblock_device prev_cell_mem_device_5571;
     
-    prev_cell_mem_device_5007.references = NULL;
-    memblock_alloc_device(&prev_cell_mem_device_5007, prev_cell_mem_size_4663);
-    if (prev_cell_mem_size_4663 > 0)
+    prev_cell_mem_device_5571.references = NULL;
+    memblock_alloc_device(&prev_cell_mem_device_5571, prev_cell_mem_size_5435);
+    if (prev_cell_mem_size_5435 > 0)
         OPENCL_SUCCEED(clEnqueueWriteBuffer(fut_cl_queue,
-                                            prev_cell_mem_device_5007.mem,
-                                            CL_TRUE, 0, prev_cell_mem_size_4663,
-                                            prev_cell_mem_4664.mem + 0, 0, NULL,
+                                            prev_cell_mem_device_5571.mem,
+                                            CL_TRUE, 0, prev_cell_mem_size_5435,
+                                            prev_cell_mem_5436.mem + 0, 0, NULL,
                                             NULL));
     
-    int32_t out_memsize_4736;
-    struct memblock out_mem_4735;
+    int32_t out_memsize_5474;
+    struct memblock out_mem_5473;
     
-    out_mem_4735.references = NULL;
+    out_mem_5473.references = NULL;
     
-    int32_t out_memsize_4738;
-    struct memblock out_mem_4737;
+    int32_t out_memsize_5476;
+    struct memblock out_mem_5475;
     
-    out_mem_4737.references = NULL;
+    out_mem_5475.references = NULL;
     if (perform_warmup) {
         time_runs = 0;
         t_start = get_wall_time();
-        main_ret_4992 = futhark_main(W_bi_mem_size_4635, U_bi_mem_size_4637,
-                                     b_bi_mem_size_4639, W_ig_mem_size_4641,
-                                     U_ig_mem_size_4643, b_ig_mem_size_4645,
-                                     W_fg_mem_size_4647, U_fg_mem_size_4649,
-                                     b_fg_mem_size_4651, W_og_mem_size_4653,
-                                     U_og_mem_size_4655, b_og_mem_size_4657,
-                                     input_mem_size_4659,
-                                     prev_output_mem_size_4661,
-                                     prev_cell_mem_size_4663,
-                                     W_bi_mem_device_4993, U_bi_mem_device_4994,
-                                     b_bi_mem_device_4995, W_ig_mem_device_4996,
-                                     U_ig_mem_device_4997, b_ig_mem_device_4998,
-                                     W_fg_mem_device_4999, U_fg_mem_device_5000,
-                                     b_fg_mem_device_5001, W_og_mem_device_5002,
-                                     U_og_mem_device_5003, b_og_mem_device_5004,
-                                     input_mem_device_5005,
-                                     prev_output_mem_device_5006,
-                                     prev_cell_mem_device_5007, m_3943, o_3944,
-                                     n_3945);
+        main_ret_5556 = futhark_main(W_bi_mem_size_5407, U_bi_mem_size_5409,
+                                     b_bi_mem_size_5411, W_ig_mem_size_5413,
+                                     U_ig_mem_size_5415, b_ig_mem_size_5417,
+                                     W_fg_mem_size_5419, U_fg_mem_size_5421,
+                                     b_fg_mem_size_5423, W_og_mem_size_5425,
+                                     U_og_mem_size_5427, b_og_mem_size_5429,
+                                     input_mem_size_5431,
+                                     prev_output_mem_size_5433,
+                                     prev_cell_mem_size_5435,
+                                     W_bi_mem_device_5557, U_bi_mem_device_5558,
+                                     b_bi_mem_device_5559, W_ig_mem_device_5560,
+                                     U_ig_mem_device_5561, b_ig_mem_device_5562,
+                                     W_fg_mem_device_5563, U_fg_mem_device_5564,
+                                     b_fg_mem_device_5565, W_og_mem_device_5566,
+                                     U_og_mem_device_5567, b_og_mem_device_5568,
+                                     input_mem_device_5569,
+                                     prev_output_mem_device_5570,
+                                     prev_cell_mem_device_5571, m_4676, o_4677,
+                                     n_4678);
         OPENCL_SUCCEED(clFinish(fut_cl_queue));
         t_end = get_wall_time();
         
@@ -4896,8 +3357,8 @@ int main(int argc, char **argv)
         
         if (time_runs && runtime_file != NULL)
             fprintf(runtime_file, "%ld\n", elapsed_usec);
-        memblock_unref_device(&main_ret_4992.elem_1);
-        memblock_unref_device(&main_ret_4992.elem_3);
+        memblock_unref_device(&main_ret_5556.elem_1);
+        memblock_unref_device(&main_ret_5556.elem_3);
     }
     time_runs = 1;
     /* Proper run. */
@@ -4905,25 +3366,25 @@ int main(int argc, char **argv)
         if (run == num_runs - 1)
             detail_timing = 1;
         t_start = get_wall_time();
-        main_ret_4992 = futhark_main(W_bi_mem_size_4635, U_bi_mem_size_4637,
-                                     b_bi_mem_size_4639, W_ig_mem_size_4641,
-                                     U_ig_mem_size_4643, b_ig_mem_size_4645,
-                                     W_fg_mem_size_4647, U_fg_mem_size_4649,
-                                     b_fg_mem_size_4651, W_og_mem_size_4653,
-                                     U_og_mem_size_4655, b_og_mem_size_4657,
-                                     input_mem_size_4659,
-                                     prev_output_mem_size_4661,
-                                     prev_cell_mem_size_4663,
-                                     W_bi_mem_device_4993, U_bi_mem_device_4994,
-                                     b_bi_mem_device_4995, W_ig_mem_device_4996,
-                                     U_ig_mem_device_4997, b_ig_mem_device_4998,
-                                     W_fg_mem_device_4999, U_fg_mem_device_5000,
-                                     b_fg_mem_device_5001, W_og_mem_device_5002,
-                                     U_og_mem_device_5003, b_og_mem_device_5004,
-                                     input_mem_device_5005,
-                                     prev_output_mem_device_5006,
-                                     prev_cell_mem_device_5007, m_3943, o_3944,
-                                     n_3945);
+        main_ret_5556 = futhark_main(W_bi_mem_size_5407, U_bi_mem_size_5409,
+                                     b_bi_mem_size_5411, W_ig_mem_size_5413,
+                                     U_ig_mem_size_5415, b_ig_mem_size_5417,
+                                     W_fg_mem_size_5419, U_fg_mem_size_5421,
+                                     b_fg_mem_size_5423, W_og_mem_size_5425,
+                                     U_og_mem_size_5427, b_og_mem_size_5429,
+                                     input_mem_size_5431,
+                                     prev_output_mem_size_5433,
+                                     prev_cell_mem_size_5435,
+                                     W_bi_mem_device_5557, U_bi_mem_device_5558,
+                                     b_bi_mem_device_5559, W_ig_mem_device_5560,
+                                     U_ig_mem_device_5561, b_ig_mem_device_5562,
+                                     W_fg_mem_device_5563, U_fg_mem_device_5564,
+                                     b_fg_mem_device_5565, W_og_mem_device_5566,
+                                     U_og_mem_device_5567, b_og_mem_device_5568,
+                                     input_mem_device_5569,
+                                     prev_output_mem_device_5570,
+                                     prev_cell_mem_device_5571, m_4676, o_4677,
+                                     n_4678);
         OPENCL_SUCCEED(clFinish(fut_cl_queue));
         t_end = get_wall_time();
         
@@ -4932,98 +3393,98 @@ int main(int argc, char **argv)
         if (time_runs && runtime_file != NULL)
             fprintf(runtime_file, "%ld\n", elapsed_usec);
         if (run < num_runs - 1) {
-            memblock_unref_device(&main_ret_4992.elem_1);
-            memblock_unref_device(&main_ret_4992.elem_3);
+            memblock_unref_device(&main_ret_5556.elem_1);
+            memblock_unref_device(&main_ret_5556.elem_3);
         }
     }
-    memblock_unref(&W_bi_mem_4636);
-    memblock_unref(&U_bi_mem_4638);
-    memblock_unref(&b_bi_mem_4640);
-    memblock_unref(&W_ig_mem_4642);
-    memblock_unref(&U_ig_mem_4644);
-    memblock_unref(&b_ig_mem_4646);
-    memblock_unref(&W_fg_mem_4648);
-    memblock_unref(&U_fg_mem_4650);
-    memblock_unref(&b_fg_mem_4652);
-    memblock_unref(&W_og_mem_4654);
-    memblock_unref(&U_og_mem_4656);
-    memblock_unref(&b_og_mem_4658);
-    memblock_unref(&input_mem_4660);
-    memblock_unref(&prev_output_mem_4662);
-    memblock_unref(&prev_cell_mem_4664);
-    out_memsize_4736 = main_ret_4992.elem_0;
-    memblock_alloc(&out_mem_4735, out_memsize_4736);
-    if (out_memsize_4736 > 0)
+    memblock_unref(&W_bi_mem_5408);
+    memblock_unref(&U_bi_mem_5410);
+    memblock_unref(&b_bi_mem_5412);
+    memblock_unref(&W_ig_mem_5414);
+    memblock_unref(&U_ig_mem_5416);
+    memblock_unref(&b_ig_mem_5418);
+    memblock_unref(&W_fg_mem_5420);
+    memblock_unref(&U_fg_mem_5422);
+    memblock_unref(&b_fg_mem_5424);
+    memblock_unref(&W_og_mem_5426);
+    memblock_unref(&U_og_mem_5428);
+    memblock_unref(&b_og_mem_5430);
+    memblock_unref(&input_mem_5432);
+    memblock_unref(&prev_output_mem_5434);
+    memblock_unref(&prev_cell_mem_5436);
+    out_memsize_5474 = main_ret_5556.elem_0;
+    memblock_alloc(&out_mem_5473, out_memsize_5474);
+    if (out_memsize_5474 > 0)
         OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                           main_ret_4992.elem_1.mem, CL_TRUE, 0,
-                                           out_memsize_4736, out_mem_4735.mem +
+                                           main_ret_5556.elem_1.mem, CL_TRUE, 0,
+                                           out_memsize_5474, out_mem_5473.mem +
                                            0, 0, NULL, NULL));
-    out_memsize_4738 = main_ret_4992.elem_2;
-    memblock_alloc(&out_mem_4737, out_memsize_4738);
-    if (out_memsize_4738 > 0)
+    out_memsize_5476 = main_ret_5556.elem_2;
+    memblock_alloc(&out_mem_5475, out_memsize_5476);
+    if (out_memsize_5476 > 0)
         OPENCL_SUCCEED(clEnqueueReadBuffer(fut_cl_queue,
-                                           main_ret_4992.elem_3.mem, CL_TRUE, 0,
-                                           out_memsize_4738, out_mem_4737.mem +
+                                           main_ret_5556.elem_3.mem, CL_TRUE, 0,
+                                           out_memsize_5476, out_mem_5475.mem +
                                            0, 0, NULL, NULL));
-    if (n_3945 == 0)
+    if (m_4676 == 0)
         printf("empty(%s)", "[f32]");
     else {
-        int print_i_5008;
+        int print_i_5572;
         
         putchar('[');
-        for (print_i_5008 = 0; print_i_5008 < n_3945; print_i_5008++) {
-            float *print_elem_5009 = (float *) out_mem_4735.mem + print_i_5008 *
-                  m_3943;
+        for (print_i_5572 = 0; print_i_5572 < m_4676; print_i_5572++) {
+            float *print_elem_5573 = (float *) out_mem_5473.mem + print_i_5572 *
+                  n_4678;
             
-            if (m_3943 == 0)
+            if (n_4678 == 0)
                 printf("empty(%s)", "f32");
             else {
-                int print_i_5010;
+                int print_i_5574;
                 
                 putchar('[');
-                for (print_i_5010 = 0; print_i_5010 < m_3943; print_i_5010++) {
-                    float *print_elem_5011 = (float *) print_elem_5009 +
-                          print_i_5010 * 1;
+                for (print_i_5574 = 0; print_i_5574 < n_4678; print_i_5574++) {
+                    float *print_elem_5575 = (float *) print_elem_5573 +
+                          print_i_5574 * 1;
                     
-                    printf("%.6ff32", *print_elem_5011);
-                    if (print_i_5010 != m_3943 - 1)
+                    printf("%.6ff32", *print_elem_5575);
+                    if (print_i_5574 != n_4678 - 1)
                         printf(", ");
                 }
                 putchar(']');
             }
-            if (print_i_5008 != n_3945 - 1)
+            if (print_i_5572 != m_4676 - 1)
                 printf(", ");
         }
         putchar(']');
     }
     printf("\n");
-    if (n_3945 == 0)
+    if (m_4676 == 0)
         printf("empty(%s)", "[f32]");
     else {
-        int print_i_5012;
+        int print_i_5576;
         
         putchar('[');
-        for (print_i_5012 = 0; print_i_5012 < n_3945; print_i_5012++) {
-            float *print_elem_5013 = (float *) out_mem_4737.mem + print_i_5012 *
-                  m_3943;
+        for (print_i_5576 = 0; print_i_5576 < m_4676; print_i_5576++) {
+            float *print_elem_5577 = (float *) out_mem_5475.mem + print_i_5576 *
+                  n_4678;
             
-            if (m_3943 == 0)
+            if (n_4678 == 0)
                 printf("empty(%s)", "f32");
             else {
-                int print_i_5014;
+                int print_i_5578;
                 
                 putchar('[');
-                for (print_i_5014 = 0; print_i_5014 < m_3943; print_i_5014++) {
-                    float *print_elem_5015 = (float *) print_elem_5013 +
-                          print_i_5014 * 1;
+                for (print_i_5578 = 0; print_i_5578 < n_4678; print_i_5578++) {
+                    float *print_elem_5579 = (float *) print_elem_5577 +
+                          print_i_5578 * 1;
                     
-                    printf("%.6ff32", *print_elem_5015);
-                    if (print_i_5014 != m_3943 - 1)
+                    printf("%.6ff32", *print_elem_5579);
+                    if (print_i_5578 != n_4678 - 1)
                         printf(", ");
                 }
                 putchar(']');
             }
-            if (print_i_5012 != n_3945 - 1)
+            if (print_i_5576 != m_4676 - 1)
                 printf(", ");
         }
         putchar(']');
@@ -5035,179 +3496,81 @@ int main(int argc, char **argv)
     
     if (cl_debug) {
         fprintf(stderr,
-                "Kernel map_kernel_4739 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4739runs, (long) map_kernel_4739total_runtime /
-                (map_kernel_4739runs != 0 ? map_kernel_4739runs : 1),
-                (long) map_kernel_4739total_runtime);
-        total_runtime += map_kernel_4739total_runtime;
-        total_runs += map_kernel_4739runs;
+                "Kernel map_kernel_5053 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
+                map_kernel_5053runs, (long) map_kernel_5053total_runtime /
+                (map_kernel_5053runs != 0 ? map_kernel_5053runs : 1),
+                (long) map_kernel_5053total_runtime);
+        total_runtime += map_kernel_5053total_runtime;
+        total_runs += map_kernel_5053runs;
         fprintf(stderr,
-                "Kernel map_kernel_4743 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4743runs, (long) map_kernel_4743total_runtime /
-                (map_kernel_4743runs != 0 ? map_kernel_4743runs : 1),
-                (long) map_kernel_4743total_runtime);
-        total_runtime += map_kernel_4743total_runtime;
-        total_runs += map_kernel_4743runs;
+                "Kernel map_kernel_5098 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
+                map_kernel_5098runs, (long) map_kernel_5098total_runtime /
+                (map_kernel_5098runs != 0 ? map_kernel_5098runs : 1),
+                (long) map_kernel_5098total_runtime);
+        total_runtime += map_kernel_5098total_runtime;
+        total_runs += map_kernel_5098runs;
         fprintf(stderr,
-                "Kernel map_kernel_4752 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4752runs, (long) map_kernel_4752total_runtime /
-                (map_kernel_4752runs != 0 ? map_kernel_4752runs : 1),
-                (long) map_kernel_4752total_runtime);
-        total_runtime += map_kernel_4752total_runtime;
-        total_runs += map_kernel_4752runs;
+                "Kernel map_kernel_5122 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
+                map_kernel_5122runs, (long) map_kernel_5122total_runtime /
+                (map_kernel_5122runs != 0 ? map_kernel_5122runs : 1),
+                (long) map_kernel_5122total_runtime);
+        total_runtime += map_kernel_5122total_runtime;
+        total_runs += map_kernel_5122runs;
         fprintf(stderr,
-                "Kernel map_kernel_4756 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4756runs, (long) map_kernel_4756total_runtime /
-                (map_kernel_4756runs != 0 ? map_kernel_4756runs : 1),
-                (long) map_kernel_4756total_runtime);
-        total_runtime += map_kernel_4756total_runtime;
-        total_runs += map_kernel_4756runs;
+                "Kernel map_kernel_5167 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
+                map_kernel_5167runs, (long) map_kernel_5167total_runtime /
+                (map_kernel_5167runs != 0 ? map_kernel_5167runs : 1),
+                (long) map_kernel_5167total_runtime);
+        total_runtime += map_kernel_5167total_runtime;
+        total_runs += map_kernel_5167runs;
         fprintf(stderr,
-                "Kernel map_kernel_4337 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4337runs, (long) map_kernel_4337total_runtime /
-                (map_kernel_4337runs != 0 ? map_kernel_4337runs : 1),
-                (long) map_kernel_4337total_runtime);
-        total_runtime += map_kernel_4337total_runtime;
-        total_runs += map_kernel_4337runs;
+                "Kernel map_kernel_5191 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
+                map_kernel_5191runs, (long) map_kernel_5191total_runtime /
+                (map_kernel_5191runs != 0 ? map_kernel_5191runs : 1),
+                (long) map_kernel_5191total_runtime);
+        total_runtime += map_kernel_5191total_runtime;
+        total_runs += map_kernel_5191runs;
         fprintf(stderr,
-                "Kernel map_kernel_4360 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4360runs, (long) map_kernel_4360total_runtime /
-                (map_kernel_4360runs != 0 ? map_kernel_4360runs : 1),
-                (long) map_kernel_4360total_runtime);
-        total_runtime += map_kernel_4360total_runtime;
-        total_runs += map_kernel_4360runs;
+                "Kernel map_kernel_5236 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
+                map_kernel_5236runs, (long) map_kernel_5236total_runtime /
+                (map_kernel_5236runs != 0 ? map_kernel_5236runs : 1),
+                (long) map_kernel_5236total_runtime);
+        total_runtime += map_kernel_5236total_runtime;
+        total_runs += map_kernel_5236runs;
         fprintf(stderr,
-                "Kernel map_kernel_4377 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4377runs, (long) map_kernel_4377total_runtime /
-                (map_kernel_4377runs != 0 ? map_kernel_4377runs : 1),
-                (long) map_kernel_4377total_runtime);
-        total_runtime += map_kernel_4377total_runtime;
-        total_runs += map_kernel_4377runs;
+                "Kernel map_kernel_5260 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
+                map_kernel_5260runs, (long) map_kernel_5260total_runtime /
+                (map_kernel_5260runs != 0 ? map_kernel_5260runs : 1),
+                (long) map_kernel_5260total_runtime);
+        total_runtime += map_kernel_5260total_runtime;
+        total_runs += map_kernel_5260runs;
         fprintf(stderr,
-                "Kernel map_kernel_4771 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4771runs, (long) map_kernel_4771total_runtime /
-                (map_kernel_4771runs != 0 ? map_kernel_4771runs : 1),
-                (long) map_kernel_4771total_runtime);
-        total_runtime += map_kernel_4771total_runtime;
-        total_runs += map_kernel_4771runs;
+                "Kernel map_kernel_5305 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
+                map_kernel_5305runs, (long) map_kernel_5305total_runtime /
+                (map_kernel_5305runs != 0 ? map_kernel_5305runs : 1),
+                (long) map_kernel_5305total_runtime);
+        total_runtime += map_kernel_5305total_runtime;
+        total_runs += map_kernel_5305runs;
         fprintf(stderr,
-                "Kernel map_kernel_4780 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4780runs, (long) map_kernel_4780total_runtime /
-                (map_kernel_4780runs != 0 ? map_kernel_4780runs : 1),
-                (long) map_kernel_4780total_runtime);
-        total_runtime += map_kernel_4780total_runtime;
-        total_runs += map_kernel_4780runs;
+                "Kernel map_kernel_5349 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
+                map_kernel_5349runs, (long) map_kernel_5349total_runtime /
+                (map_kernel_5349runs != 0 ? map_kernel_5349runs : 1),
+                (long) map_kernel_5349total_runtime);
+        total_runtime += map_kernel_5349total_runtime;
+        total_runs += map_kernel_5349runs;
         fprintf(stderr,
-                "Kernel map_kernel_4397 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4397runs, (long) map_kernel_4397total_runtime /
-                (map_kernel_4397runs != 0 ? map_kernel_4397runs : 1),
-                (long) map_kernel_4397total_runtime);
-        total_runtime += map_kernel_4397total_runtime;
-        total_runs += map_kernel_4397runs;
-        fprintf(stderr,
-                "Kernel map_kernel_4420 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4420runs, (long) map_kernel_4420total_runtime /
-                (map_kernel_4420runs != 0 ? map_kernel_4420runs : 1),
-                (long) map_kernel_4420total_runtime);
-        total_runtime += map_kernel_4420total_runtime;
-        total_runs += map_kernel_4420runs;
-        fprintf(stderr,
-                "Kernel map_kernel_4437 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4437runs, (long) map_kernel_4437total_runtime /
-                (map_kernel_4437runs != 0 ? map_kernel_4437runs : 1),
-                (long) map_kernel_4437total_runtime);
-        total_runtime += map_kernel_4437total_runtime;
-        total_runs += map_kernel_4437runs;
-        fprintf(stderr,
-                "Kernel map_kernel_4795 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4795runs, (long) map_kernel_4795total_runtime /
-                (map_kernel_4795runs != 0 ? map_kernel_4795runs : 1),
-                (long) map_kernel_4795total_runtime);
-        total_runtime += map_kernel_4795total_runtime;
-        total_runs += map_kernel_4795runs;
-        fprintf(stderr,
-                "Kernel map_kernel_4804 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4804runs, (long) map_kernel_4804total_runtime /
-                (map_kernel_4804runs != 0 ? map_kernel_4804runs : 1),
-                (long) map_kernel_4804total_runtime);
-        total_runtime += map_kernel_4804total_runtime;
-        total_runs += map_kernel_4804runs;
-        fprintf(stderr,
-                "Kernel map_kernel_4457 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4457runs, (long) map_kernel_4457total_runtime /
-                (map_kernel_4457runs != 0 ? map_kernel_4457runs : 1),
-                (long) map_kernel_4457total_runtime);
-        total_runtime += map_kernel_4457total_runtime;
-        total_runs += map_kernel_4457runs;
-        fprintf(stderr,
-                "Kernel map_kernel_4480 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4480runs, (long) map_kernel_4480total_runtime /
-                (map_kernel_4480runs != 0 ? map_kernel_4480runs : 1),
-                (long) map_kernel_4480total_runtime);
-        total_runtime += map_kernel_4480total_runtime;
-        total_runs += map_kernel_4480runs;
-        fprintf(stderr,
-                "Kernel map_kernel_4497 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4497runs, (long) map_kernel_4497total_runtime /
-                (map_kernel_4497runs != 0 ? map_kernel_4497runs : 1),
-                (long) map_kernel_4497total_runtime);
-        total_runtime += map_kernel_4497total_runtime;
-        total_runs += map_kernel_4497runs;
-        fprintf(stderr,
-                "Kernel map_kernel_4819 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4819runs, (long) map_kernel_4819total_runtime /
-                (map_kernel_4819runs != 0 ? map_kernel_4819runs : 1),
-                (long) map_kernel_4819total_runtime);
-        total_runtime += map_kernel_4819total_runtime;
-        total_runs += map_kernel_4819runs;
-        fprintf(stderr,
-                "Kernel map_kernel_4828 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4828runs, (long) map_kernel_4828total_runtime /
-                (map_kernel_4828runs != 0 ? map_kernel_4828runs : 1),
-                (long) map_kernel_4828total_runtime);
-        total_runtime += map_kernel_4828total_runtime;
-        total_runs += map_kernel_4828runs;
-        fprintf(stderr,
-                "Kernel map_kernel_4517 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4517runs, (long) map_kernel_4517total_runtime /
-                (map_kernel_4517runs != 0 ? map_kernel_4517runs : 1),
-                (long) map_kernel_4517total_runtime);
-        total_runtime += map_kernel_4517total_runtime;
-        total_runs += map_kernel_4517runs;
-        fprintf(stderr,
-                "Kernel map_kernel_4540 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4540runs, (long) map_kernel_4540total_runtime /
-                (map_kernel_4540runs != 0 ? map_kernel_4540runs : 1),
-                (long) map_kernel_4540total_runtime);
-        total_runtime += map_kernel_4540total_runtime;
-        total_runs += map_kernel_4540runs;
-        fprintf(stderr,
-                "Kernel map_kernel_4557 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4557runs, (long) map_kernel_4557total_runtime /
-                (map_kernel_4557runs != 0 ? map_kernel_4557runs : 1),
-                (long) map_kernel_4557total_runtime);
-        total_runtime += map_kernel_4557total_runtime;
-        total_runs += map_kernel_4557runs;
-        fprintf(stderr,
-                "Kernel map_kernel_4601 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4601runs, (long) map_kernel_4601total_runtime /
-                (map_kernel_4601runs != 0 ? map_kernel_4601runs : 1),
-                (long) map_kernel_4601total_runtime);
-        total_runtime += map_kernel_4601total_runtime;
-        total_runs += map_kernel_4601runs;
-        fprintf(stderr,
-                "Kernel map_kernel_4577 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
-                map_kernel_4577runs, (long) map_kernel_4577total_runtime /
-                (map_kernel_4577runs != 0 ? map_kernel_4577runs : 1),
-                (long) map_kernel_4577total_runtime);
-        total_runtime += map_kernel_4577total_runtime;
-        total_runs += map_kernel_4577runs;
+                "Kernel map_kernel_5325 executed %6d times, with average runtime: %6ldus\tand total runtime: %6ldus\n",
+                map_kernel_5325runs, (long) map_kernel_5325total_runtime /
+                (map_kernel_5325runs != 0 ? map_kernel_5325runs : 1),
+                (long) map_kernel_5325total_runtime);
+        total_runtime += map_kernel_5325total_runtime;
+        total_runs += map_kernel_5325runs;
     }
     if (cl_debug)
         fprintf(stderr, "Ran %d kernels with cumulative runtime: %6ldus\n",
                 total_runs, total_runtime);
-    memblock_unref_device(&main_ret_4992.elem_1);
-    memblock_unref_device(&main_ret_4992.elem_3);
+    memblock_unref_device(&main_ret_5556.elem_1);
+    memblock_unref_device(&main_ret_5556.elem_3);
     if (runtime_file != NULL)
         fclose(runtime_file);
     return 0;

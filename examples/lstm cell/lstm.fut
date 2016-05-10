@@ -1,6 +1,19 @@
 -- Standard matrix matrix multiplication
-fun [[f32,m],n] matmult([[f32,o],m] a, [[f32,n],o] b) =
-    let res = replicate(n, replicate(m,0f32)) in
+-- R - regular matrix dimensions
+-- F - Futhark matrix dimensions
+-- F(o,m) = R(m,o)
+-- F(n,o) = R(o,n)
+-- R(m,o) * R(o,n) = R(m,n) = F(n,m)
+fun [[f32,n],m] matmult([[f32,o],m] a, [[f32,n],o] b) =
+	let b = transpose(b) in
+	map(fn [f32,n] ([f32,o] a) =>
+			map(fn f32 ([f32,o] b) =>
+				reduce(+,0f32,zipWith(*,a,b))
+			,b)
+		,a)
+
+fun [[f32,n],m] matmultImp([[f32,o],m] a, [[f32,n],o] b) =
+    let res = replicate(m, replicate(n,0f32)) in
     loop (res) = for i < m do
         loop (res) = for j < n do
             let partsum =
@@ -34,12 +47,12 @@ fun [[f32,m],n] broadcast_add([[f32,m],n] a, [f32,n] b) =
 
 -- Ax + b
 -- The standard feedforward neural net linear layer
-fun [[f32,m],n] linear_layer([[f32,o],m] A, [[f32,n],o] x, [f32,m] b) =
+fun [[f32,n],m] linear_layer([[f32,o],m] A, [[f32,n],o] x, [f32,m] b) =
     broadcast_add(matmult(A, x), b)
 
 -- Ax + Bh + b
 -- The recurrent neural net linear layer
-fun [[f32,m],n] linear_layer_2([[f32,o],m] A, [[f32,n],o] x, [[f32,n],n] B, [[f32,m],n] h, [f32,m] b) =
+fun [[f32,n],m] linear_layer_2([[f32,o],m] A, [[f32,n],o] x, [[f32,m],m] B, [[f32,n],m] h, [f32,m] b) =
     broadcast_add(add(matmult(A, x), matmult(B,h)), b)  
 
 fun f32 exp(f32 a) =
@@ -56,25 +69,25 @@ fun [[f32]] sigmoid_activation([[f32]] a) =
 		,a)
 
 -- Feedforward Neural net layer with a sigmoid activation
-fun [[f32,m],n] sigmoid_layer([[f32,o],m] A, [[f32,n],o] x, [f32,m] b) =
+fun [[f32,n],m] sigmoid_layer([[f32,o],m] A, [[f32,n],o] x, [f32,m] b) =
 	sigmoid_activation(linear_layer(A,x,b))
 
 -- Recurrent neural net layer with a sigmoid activation
-fun [[f32,m],n] sigmoid_recurrent_layer([[f32,o],m] A, [[f32,n],o] x, [[f32,n],n] B, [[f32,m],n] h, [f32,m] b) =
+fun [[f32,n],m] sigmoid_recurrent_layer([[f32,o],m] A, [[f32,n],o] x, [[f32,m],m] B, [[f32,n],m] h, [f32,m] b) =
 	sigmoid_activation(linear_layer_2(A,x,B,h,b))
 
 -- The LSTM cell/layer forward pass. Outputs a (output, cell) tuple.
 -- This is the standard LSTM formula, without peepholes.
 -- At the current time of writting 5/9/2016, LSTM is the most widely used
 -- recurrent network architecture and has been for the past decade or so.
-fun ([[f32,m],n], [[f32,m],n]) 
-    lstm_cell_forward([[f32,o],m] W_bi, [[f32,n],n] U_bi, [f32,m] b_bi, 
-					  [[f32,o],m] W_ig, [[f32,n],n] U_ig, [f32,m] b_ig,
-					  [[f32,o],m] W_fg, [[f32,n],n] U_fg, [f32,m] b_fg,
-					  [[f32,o],m] W_og, [[f32,n],n] U_og, [f32,m] b_og,
+fun ([[f32,n],m], [[f32,n],m]) 
+    lstm_cell_forward([[f32,o],m] W_bi, [[f32,m],m] U_bi, [f32,m] b_bi, 
+					  [[f32,o],m] W_ig, [[f32,m],m] U_ig, [f32,m] b_ig,
+					  [[f32,o],m] W_fg, [[f32,m],m] U_fg, [f32,m] b_fg,
+					  [[f32,o],m] W_og, [[f32,m],m] U_og, [f32,m] b_og,
 					  [[f32,n],o] input, 
-					  [[f32,m],n] prev_output,
-					  [[f32,m],n] prev_cell ) = 
+					  [[f32,n],m] prev_output,
+					  [[f32,n],m] prev_cell ) = 
 	let block_input = sigmoid_recurrent_layer(W_bi,input,U_bi,prev_output,b_bi) -- In a real LSTM, this activation function is generally tanh, but can be sigmoid.
 	let input_gate = sigmoid_recurrent_layer(W_ig,input,U_ig,prev_output,b_ig) -- The activations for the gates are always sigmoid
 	let forget_gate = sigmoid_recurrent_layer(W_fg,input,U_fg,prev_output,b_fg)
@@ -84,14 +97,14 @@ fun ([[f32,m],n], [[f32,m],n])
 	in (output, cell_state)
 
 
-fun ([[f32,m],n], [[f32,m],n]) 
-                 main([[f32,o],m] W_bi, [[f32,n],n] U_bi, [f32,m] b_bi, 
-					  [[f32,o],m] W_ig, [[f32,n],n] U_ig, [f32,m] b_ig,
-					  [[f32,o],m] W_fg, [[f32,n],n] U_fg, [f32,m] b_fg,
-					  [[f32,o],m] W_og, [[f32,n],n] U_og, [f32,m] b_og,
+fun ([[f32,n],m], [[f32,n],m]) 
+                 main([[f32,o],m] W_bi, [[f32,m],m] U_bi, [f32,m] b_bi, 
+					  [[f32,o],m] W_ig, [[f32,m],m] U_ig, [f32,m] b_ig,
+					  [[f32,o],m] W_fg, [[f32,m],m] U_fg, [f32,m] b_fg,
+					  [[f32,o],m] W_og, [[f32,m],m] U_og, [f32,m] b_og,
 					  [[f32,n],o] input, 
-					  [[f32,m],n] prev_output,
-					  [[f32,m],n] prev_cell ) = 
+					  [[f32,n],m] prev_output,
+					  [[f32,n],m] prev_cell ) = 
 	lstm_cell_forward
 		(W_bi,U_bi,b_bi,
 		 W_ig,U_ig,b_ig,
@@ -100,8 +113,3 @@ fun ([[f32,m],n], [[f32,m],n])
 		 input,
 		 prev_output,
 		 prev_cell)
-
-entry [[f32,m],n]
-                 test([[f32,o],m] W_bi, [f32,m] b_bi, 
-					  [[f32,n],o] input) =
-	linear_layer(W_bi,input,b_bi)
