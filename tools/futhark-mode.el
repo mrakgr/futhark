@@ -84,7 +84,7 @@
   "A regex describing a Futhark variable.")
 
 (defconst futhark-type
-  (concat "\\(?:\\(?:\\[[^]]+\\]\\)\\|\\(?:{[^}]+}\\)\\|" futhark-var "\\)")
+  (concat "\\(?:\\(?:\\[[^]]+\\]\\)\\|\\(?:([^)]+)\\)\\|" futhark-var "\\)")
   "A regex describing a Futhark type, built-in or user-specified.
 Does not recognise nested tuples or nested arrays.")
 
@@ -102,7 +102,7 @@ Does not recognise nested tuples or nested arrays.")
     ;; Variable and tuple declarations
     (,(concat "let[[:space:]\n]+\\(" futhark-var "\\)")
      . '(1 font-lock-variable-name-face))
-    (,(concat "let[[:space:]\n]+{\\([^}]+\\)")
+    (,(concat "let[[:space:]\n]+(\\([^)]+\\)")
      . '(1 font-lock-variable-name-face))
 
     ;; Keywords
@@ -184,19 +184,10 @@ constituents match each other's indentation."
        ;; Align closing parentheses and commas to opening
        ;; parenthesis.
        (save-excursion
-         (and (looking-at (regexp-opt '(")" "]" "}" ",")))
+         (and (looking-at (regexp-opt '(")" "]" ",")))
               (ignore-errors
                 (backward-up-list 1)
                 (current-column))))
-
-       ;; Align "in" to nearest "loop" if there is sign of not being in
-       ;; the body of a let.
-       (save-excursion
-         (and (futhark-looking-at-word "in")
-              (futhark-first-keyword-backward)
-              (futhark-looking-at-word "in")
-              (futhark-find-keyword-backward "loop")
-              (current-column)))
 
        ;; Align "in" to nearest "let" or "loop".
        (save-excursion
@@ -245,8 +236,8 @@ constituents match each other's indentation."
        ;; "else", align to the starting column plus one indent level.
        (save-excursion
          (and (futhark-backward-part)
-              (or (looking-at "\\<then$")
-                  (looking-at "\\<else$"))
+              (or (looking-at "\\<then[[:space:]]*$")
+                  (looking-at "\\<else[[:space:]]*$"))
               (progn (futhark-beginning-of-line-text) t)
               (+ (current-column) futhark-indent-level)))
 
@@ -262,7 +253,7 @@ constituents match each other's indentation."
        ;; first on the line) plus one indent level.
        (save-excursion
          (and (futhark-backward-part)
-              (looking-at "\\<do$")
+              (looking-at "\\<do[[:space:]]*$")
               (or (and (futhark-find-closest-of-keywords-backward '("for" "while"))
                        (futhark-is-beginning-of-line-text)
                        (+ (current-column) futhark-indent-level))
@@ -274,7 +265,7 @@ constituents match each other's indentation."
        ;; the matching "let" or "loop" column plus one indent level.
        (save-excursion
          (and (futhark-backward-part)
-              (looking-at "=$")
+              (looking-at "=[[:space:]]*$")
               (futhark-find-closest-of-keywords-backward '("let" "loop"))
               (+ (current-column) futhark-indent-level)))
 
@@ -282,7 +273,7 @@ constituents match each other's indentation."
        ;; the matching "let" or "loop" column.
        (save-excursion
          (and (futhark-backward-part)
-              (looking-at "\\<in$")
+              (looking-at "\\<in[[:space:]]*$")
               (futhark-find-closest-of-keywords-backward '("let" "loop"))
               (current-column)))
 
@@ -290,16 +281,24 @@ constituents match each other's indentation."
        ;; the matching "fn" column plus one indent level.
        (save-excursion
          (and (futhark-backward-part)
-              (looking-at "=>$")
+              (looking-at "=>[[:space:]]*$")
               (futhark-find-keyword-backward "fn")
               (+ (current-column) futhark-indent-level)))
 
        ;; Otherwise, if the line starts with "let" or "loop", align to a
-       ;; previous "let" or "loop", or even "unsafe".
+       ;; previous "let" or "loop".
        (save-excursion
          (and (or (looking-at "let")
                   (looking-at "loop"))
-              (futhark-find-closest-of-keywords-backward '("let" "loop" "unsafe"))
+              (futhark-find-closest-of-keywords-backward '("let" "loop"))
+              (current-column)))
+
+       ;; Otherwise, if the line starts with "let" or "loop", and the above rule
+       ;; did not result in anything, align to a previous "unsafe".
+       (save-excursion
+         (and (or (looking-at "let")
+                  (looking-at "loop"))
+              (futhark-find-keyword-backward "unsafe")
               (current-column)))
 
        ;; Otherwise, if inside a parenthetical structure, align to its
@@ -393,6 +392,7 @@ Set mark and return t if found; return nil otherwise."
         (then-else-count 0)
         ;; The same with "let", "loop", and "in".
         (let-in-count 0)
+        (just-had-let nil)
         ;; Only look in the current paren-delimited code.
         (topp (save-excursion (or (ignore-errors
                                     (backward-up-list 1)
@@ -412,6 +412,7 @@ Set mark and return t if found; return nil otherwise."
     (while (and (not result)
                 (futhark-backward-part)
                 (>= (point) topp))
+
       (cond ((futhark-looking-at-word "if")
              (setq if-else-count (max 0 (1- if-else-count))))
             ((futhark-looking-at-word "then")
@@ -419,11 +420,16 @@ Set mark and return t if found; return nil otherwise."
             ((futhark-looking-at-word "else")
              (incf if-else-count)
              (incf then-else-count))
-            ((or (futhark-looking-at-word "let")
-                 (futhark-looking-at-word "loop"))
+            ((and (or (futhark-looking-at-word "let")
+                      (futhark-looking-at-word "loop"))
+                  (not just-had-let))
+             (setq just-had-let t)
              (setq let-in-count (max 0 (1- let-in-count))))
             ((futhark-looking-at-word "in")
+             (setq just-had-let nil)
              (incf let-in-count))
+            ((futhark-looking-at-word "do")
+             (setq just-had-let nil))
             )
 
       (when (and (futhark-looking-at-word word)
@@ -438,11 +444,12 @@ Set mark and return t if found; return nil otherwise."
                      (and (or (string= "let" word)
                               (string= "loop" word))
                           (= 0 let-in-count))
-                     (not (string= "if" word))
-                     (not (string= "then" word))
-                     (not (string= "else" word))
-                     (not (string= "let" word))
-                     (not (string= "loop" word))
+                     (and
+                      (not (string= "if" word))
+                      (not (string= "then" word))
+                      (not (string= "else" word))
+                      (not (string= "let" word))
+                      (not (string= "loop" word)))
                      ))
         (setq result (point))
         ))
