@@ -67,3 +67,6 @@ core.*
 
 # Ignore temporary backup directories.
 *-backup
+
+# Ignore executables
+*.exe
