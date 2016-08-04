@@ -1,0 +1,2552 @@
+
+==================== FINAL INTERFACE ====================
+2016-08-04 10:11:18.1826071 UTC
+
+interface futha_GJqcXjzuDAgKwUW9oTf4td:Language.Futhark.Attributes 7103
+  interface hash: 6bf9dd1c0ac8cc3f2799b7b9ddcd1196
+  ABI hash: e861dc9941e2e7096b6d95a0084ef6eb
+  export-list hash: de7e1f577bb96461a08e7bb9852f4f33
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: ff643aaa589cdfa444fd7da3e999f4d1
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Language.Futhark.Attributes.addAliases
+  Language.Futhark.Attributes.aliases
+  Language.Futhark.Attributes.arrayDims
+  Language.Futhark.Attributes.arrayDims'
+  Language.Futhark.Attributes.arrayOf
+  Language.Futhark.Attributes.arrayRank
+  Language.Futhark.Attributes.arrayType
+  Language.Futhark.Attributes.builtInFunctions
+  Language.Futhark.Attributes.commutative
+  Language.Futhark.Attributes.contractTypeBase
+  Language.Futhark.Attributes.decLoc
+  Language.Futhark.Attributes.diet
+  Language.Futhark.Attributes.fromParam
+  Language.Futhark.Attributes.fromStruct
+  Language.Futhark.Attributes.funsFromProg
+  Language.Futhark.Attributes.isFun
+  Language.Futhark.Attributes.isFunOrType
+  Language.Futhark.Attributes.isMod
+  Language.Futhark.Attributes.isSig
+  Language.Futhark.Attributes.isType
+  Language.Futhark.Attributes.lambdaReturnType
+  Language.Futhark.Attributes.modsFromProg
+  Language.Futhark.Attributes.nameToQualName
+  Language.Futhark.Attributes.nestedDims
+  Language.Futhark.Attributes.nestedDims'
+  Language.Futhark.Attributes.paramDeclaredType
+  Language.Futhark.Attributes.paramType
+  Language.Futhark.Attributes.patIdents
+  Language.Futhark.Attributes.patNameSet
+  Language.Futhark.Attributes.peelArray
+  Language.Futhark.Attributes.primType
+  Language.Futhark.Attributes.removeNames
+  Language.Futhark.Attributes.removeShapeAnnotations
+  Language.Futhark.Attributes.returnType
+  Language.Futhark.Attributes.setAliases
+  Language.Futhark.Attributes.setArrayShape
+  Language.Futhark.Attributes.setUniqueness
+  Language.Futhark.Attributes.sigsFromProg
+  Language.Futhark.Attributes.similarTo
+  Language.Futhark.Attributes.subtypeOf
+  Language.Futhark.Attributes.toParam
+  Language.Futhark.Attributes.toStruct
+  Language.Futhark.Attributes.toStructural
+  Language.Futhark.Attributes.tupleArrayElemToType
+  Language.Futhark.Attributes.tupleArrayElemUniqueness
+  Language.Futhark.Attributes.typeOf
+  Language.Futhark.Attributes.typesFromProg
+  Language.Futhark.Attributes.unique
+  Language.Futhark.Attributes.uniqueness
+  Language.Futhark.Attributes.vacuousShapeAnnotations
+  Language.Futhark.Attributes.valueType
+  Language.Futhark.Attributes.UncheckedArrayType
+  Language.Futhark.Attributes.UncheckedExp
+  Language.Futhark.Attributes.UncheckedFunDef
+  Language.Futhark.Attributes.UncheckedIdent
+  Language.Futhark.Attributes.UncheckedLambda
+  Language.Futhark.Attributes.UncheckedPattern
+  Language.Futhark.Attributes.UncheckedProg
+  Language.Futhark.Attributes.UncheckedProgWithHeaders
+  Language.Futhark.Attributes.UncheckedType
+  Language.Futhark.Attributes.UncheckedTypeDecl
+  Language.Futhark.Attributes.UncheckedUserType
+  Language.Futhark.Attributes.UncheckedUserTypeDecl
+  Language.Futhark.Syntax.NoInfo{Language.Futhark.Syntax.NoInfo}
+module dependencies: Futhark.Representation.Primitive
+                     Futhark.Util.Pretty Language.Futhark.Core Language.Futhark.Syntax
+package dependencies: array-0.5.1.0@array_67iodizgJQIIxYVTp4emlA
+                      base-4.8.2.0 binary-0.7.5.0@binar_3uXFWMoAGBg0xKP9MHKRwi
+                      bytestring-0.10.6.0@bytes_6VWy06pWzJq9evDvK2d4w6
+                      containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU
+                      deepseq-1.4.1.1@deeps_6vMKxt5sPFR0XsbRWvvq59 ghc-prim-0.4.0.0
+                      hashable-1.2.4.0@hasha_EalUWgp8NarBYWPbvYAD8I integer-gmp-1.0.0.0
+                      mainland-pretty-0.4.1.4@mainl_KnIUy4mTEecCOphhB8nGQj
+                      mtl-2.2.1@mtl_Aue4leSeVkpKLsfHIV51E8
+                      srcloc-0.5.1.0@srclo_IrVSavrho0x78ZSJU92mrC
+                      text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne
+                      transformers-0.4.2.0@trans_GZTjP9K5WFq01xC9BAGQpF
+                      unordered-containers-0.2.7.0@unord_2BLx4faR35mFWLJj5xiBgm
+orphans: base-4.8.2.0:GHC.Base base-4.8.2.0:GHC.Float
+         binary-0.7.5.0@binar_3uXFWMoAGBg0xKP9MHKRwi:Data.Binary.Generic
+         bytestring-0.10.6.0@bytes_6VWy06pWzJq9evDvK2d4w6:Data.ByteString.Builder
+         hashable-1.2.4.0@hasha_EalUWgp8NarBYWPbvYAD8I:Data.Hashable.Generic
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Lazy
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Show
+         transformers-0.4.2.0@trans_GZTjP9K5WFq01xC9BAGQpF:Control.Monad.Trans.Error
+family instance modules: base-4.8.2.0:Control.Applicative
+                         base-4.8.2.0:Data.Either base-4.8.2.0:Data.Functor.Identity
+                         base-4.8.2.0:Data.Monoid base-4.8.2.0:Data.Type.Equality
+                         base-4.8.2.0:Data.Void base-4.8.2.0:GHC.Exts
+                         base-4.8.2.0:GHC.Generics
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.IntMap.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.IntSet.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Map.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Sequence
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Set.Base
+                         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text
+                         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Lazy
+                         unordered-containers-0.2.7.0@unord_2BLx4faR35mFWLJj5xiBgm:Data.HashMap.Base
+                         unordered-containers-0.2.7.0@unord_2BLx4faR35mFWLJj5xiBgm:Data.HashSet
+import  -/  base-4.8.2.0:Data.Foldable 2ce969969ad5231eb40bd713f94f05ad
+import  -/  base-4.8.2.0:Data.List 3f0782c8d4bf50eecefcd5ea1798aac8
+import  -/  base-4.8.2.0:Data.Maybe 1cb58de2b04ee3c0c0a7dc9201184aff
+import  -/  base-4.8.2.0:Data.Monoid 85b292b52bfd80ed619cddb767d638d3
+import  -/  base-4.8.2.0:Data.OldList d8fd80b0e14aa085ce6219cd89dad356
+import  -/  base-4.8.2.0:Data.Tuple 012ad951a59a9d85fe1de36a2f012986
+import  -/  base-4.8.2.0:GHC.Base a4939789b2cfd60b36ed163e56a623cd
+import  -/  base-4.8.2.0:GHC.List 0c736920522bbd14b770342776012ab6
+import  -/  base-4.8.2.0:GHC.Num 9f42750c866f5832ca565146bd660c60
+import  -/  base-4.8.2.0:Prelude 694dcaf039efe62df1c44834e2dbd2fb
+import  -/  Futhark.Representation.Primitive ad708969d75463632f432066d13a8ed9
+  Float32 2176f503996eb953a27fbeaac32b5c16
+  Float32Value a74dfc7ccc8fbe9ecec532f7690b32b6
+  Float64 bfbc07c1c559fc0775d129150a9021ec
+  Float64Value 4da7df06719f12f4c06c9834acb520e5
+  FloatType 306ea34947128e48fabb2e3ff22f5fb7
+  FloatValue 70b046f18760096ae622b1ade242ee60
+  Int16 9ceab2fd09cc166fa82dd8dd9e5e4963
+  Int16Value 2427a2e2a3f09df7983a467cf6ff0f0b
+  Int32 c8bb888c9065bd0de2acd136a34310f8
+  Int32Value 1cc8921a6207b6e44e5c479f4828afb3
+  Int64 d3f88b427a9b6bda51aaa9a883182864
+  Int64Value 5d3cc4c46bc2e78972c4b08cd15964f3
+  Int8 85b781b001e8fa5a5e965bccbddcbd1b
+  Int8Value 0b32dcca6fd757147c28b19ac468f53e
+  IntType 41164198bc42f58dac94bb14a13a0e54
+  IntValue a1ae23b5d330aae7ec0f83454a1112b3
+import  -/  Language.Futhark.Core 4d8fcc01b4c0611c71fec8b2caa41d68
+  Name 6f31ab23d447a5092c4e7208963f26d4
+  Nonunique eae378832b3b070431ffe9fc1895641f
+  QualName 547b1c7190e0b3c04378e512a39bd687
+  Unique 3fad80de32194c1e96604afb5cd6ed8b
+  Uniqueness 1ee4326daed7f9d740b94f689a248cad
+  nameFromString 1071edbb390f28a0ddf396f3a2b03035
+import  -/  Language.Futhark.Syntax 9c46ca7a7ca6ac482268adadc8b8aab8
+  exports: 2ed8a56670416081f2c686728d38039e
+  Abs 8d1f3394d925fadd1b076f74a9cbe17e
+  AnonymFun a195fb391c746733e87a90e86990f7b9
+  AnyDim f01e61db3f12129acc7621b7efc51571
+  Apply e90bee2d81058deb29f742b75f2dce7d
+  Array 1e4f81f802f75e1fe0b55252e7a41882
+  ArrayArrayElem af8f429fbdaffb36e9b6b1c4f3014592
+  ArrayLit ac1fb27c9986ae1eb710133c6f6bf6c1
+  ArrayShape 851f9142d8405bbec3911569df2c64ef
+  ArrayTypeBase f5e74c92dfc57aa431b0945cf61909a2
+  ArrayValue 156e881ab96e23edb85ec89bf2341fbf
+  Band 27322b4aa9bdc7283ab1f999bb7a78d0
+  BinOp 485e87f607124e9ddc2af3788570d0e1
+  BinOp d07c5b7b353387a89237c9062561c998
+  BinOpFun 2500c68e772a3c8d5e24e5c45b28aa1c
+  Bool 22f24e2a97d65a28cf93d6975457d01f
+  BoolValue 2cb8af0f003ee690e254619e63cf7ad5
+  Bor 757497e6793d99086eb7428d16270f52
+  CompTypeBase 5bf7b66e4610350720f1714abf9f4913
+  Complement f0d06122ea27770763a5e790ab47d564
+  Concat f6651a4011bbc595257345ef9b9bc308
+  Consume 63277df3e8a9af5f923c473f0bac8545
+  Copy 3702d1534a2d1d76981aa9187dbb35e9
+  CurryBinOpLeft 343d18735d5855ac6124148596b92b08
+  CurryBinOpRight a51e540368f9b84c0477446088650d67
+  CurryFun dc9738adbec3ab605d6ad28a029d5ecd
+  DecBase 0fa33a778e20c3a3e6c1bcf68b69cf89
+  Diet db30d13db6ddfb68145b68842fcdae94
+  DimDecl 1e77a56c44dbb158500633823a0c068b
+  DoLoop 0d29fe3f586863eea53723e3fc29225c
+  Empty 5c837bd6e640feafd0728501007dcdfc
+  Equal b17c1f9a4aaab4f3b62b2e002f5e5162
+  ExpBase 970de88f5513e7faf9ba9d7c216b7e50
+  Filter 8d15e0a9f6f33930ea1fa912fa50c886
+  FloatType 436cdfc2677cafeb9fbde773e7c16ae3
+  FloatValue 2c4a85679bb0897047c0923dc76ce72d
+  FunDec 112bc936ce8e532435cd8c6ebf7aee0e
+  FunDef c435a1574ef7651347dbd15fbe4ea691
+  FunDefBase 7a0c20ff6ce6f0f3284eed57b4934773
+  FunOrTypeDec 466ec91cc0927bd4753d9b2989cd9763
+  FunOrTypeDecBase d421b41fdf8c94dbd148dd9f652f8857
+  Id 216052428454a2fa9a5f1d3737fa6cde
+  Ident 59ccb724aec8f127e87e9938c8ab8280
+  IdentBase 922bd38dbf61b406ded790909459e61d
+  If 596285d74125d9d9cf02dcc900ec5702
+  Index f62a0204861f35c6a6e3143a63c0f8b1
+  Info 63131c5250af54fad98f1e43b3efc3e3
+  Info 36b022f74c11b45b268c679b91cb8a0a
+  Iota c6d8445e503dc73c39a39e25e0494269
+  LambdaBase 970de88f5513e7faf9ba9d7c216b7e50
+  LetPat d7a5258c8c6da2ea8f5e69cb789ca84f
+  LetWith 01593fa0d0a723f4a68d29959e9db815
+  Literal 5fd6fa028ebbd11a8b65b94576d056be
+  LogAnd bb245d90990e88ac94abde5f1c24d8ed
+  LogOr 91ea1b315804c5783f394eafc26f50d1
+  Map 29bf7c1f1d142b87c628050e7f9cbf93
+  MapLike 5180c4786474dc30453e68e9bf1c1911
+  ModDec 27c63fc7b7b171a1813b56208211c89b
+  ModDef fac43626e79a68bbc7993519fa22d823
+  ModDefBase 0fa33a778e20c3a3e6c1bcf68b69cf89
+  Names 9a44f70b738796da9c0f0fb752ffe928
+  Negate d496018cafb97f23607a724760e5fc61
+  NoInfo 338b421e140056e4e90f1413ab4ee58a
+  NoInfo 13904bef35c7220bfbb9b2885b4fa96a
+  Not cf1c42c1164c8118343c199b7866233a
+  Observe 807eb9926c28e4a4e72af738e4c49160
+  Param 334ffe9e7956ce245c5d3df44ee59760
+  ParamBase 3a9c647c4f90fbf4f3c0ed2a825c4fe2
+  Partition dda2c2270832d194d762fe03d7397cd9
+  PatternBase a287655e57bb05ee92e568d795ff4dac
+  Plus b70608b0209da908d279d65394766c19
+  Pow 7492e9b7d4fbdad73688732854fa866b
+  Prim 85308c461427925e7adc803d76543155
+  PrimArray 9fe9972a917a82585fa23943891f5781
+  PrimArrayElem 8ac8ae819c405cf24d16fcaaea89493e
+  PrimType 38fd8ca4b903061d48e25eb1353c4a5e
+  PrimValue 009ddbc1d75692e74a912dae9cb44f98
+  PrimValue 400b85f01ad530ac1a7fa288900f4e88
+  ProgBase be3df31fb3649abb3aedb26e333c7284
+  ProgBaseWithHeaders 3bb58d2aaa92639eabb3981dfc26d67b
+  Rank 2072c62192c51e3a9555aa60be3e88cb
+  Rank 7a74fb247e0302d6f92110f5fb7a641c
+  Rearrange 34e77ff1aa8c7086b5b00d9a3ad5653a
+  RedLike 571d89d6f434a723da42410e98dbb4ae
+  Reduce a0f438bdac3541c5b286720673d819eb
+  Replicate 888c81678561c574ff8b4266cd61ba47
+  Reshape 78fc20393bf70d1b9599cff8bd3494de
+  Rotate 2b6741a4bafaed9e6d4362d966d6fd86
+  Scan be1b1cf74c970c595933caeeb68b283e
+  Sequential f85945c236c0f709c757dd342e757959
+  ShapeDecl 81fda876a8c967bf3418c4190f6c0be5
+  ShapeDecl 23c47b362b456c0c51d94a86b9652b66
+  SigDec 4be25ff6b3104252a52e04ca6378c3f2
+  SigDef 52db936e3669a0c22db78bbbba439d8c
+  SigDefBase 6858681131861f07ed3cbf6b3f8a38aa
+  Signed 3f5afb86dc9393ac0e09070de4c3d8ca
+  SignedValue 24e0b60e6ca95e499060a7d8da03e982
+  Signum d3f6b9ef62cccfc8003ef0d2a44427cf
+  Size 02d233ae846752fbfd998f3a5fd48e59
+  Split 6a876840f4c60a027fe052583ddca120
+  Stream 05e1504d08ae6c4bff7d9f93214f3ca5
+  StructTypeBase 41936f2bbbf33d32aa5ab83008cf65e3
+  Times a513496fb7f24e5c3081ea40b8e88f75
+  ToFloat 030cf3c818e54fdb00cd465ee4e97abd
+  ToSigned cb84ff65a8b723dc4c7147567e7327da
+  ToUnsigned 01c8d08c489cf113f2bd8527fc44e55d
+  Transpose c0d48f326ef49993a4e03c7936c8b3bd
+  TupLit ac805e1f9e74d84e8a3fc873b8c68e93
+  TupValue 4ca949baeab6a96417ebd8e3542c8e18
+  Tuple 2420ecaf029b632cf31644dfa179bdfb
+  TupleArray 21cd403f53db469a667c26c2cfb0d22d
+  TupleArrayElem fb8f981fe3a2b7256e2f92c8ca44fd4e
+  TupleArrayElemTypeBase f5e74c92dfc57aa431b0945cf61909a2
+  TupleDiet fb9bf94b2af95c1b3dba78d607867453
+  TupleIndex a4a0d0ece4b91dd58ffc5c92a178e121
+  TuplePattern 9e9944cdc057f2128836e47a957638ec
+  TypeBase 99bd87deac1e318133c7179dfa4bd510
+  TypeDec 436cf8b1e6a4595105dc1da64102dc12
+  TypeDecl ef150b4b6b31cda040e0bafd352b0b90
+  TypeDeclBase 2ed3ebcf91b3218763d1480f708a9cc9
+  TypeDef 8da75dd61b177451e4637e7343686372
+  TypeDefBase 2da1e54d830a3cc0c1b5c70a77ffb606
+  UnOp 465708f61585968853c7938fe4122b04
+  UnOpFun e61131aabd93d91a40f53a295712a653
+  Unsafe 64665d68ebbcc2827e8b5c35fad5b0ae
+  Unsigned 83e2db8f9f9e71d94a82bd4724685a7a
+  UnsignedValue 1316d409cf6c5e0606b61f48edb7ef7b
+  Unzip d1ff5106f6ff142fab748ef5195e8141
+  UserArray 971190e58a6655f47251dda834e41507
+  UserPrim 2e7377c19acfad8a5d82eb0a598288ba
+  UserTuple de1bbfb142d3791c2d285a500a93c90c
+  UserType 5e7052041c39992b8ea65ca85f152e71
+  UserUnique 4c4c9e8bfc6436ac39ebe2c13413801a
+  Value f4ef904aac52050dcf1785f30dabc683
+  Var 806912059791476e6d6ade29856b8547
+  Wildcard 0387e055e04a700fa552c7b03487651f
+  Write cb609669da1351cd520bcd7c4b2dfe16
+  Xor 5de7dc814f4694e2f907f3d8bdc8f4cb
+  Zip c60e80d5d3dc52f44cff6c744fd3c627
+  declaredType 4843c6ccad53eb8dd81253702a8033cf
+  expandedType 6dab40120c5386dcbb2d2f0b8ddf8493
+  identName 39079feb1e33b12fb8e585563e4bdb0a
+  identType 413913c09e04e82fa4ef7ea945d2bab9
+  paramTypeDecl 1b70b35b7808d44867bb8ce7394d1b21
+  progDecs 033fd6a3ba9a40df45b17194d8b43d83
+  shapeDims 63c501f82e870cf9d68a06b43cccd893
+  shapeRank 43bf5e56442881388e8fd388347ea00f
+  stripDims d406e93a4ef4c3e9f6cc49a93f70f0d8
+  unInfo bb6dc3203c60f1a550d6efa411fdaabe
+import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
+import  -/  hashable-1.2.4.0@hasha_EalUWgp8NarBYWPbvYAD8I:Data.Hashable cd89f02614e821fc8b0b3d7bd7501891
+import  -/  hashable-1.2.4.0@hasha_EalUWgp8NarBYWPbvYAD8I:Data.Hashable.Class 15f774badf396c367b54dbfebb40dc74
+import  -/  mtl-2.2.1@mtl_Aue4leSeVkpKLsfHIV51E8:Control.Monad.Writer cf71944512d0bdc490a44e3d3b7f624e
+import  -/  srcloc-0.5.1.0@srclo_IrVSavrho0x78ZSJU92mrC:Data.Loc f4b2b54fab2c8be1b1da75545acb27c8
+import  -/  unordered-containers-0.2.7.0@unord_2BLx4faR35mFWLJj5xiBgm:Data.HashMap.Base 83b425f9cc90deec808599ba597d43b7
+import  -/  unordered-containers-0.2.7.0@unord_2BLx4faR35mFWLJj5xiBgm:Data.HashMap.Lazy bffc90a65c6980b7be22339594c53bf2
+import  -/  unordered-containers-0.2.7.0@unord_2BLx4faR35mFWLJj5xiBgm:Data.HashSet 8d6c31d16429f694b6bcb52291c6404c
+0421a208289cdcc9b1a83016b452e0cd
+  $w$s$wupdateOrSnocWithKey ::
+    (Language.Futhark.Core.Name -> v -> v -> v)
+    -> GHC.Prim.ByteArray#
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> v
+    -> GHC.Prim.Array#
+         (Data.HashMap.Base.Leaf Language.Futhark.Core.Name v)
+    -> GHC.Prim.Array#
+         (Data.HashMap.Base.Leaf Language.Futhark.Core.Name v)
+  {- Arity: 6, Strictness: <L,C(C1(C1(U)))><L,U><L,U><L,U><L,U><S,U>,
+     Inline: [0],
+     Unfolding: (\ @ v
+                   w :: Language.Futhark.Core.Name -> v -> v -> v
+                   ww :: GHC.Prim.ByteArray#
+                   ww1 :: GHC.Prim.Int#
+                   ww2 :: GHC.Prim.Int#
+                   w1 :: v
+                   w2 :: GHC.Prim.Array#
+                           (Data.HashMap.Base.Leaf Language.Futhark.Core.Name v) ->
+                 letrec {
+                   $wgo :: GHC.Prim.ByteArray#
+                           -> GHC.Prim.Int#
+                           -> GHC.Prim.Int#
+                           -> v
+                           -> GHC.Prim.Array#
+                                (Data.HashMap.Base.Leaf Language.Futhark.Core.Name v)
+                           -> GHC.Prim.Int#
+                           -> GHC.Prim.Int#
+                           -> GHC.Prim.Array#
+                                (Data.HashMap.Base.Leaf Language.Futhark.Core.Name v)
+                     {- Arity: 7, Strictness: <L,U><L,U><L,U><L,U><S,U><L,U><L,U>,
+                        Inline: [0] -}
+                   = \ ww3 :: GHC.Prim.ByteArray#
+                       ww4 :: GHC.Prim.Int#
+                       ww5 :: GHC.Prim.Int#
+                       w3 :: v
+                       ww6 :: GHC.Prim.Array#
+                                (Data.HashMap.Base.Leaf Language.Futhark.Core.Name v)
+                       ww7 :: GHC.Prim.Int#
+                       ww8 :: GHC.Prim.Int# ->
+                     let {
+                       nt :: Data.Text.Internal.Text = Data.Text.Internal.Text ww3 ww4 ww5
+                     } in
+                     case GHC.Prim.tagToEnum#
+                            @ GHC.Types.Bool
+                            (GHC.Prim.>=# ww7 ww8) of wild {
+                       GHC.Types.False
+                       -> case GHC.Prim.indexArray#
+                                 @ (Data.HashMap.Base.Leaf Language.Futhark.Core.Name v)
+                                 ww6
+                                 ww7 of ds { (##) ipv3 ->
+                          case ipv3 of wild1 { Data.HashMap.Base.L kx y ->
+                          case kx
+                                 `cast`
+                               (Language.Futhark.Core.NTCo:Name[0]) of wild2 { Data.Text.Internal.Text dt3 dt4 dt5 ->
+                          case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.==# ww5 dt5) of wild3 {
+                            GHC.Types.False -> $wgo ww3 ww4 ww5 w3 ww6 (GHC.Prim.+# ww7 1) ww8
+                            GHC.Types.True
+                            -> case {__pkg_ccall text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne _hs_text_memcmp GHC.Prim.ByteArray#
+                                                                                                          -> GHC.Prim.Word#
+                                                                                                          -> GHC.Prim.ByteArray#
+                                                                                                          -> GHC.Prim.Word#
+                                                                                                          -> GHC.Prim.Word#
+                                                                                                          -> GHC.Prim.State#
+                                                                                                               GHC.Prim.RealWorld
+                                                                                                          -> (# GHC.Prim.State#
+                                                                                                                  GHC.Prim.RealWorld,
+                                                                                                                GHC.Prim.Int# #)}
+                                      ww3
+                                      (GHC.Prim.int2Word# ww4)
+                                      dt3
+                                      (GHC.Prim.int2Word# dt4)
+                                      (GHC.Prim.int2Word# ww5)
+                                      GHC.Prim.realWorld# of wild4 { (#,#) ds11 ds12 ->
+                               case GHC.Prim.narrow32Int# ds12 of wild5 {
+                                 DEFAULT -> $wgo ww3 ww4 ww5 w3 ww6 (GHC.Prim.+# ww7 1) ww8
+                                 0
+                                 -> case GHC.Prim.thawArray#
+                                           @ (Data.HashMap.Base.Leaf Language.Futhark.Core.Name v)
+                                           @ GHC.Prim.RealWorld
+                                           ww6
+                                           0
+                                           (GHC.Prim.sizeofArray#
+                                              @ (Data.HashMap.Base.Leaf
+                                                   Language.Futhark.Core.Name v)
+                                              ww6)
+                                           GHC.Prim.realWorld# of ds1 { (#,#) ipv4 ipv5 ->
+                                    case GHC.Prim.writeArray#
+                                           @ GHC.Prim.RealWorld
+                                           @ (Data.HashMap.Base.Leaf Language.Futhark.Core.Name v)
+                                           ipv5
+                                           ww7
+                                           (Data.HashMap.Base.L
+                                              @ Language.Futhark.Core.Name
+                                              @ v
+                                              nt `cast` (Sym (Language.Futhark.Core.NTCo:Name[0]))
+                                              (w nt
+                                                   `cast`
+                                                 (Sym (Language.Futhark.Core.NTCo:Name[0]))
+                                                 w3
+                                                 y))
+                                           ipv4 of s' { DEFAULT ->
+                                    case GHC.Prim.unsafeFreezeArray#
+                                           @ GHC.Prim.RealWorld
+                                           @ (Data.HashMap.Base.Leaf Language.Futhark.Core.Name v)
+                                           ipv5
+                                           s' of ds2 { (#,#) ipv6 ipv7 ->
+                                    ipv7 } } } } } } } } }
+                       GHC.Types.True
+                       -> case GHC.Prim.newArray#
+                                 @ (Data.HashMap.Base.Leaf Language.Futhark.Core.Name v)
+                                 @ GHC.Prim.RealWorld
+                                 (GHC.Prim.+# ww8 1)
+                                 (Data.HashMap.Array.undefinedElem
+                                    @ (Data.HashMap.Base.Leaf Language.Futhark.Core.Name v))
+                                 GHC.Prim.realWorld# of ds { (#,#) ipv3 ipv4 ->
+                          case GHC.Prim.copyArray#
+                                 @ (Data.HashMap.Base.Leaf Language.Futhark.Core.Name v)
+                                 @ GHC.Prim.RealWorld
+                                 ww6
+                                 0
+                                 ipv4
+                                 0
+                                 ww8
+                                 ipv3 of s2 { DEFAULT ->
+                          case GHC.Prim.writeArray#
+                                 @ GHC.Prim.RealWorld
+                                 @ (Data.HashMap.Base.Leaf Language.Futhark.Core.Name v)
+                                 ipv4
+                                 ww8
+                                 (Data.HashMap.Base.L
+                                    @ Language.Futhark.Core.Name
+                                    @ v
+                                    nt `cast` (Sym (Language.Futhark.Core.NTCo:Name[0]))
+                                    w3)
+                                 s2 of s' { DEFAULT ->
+                          case GHC.Prim.unsafeFreezeArray#
+                                 @ GHC.Prim.RealWorld
+                                 @ (Data.HashMap.Base.Leaf Language.Futhark.Core.Name v)
+                                 ipv4
+                                 s' of ds1 { (#,#) ipv5 ipv6 ->
+                          ipv6 } } } } }
+                 } in
+                 $wgo
+                   ww
+                   ww1
+                   ww2
+                   w1
+                   w2
+                   0
+                   (GHC.Prim.sizeofArray#
+                      @ (Data.HashMap.Base.Leaf Language.Futhark.Core.Name v)
+                      w2)) -}
+93f01916efd4c7aa5eebae468562de98
+  $w$sunsafeInsert ::
+    GHC.Prim.ByteArray#
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> v
+    -> Data.HashMap.Base.HashMap Language.Futhark.Core.Name v
+    -> Data.HashMap.Base.HashMap Language.Futhark.Core.Name v
+  {- Arity: 5, Strictness: <L,U><L,U><L,U><L,U><S,1*U>, Inline: [0],
+     Unfolding: (\ @ v
+                   ww :: GHC.Prim.ByteArray#
+                   ww1 :: GHC.Prim.Int#
+                   ww2 :: GHC.Prim.Int#
+                   w :: v
+                   w1 :: Data.HashMap.Base.HashMap Language.Futhark.Core.Name v ->
+                 case {__pkg_ccall hashable-1.2.4.0@hasha_EalUWgp8NarBYWPbvYAD8I hashable_fnv_hash_offset GHC.Prim.ByteArray#
+                                                                                                          -> GHC.Prim.Int#
+                                                                                                          -> GHC.Prim.Int#
+                                                                                                          -> GHC.Prim.Int#
+                                                                                                          -> GHC.Prim.State#
+                                                                                                               GHC.Prim.RealWorld
+                                                                                                          -> (# GHC.Prim.State#
+                                                                                                                  GHC.Prim.RealWorld,
+                                                                                                                GHC.Prim.Int# #)}
+                        ww
+                        (GHC.Prim.narrow32Int# (GHC.Prim.uncheckedIShiftL# ww1 1))
+                        (GHC.Prim.narrow32Int# (GHC.Prim.uncheckedIShiftL# ww2 1))
+                        1534328996
+                        GHC.Prim.realWorld# of wild { (#,#) ds ds1 ->
+                 case Language.Futhark.Attributes.$wa
+                        @ v
+                        @ GHC.Prim.RealWorld
+                        (GHC.Prim.int2Word# (GHC.Prim.narrow32Int# ds1))
+                        ww
+                        ww1
+                        ww2
+                        w
+                        0
+                        w1
+                        GHC.Prim.realWorld# of ds2 { (#,#) ipv ipv1 ->
+                 ipv1 } }) -}
+8843ca834aa872d09117a33db5ad8b01
+  $wa ::
+    GHC.Prim.Word#
+    -> GHC.Prim.ByteArray#
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> v
+    -> GHC.Prim.Int#
+    -> Data.HashMap.Base.HashMap Language.Futhark.Core.Name v
+    -> GHC.Prim.State# s
+    -> (# GHC.Prim.State# s,
+          Data.HashMap.Base.HashMap Language.Futhark.Core.Name v #)
+  {- Arity: 8,
+     Strictness: <L,U><L,U><L,U><L,U><L,U><L,U><S,1*U><L,U>,
+     Inline: [0] -}
+05253cc641aef6e2bbe11bf6bdffe6a8
+  $warrayOf ::
+    (Language.Futhark.Syntax.ArrayShape (shape vn),
+     GHC.Base.Monoid (as vn)) =>
+    Language.Futhark.Syntax.TypeBase shape as vn
+    -> shape vn
+    -> Language.Futhark.Core.Uniqueness
+    -> (# Language.Futhark.Syntax.ArrayTypeBase shape as vn #)
+  {- Arity: 5, HasNoCafRefs,
+     Strictness: <L,1*U(A,A,1*U(A,1*C1(C1(U)),A),A,A)><L,U(U,A,A)><S,1*U><L,U><L,U>,
+     Inline: [0],
+     Unfolding: (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   w :: Language.Futhark.Syntax.ArrayShape (shape vn)
+                   w1 :: GHC.Base.Monoid (as vn)
+                   w2 :: Language.Futhark.Syntax.TypeBase shape as vn
+                   w3 :: shape vn
+                   w4 :: Language.Futhark.Core.Uniqueness ->
+                 case w2 of wild {
+                   Language.Futhark.Syntax.Prim et
+                   -> (# Language.Futhark.Syntax.PrimArray
+                           @ shape
+                           @ as
+                           @ vn
+                           et
+                           w3
+                           w4
+                           (GHC.Base.mempty @ (as vn) w1) #)
+                   Language.Futhark.Syntax.Array ds
+                   -> case ds of wild1 {
+                        Language.Futhark.Syntax.PrimArray et shape1 ds1 als
+                        -> (# Language.Futhark.Syntax.PrimArray
+                                @ shape
+                                @ as
+                                @ vn
+                                et
+                                (GHC.Base.mappend
+                                   @ (shape vn)
+                                   (Language.Futhark.Syntax.$p3ArrayShape @ (shape vn) w)
+                                   w3
+                                   shape1)
+                                w4
+                                als #)
+                        Language.Futhark.Syntax.TupleArray et shape1 ds1
+                        -> (# Language.Futhark.Syntax.TupleArray
+                                @ shape
+                                @ as
+                                @ vn
+                                et
+                                (GHC.Base.mappend
+                                   @ (shape vn)
+                                   (Language.Futhark.Syntax.$p3ArrayShape @ (shape vn) w)
+                                   w3
+                                   shape1)
+                                w4 #) }
+                   Language.Futhark.Syntax.Tuple ts
+                   -> (# Language.Futhark.Syntax.TupleArray
+                           @ shape
+                           @ as
+                           @ vn
+                           (GHC.Base.map
+                              @ (Language.Futhark.Syntax.TypeBase shape as vn)
+                              @ (Language.Futhark.Syntax.TupleArrayElemTypeBase shape as vn)
+                              (\ ds :: Language.Futhark.Syntax.TypeBase shape as vn ->
+                               Language.Futhark.Attributes.typeToTupleArrayElem
+                                 @ shape
+                                 @ as
+                                 @ vn
+                                 w1
+                                 ds
+                                 w4)
+                              ts)
+                           w3
+                           w4 #) }) -}
+f33162bf86543928e3701f024a36f3ac
+  $warrayType ::
+    (Language.Futhark.Syntax.ArrayShape (shape vn),
+     GHC.Base.Monoid (as vn)) =>
+    GHC.Prim.Int#
+    -> Language.Futhark.Syntax.TypeBase shape as vn
+    -> Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Syntax.TypeBase
+         Language.Futhark.Syntax.Rank as vn
+  {- Arity: 5, HasNoCafRefs,
+     Strictness: <L,1*U(A,A,A,1*U,A)><L,U(U,A,A)><S,U><S,1*U><L,U>,
+     Inline: [0],
+     Unfolding: (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   w :: Language.Futhark.Syntax.ArrayShape (shape vn)
+                   w1 :: GHC.Base.Monoid (as vn)
+                   ww :: GHC.Prim.Int#
+                   w2 :: Language.Futhark.Syntax.TypeBase shape as vn
+                   w3 :: Language.Futhark.Core.Uniqueness ->
+                 case ww of ds {
+                   DEFAULT
+                   -> case Language.Futhark.Attributes.modifyShapeAnnotations
+                             @ shape
+                             @ vn
+                             @ Language.Futhark.Syntax.Rank
+                             @ as
+                             (let {
+                                g :: shape vn -> GHC.Types.Int
+                                = Language.Futhark.Syntax.shapeRank @ (shape vn) w
+                              } in
+                              (\ x :: shape vn -> g x)
+                                `cast`
+                              (<shape vn>_R
+                               ->_R Sym (Language.Futhark.Syntax.NTCo:Rank[0] <vn>_P)))
+                             w2 of wild {
+                        Language.Futhark.Syntax.Prim et
+                        -> Language.Futhark.Syntax.Array
+                             @ Language.Futhark.Syntax.Rank
+                             @ as
+                             @ vn
+                             (Language.Futhark.Syntax.PrimArray
+                                @ Language.Futhark.Syntax.Rank
+                                @ as
+                                @ vn
+                                et
+                                (GHC.Types.I# ds)
+                                  `cast`
+                                (Sym (Language.Futhark.Syntax.NTCo:Rank[0] <vn>_P))
+                                w3
+                                (GHC.Base.mempty @ (as vn) w1))
+                        Language.Futhark.Syntax.Array ds1
+                        -> case ds1 of wild1 {
+                             Language.Futhark.Syntax.PrimArray et shape1 ds2 als
+                             -> Language.Futhark.Syntax.Array
+                                  @ Language.Futhark.Syntax.Rank
+                                  @ as
+                                  @ vn
+                                  (Language.Futhark.Syntax.PrimArray
+                                     @ Language.Futhark.Syntax.Rank
+                                     @ as
+                                     @ vn
+                                     et
+                                     (case shape1
+                                             `cast`
+                                           (Language.Futhark.Syntax.NTCo:Rank[0]
+                                                <vn>_P) of wild2 { GHC.Types.I# y ->
+                                      (GHC.Types.I# (GHC.Prim.+# ds y))
+                                        `cast`
+                                      (Sym (Language.Futhark.Syntax.NTCo:Rank[0] <vn>_P)) })
+                                     w3
+                                     als)
+                             Language.Futhark.Syntax.TupleArray et shape1 ds2
+                             -> Language.Futhark.Syntax.Array
+                                  @ Language.Futhark.Syntax.Rank
+                                  @ as
+                                  @ vn
+                                  (Language.Futhark.Syntax.TupleArray
+                                     @ Language.Futhark.Syntax.Rank
+                                     @ as
+                                     @ vn
+                                     et
+                                     (case shape1
+                                             `cast`
+                                           (Language.Futhark.Syntax.NTCo:Rank[0]
+                                                <vn>_P) of wild2 { GHC.Types.I# y ->
+                                      (GHC.Types.I# (GHC.Prim.+# ds y))
+                                        `cast`
+                                      (Sym (Language.Futhark.Syntax.NTCo:Rank[0] <vn>_P)) })
+                                     w3) }
+                        Language.Futhark.Syntax.Tuple ts
+                        -> Language.Futhark.Syntax.Array
+                             @ Language.Futhark.Syntax.Rank
+                             @ as
+                             @ vn
+                             (Language.Futhark.Syntax.TupleArray
+                                @ Language.Futhark.Syntax.Rank
+                                @ as
+                                @ vn
+                                (GHC.Base.map
+                                   @ (Language.Futhark.Syntax.TypeBase
+                                        Language.Futhark.Syntax.Rank as vn)
+                                   @ (Language.Futhark.Syntax.TupleArrayElemTypeBase
+                                        Language.Futhark.Syntax.Rank as vn)
+                                   (\ ds1 :: Language.Futhark.Syntax.TypeBase
+                                               Language.Futhark.Syntax.Rank as vn ->
+                                    Language.Futhark.Attributes.typeToTupleArrayElem
+                                      @ Language.Futhark.Syntax.Rank
+                                      @ as
+                                      @ vn
+                                      w1
+                                      ds1
+                                      w3)
+                                   ts)
+                                (GHC.Types.I# ds)
+                                  `cast`
+                                (Sym (Language.Futhark.Syntax.NTCo:Rank[0] <vn>_P))
+                                w3) }
+                   0
+                   -> Language.Futhark.Attributes.removeShapeAnnotations
+                        @ shape
+                        @ as
+                        @ vn
+                        w
+                        w2 }) -}
+5ce01e8cd834c235cd561bee686b119d
+  $wcontractTypeBase ::
+    Language.Futhark.Syntax.ArrayShape (shape vn) =>
+    Language.Futhark.Syntax.TypeBase shape als vn
+    -> Language.Futhark.Syntax.UserType vn
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <L,U(A,A,A,C(U(U)),A)><S,1*U>, Inline: [0] -}
+064f14c845afb2fa71a5730a84945b33
+  $wlambdaReturnType ::
+    Language.Futhark.Syntax.LambdaBase Language.Futhark.Syntax.Info vn
+    -> Language.Futhark.Syntax.TypeBase
+         Language.Futhark.Syntax.Rank Language.Futhark.Syntax.NoInfo vn
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>, Inline: [0],
+     Unfolding: (\ @ vn
+                   w :: Language.Futhark.Syntax.LambdaBase
+                          Language.Futhark.Syntax.Info vn ->
+                 case w of wild {
+                   Language.Futhark.Syntax.AnonymFun ds ds1 t ds2
+                   -> Language.Futhark.Attributes.modifyShapeAnnotations
+                        @ Language.Futhark.Syntax.ShapeDecl
+                        @ vn
+                        @ Language.Futhark.Syntax.Rank
+                        @ Language.Futhark.Syntax.NoInfo
+                        (Language.Futhark.Attributes.lambdaReturnType1 @ vn)
+                          `cast`
+                        (<Language.Futhark.Syntax.ShapeDecl vn>_R
+                         ->_R Sym (Language.Futhark.Syntax.NTCo:Rank[0] <vn>_P))
+                        (Language.Futhark.Syntax.expandedType
+                           @ Language.Futhark.Syntax.Info
+                           @ vn
+                           t)
+                          `cast`
+                        (Language.Futhark.Syntax.NTCo:Info[0]
+                             <Language.Futhark.Syntax.StructTypeBase vn>_R)
+                   Language.Futhark.Syntax.CurryFun ds ds1 ds2 ds3
+                   -> Language.Futhark.Attributes.toStruct
+                        @ Language.Futhark.Syntax.Rank
+                        @ Language.Futhark.Syntax.Names
+                        @ vn
+                        ds2
+                          `cast`
+                        (Language.Futhark.Syntax.NTCo:Info[0]
+                             <Language.Futhark.Syntax.CompTypeBase vn>_R)
+                   Language.Futhark.Syntax.UnOpFun ds ds1 ds2 ds3
+                   -> Language.Futhark.Attributes.toStruct
+                        @ Language.Futhark.Syntax.Rank
+                        @ Language.Futhark.Syntax.Names
+                        @ vn
+                        ds2
+                          `cast`
+                        (Language.Futhark.Syntax.NTCo:Info[0]
+                             <Language.Futhark.Syntax.CompTypeBase vn>_R)
+                   Language.Futhark.Syntax.BinOpFun ds ds1 ds2 ds3 ds4
+                   -> Language.Futhark.Attributes.toStruct
+                        @ Language.Futhark.Syntax.Rank
+                        @ Language.Futhark.Syntax.Names
+                        @ vn
+                        ds3
+                          `cast`
+                        (Language.Futhark.Syntax.NTCo:Info[0]
+                             <Language.Futhark.Syntax.CompTypeBase vn>_R)
+                   Language.Futhark.Syntax.CurryBinOpLeft ds ds1 ds2 ds3 ds4
+                   -> Language.Futhark.Attributes.toStruct
+                        @ Language.Futhark.Syntax.Rank
+                        @ Language.Futhark.Syntax.Names
+                        @ vn
+                        ds3
+                          `cast`
+                        (Language.Futhark.Syntax.NTCo:Info[0]
+                             <Language.Futhark.Syntax.CompTypeBase vn>_R)
+                   Language.Futhark.Syntax.CurryBinOpRight ds ds1 ds2 ds3 ds4
+                   -> Language.Futhark.Attributes.toStruct
+                        @ Language.Futhark.Syntax.Rank
+                        @ Language.Futhark.Syntax.Names
+                        @ vn
+                        ds3
+                          `cast`
+                        (Language.Futhark.Syntax.NTCo:Info[0]
+                             <Language.Futhark.Syntax.CompTypeBase vn>_R) }) -}
+ad7455c74d1813f13d554b92071ecbe2
+  $wpatIdents ::
+    Language.Futhark.Syntax.PatternBase ty vn
+    -> [Language.Futhark.Syntax.IdentBase ty vn]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>, Inline: [0] -}
+1b325dd4ca3c2d68b226cbfc5d0cff84
+  $wpeelArray ::
+    Language.Futhark.Syntax.ArrayShape (shape vn) =>
+    GHC.Prim.Int#
+    -> Language.Futhark.Syntax.TypeBase shape as vn
+    -> GHC.Base.Maybe (Language.Futhark.Syntax.TypeBase shape as vn)
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,U(A,A,A,1*C1(U(U)),1*C1(C1(U)))><S,U><L,U>,
+     Inline: [0],
+     Unfolding: (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   w :: Language.Futhark.Syntax.ArrayShape (shape vn)
+                   ww :: GHC.Prim.Int#
+                   w1 :: Language.Futhark.Syntax.TypeBase shape as vn ->
+                 case ww of ds {
+                   DEFAULT
+                   -> case w1 of wild {
+                        DEFAULT
+                        -> GHC.Base.Nothing
+                             @ (Language.Futhark.Syntax.TypeBase shape as vn)
+                        Language.Futhark.Syntax.Array ds1
+                        -> case ds1 of wild1 {
+                             Language.Futhark.Syntax.PrimArray et shape1 ds2 ds3
+                             -> case Language.Futhark.Syntax.shapeRank
+                                       @ (shape vn)
+                                       w
+                                       shape1 of wild2 { GHC.Types.I# x ->
+                                case GHC.Prim.tagToEnum#
+                                       @ GHC.Types.Bool
+                                       (GHC.Prim.==# x ds) of wild3 {
+                                  GHC.Types.False
+                                  -> case Language.Futhark.Syntax.stripDims
+                                            @ (shape vn)
+                                            w
+                                            (GHC.Types.I# ds)
+                                            shape1 of wild4 {
+                                       GHC.Base.Nothing
+                                       -> GHC.Base.Nothing
+                                            @ (Language.Futhark.Syntax.TypeBase shape as vn)
+                                       GHC.Base.Just x1
+                                       -> GHC.Base.Just
+                                            @ (Language.Futhark.Syntax.TypeBase shape as vn)
+                                            (Language.Futhark.Syntax.Array
+                                               @ shape
+                                               @ as
+                                               @ vn
+                                               (Language.Futhark.Syntax.PrimArray
+                                                  @ shape
+                                                  @ as
+                                                  @ vn
+                                                  et
+                                                  x1
+                                                  ds2
+                                                  ds3)) }
+                                  GHC.Types.True
+                                  -> GHC.Base.Just
+                                       @ (Language.Futhark.Syntax.TypeBase shape as vn)
+                                       (Language.Futhark.Syntax.Prim @ shape @ as @ vn et) } }
+                             Language.Futhark.Syntax.TupleArray ts shape1 ds2
+                             -> case Language.Futhark.Syntax.shapeRank
+                                       @ (shape vn)
+                                       w
+                                       shape1 of wild2 { GHC.Types.I# x ->
+                                case GHC.Prim.tagToEnum#
+                                       @ GHC.Types.Bool
+                                       (GHC.Prim.==# x ds) of wild3 {
+                                  GHC.Types.False
+                                  -> case Language.Futhark.Syntax.stripDims
+                                            @ (shape vn)
+                                            w
+                                            (GHC.Types.I# ds)
+                                            shape1 of wild4 {
+                                       GHC.Base.Nothing
+                                       -> GHC.Base.Nothing
+                                            @ (Language.Futhark.Syntax.TypeBase shape as vn)
+                                       GHC.Base.Just x1
+                                       -> GHC.Base.Just
+                                            @ (Language.Futhark.Syntax.TypeBase shape as vn)
+                                            (Language.Futhark.Syntax.Array
+                                               @ shape
+                                               @ as
+                                               @ vn
+                                               (Language.Futhark.Syntax.TupleArray
+                                                  @ shape
+                                                  @ as
+                                                  @ vn
+                                                  ts
+                                                  x1
+                                                  ds2)) }
+                                  GHC.Types.True
+                                  -> GHC.Base.Just
+                                       @ (Language.Futhark.Syntax.TypeBase shape as vn)
+                                       (Language.Futhark.Syntax.Tuple
+                                          @ shape
+                                          @ as
+                                          @ vn
+                                          (GHC.Base.map
+                                             @ (Language.Futhark.Syntax.TupleArrayElemTypeBase
+                                                  shape as vn)
+                                             @ (Language.Futhark.Syntax.TypeBase shape as vn)
+                                             (Language.Futhark.Attributes.peelArray1
+                                                @ shape
+                                                @ as
+                                                @ vn)
+                                             ts)) } } } }
+                   0
+                   -> GHC.Base.Just
+                        @ (Language.Futhark.Syntax.TypeBase shape as vn)
+                        w1 }) -}
+e764e50c0e899a9e6ae00c8d21dfc6d8
+  $wreturnType ::
+    GHC.Classes.Ord vn =>
+    Language.Futhark.Syntax.TypeBase
+      shape Language.Futhark.Syntax.NoInfo vn
+    -> [Language.Futhark.Syntax.Diet]
+    -> [Language.Futhark.Syntax.CompTypeBase vn]
+    -> Language.Futhark.Syntax.TypeBase
+         shape Language.Futhark.Syntax.Names vn
+  {- Arity: 4,
+     Strictness: <L,U(U(C(C1(U)),A),A,A,A,A,A,A,A)><S,1*U><L,U><L,U>,
+     Inline: [0] -}
+603727bba707b0e7d52a463ce548eeab
+  $wsimilarTo ::
+    Language.Futhark.Syntax.ArrayShape (shape vn) =>
+    Language.Futhark.Syntax.TypeBase shape as vn
+    -> Language.Futhark.Syntax.TypeBase shape as vn -> GHC.Types.Bool
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,U(A,U(U(C(C1(U)),A),A,A,A,A,A,A,A),A,A,A)><S,U><S,U>,
+     Inline: [0],
+     Unfolding: (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   w :: Language.Futhark.Syntax.ArrayShape (shape vn)
+                   w1 :: Language.Futhark.Syntax.TypeBase shape as vn
+                   w2 :: Language.Futhark.Syntax.TypeBase shape as vn ->
+                 case Language.Futhark.Attributes.$wsubtypeOf
+                        @ shape
+                        @ as
+                        @ vn
+                        @ as
+                        w
+                        w1
+                        w2 of wild {
+                   GHC.Types.False
+                   -> Language.Futhark.Attributes.$wsubtypeOf
+                        @ shape
+                        @ as
+                        @ vn
+                        @ as
+                        w
+                        w2
+                        w1
+                   GHC.Types.True -> GHC.Types.True }) -}
+d292e6fd63b872ff0eeffb7094f9392e
+  $wsubtypeOf ::
+    Language.Futhark.Syntax.ArrayShape (shape vn) =>
+    Language.Futhark.Syntax.TypeBase shape as1 vn
+    -> Language.Futhark.Syntax.TypeBase shape as2 vn -> GHC.Types.Bool
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,U(A,U(U(C(C1(U)),A),A,A,A,A,A,A,A),A,A,A)><S,1*U><S,1*U>,
+     Inline: [0] -}
+8a4e52845c034baa6d72b5ace722dcb8
+  $wtupleArrayElemToType ::
+    Language.Futhark.Syntax.TupleArrayElemTypeBase shape as vn
+    -> Language.Futhark.Syntax.TypeBase shape as vn
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>, Inline: [0] -}
+ad27652ee23ffaa326fce716ad723167
+  type UncheckedArrayType =
+    Language.Futhark.Syntax.ArrayTypeBase
+      Language.Futhark.Syntax.ShapeDecl
+      Language.Futhark.Syntax.NoInfo
+      Language.Futhark.Core.Name
+85e312962830d1e765a9f69b948f1b1f
+  type UncheckedExp =
+    Language.Futhark.Syntax.ExpBase
+      Language.Futhark.Syntax.NoInfo Language.Futhark.Core.Name
+8345afd625b6869fdbbb47f13f4cb036
+  type UncheckedFunDef =
+    Language.Futhark.Syntax.FunDefBase
+      Language.Futhark.Syntax.NoInfo Language.Futhark.Core.Name
+1a4ccd51633fa7fbcdd9e5bf77e7d872
+  type UncheckedIdent =
+    Language.Futhark.Syntax.IdentBase
+      Language.Futhark.Syntax.NoInfo Language.Futhark.Core.Name
+9c8f5a54ca15a601f85f2fc55dd4d283
+  type UncheckedLambda =
+    Language.Futhark.Syntax.LambdaBase
+      Language.Futhark.Syntax.NoInfo Language.Futhark.Core.Name
+324f0643e90758f3c0654198b8c99eb0
+  type UncheckedPattern =
+    Language.Futhark.Syntax.PatternBase
+      Language.Futhark.Syntax.NoInfo Language.Futhark.Core.Name
+2fdf5eb1cc87e11adbd510f63a102173
+  type UncheckedProg =
+    Language.Futhark.Syntax.ProgBase
+      Language.Futhark.Syntax.NoInfo Language.Futhark.Core.Name
+1760987e65bef3b2ec13bff99bc391f4
+  type UncheckedProgWithHeaders =
+    Language.Futhark.Syntax.ProgBaseWithHeaders
+      Language.Futhark.Syntax.NoInfo Language.Futhark.Core.Name
+50b6e3194cb444bf4bd23ffdaeccc144
+  type UncheckedType =
+    Language.Futhark.Syntax.TypeBase
+      Language.Futhark.Syntax.ShapeDecl
+      Language.Futhark.Syntax.NoInfo
+      Language.Futhark.Core.Name
+1b1c01ba06eb2d241a5cf0a257303750
+  type UncheckedTypeDecl =
+    Language.Futhark.Syntax.TypeDeclBase
+      Language.Futhark.Syntax.NoInfo Language.Futhark.Core.Name
+de55d7a0933e7daaeea62ff3e7038558
+  type UncheckedUserType =
+    Language.Futhark.Syntax.UserType Language.Futhark.Core.Name
+61982e42b15fb61e86575de9b8e07fe5
+  type UncheckedUserTypeDecl =
+    Language.Futhark.Syntax.TypeDeclBase
+      Language.Futhark.Syntax.NoInfo Language.Futhark.Core.Name
+185361df4d69f6c952815ed0020ccb8a
+  addAliases ::
+    Language.Futhark.Syntax.TypeBase shape asf vn
+    -> (asf vn -> ast vn)
+    -> Language.Futhark.Syntax.TypeBase shape ast vn
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><L,C(U)> -}
+7cd1478112b3e2b6b22e5f4809af79db
+  aliases ::
+    GHC.Base.Monoid (as vn) =>
+    Language.Futhark.Syntax.TypeBase shape as vn -> as vn
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,U(U,A,C(U))><S,1*U> -}
+13dedaf765f4861a6d16bc74bc8b906b
+  arrayDims ::
+    GHC.Classes.Ord vn =>
+    Language.Futhark.Syntax.TypeBase
+      Language.Futhark.Syntax.ShapeDecl as vn
+    -> [Language.Futhark.Syntax.DimDecl vn]
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,A><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ (as :: * -> *)
+                   @ vn
+                   $dOrd :: GHC.Classes.Ord vn
+                   x :: Language.Futhark.Syntax.TypeBase
+                          Language.Futhark.Syntax.ShapeDecl as vn ->
+                 case x of wild {
+                   DEFAULT -> GHC.Types.[] @ (Language.Futhark.Syntax.DimDecl vn)
+                   Language.Futhark.Syntax.Array ds
+                   -> case ds of wild1 {
+                        Language.Futhark.Syntax.PrimArray ds1 ds2 ds3 ds4
+                        -> ds2 `cast` (Language.Futhark.Syntax.NTCo:ShapeDecl[0] <vn>_R)
+                        Language.Futhark.Syntax.TupleArray ds1 ds2 ds3
+                        -> ds2
+                             `cast`
+                           (Language.Futhark.Syntax.NTCo:ShapeDecl[0] <vn>_R) } }) -}
+da37f79c2a720939f71b0d732d2d987f
+  arrayDims' ::
+    Language.Futhark.Syntax.UserType vn
+    -> [Language.Futhark.Syntax.DimDecl vn]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Attributes.arrayDims'1
+                  `cast`
+                (forall vn.
+                 <Language.Futhark.Syntax.UserType vn>_R
+                 ->_R Language.Futhark.Syntax.NTCo:ShapeDecl[0] <vn>_R) -}
+171cbb1bb9955a9408344cfa8eb453cb
+  arrayDims'1 ::
+    Language.Futhark.Syntax.UserType vn
+    -> Language.Futhark.Syntax.ShapeDecl vn
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, True)
+                (\ @ vn x :: Language.Futhark.Syntax.UserType vn ->
+                 Language.Futhark.Attributes.arrayShape' @ vn x) -}
+041f17bd7212e595be3c9046a538bff3
+  arrayOf ::
+    (Language.Futhark.Syntax.ArrayShape (shape vn),
+     GHC.Base.Monoid (as vn)) =>
+    Language.Futhark.Syntax.TypeBase shape as vn
+    -> shape vn
+    -> Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Syntax.TypeBase shape as vn
+  {- Arity: 5, HasNoCafRefs,
+     Strictness: <L,1*U(A,A,1*U(A,1*C1(C1(U)),A),A,A)><L,U(U,A,A)><S,1*U><L,U><L,U>m2,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (5, True, False)
+                (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   w :: Language.Futhark.Syntax.ArrayShape (shape vn)
+                   w1 :: GHC.Base.Monoid (as vn)
+                   w2 :: Language.Futhark.Syntax.TypeBase shape as vn
+                   w3 :: shape vn
+                   w4 :: Language.Futhark.Core.Uniqueness ->
+                 case Language.Futhark.Attributes.$warrayOf
+                        @ shape
+                        @ as
+                        @ vn
+                        w
+                        w1
+                        w2
+                        w3
+                        w4 of ww { (##) ww1 ->
+                 Language.Futhark.Syntax.Array @ shape @ as @ vn ww1 }) -}
+6ffd439c9c87b99ea36b25320bf40096
+  arrayOf_$stypeToTupleArrayElem ::
+    Language.Futhark.Syntax.TypeBase
+      shape Language.Futhark.Syntax.NoInfo ()
+    -> Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Syntax.TupleArrayElemTypeBase
+         shape Language.Futhark.Syntax.NoInfo ()
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><L,U> -}
+0542c434aa13a9380e9de369a8fca86f
+  arrayRank ::
+    Language.Futhark.Syntax.ArrayShape (shape vn) =>
+    Language.Futhark.Syntax.TypeBase shape as vn -> GHC.Types.Int
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(LLLC(S)L),U(A,A,1*U(1*U,A,A),1*C1(U(U)),A)><L,1*U>,
+     Unfolding: (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   $dArrayShape :: Language.Futhark.Syntax.ArrayShape (shape vn)
+                   eta :: Language.Futhark.Syntax.TypeBase shape as vn ->
+                 Language.Futhark.Syntax.shapeRank
+                   @ (shape vn)
+                   $dArrayShape
+                   (case eta of wild {
+                      DEFAULT
+                      -> GHC.Base.mempty
+                           @ (shape vn)
+                           (Language.Futhark.Syntax.$p3ArrayShape @ (shape vn) $dArrayShape)
+                      Language.Futhark.Syntax.Array ds
+                      -> case ds of wild1 {
+                           Language.Futhark.Syntax.PrimArray ds1 ds2 ds3 ds4 -> ds2
+                           Language.Futhark.Syntax.TupleArray ds1 ds2 ds3 -> ds2 } })) -}
+cd5102e1122cdd36a6d1b854b18522d0
+  arrayShape' ::
+    Language.Futhark.Syntax.UserType vn
+    -> Language.Futhark.Syntax.ShapeDecl vn
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+ccdc2350792ba78b6517963d80fb142b
+  arrayType ::
+    (Language.Futhark.Syntax.ArrayShape (shape vn),
+     GHC.Base.Monoid (as vn)) =>
+    GHC.Types.Int
+    -> Language.Futhark.Syntax.TypeBase shape as vn
+    -> Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Syntax.TypeBase
+         Language.Futhark.Syntax.Rank as vn
+  {- Arity: 5, HasNoCafRefs,
+     Strictness: <L,1*U(A,A,A,1*U,A)><L,U(U,A,A)><S(S),1*U(U)><S,1*U><L,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (5, True, False)
+                (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   w :: Language.Futhark.Syntax.ArrayShape (shape vn)
+                   w1 :: GHC.Base.Monoid (as vn)
+                   w2 :: GHC.Types.Int
+                   w3 :: Language.Futhark.Syntax.TypeBase shape as vn
+                   w4 :: Language.Futhark.Core.Uniqueness ->
+                 case w2 of ww { GHC.Types.I# ww1 ->
+                 Language.Futhark.Attributes.$warrayType
+                   @ shape
+                   @ as
+                   @ vn
+                   w
+                   w1
+                   ww1
+                   w3
+                   w4 }) -}
+714e43a9c63f415cf6908360a1234f14
+  builtInFunctions ::
+    Data.HashMap.Base.HashMap
+      Language.Futhark.Core.Name
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType])
+  {- Unfolding: (Language.Futhark.Attributes.builtInFunctions_go
+                   Language.Futhark.Attributes.builtInFunctions1
+                   (Data.HashMap.Base.Empty
+                      @ Language.Futhark.Core.Name
+                      @ (Language.Futhark.Syntax.PrimType,
+                         [Language.Futhark.Syntax.PrimType]))) -}
+aeb36f5cf76655efa054e5d3ef67c42c
+  builtInFunctions1 ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+  {- Unfolding: (GHC.Types.:
+                   @ (GHC.Base.String,
+                      (Language.Futhark.Syntax.PrimType,
+                       [Language.Futhark.Syntax.PrimType]))
+                   Language.Futhark.Attributes.builtInFunctions59
+                   Language.Futhark.Attributes.builtInFunctions2) -}
+7b98af58fa84a46735a2c0fa8bcb4839
+  builtInFunctions10 ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+  {- Unfolding: (GHC.Types.:
+                   @ (GHC.Base.String,
+                      (Language.Futhark.Syntax.PrimType,
+                       [Language.Futhark.Syntax.PrimType]))
+                   Language.Futhark.Attributes.builtInFunctions35
+                   Language.Futhark.Attributes.builtInFunctions11) -}
+6db0617cbfdbef383eaac9526f9fb22f
+  builtInFunctions11 ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+  {- Unfolding: (GHC.Types.:
+                   @ (GHC.Base.String,
+                      (Language.Futhark.Syntax.PrimType,
+                       [Language.Futhark.Syntax.PrimType]))
+                   Language.Futhark.Attributes.builtInFunctions33
+                   Language.Futhark.Attributes.builtInFunctions12) -}
+1c516bda90f2b4091609af294fe05c6c
+  builtInFunctions12 ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+  {- Unfolding: (GHC.Types.:
+                   @ (GHC.Base.String,
+                      (Language.Futhark.Syntax.PrimType,
+                       [Language.Futhark.Syntax.PrimType]))
+                   Language.Futhark.Attributes.builtInFunctions31
+                   Language.Futhark.Attributes.builtInFunctions13) -}
+fe624958c4feb7c56d924ba6b2a79561
+  builtInFunctions13 ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+  {- Unfolding: (GHC.Types.:
+                   @ (GHC.Base.String,
+                      (Language.Futhark.Syntax.PrimType,
+                       [Language.Futhark.Syntax.PrimType]))
+                   Language.Futhark.Attributes.builtInFunctions28
+                   Language.Futhark.Attributes.builtInFunctions14) -}
+d9d5e113a2d71937f136800ed4ac12f3
+  builtInFunctions14 ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+  {- Unfolding: (GHC.Types.:
+                   @ (GHC.Base.String,
+                      (Language.Futhark.Syntax.PrimType,
+                       [Language.Futhark.Syntax.PrimType]))
+                   Language.Futhark.Attributes.builtInFunctions24
+                   Language.Futhark.Attributes.builtInFunctions15) -}
+0eeac7cbddc523cd2e3b55f2b200b220
+  builtInFunctions15 ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+  {- Unfolding: (GHC.Types.:
+                   @ (GHC.Base.String,
+                      (Language.Futhark.Syntax.PrimType,
+                       [Language.Futhark.Syntax.PrimType]))
+                   Language.Futhark.Attributes.builtInFunctions22
+                   Language.Futhark.Attributes.builtInFunctions16) -}
+9ed88f7c78b305f5611c445a7f2b294b
+  builtInFunctions16 ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+  {- Unfolding: (GHC.Types.:
+                   @ (GHC.Base.String,
+                      (Language.Futhark.Syntax.PrimType,
+                       [Language.Futhark.Syntax.PrimType]))
+                   Language.Futhark.Attributes.builtInFunctions17
+                   (GHC.Types.[]
+                      @ (GHC.Base.String,
+                         (Language.Futhark.Syntax.PrimType,
+                          [Language.Futhark.Syntax.PrimType])))) -}
+537ec88b9febe82b6395d03e906d74ad
+  builtInFunctions17 ::
+    ([GHC.Types.Char],
+     (Language.Futhark.Syntax.PrimType,
+      [Language.Futhark.Syntax.PrimType]))
+  {- Unfolding: ((Language.Futhark.Attributes.builtInFunctions21,
+                  Language.Futhark.Attributes.builtInFunctions18)) -}
+899a4807af7c607149f6f2220550947b
+  builtInFunctions18 ::
+    (Language.Futhark.Syntax.PrimType,
+     [Language.Futhark.Syntax.PrimType])
+  {- HasNoCafRefs,
+     Unfolding: ((Language.Futhark.Syntax.Bool,
+                  Language.Futhark.Attributes.builtInFunctions19)) -}
+4a68bf504a5147a2cc32b23ea3e1dafe
+  builtInFunctions19 :: [Language.Futhark.Syntax.PrimType]
+  {- HasNoCafRefs,
+     Unfolding: (GHC.Types.:
+                   @ Language.Futhark.Syntax.PrimType
+                   Language.Futhark.Attributes.builtInFunctions20
+                   (GHC.Types.[] @ Language.Futhark.Syntax.PrimType)) -}
+6e8b1ae1dfcbae062324d52ff6012d3b
+  builtInFunctions2 ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+  {- Unfolding: (GHC.Types.:
+                   @ (GHC.Base.String,
+                      (Language.Futhark.Syntax.PrimType,
+                       [Language.Futhark.Syntax.PrimType]))
+                   Language.Futhark.Attributes.builtInFunctions57
+                   Language.Futhark.Attributes.builtInFunctions3) -}
+c209590685f1854c78d9b0dfe2c4d5b4
+  builtInFunctions20 :: Language.Futhark.Syntax.PrimType
+  {- HasNoCafRefs,
+     Unfolding: (Language.Futhark.Syntax.FloatType
+                   Futhark.Representation.Primitive.Float64) -}
+d3dcb0eee9ed64cd7ded4c3b0d352c4a
+  builtInFunctions21 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "isnan64"#) -}
+aa5d92e873681ef341b38ddad94ec1d0
+  builtInFunctions22 ::
+    ([GHC.Types.Char],
+     (Language.Futhark.Syntax.PrimType,
+      [Language.Futhark.Syntax.PrimType]))
+  {- Unfolding: ((Language.Futhark.Attributes.builtInFunctions23,
+                  Language.Futhark.Attributes.builtInFunctions18)) -}
+7ca167d8ff26fd18b3be83e9e35ceb6e
+  builtInFunctions23 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "isinf64"#) -}
+68563dba2b3a764c431acb880f73d711
+  builtInFunctions24 ::
+    ([GHC.Types.Char],
+     (Language.Futhark.Syntax.PrimType,
+      [Language.Futhark.Syntax.PrimType]))
+  {- Unfolding: ((Language.Futhark.Attributes.builtInFunctions27,
+                  Language.Futhark.Attributes.builtInFunctions25)) -}
+fdf35da9eb8f7f0b5fdfbc3d0032242c
+  builtInFunctions25 ::
+    (Language.Futhark.Syntax.PrimType,
+     [Language.Futhark.Syntax.PrimType])
+  {- HasNoCafRefs,
+     Unfolding: ((Language.Futhark.Attributes.builtInFunctions20,
+                  Language.Futhark.Attributes.builtInFunctions26)) -}
+0ea46e756555083928377d6f759b9f42
+  builtInFunctions26 :: [Language.Futhark.Syntax.PrimType]
+  {- HasNoCafRefs,
+     Unfolding: (GHC.Types.:
+                   @ Language.Futhark.Syntax.PrimType
+                   Language.Futhark.Attributes.builtInFunctions20
+                   Language.Futhark.Attributes.builtInFunctions19) -}
+6051581ace28ac60ae1d70acb484b9fb
+  builtInFunctions27 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "atan2_64"#) -}
+93431681a95d3d7ff89cf4412ee08f28
+  builtInFunctions28 ::
+    ([GHC.Types.Char],
+     (Language.Futhark.Syntax.PrimType,
+      [Language.Futhark.Syntax.PrimType]))
+  {- Unfolding: ((Language.Futhark.Attributes.builtInFunctions30,
+                  Language.Futhark.Attributes.builtInFunctions29)) -}
+ed6d509da3a6b94c3e2e48fac94b1f49
+  builtInFunctions29 ::
+    (Language.Futhark.Syntax.PrimType,
+     [Language.Futhark.Syntax.PrimType])
+  {- HasNoCafRefs,
+     Unfolding: ((Language.Futhark.Attributes.builtInFunctions20,
+                  Language.Futhark.Attributes.builtInFunctions19)) -}
+fb0bb4efa2cffd93435ef8631ab4ab20
+  builtInFunctions3 ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+  {- Unfolding: (GHC.Types.:
+                   @ (GHC.Base.String,
+                      (Language.Futhark.Syntax.PrimType,
+                       [Language.Futhark.Syntax.PrimType]))
+                   Language.Futhark.Attributes.builtInFunctions55
+                   Language.Futhark.Attributes.builtInFunctions4) -}
+4093973bddc3361cdd8de40ca08282af
+  builtInFunctions30 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "sin64"#) -}
+021f6be536385d4617df98913b591a88
+  builtInFunctions31 ::
+    ([GHC.Types.Char],
+     (Language.Futhark.Syntax.PrimType,
+      [Language.Futhark.Syntax.PrimType]))
+  {- Unfolding: ((Language.Futhark.Attributes.builtInFunctions32,
+                  Language.Futhark.Attributes.builtInFunctions29)) -}
+09f881223299573f7ee85841eb4c7066
+  builtInFunctions32 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "cos64"#) -}
+1d61911a144882281b06cb3020925e97
+  builtInFunctions33 ::
+    ([GHC.Types.Char],
+     (Language.Futhark.Syntax.PrimType,
+      [Language.Futhark.Syntax.PrimType]))
+  {- Unfolding: ((Language.Futhark.Attributes.builtInFunctions34,
+                  Language.Futhark.Attributes.builtInFunctions29)) -}
+1695da06243c4e21ed2a0aacdcbb7d85
+  builtInFunctions34 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "exp64"#) -}
+9d7fab393d8b365608f234069c0fe833
+  builtInFunctions35 ::
+    ([GHC.Types.Char],
+     (Language.Futhark.Syntax.PrimType,
+      [Language.Futhark.Syntax.PrimType]))
+  {- Unfolding: ((Language.Futhark.Attributes.builtInFunctions36,
+                  Language.Futhark.Attributes.builtInFunctions29)) -}
+fc348b08fa00c8f18109eeeb683ee585
+  builtInFunctions36 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "log64"#) -}
+4d8c3aa7d426d0c3e033fb1b314367be
+  builtInFunctions37 ::
+    ([GHC.Types.Char],
+     (Language.Futhark.Syntax.PrimType,
+      [Language.Futhark.Syntax.PrimType]))
+  {- Unfolding: ((Language.Futhark.Attributes.builtInFunctions38,
+                  Language.Futhark.Attributes.builtInFunctions29)) -}
+7e27deedf514a48cb851c1f7248e5654
+  builtInFunctions38 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "sqrt64"#) -}
+819feb6c122bde684790263dbea887f5
+  builtInFunctions39 ::
+    ([GHC.Types.Char],
+     (Language.Futhark.Syntax.PrimType,
+      [Language.Futhark.Syntax.PrimType]))
+  {- Unfolding: ((Language.Futhark.Attributes.builtInFunctions43,
+                  Language.Futhark.Attributes.builtInFunctions40)) -}
+96c6afdb425030e748718a1e5dd1198b
+  builtInFunctions4 ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+  {- Unfolding: (GHC.Types.:
+                   @ (GHC.Base.String,
+                      (Language.Futhark.Syntax.PrimType,
+                       [Language.Futhark.Syntax.PrimType]))
+                   Language.Futhark.Attributes.builtInFunctions53
+                   Language.Futhark.Attributes.builtInFunctions5) -}
+07cd3b5b178fbf2525ed4ec38c424009
+  builtInFunctions40 ::
+    (Language.Futhark.Syntax.PrimType,
+     [Language.Futhark.Syntax.PrimType])
+  {- HasNoCafRefs,
+     Unfolding: ((Language.Futhark.Syntax.Bool,
+                  Language.Futhark.Attributes.builtInFunctions41)) -}
+b6b5d43f4f6e8ec343ca287b12d50d1c
+  builtInFunctions41 :: [Language.Futhark.Syntax.PrimType]
+  {- HasNoCafRefs,
+     Unfolding: (GHC.Types.:
+                   @ Language.Futhark.Syntax.PrimType
+                   Language.Futhark.Attributes.builtInFunctions42
+                   (GHC.Types.[] @ Language.Futhark.Syntax.PrimType)) -}
+0e8a3e9a35a0f400720779ed69544e49
+  builtInFunctions42 :: Language.Futhark.Syntax.PrimType
+  {- HasNoCafRefs,
+     Unfolding: (Language.Futhark.Syntax.FloatType
+                   Futhark.Representation.Primitive.Float32) -}
+afe84ba2e00d165b78e5c982efaee6f4
+  builtInFunctions43 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "isnan32"#) -}
+15f40a01aedad89835e71ab997d7fe45
+  builtInFunctions44 ::
+    ([GHC.Types.Char],
+     (Language.Futhark.Syntax.PrimType,
+      [Language.Futhark.Syntax.PrimType]))
+  {- Unfolding: ((Language.Futhark.Attributes.builtInFunctions45,
+                  Language.Futhark.Attributes.builtInFunctions40)) -}
+f30675192d757f5a3608232e613dc2c5
+  builtInFunctions45 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "isinf32"#) -}
+af5896d8d5c4d4dadcc555e9365e567f
+  builtInFunctions46 ::
+    ([GHC.Types.Char],
+     (Language.Futhark.Syntax.PrimType,
+      [Language.Futhark.Syntax.PrimType]))
+  {- Unfolding: ((Language.Futhark.Attributes.builtInFunctions49,
+                  Language.Futhark.Attributes.builtInFunctions47)) -}
+904f2a555ca0b17fc979811a546d4b81
+  builtInFunctions47 ::
+    (Language.Futhark.Syntax.PrimType,
+     [Language.Futhark.Syntax.PrimType])
+  {- HasNoCafRefs,
+     Unfolding: ((Language.Futhark.Attributes.builtInFunctions42,
+                  Language.Futhark.Attributes.builtInFunctions48)) -}
+cc646f4c5f04cb9543da9f311cb5058a
+  builtInFunctions48 :: [Language.Futhark.Syntax.PrimType]
+  {- HasNoCafRefs,
+     Unfolding: (GHC.Types.:
+                   @ Language.Futhark.Syntax.PrimType
+                   Language.Futhark.Attributes.builtInFunctions42
+                   Language.Futhark.Attributes.builtInFunctions41) -}
+1d214339788ef2eea19af34d9f8fef1c
+  builtInFunctions49 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "atan2_32"#) -}
+8b469b472b9761c98263bddc36381a6a
+  builtInFunctions5 ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+  {- Unfolding: (GHC.Types.:
+                   @ (GHC.Base.String,
+                      (Language.Futhark.Syntax.PrimType,
+                       [Language.Futhark.Syntax.PrimType]))
+                   Language.Futhark.Attributes.builtInFunctions50
+                   Language.Futhark.Attributes.builtInFunctions6) -}
+c6e423466e670a9b540a7a5ff87e90e3
+  builtInFunctions50 ::
+    ([GHC.Types.Char],
+     (Language.Futhark.Syntax.PrimType,
+      [Language.Futhark.Syntax.PrimType]))
+  {- Unfolding: ((Language.Futhark.Attributes.builtInFunctions52,
+                  Language.Futhark.Attributes.builtInFunctions51)) -}
+78178841fee6c056ec35e9322a3e196d
+  builtInFunctions51 ::
+    (Language.Futhark.Syntax.PrimType,
+     [Language.Futhark.Syntax.PrimType])
+  {- HasNoCafRefs,
+     Unfolding: ((Language.Futhark.Attributes.builtInFunctions42,
+                  Language.Futhark.Attributes.builtInFunctions41)) -}
+1b6c0e72433c60d866341135ac0b9077
+  builtInFunctions52 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "sin32"#) -}
+4e234581b0264bf4710750e6d431db05
+  builtInFunctions53 ::
+    ([GHC.Types.Char],
+     (Language.Futhark.Syntax.PrimType,
+      [Language.Futhark.Syntax.PrimType]))
+  {- Unfolding: ((Language.Futhark.Attributes.builtInFunctions54,
+                  Language.Futhark.Attributes.builtInFunctions51)) -}
+d17e33cc0f1f9d39a6cb2c05a423a585
+  builtInFunctions54 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "cos32"#) -}
+273b9b9fc84bf7e3f7bc6fd921ff78b3
+  builtInFunctions55 ::
+    ([GHC.Types.Char],
+     (Language.Futhark.Syntax.PrimType,
+      [Language.Futhark.Syntax.PrimType]))
+  {- Unfolding: ((Language.Futhark.Attributes.builtInFunctions56,
+                  Language.Futhark.Attributes.builtInFunctions51)) -}
+7e5c4bf58c5a04b9a29f2ef21c6a8488
+  builtInFunctions56 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "exp32"#) -}
+74c18bf9a17ee4a73536140e1538e08e
+  builtInFunctions57 ::
+    ([GHC.Types.Char],
+     (Language.Futhark.Syntax.PrimType,
+      [Language.Futhark.Syntax.PrimType]))
+  {- Unfolding: ((Language.Futhark.Attributes.builtInFunctions58,
+                  Language.Futhark.Attributes.builtInFunctions51)) -}
+63a2513c610c74c32cfad70a918e0814
+  builtInFunctions58 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "log32"#) -}
+b41e3d25ca83b62646913afede299a57
+  builtInFunctions59 ::
+    ([GHC.Types.Char],
+     (Language.Futhark.Syntax.PrimType,
+      [Language.Futhark.Syntax.PrimType]))
+  {- Unfolding: ((Language.Futhark.Attributes.builtInFunctions60,
+                  Language.Futhark.Attributes.builtInFunctions51)) -}
+f7613303eaff9eb215e95c9fcc4bec27
+  builtInFunctions6 ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+  {- Unfolding: (GHC.Types.:
+                   @ (GHC.Base.String,
+                      (Language.Futhark.Syntax.PrimType,
+                       [Language.Futhark.Syntax.PrimType]))
+                   Language.Futhark.Attributes.builtInFunctions46
+                   Language.Futhark.Attributes.builtInFunctions7) -}
+c1f37a5aca26060ad9a8ff090be03efc
+  builtInFunctions60 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "sqrt32"#) -}
+0c6da67f7733ac02c2cf4b30834da731
+  builtInFunctions7 ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+  {- Unfolding: (GHC.Types.:
+                   @ (GHC.Base.String,
+                      (Language.Futhark.Syntax.PrimType,
+                       [Language.Futhark.Syntax.PrimType]))
+                   Language.Futhark.Attributes.builtInFunctions44
+                   Language.Futhark.Attributes.builtInFunctions8) -}
+722e18782007ee3a9a68f597e1eaedd7
+  builtInFunctions8 ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+  {- Unfolding: (GHC.Types.:
+                   @ (GHC.Base.String,
+                      (Language.Futhark.Syntax.PrimType,
+                       [Language.Futhark.Syntax.PrimType]))
+                   Language.Futhark.Attributes.builtInFunctions39
+                   Language.Futhark.Attributes.builtInFunctions9) -}
+a908e76fe356309722984adb0c25d8d8
+  builtInFunctions9 ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+  {- Unfolding: (GHC.Types.:
+                   @ (GHC.Base.String,
+                      (Language.Futhark.Syntax.PrimType,
+                       [Language.Futhark.Syntax.PrimType]))
+                   Language.Futhark.Attributes.builtInFunctions37
+                   Language.Futhark.Attributes.builtInFunctions10) -}
+218135fa706fff6b6103edae2709a00c
+  builtInFunctions_go ::
+    [(GHC.Base.String,
+      (Language.Futhark.Syntax.PrimType,
+       [Language.Futhark.Syntax.PrimType]))]
+    -> Data.HashMap.Base.HashMap
+         Language.Futhark.Core.Name
+         (Language.Futhark.Syntax.PrimType,
+          [Language.Futhark.Syntax.PrimType])
+    -> Data.HashMap.Base.HashMap
+         Language.Futhark.Core.Name
+         (Language.Futhark.Syntax.PrimType,
+          [Language.Futhark.Syntax.PrimType])
+  {- Arity: 2, Strictness: <S,1*U><S,1*U> -}
+87313ed2b46c1d40e26d87b2bb59d625
+  commutative :: Language.Futhark.Syntax.BinOp -> GHC.Types.Bool
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ y :: Language.Futhark.Syntax.BinOp ->
+                 GHC.List.elem
+                   @ Language.Futhark.Syntax.BinOp
+                   Language.Futhark.Syntax.$fEqBinOp
+                   y
+                   Language.Futhark.Attributes.commutative1) -}
+8138f8a6a0e0e1ee8283dffa80749527
+  commutative1 :: [Language.Futhark.Syntax.BinOp]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Language.Futhark.Syntax.BinOp
+                   Language.Futhark.Syntax.Plus
+                   Language.Futhark.Attributes.commutative2) -}
+0c0b4b82d9d5fda288ee0a2e60acc13c
+  commutative2 :: [Language.Futhark.Syntax.BinOp]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Language.Futhark.Syntax.BinOp
+                   Language.Futhark.Syntax.Pow
+                   Language.Futhark.Attributes.commutative3) -}
+34db071ee1092c8973b14f22e35f1fa8
+  commutative3 :: [Language.Futhark.Syntax.BinOp]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Language.Futhark.Syntax.BinOp
+                   Language.Futhark.Syntax.Times
+                   Language.Futhark.Attributes.commutative4) -}
+646ab599d2b763de12475eb7698e3091
+  commutative4 :: [Language.Futhark.Syntax.BinOp]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Language.Futhark.Syntax.BinOp
+                   Language.Futhark.Syntax.Band
+                   Language.Futhark.Attributes.commutative5) -}
+2a383df87f555a8ed23c62e472cd5e88
+  commutative5 :: [Language.Futhark.Syntax.BinOp]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Language.Futhark.Syntax.BinOp
+                   Language.Futhark.Syntax.Xor
+                   Language.Futhark.Attributes.commutative6) -}
+ca6d12607550488318b2ef4e84c96277
+  commutative6 :: [Language.Futhark.Syntax.BinOp]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Language.Futhark.Syntax.BinOp
+                   Language.Futhark.Syntax.Bor
+                   Language.Futhark.Attributes.commutative7) -}
+3155c1060645f977abbe76b448cbf876
+  commutative7 :: [Language.Futhark.Syntax.BinOp]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Language.Futhark.Syntax.BinOp
+                   Language.Futhark.Syntax.LogAnd
+                   Language.Futhark.Attributes.commutative8) -}
+d7256c075ebe53b182102f7794396440
+  commutative8 :: [Language.Futhark.Syntax.BinOp]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Language.Futhark.Syntax.BinOp
+                   Language.Futhark.Syntax.LogOr
+                   Language.Futhark.Attributes.commutative9) -}
+9ab6cfa5652e5605d117d090b0fb18ee
+  commutative9 :: [Language.Futhark.Syntax.BinOp]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Language.Futhark.Syntax.BinOp
+                   Language.Futhark.Syntax.Equal
+                   (GHC.Types.[] @ Language.Futhark.Syntax.BinOp)) -}
+6b6b799956e608f03feb07d03641147b
+  contractTypeBase ::
+    (Language.Futhark.Syntax.ArrayShape (shape vn),
+     GHC.Classes.Ord vn) =>
+    Language.Futhark.Syntax.TypeBase shape als vn
+    -> Language.Futhark.Syntax.UserType vn
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,U(A,A,A,C(U(U)),A)><L,A><S,1*U>, Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, True)
+                (\ @ (shape :: * -> *)
+                   @ (als :: * -> *)
+                   @ vn
+                   w :: Language.Futhark.Syntax.ArrayShape (shape vn)
+                   w1 :: GHC.Classes.Ord vn
+                   w2 :: Language.Futhark.Syntax.TypeBase shape als vn ->
+                 Language.Futhark.Attributes.$wcontractTypeBase
+                   @ shape
+                   @ als
+                   @ vn
+                   w
+                   w2) -}
+0b38c2ef1adf315a90fb38945a945013
+  decLoc :: Language.Futhark.Syntax.DecBase f vn -> Data.Loc.SrcLoc
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: (\ @ (f :: * -> *)
+                   @ vn
+                   ds :: Language.Futhark.Syntax.DecBase f vn ->
+                 case ds of wild {
+                   Language.Futhark.Syntax.FunOrTypeDec ds1
+                   -> case ds1 of wild1 {
+                        Language.Futhark.Syntax.FunDec ds2
+                        -> case ds2 of wild2 { Language.Futhark.Syntax.FunDef ds3 ds4 ds5 ds6 ds7 loc ->
+                           loc }
+                        Language.Futhark.Syntax.TypeDec ds2
+                        -> case ds2 of wild2 { Language.Futhark.Syntax.TypeDef ds3 ds4 loc ->
+                           loc } }
+                   Language.Futhark.Syntax.SigDec ds1
+                   -> case ds1 of wild1 { Language.Futhark.Syntax.SigDef ds2 ds3 loc ->
+                      loc }
+                   Language.Futhark.Syntax.ModDec ds1
+                   -> case ds1 of wild1 { Language.Futhark.Syntax.ModDef ds2 ds3 loc ->
+                      loc } }) -}
+5b562ce505999c2483c3efec76858a6f
+  diet ::
+    Language.Futhark.Syntax.TypeBase shape as vn
+    -> Language.Futhark.Syntax.Diet
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+43b4afa37f02e4c9ba8cc86788e61cc5
+  fromParam ::
+    GHC.Classes.Ord vn =>
+    Language.Futhark.Syntax.ParamBase Language.Futhark.Syntax.Info vn
+    -> Language.Futhark.Syntax.IdentBase
+         Language.Futhark.Syntax.Info vn
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <L,A><S(LSL),1*U(U,1*U(A,1*U),U)>m, Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ @ vn
+                   w :: GHC.Classes.Ord vn
+                   w1 :: Language.Futhark.Syntax.ParamBase
+                           Language.Futhark.Syntax.Info vn ->
+                 case w1 of ww { Language.Futhark.Syntax.Param ww1 ww2 ww3 ->
+                 case ww2 of ww4 { Language.Futhark.Syntax.TypeDecl ww5 ww6 ->
+                 Language.Futhark.Syntax.Ident
+                   @ Language.Futhark.Syntax.Info
+                   @ vn
+                   ww1
+                   (Language.Futhark.Attributes.modifyShapeAnnotations
+                      @ Language.Futhark.Syntax.ShapeDecl
+                      @ vn
+                      @ Language.Futhark.Syntax.Rank
+                      @ Language.Futhark.Syntax.Names
+                      (\ x :: Language.Futhark.Syntax.ShapeDecl vn ->
+                       case GHC.List.$wlenAcc
+                              @ (Language.Futhark.Syntax.DimDecl vn)
+                              x `cast` (Language.Futhark.Syntax.NTCo:ShapeDecl[0] <vn>_R)
+                              0 of ww7 { DEFAULT ->
+                       GHC.Types.I# ww7 })
+                        `cast`
+                      (<Language.Futhark.Syntax.ShapeDecl vn>_R
+                       ->_R Sym (Language.Futhark.Syntax.NTCo:Rank[0] <vn>_P))
+                      (Language.Futhark.Attributes.fromStruct
+                         @ Language.Futhark.Syntax.ShapeDecl
+                         @ Language.Futhark.Syntax.NoInfo
+                         @ vn
+                         ww6
+                           `cast`
+                         (Language.Futhark.Syntax.NTCo:Info[0]
+                              <Language.Futhark.Syntax.StructTypeBase vn>_R)))
+                     `cast`
+                   (Sym (Language.Futhark.Syntax.NTCo:Info[0]
+                             <Language.Futhark.Syntax.TypeBase
+                                Language.Futhark.Syntax.Rank Language.Futhark.Syntax.Names vn>_R))
+                   ww3 } }) -}
+4caee2b1e986a6bdc23194b0890bf1e0
+  fromStruct ::
+    Language.Futhark.Syntax.TypeBase shape as vn
+    -> Language.Futhark.Syntax.TypeBase
+         shape Language.Futhark.Syntax.Names vn
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   t :: Language.Futhark.Syntax.TypeBase shape as vn ->
+                 Language.Futhark.Attributes.addAliases
+                   @ shape
+                   @ as
+                   @ vn
+                   @ Language.Futhark.Syntax.Names
+                   t
+                   (\ ds :: as vn -> Data.HashMap.Base.Empty @ vn @ ())
+                     `cast`
+                   (<as vn>_R ->_R Sym (Data.HashSet.NTCo:HashSet[0] <vn>_N))) -}
+b6a05815fe6b62e29c757a063b9d7120
+  funsFromProg ::
+    Language.Futhark.Syntax.ProgBase f vn
+    -> [Language.Futhark.Syntax.FunDefBase f vn]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ (f :: * -> *)
+                   @ vn
+                   prog :: Language.Futhark.Syntax.ProgBase f vn ->
+                 case prog of wild { Language.Futhark.Syntax.Prog ds1 ->
+                 GHC.Base.build
+                   @ (Language.Futhark.Syntax.FunDefBase f vn)
+                   (\ @ b1
+                      c :: Language.Futhark.Syntax.FunDefBase f vn -> b1 -> b1[OneShot]
+                      n :: b1[OneShot] ->
+                    GHC.Base.foldr
+                      @ (Language.Futhark.Syntax.DecBase f vn)
+                      @ b1
+                      (Data.Maybe.mapMaybeFB
+                         @ (Language.Futhark.Syntax.FunDefBase f vn)
+                         @ b1
+                         @ (Language.Futhark.Syntax.DecBase f vn)
+                         c
+                         (Language.Futhark.Attributes.isFun @ f @ vn))
+                      n
+                      ds1) }) -}
+a88b9e95fe55d47b6508f81738364a7d
+  isFun ::
+    Language.Futhark.Syntax.DecBase f vn
+    -> GHC.Base.Maybe (Language.Futhark.Syntax.FunDefBase f vn)
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ (f :: * -> *)
+                   @ vn
+                   ds :: Language.Futhark.Syntax.DecBase f vn ->
+                 case ds of wild {
+                   DEFAULT
+                   -> GHC.Base.Nothing @ (Language.Futhark.Syntax.FunDefBase f vn)
+                   Language.Futhark.Syntax.FunOrTypeDec ds1
+                   -> case ds1 of wild1 {
+                        Language.Futhark.Syntax.FunDec a3
+                        -> GHC.Base.Just @ (Language.Futhark.Syntax.FunDefBase f vn) a3
+                        Language.Futhark.Syntax.TypeDec ipv
+                        -> GHC.Base.Nothing
+                             @ (Language.Futhark.Syntax.FunDefBase f vn) } }) -}
+990b057f6ef9c8d5ed537325346a78a7
+  isFunOrType ::
+    Language.Futhark.Syntax.DecBase f vn
+    -> GHC.Base.Maybe (Language.Futhark.Syntax.FunOrTypeDecBase f vn)
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ (f :: * -> *)
+                   @ vn
+                   ds :: Language.Futhark.Syntax.DecBase f vn ->
+                 case ds of wild {
+                   DEFAULT
+                   -> GHC.Base.Nothing
+                        @ (Language.Futhark.Syntax.FunOrTypeDecBase f vn)
+                   Language.Futhark.Syntax.FunOrTypeDec ft
+                   -> GHC.Base.Just
+                        @ (Language.Futhark.Syntax.FunOrTypeDecBase f vn)
+                        ft }) -}
+91bef51600846f85873f019947027556
+  isMod ::
+    Language.Futhark.Syntax.DecBase f vn
+    -> GHC.Base.Maybe (Language.Futhark.Syntax.ModDefBase f vn)
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ (f :: * -> *)
+                   @ vn
+                   ds :: Language.Futhark.Syntax.DecBase f vn ->
+                 case ds of wild {
+                   DEFAULT
+                   -> GHC.Base.Nothing @ (Language.Futhark.Syntax.ModDefBase f vn)
+                   Language.Futhark.Syntax.ModDec modd
+                   -> GHC.Base.Just
+                        @ (Language.Futhark.Syntax.ModDefBase f vn)
+                        modd }) -}
+971e19e83082ccfab36cbb840a9b9cb4
+  isSig ::
+    Language.Futhark.Syntax.DecBase f vn
+    -> GHC.Base.Maybe (Language.Futhark.Syntax.SigDefBase f vn)
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ (f :: * -> *)
+                   @ vn
+                   ds :: Language.Futhark.Syntax.DecBase f vn ->
+                 case ds of wild {
+                   DEFAULT
+                   -> GHC.Base.Nothing @ (Language.Futhark.Syntax.SigDefBase f vn)
+                   Language.Futhark.Syntax.SigDec sig
+                   -> GHC.Base.Just
+                        @ (Language.Futhark.Syntax.SigDefBase f vn)
+                        sig }) -}
+e6a33c1ce7b796482d14601f72aea0c7
+  isType ::
+    Language.Futhark.Syntax.DecBase f vn
+    -> GHC.Base.Maybe (Language.Futhark.Syntax.TypeDefBase f vn)
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ (f :: * -> *)
+                   @ vn
+                   ds :: Language.Futhark.Syntax.DecBase f vn ->
+                 case ds of wild {
+                   DEFAULT
+                   -> GHC.Base.Nothing @ (Language.Futhark.Syntax.TypeDefBase f vn)
+                   Language.Futhark.Syntax.FunOrTypeDec ds1
+                   -> case ds1 of wild1 {
+                        Language.Futhark.Syntax.FunDec ipv
+                        -> GHC.Base.Nothing @ (Language.Futhark.Syntax.TypeDefBase f vn)
+                        Language.Futhark.Syntax.TypeDec t
+                        -> GHC.Base.Just
+                             @ (Language.Futhark.Syntax.TypeDefBase f vn)
+                             t } }) -}
+58eea1db601f4b3b01f58703ede0f704
+  lambdaReturnType ::
+    GHC.Classes.Ord vn =>
+    Language.Futhark.Syntax.LambdaBase Language.Futhark.Syntax.Info vn
+    -> Language.Futhark.Syntax.TypeBase
+         Language.Futhark.Syntax.Rank Language.Futhark.Syntax.NoInfo vn
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,A><S,1*U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, True)
+                (\ @ vn
+                   w :: GHC.Classes.Ord vn
+                   w1 :: Language.Futhark.Syntax.LambdaBase
+                           Language.Futhark.Syntax.Info vn ->
+                 Language.Futhark.Attributes.$wlambdaReturnType @ vn w1) -}
+42c9177586808a61e4786b92841694a7
+  lambdaReturnType1 ::
+    Language.Futhark.Syntax.ShapeDecl vn -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs,
+     Unfolding: (\ @ vn x :: Language.Futhark.Syntax.ShapeDecl vn ->
+                 case GHC.List.$wlenAcc
+                        @ (Language.Futhark.Syntax.DimDecl vn)
+                        x `cast` (Language.Futhark.Syntax.NTCo:ShapeDecl[0] <vn>_R)
+                        0 of ww2 { DEFAULT ->
+                 GHC.Types.I# ww2 }) -}
+e18a3ddb001b43a77217fff37ee8cc15
+  modifyShapeAnnotations ::
+    (oldshape vn -> newshape vn)
+    -> Language.Futhark.Syntax.TypeBase oldshape as vn
+    -> Language.Futhark.Syntax.TypeBase newshape as vn
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,C(U)><S,1*U> -}
+e69c50cf29499df335e069ef9e95ba22
+  modsFromProg ::
+    Language.Futhark.Syntax.ProgBase f vn
+    -> [Language.Futhark.Syntax.ModDefBase f vn]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ (f :: * -> *)
+                   @ vn
+                   prog :: Language.Futhark.Syntax.ProgBase f vn ->
+                 case prog of wild { Language.Futhark.Syntax.Prog ds1 ->
+                 GHC.Base.build
+                   @ (Language.Futhark.Syntax.ModDefBase f vn)
+                   (\ @ b1
+                      c :: Language.Futhark.Syntax.ModDefBase f vn -> b1 -> b1[OneShot]
+                      n :: b1[OneShot] ->
+                    GHC.Base.foldr
+                      @ (Language.Futhark.Syntax.DecBase f vn)
+                      @ b1
+                      (Data.Maybe.mapMaybeFB
+                         @ (Language.Futhark.Syntax.ModDefBase f vn)
+                         @ b1
+                         @ (Language.Futhark.Syntax.DecBase f vn)
+                         c
+                         (Language.Futhark.Attributes.isMod @ f @ vn))
+                      n
+                      ds1) }) -}
+6f0392bdddb05a5706ae37727eea9924
+  nameToQualName ::
+    Language.Futhark.Core.Name -> Language.Futhark.Core.QualName
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ n :: Language.Futhark.Core.Name ->
+                 (GHC.Types.[] @ Language.Futhark.Core.Name, n)) -}
+fff6f0e078c30e654dbb54b62483a4a4
+  nestedDims ::
+    GHC.Classes.Ord vn =>
+    Language.Futhark.Syntax.TypeBase
+      Language.Futhark.Syntax.ShapeDecl as vn
+    -> [Language.Futhark.Syntax.DimDecl vn]
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <L,U(U(C(C1(U)),A),A,A,A,A,A,A,A)><S,1*U> -}
+a1ae965553d6bd85706a46e72efd251b
+  nestedDims' ::
+    GHC.Classes.Ord vn =>
+    Language.Futhark.Syntax.UserType vn
+    -> [Language.Futhark.Syntax.DimDecl vn]
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <L,U(U(C(C1(U)),A),A,A,A,A,A,A,A)><S,1*U> -}
+a0df0c942c41625508cfc761b4f041a8
+  paramDeclaredType ::
+    Language.Futhark.Syntax.ParamBase f vn
+    -> Language.Futhark.Syntax.UserType vn
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LS(SL)L),1*U(A,1*U(1*U,A),A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ (f :: * -> *)
+                   @ vn
+                   x :: Language.Futhark.Syntax.ParamBase f vn ->
+                 case x of wild { Language.Futhark.Syntax.Param ds1 ds2 ds3 ->
+                 case ds2 of wild1 { Language.Futhark.Syntax.TypeDecl ds4 ds5 ->
+                 ds4 } }) -}
+f4c679340fb63bfa1483a0d954cb8396
+  paramType ::
+    Language.Futhark.Syntax.ParamBase Language.Futhark.Syntax.Info vn
+    -> Language.Futhark.Syntax.StructTypeBase vn
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LS(LS)L),1*U(A,1*U(A,1*U),A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ vn
+                   x :: Language.Futhark.Syntax.ParamBase
+                          Language.Futhark.Syntax.Info vn ->
+                 case x of wild { Language.Futhark.Syntax.Param ds1 ds2 ds3 ->
+                 case ds2 of wild1 { Language.Futhark.Syntax.TypeDecl ds4 ds5 ->
+                 ds5
+                   `cast`
+                 (Language.Futhark.Syntax.NTCo:Info[0]
+                      <Language.Futhark.Syntax.StructTypeBase vn>_R) } }) -}
+073d6304b6cf190da121b85655f17f53
+  patIdents ::
+    (GHC.Classes.Eq vn, Data.Hashable.Class.Hashable vn) =>
+    Language.Futhark.Syntax.PatternBase ty vn
+    -> [Language.Futhark.Syntax.IdentBase ty vn]
+  {- Arity: 3, HasNoCafRefs, Strictness: <L,A><L,A><S,1*U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, True)
+                (\ @ (ty :: * -> *)
+                   @ vn
+                   w :: GHC.Classes.Eq vn
+                   w1 :: Data.Hashable.Class.Hashable vn
+                   w2 :: Language.Futhark.Syntax.PatternBase ty vn ->
+                 Language.Futhark.Attributes.$wpatIdents @ ty @ vn w2) -}
+3582ce9755ec8c78c84062dcfd177171
+  patNameSet ::
+    (GHC.Classes.Eq vn, Data.Hashable.Class.Hashable vn) =>
+    Language.Futhark.Syntax.PatternBase ty vn
+    -> Data.HashSet.HashSet vn
+  {- Arity: 2, Strictness: <L,U(C(C1(U)),A)><L,U(C(U),C(U(U)))> -}
+708ad0e85a5bf781038d55377f4f159d
+  peelArray ::
+    Language.Futhark.Syntax.ArrayShape (shape vn) =>
+    GHC.Types.Int
+    -> Language.Futhark.Syntax.TypeBase shape as vn
+    -> GHC.Base.Maybe (Language.Futhark.Syntax.TypeBase shape as vn)
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,U(A,A,A,1*C1(U(U)),1*C1(C1(U)))><S(S),1*U(U)><L,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, False)
+                (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   w :: Language.Futhark.Syntax.ArrayShape (shape vn)
+                   w1 :: GHC.Types.Int
+                   w2 :: Language.Futhark.Syntax.TypeBase shape as vn ->
+                 case w1 of ww { GHC.Types.I# ww1 ->
+                 Language.Futhark.Attributes.$wpeelArray
+                   @ shape
+                   @ as
+                   @ vn
+                   w
+                   ww1
+                   w2 }) -}
+cc4cdc68ea6dc28f69717505fca7dfe6
+  peelArray1 ::
+    Language.Futhark.Syntax.TupleArrayElemTypeBase shape as vn
+    -> Language.Futhark.Syntax.TypeBase shape as vn
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+7169af947a200083bd7c77c18fb6f1e1
+  primType ::
+    Language.Futhark.Syntax.TypeBase shape as vn -> GHC.Types.Bool
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+69c609814ce77c8638703c5f68320379
+  removeNames ::
+    Language.Futhark.Syntax.ArrayShape (shape vn) =>
+    Language.Futhark.Syntax.TypeBase shape as vn
+    -> Language.Futhark.Syntax.TypeBase
+         Language.Futhark.Syntax.Rank Language.Futhark.Syntax.NoInfo ()
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <L,U(A,A,A,C(U),A)><S,1*U> -}
+47cc980133f5f97ff434fd32f8e80624
+  removeShapeAnnotations ::
+    Language.Futhark.Syntax.ArrayShape (shape vn) =>
+    Language.Futhark.Syntax.TypeBase shape as vn
+    -> Language.Futhark.Syntax.TypeBase
+         Language.Futhark.Syntax.Rank as vn
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,1*U(A,A,A,1*U,A)><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   $dArrayShape :: Language.Futhark.Syntax.ArrayShape (shape vn)
+                   eta :: Language.Futhark.Syntax.TypeBase shape as vn ->
+                 Language.Futhark.Attributes.modifyShapeAnnotations
+                   @ shape
+                   @ vn
+                   @ Language.Futhark.Syntax.Rank
+                   @ as
+                   (let {
+                      g :: shape vn -> GHC.Types.Int
+                      = Language.Futhark.Syntax.shapeRank @ (shape vn) $dArrayShape
+                    } in
+                    (\ x :: shape vn -> g x)
+                      `cast`
+                    (<shape vn>_R
+                     ->_R Sym (Language.Futhark.Syntax.NTCo:Rank[0] <vn>_P)))
+                   eta) -}
+a31e83d92f6a67d9bf3d8a6c437d4196
+  returnType ::
+    (GHC.Classes.Ord vn, Data.Hashable.Class.Hashable vn) =>
+    Language.Futhark.Syntax.TypeBase
+      shape Language.Futhark.Syntax.NoInfo vn
+    -> [Language.Futhark.Syntax.Diet]
+    -> [Language.Futhark.Syntax.CompTypeBase vn]
+    -> Language.Futhark.Syntax.TypeBase
+         shape Language.Futhark.Syntax.Names vn
+  {- Arity: 5,
+     Strictness: <L,U(U(C(C1(U)),A),A,A,A,A,A,A,A)><L,A><S,1*U><L,U><L,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (5, True, True)
+                (\ @ (shape :: * -> *)
+                   @ vn
+                   w :: GHC.Classes.Ord vn
+                   w1 :: Data.Hashable.Class.Hashable vn
+                   w2 :: Language.Futhark.Syntax.TypeBase
+                           shape Language.Futhark.Syntax.NoInfo vn
+                   w3 :: [Language.Futhark.Syntax.Diet]
+                   w4 :: [Language.Futhark.Syntax.CompTypeBase vn] ->
+                 Language.Futhark.Attributes.$wreturnType
+                   @ shape
+                   @ vn
+                   w
+                   w2
+                   w3
+                   w4) -}
+362a6e711c8354227c9ebd062a5187ea
+  setAliases ::
+    Language.Futhark.Syntax.TypeBase shape asf vn
+    -> ast vn -> Language.Futhark.Syntax.TypeBase shape ast vn
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ (shape :: * -> *)
+                   @ (asf :: * -> *)
+                   @ vn
+                   @ (ast :: * -> *)
+                   t :: Language.Futhark.Syntax.TypeBase shape asf vn
+                   eta :: ast vn ->
+                 Language.Futhark.Attributes.addAliases
+                   @ shape
+                   @ asf
+                   @ vn
+                   @ ast
+                   t
+                   (\ ds :: asf vn -> eta)) -}
+f26d9f32674a175849222e4d56be3c06
+  setArrayShape ::
+    shape vn
+    -> Language.Futhark.Syntax.TypeBase shape as vn
+    -> Language.Futhark.Syntax.TypeBase shape as vn
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,U><S,1*U>,
+     Unfolding: (\ @ (shape :: * -> *)
+                   @ vn
+                   @ (as :: * -> *)
+                   ds :: shape vn
+                   ds1 :: Language.Futhark.Syntax.TypeBase shape as vn ->
+                 case ds1 of wild {
+                   DEFAULT -> wild
+                   Language.Futhark.Syntax.Array ds2
+                   -> case ds2 of wild1 {
+                        Language.Futhark.Syntax.PrimArray et ds3 u as1
+                        -> Language.Futhark.Syntax.Array
+                             @ shape
+                             @ as
+                             @ vn
+                             (Language.Futhark.Syntax.PrimArray @ shape @ as @ vn et ds u as1)
+                        Language.Futhark.Syntax.TupleArray et ds3 u
+                        -> Language.Futhark.Syntax.Array
+                             @ shape
+                             @ as
+                             @ vn
+                             (Language.Futhark.Syntax.TupleArray
+                                @ shape
+                                @ as
+                                @ vn
+                                et
+                                ds
+                                u) } }) -}
+cb26c22d687e3ec7b861dd1723f036a2
+  setUniqueness ::
+    Language.Futhark.Syntax.TypeBase shape as vn
+    -> Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Syntax.TypeBase shape as vn
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><L,U> -}
+e440e1747178a2b21a4cdfe38ec9409a
+  sigsFromProg ::
+    Language.Futhark.Syntax.ProgBase f vn
+    -> [Language.Futhark.Syntax.SigDefBase f vn]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ (f :: * -> *)
+                   @ vn
+                   prog :: Language.Futhark.Syntax.ProgBase f vn ->
+                 case prog of wild { Language.Futhark.Syntax.Prog ds1 ->
+                 GHC.Base.build
+                   @ (Language.Futhark.Syntax.SigDefBase f vn)
+                   (\ @ b1
+                      c :: Language.Futhark.Syntax.SigDefBase f vn -> b1 -> b1[OneShot]
+                      n :: b1[OneShot] ->
+                    GHC.Base.foldr
+                      @ (Language.Futhark.Syntax.DecBase f vn)
+                      @ b1
+                      (Data.Maybe.mapMaybeFB
+                         @ (Language.Futhark.Syntax.SigDefBase f vn)
+                         @ b1
+                         @ (Language.Futhark.Syntax.DecBase f vn)
+                         c
+                         (Language.Futhark.Attributes.isSig @ f @ vn))
+                      n
+                      ds1) }) -}
+e55e29ac3fc9322c80a228d20f082d8d
+  similarTo ::
+    (Language.Futhark.Syntax.ArrayShape (shape vn),
+     GHC.Base.Monoid (as vn)) =>
+    Language.Futhark.Syntax.TypeBase shape as vn
+    -> Language.Futhark.Syntax.TypeBase shape as vn -> GHC.Types.Bool
+  {- Arity: 4, HasNoCafRefs,
+     Strictness: <L,U(A,U(U(C(C1(U)),A),A,A,A,A,A,A,A),A,A,A)><L,A><S,U><S,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (4, True, True)
+                (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   w :: Language.Futhark.Syntax.ArrayShape (shape vn)
+                   w1 :: GHC.Base.Monoid (as vn)
+                   w2 :: Language.Futhark.Syntax.TypeBase shape as vn
+                   w3 :: Language.Futhark.Syntax.TypeBase shape as vn ->
+                 Language.Futhark.Attributes.$wsimilarTo
+                   @ shape
+                   @ as
+                   @ vn
+                   w
+                   w2
+                   w3) -}
+6599a88c563dcc248728a770de1dd96c
+  subtypeOf ::
+    (Language.Futhark.Syntax.ArrayShape (shape vn),
+     GHC.Base.Monoid (as1 vn), GHC.Base.Monoid (as2 vn)) =>
+    Language.Futhark.Syntax.TypeBase shape as1 vn
+    -> Language.Futhark.Syntax.TypeBase shape as2 vn -> GHC.Types.Bool
+  {- Arity: 5, HasNoCafRefs,
+     Strictness: <L,U(A,U(U(C(C1(U)),A),A,A,A,A,A,A,A),A,A,A)><L,A><L,A><S,1*U><S,1*U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (5, True, True)
+                (\ @ (shape :: * -> *)
+                   @ (as1 :: * -> *)
+                   @ vn
+                   @ (as2 :: * -> *)
+                   w :: Language.Futhark.Syntax.ArrayShape (shape vn)
+                   w1 :: GHC.Base.Monoid (as1 vn)
+                   w2 :: GHC.Base.Monoid (as2 vn)
+                   w3 :: Language.Futhark.Syntax.TypeBase shape as1 vn
+                   w4 :: Language.Futhark.Syntax.TypeBase shape as2 vn ->
+                 Language.Futhark.Attributes.$wsubtypeOf
+                   @ shape
+                   @ as1
+                   @ vn
+                   @ as2
+                   w
+                   w3
+                   w4) -}
+4fd789724ba5a811fc2d7a0363ca1e59
+  toParam ::
+    GHC.Classes.Ord vn =>
+    Language.Futhark.Syntax.IdentBase Language.Futhark.Syntax.Info vn
+    -> Language.Futhark.Syntax.ParamBase
+         Language.Futhark.Syntax.Info vn
+  {- Arity: 2, Strictness: <L,A><S,1*U(U,U,U)>m, Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ @ vn
+                   w :: GHC.Classes.Ord vn
+                   w1 :: Language.Futhark.Syntax.IdentBase
+                           Language.Futhark.Syntax.Info vn ->
+                 case w1 of ww { Language.Futhark.Syntax.Ident ww1 ww2 ww3 ->
+                 Language.Futhark.Syntax.Param
+                   @ Language.Futhark.Syntax.Info
+                   @ vn
+                   ww1
+                   (Language.Futhark.Syntax.TypeDecl
+                      @ Language.Futhark.Syntax.Info
+                      @ vn
+                      (Language.Futhark.Attributes.$wcontractTypeBase
+                         @ Language.Futhark.Syntax.Rank
+                         @ Language.Futhark.Syntax.Names
+                         @ vn
+                         (Language.Futhark.Attributes.toParam2 @ vn)
+                         ww2
+                           `cast`
+                         (Language.Futhark.Syntax.NTCo:Info[0]
+                              <Language.Futhark.Syntax.CompTypeBase vn>_R))
+                      (Language.Futhark.Attributes.modifyShapeAnnotations
+                         @ Language.Futhark.Syntax.Rank
+                         @ vn
+                         @ Language.Futhark.Syntax.ShapeDecl
+                         @ Language.Futhark.Syntax.NoInfo
+                         (\ shape :: Language.Futhark.Syntax.Rank vn ->
+                          case shape
+                                 `cast`
+                               (Language.Futhark.Syntax.NTCo:Rank[0]
+                                    <vn>_P) of wild1 { GHC.Types.I# y ->
+                          case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.<# 0 y) of wild {
+                            GHC.Types.False
+                            -> GHC.Types.[] @ (Language.Futhark.Syntax.DimDecl vn)
+                            GHC.Types.True -> Language.Futhark.Attributes.toParam1 @ vn y } })
+                           `cast`
+                         (<Language.Futhark.Syntax.Rank vn>_R
+                          ->_R Sym (Language.Futhark.Syntax.NTCo:ShapeDecl[0] <vn>_R))
+                         (Language.Futhark.Attributes.toStruct
+                            @ Language.Futhark.Syntax.Rank
+                            @ Language.Futhark.Syntax.Names
+                            @ vn
+                            ww2
+                              `cast`
+                            (Language.Futhark.Syntax.NTCo:Info[0]
+                                 <Language.Futhark.Syntax.CompTypeBase vn>_R)))
+                        `cast`
+                      (Sym (Language.Futhark.Syntax.NTCo:Info[0]
+                                <Language.Futhark.Syntax.StructTypeBase vn>_R)))
+                   ww3 }) -}
+4cabc11ab2b874515afac51e71d0eb15
+  toParam1 :: GHC.Prim.Int# -> [Language.Futhark.Syntax.DimDecl vn]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>, Inline: [0] -}
+14fcce0ae2aab68bc398a2ed3ef7f9ea
+  toParam2 ::
+    Language.Futhark.Syntax.ArrayShape
+      (Language.Futhark.Syntax.Rank vn)
+  {- Unfolding: (\ @ vn ->
+                 Language.Futhark.Syntax.$fArrayShapeRank
+                   @ vn
+                   (Language.Futhark.Syntax.$fEqRank @ vn)
+                   (Language.Futhark.Attributes.toParam3 @ vn)
+                   (Language.Futhark.Syntax.$fMonoidRank @ vn)) -}
+f7317d1a8aae39d836547cdcc350b399
+  toParam3 :: GHC.Classes.Ord (Language.Futhark.Syntax.Rank vn)
+  {- Unfolding: (\ @ vn ->
+                 Language.Futhark.Syntax.$fOrdRank
+                   @ vn
+                   (Language.Futhark.Syntax.$fEqRank @ vn)) -}
+829b04fc99579383c69649176dd8f126
+  toStruct ::
+    Language.Futhark.Syntax.TypeBase shape as vn
+    -> Language.Futhark.Syntax.TypeBase
+         shape Language.Futhark.Syntax.NoInfo vn
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   t :: Language.Futhark.Syntax.TypeBase shape as vn ->
+                 Language.Futhark.Attributes.addAliases
+                   @ shape
+                   @ as
+                   @ vn
+                   @ Language.Futhark.Syntax.NoInfo
+                   t
+                   (\ ds :: as vn -> Language.Futhark.Syntax.NoInfo @ vn)) -}
+c0be3f791e79de00c1d8f2358ccf62e6
+  toStructural ::
+    Language.Futhark.Syntax.ArrayShape (shape vn) =>
+    Language.Futhark.Syntax.TypeBase shape as vn
+    -> Language.Futhark.Syntax.TypeBase
+         Language.Futhark.Syntax.Rank Language.Futhark.Syntax.NoInfo ()
+  {- Arity: 2, Strictness: <L,1*U(A,A,A,1*U,A)><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   $dArrayShape :: Language.Futhark.Syntax.ArrayShape (shape vn)
+                   x :: Language.Futhark.Syntax.TypeBase shape as vn ->
+                 Language.Futhark.Attributes.removeNames
+                   @ Language.Futhark.Syntax.Rank
+                   @ as
+                   @ vn
+                   (Language.Futhark.Attributes.toParam2 @ vn)
+                   (Language.Futhark.Attributes.removeShapeAnnotations
+                      @ shape
+                      @ as
+                      @ vn
+                      $dArrayShape
+                      x)) -}
+ec03a843fa264d4b33e1def0b7b577de
+  tupleArrayElemToType ::
+    GHC.Base.Monoid (as vn) =>
+    Language.Futhark.Syntax.TupleArrayElemTypeBase shape as vn
+    -> Language.Futhark.Syntax.TypeBase shape as vn
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,A><S,1*U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, True)
+                (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   w :: GHC.Base.Monoid (as vn)
+                   w1 :: Language.Futhark.Syntax.TupleArrayElemTypeBase shape as vn ->
+                 Language.Futhark.Attributes.$wtupleArrayElemToType
+                   @ shape
+                   @ as
+                   @ vn
+                   w1) -}
+eb790cba13cf09fd3e8ebb6fa0a4c817
+  tupleArrayElemUniqueness ::
+    Language.Futhark.Syntax.TupleArrayElemTypeBase shape as vn
+    -> Language.Futhark.Core.Uniqueness
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+f0a15fb8205dcdae54f36b76fb9eb557
+  typeOf ::
+    (GHC.Classes.Ord vn, Data.Hashable.Class.Hashable vn) =>
+    Language.Futhark.Syntax.ExpBase Language.Futhark.Syntax.Info vn
+    -> Language.Futhark.Syntax.CompTypeBase vn
+  {- Arity: 2, Strictness: <L,U(U,A,A,A,A,A,A,A)><L,U(A,C(U(U)))> -}
+c2147026a60ac62cf6384095520d44c7
+  typeToTupleArrayElem ::
+    GHC.Base.Monoid (as vn) =>
+    Language.Futhark.Syntax.TypeBase shape as vn
+    -> Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Syntax.TupleArrayElemTypeBase shape as vn
+  {- Arity: 3, HasNoCafRefs, Strictness: <L,U(U,A,A)><S,1*U><L,U> -}
+2818d968aa799e75ef4eb782ee7f902a
+  typesFromProg ::
+    Language.Futhark.Syntax.ProgBase f vn
+    -> [Language.Futhark.Syntax.TypeDefBase f vn]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ (f :: * -> *)
+                   @ vn
+                   prog :: Language.Futhark.Syntax.ProgBase f vn ->
+                 case prog of wild { Language.Futhark.Syntax.Prog ds1 ->
+                 GHC.Base.build
+                   @ (Language.Futhark.Syntax.TypeDefBase f vn)
+                   (\ @ b1
+                      c :: Language.Futhark.Syntax.TypeDefBase f vn -> b1 -> b1[OneShot]
+                      n :: b1[OneShot] ->
+                    GHC.Base.foldr
+                      @ (Language.Futhark.Syntax.DecBase f vn)
+                      @ b1
+                      (Data.Maybe.mapMaybeFB
+                         @ (Language.Futhark.Syntax.TypeDefBase f vn)
+                         @ b1
+                         @ (Language.Futhark.Syntax.DecBase f vn)
+                         c
+                         (Language.Futhark.Attributes.isType @ f @ vn))
+                      n
+                      ds1) }) -}
+c0d686476026e193f6069ed64130c5b8
+  unique ::
+    Language.Futhark.Syntax.TypeBase shape as vn -> GHC.Types.Bool
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   x :: Language.Futhark.Syntax.TypeBase shape as vn ->
+                 case x of wild {
+                   DEFAULT -> GHC.Types.False
+                   Language.Futhark.Syntax.Array ds
+                   -> case ds of wild1 {
+                        Language.Futhark.Syntax.PrimArray ds1 ds2 u ds3
+                        -> case u of wild2 {
+                             Language.Futhark.Core.Nonunique -> GHC.Types.False
+                             Language.Futhark.Core.Unique -> GHC.Types.True }
+                        Language.Futhark.Syntax.TupleArray ds1 ds2 u
+                        -> case u of wild2 {
+                             Language.Futhark.Core.Nonunique -> GHC.Types.False
+                             Language.Futhark.Core.Unique -> GHC.Types.True } } }) -}
+39440489eaa04cd9bc86ceea1d0ff930
+  uniqueness ::
+    Language.Futhark.Syntax.TypeBase shape as vn
+    -> Language.Futhark.Core.Uniqueness
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   ds :: Language.Futhark.Syntax.TypeBase shape as vn ->
+                 case ds of wild {
+                   DEFAULT -> Language.Futhark.Core.Nonunique
+                   Language.Futhark.Syntax.Array ds1
+                   -> case ds1 of wild1 {
+                        Language.Futhark.Syntax.PrimArray ds2 ds3 u ds4 -> u
+                        Language.Futhark.Syntax.TupleArray ds2 ds3 u -> u } }) -}
+e31fda04c54d6c1300d1156e90954660
+  vacuousShapeAnnotations ::
+    Language.Futhark.Syntax.ArrayShape (shape vn) =>
+    Language.Futhark.Syntax.TypeBase shape as vn
+    -> Language.Futhark.Syntax.TypeBase
+         Language.Futhark.Syntax.ShapeDecl as vn
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <L,U(A,A,A,C(U(U)),A)><S,1*U>,
+     Unfolding: (\ @ (shape :: * -> *)
+                   @ (as :: * -> *)
+                   @ vn
+                   $dArrayShape :: Language.Futhark.Syntax.ArrayShape (shape vn)
+                   eta :: Language.Futhark.Syntax.TypeBase shape as vn ->
+                 Language.Futhark.Attributes.modifyShapeAnnotations
+                   @ shape
+                   @ vn
+                   @ Language.Futhark.Syntax.ShapeDecl
+                   @ as
+                   (\ shape1 :: shape vn ->
+                    case Language.Futhark.Syntax.shapeRank
+                           @ (shape vn)
+                           $dArrayShape
+                           shape1 of wild1 { GHC.Types.I# y ->
+                    case GHC.Prim.tagToEnum#
+                           @ GHC.Types.Bool
+                           (GHC.Prim.<# 0 y) of wild {
+                      GHC.Types.False
+                      -> GHC.Types.[] @ (Language.Futhark.Syntax.DimDecl vn)
+                      GHC.Types.True -> Language.Futhark.Attributes.toParam1 @ vn y } })
+                     `cast`
+                   (<shape vn>_R
+                    ->_R Sym (Language.Futhark.Syntax.NTCo:ShapeDecl[0] <vn>_R))
+                   eta) -}
+b1126aa8d3fd1a180500b4f7fa96710f
+  valueType ::
+    Language.Futhark.Syntax.Value
+    -> Language.Futhark.Syntax.TypeBase
+         Language.Futhark.Syntax.Rank Language.Futhark.Syntax.NoInfo vn
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+"SPEC typeToTupleArrayElem _ @ NoInfo @ ()" [ALWAYS] forall @ (shape :: *
+                                                                        -> *)
+                                                            $dMonoid :: GHC.Base.Monoid
+                                                                          (Language.Futhark.Syntax.NoInfo
+                                                                             ())
+  Language.Futhark.Attributes.typeToTupleArrayElem @ shape
+                                                   @ Language.Futhark.Syntax.NoInfo
+                                                   @ ()
+                                                   $dMonoid
+  = Language.Futhark.Attributes.arrayOf_$stypeToTupleArrayElem
+      @ shape
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

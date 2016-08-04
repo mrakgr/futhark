@@ -1,0 +1,1334 @@
+
+==================== FINAL INTERFACE ====================
+2016-08-04 10:11:22.158949 UTC
+
+interface futha_GJqcXjzuDAgKwUW9oTf4td:Language.Futhark.Parser 7103
+  interface hash: 46b09cb85df48e2f9572691538abf25b
+  ABI hash: a27d2ba660f87e65a13b3548416d5572
+  export-list hash: 20db312263b318ca259367205a6a9ff9
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: a20a7f2d5e52ead64c4ed58ad291d43e
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Language.Futhark.Parser.parseExp
+  Language.Futhark.Parser.parseExpIncr
+  Language.Futhark.Parser.parseExpIncrIO
+  Language.Futhark.Parser.parseFuthark
+  Language.Futhark.Parser.parseLambda
+  Language.Futhark.Parser.parseType
+  Language.Futhark.Parser.parseValue
+  Language.Futhark.Parser.parseValues
+  Language.Futhark.Parser.ParseError{Language.Futhark.Parser.ParseError}
+module dependencies: Futhark.Representation.Primitive
+                     Futhark.Util.Pretty Language.Futhark.Attributes
+                     Language.Futhark.Core Language.Futhark.Parser.Lexer
+                     Language.Futhark.Parser.Parser Language.Futhark.Syntax
+package dependencies: array-0.5.1.0@array_67iodizgJQIIxYVTp4emlA
+                      base-4.8.2.0 binary-0.7.5.0@binar_3uXFWMoAGBg0xKP9MHKRwi
+                      bytestring-0.10.6.0@bytes_6VWy06pWzJq9evDvK2d4w6
+                      containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU
+                      deepseq-1.4.1.1@deeps_6vMKxt5sPFR0XsbRWvvq59
+                      filepath-1.4.0.0@filep_Ey7a1in9roBAE8bUFJ5R9m ghc-prim-0.4.0.0
+                      hashable-1.2.4.0@hasha_EalUWgp8NarBYWPbvYAD8I integer-gmp-1.0.0.0
+                      mainland-pretty-0.4.1.4@mainl_KnIUy4mTEecCOphhB8nGQj
+                      mtl-2.2.1@mtl_Aue4leSeVkpKLsfHIV51E8
+                      srcloc-0.5.1.0@srclo_IrVSavrho0x78ZSJU92mrC
+                      text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne
+                      transformers-0.4.2.0@trans_GZTjP9K5WFq01xC9BAGQpF
+                      unordered-containers-0.2.7.0@unord_2BLx4faR35mFWLJj5xiBgm
+orphans: base-4.8.2.0:GHC.Base base-4.8.2.0:GHC.Float
+         binary-0.7.5.0@binar_3uXFWMoAGBg0xKP9MHKRwi:Data.Binary.Generic
+         bytestring-0.10.6.0@bytes_6VWy06pWzJq9evDvK2d4w6:Data.ByteString.Builder
+         hashable-1.2.4.0@hasha_EalUWgp8NarBYWPbvYAD8I:Data.Hashable.Generic
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Lazy
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Show
+         transformers-0.4.2.0@trans_GZTjP9K5WFq01xC9BAGQpF:Control.Monad.Trans.Error
+family instance modules: base-4.8.2.0:Control.Applicative
+                         base-4.8.2.0:Data.Either base-4.8.2.0:Data.Functor.Identity
+                         base-4.8.2.0:Data.Monoid base-4.8.2.0:Data.Type.Equality
+                         base-4.8.2.0:Data.Void base-4.8.2.0:GHC.Exts
+                         base-4.8.2.0:GHC.Generics
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.IntMap.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.IntSet.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Map.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Sequence
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Set.Base
+                         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text
+                         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Lazy
+                         unordered-containers-0.2.7.0@unord_2BLx4faR35mFWLJj5xiBgm:Data.HashMap.Base
+                         unordered-containers-0.2.7.0@unord_2BLx4faR35mFWLJj5xiBgm:Data.HashSet
+import  -/  base-4.8.2.0:Control.Applicative a8ebf5ad4932b411ad7725da68be9801
+import  -/  base-4.8.2.0:Control.Monad 480c5067477275068c9b98be08410df9
+import  -/  base-4.8.2.0:Data.Either e8724afd65fd432cfe9a54014f5f762d
+import  -/  base-4.8.2.0:Data.Foldable 2ce969969ad5231eb40bd713f94f05ad
+import  -/  base-4.8.2.0:Data.Functor 5c701b0af1708f0192a25dfe14ce6274
+import  -/  base-4.8.2.0:Data.List 3f0782c8d4bf50eecefcd5ea1798aac8
+import  -/  base-4.8.2.0:Data.Maybe 1cb58de2b04ee3c0c0a7dc9201184aff
+import  -/  base-4.8.2.0:Data.Monoid 85b292b52bfd80ed619cddb767d638d3
+import  -/  base-4.8.2.0:Data.OldList d8fd80b0e14aa085ce6219cd89dad356
+import  -/  base-4.8.2.0:Data.Tuple 012ad951a59a9d85fe1de36a2f012986
+import  -/  base-4.8.2.0:GHC.Base a4939789b2cfd60b36ed163e56a623cd
+import  -/  base-4.8.2.0:GHC.IO bb5b81adcea33b14bd4abe16d7dde45f
+import  -/  base-4.8.2.0:GHC.Show 0e1d8380a8fb0cfb07ebeda3b70cbf38
+import  -/  base-4.8.2.0:Prelude 694dcaf039efe62df1c44834e2dbd2fb
+import  -/  filepath-1.4.0.0@filep_Ey7a1in9roBAE8bUFJ5R9m:System.FilePath 3e21746ed4230b70072198bcb57cbe17
+import  -/  filepath-1.4.0.0@filep_Ey7a1in9roBAE8bUFJ5R9m:System.FilePath.Windows a1bd55a69aca6b0f74e5e5f1e16d454e
+import  -/  Futhark.Representation.Primitive ad708969d75463632f432066d13a8ed9
+  Float64 bfbc07c1c559fc0775d129150a9021ec
+  Int32 c8bb888c9065bd0de2acd136a34310f8
+import  -/  Language.Futhark.Attributes e861dc9941e2e7096b6d95a0084ef6eb
+  exports: de7e1f577bb96461a08e7bb9852f4f33
+  UncheckedExp 85e312962830d1e765a9f69b948f1b1f
+  UncheckedLambda 9c8f5a54ca15a601f85f2fc55dd4d283
+  UncheckedProg 2fdf5eb1cc87e11adbd510f63a102173
+  UncheckedUserType de55d7a0933e7daaeea62ff3e7038558
+import  -/  Language.Futhark.Parser.Lexer 086a7f3058107d5585a81bf865cbc578
+  exports: baa5961847d4ca653f55f8c61f965cf8
+  scanTokens fb15c63ddedfa52b2c5c444d72153d0e
+import  -/  Language.Futhark.Parser.Parser d7b479bdbb1e50be11c765b593c5633c
+  exports: c78305060a42aab886a19723f1159a13
+  ParserMonad bbb44a0eecfbd7f09408133f37e3f5bd
+  ReadLineMonad c80fb9f4409891ffc93b8550c20bbb46
+  anyValue 8f390b92c3cedc3cd2b313cc70a62d50
+  anyValues d07b111dcc1d5f056d6a208c7cdda01c
+  expression f0b171b4ecba61dbda0997fce5fc7869
+  futharkType 198d6b5b19f4c4f712b4332f39b44945
+  getLinesFromIO a9b2aded5721209036dd0e197e503ee1
+  getLinesFromTexts f0531b2b7e08abc21ffa87986dd76d6e
+  getNoLines 79e58565075c3ab7951e34058eef6b0d
+  lambda fd244b305c1d0554dab8f7f76006b31d
+  newParserEnv 349ced9f9da9e6133d1347faa46dcb63
+  prog 02f2e13f7f4c3cfcbed31a4d42a3e0f9
+import  -/  Language.Futhark.Syntax 9c46ca7a7ca6ac482268adadc8b8aab8
+  exports: 2ed8a56670416081f2c686728d38039e
+  Include 7c5ac0c025a912492e75fa8514a7a782
+  Prog 768e576e74e7d7ac1532aed491f91e26
+  ProgHeader 24fb387b76f0de6e1364c57195f373ee
+  Value f4ef904aac52050dcf1785f30dabc683
+  progWHDecs 962694adcfe1f12e0a788afb84cf43a3
+  progWHHeaders 9547b3f8ddde788fe362b59ff7949cef
+import  -/  ghc-prim-0.4.0.0:GHC.Types 6b27fb3fdbd0e3f0925a4496c66513bb
+import  -/  mtl-2.2.1@mtl_Aue4leSeVkpKLsfHIV51E8:Control.Monad.Except a48c40e49a1635a6f6c139e86212e5c9
+import  -/  text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text a21462e4d9d23b8c5e0572484b88d821
+import  -/  text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.IO 52c98220322dbade38d78d8e74ec6007
+import  -/  text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Internal 762ad762817f3041e69c24778b8286ab
+import  -/  transformers-0.4.2.0@trans_GZTjP9K5WFq01xC9BAGQpF:Control.Monad.IO.Class 37487179a2f5eb2ea7922b911abcae56
+import  -/  transformers-0.4.2.0@trans_GZTjP9K5WFq01xC9BAGQpF:Control.Monad.Trans.Except 6961604358ca052b2f17ea0b96dc6f50
+import  -/  transformers-0.4.2.0@trans_GZTjP9K5WFq01xC9BAGQpF:Control.Monad.Trans.State 5e297379588b0dc65c923804b9d29784
+import  -/  transformers-0.4.2.0@trans_GZTjP9K5WFq01xC9BAGQpF:Control.Monad.Trans.State.Lazy 442cc9f80155d8aaed5b22580b659d92
+e500f10dcd319163e1a4608630d5f7c0
+  $fApplicativeErrorIO ::
+    GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e) =>
+    GHC.Base.Applicative (Language.Futhark.Parser.ErrorIO e)
+  DFunId[1]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U(U,U)>m,
+     Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ e
+                      $dFunctor :: GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e).
+                  @ (Language.Futhark.Parser.ErrorIO e)
+                  $dFunctor
+                  (Language.Futhark.Parser.$fApplicativeErrorIO_$cpure @ e $dFunctor)
+                  (Language.Futhark.Parser.$fApplicativeErrorIO_$c<*> @ e $dFunctor)
+                  (Language.Futhark.Parser.$fApplicativeErrorIO_$c*> @ e $dFunctor)
+                  (Language.Futhark.Parser.$fApplicativeErrorIO_$c<*
+                     @ e
+                     $dFunctor) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fApplicativeErrorIO1 ::
+    GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e) =>
+    forall a b.
+    Language.Futhark.Parser.ErrorIO e a
+    -> Language.Futhark.Parser.ErrorIO e b
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, Data.Either.Either e a #)
+  {- Arity: 4, HasNoCafRefs,
+     Strictness: <S(C(C(C(S(LS))))L),1*U(1*C1(C1(C1(U(U,1*U)))),A)><L,U><L,1*C1(U(U,1*U))><L,U>,
+     Unfolding: (\ @ e
+                   $dFunctor :: GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e)
+                   @ a11
+                   @ b
+                   eta :: Language.Futhark.Parser.ErrorIO e a11
+                   eta1 :: Language.Futhark.Parser.ErrorIO e b
+                   s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 case (GHC.Base.fmap
+                         @ (Language.Futhark.Parser.ErrorIO e)
+                         $dFunctor
+                         @ a11
+                         @ (b -> a11)
+                         (GHC.Base.const @ a11 @ b)
+                         eta)
+                        `cast`
+                      (Trans
+                           (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <b -> a11>_R)
+                           (GHC.Types.NTCo:IO[0] <Data.Either.Either e (b -> a11)>_R))
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 case ipv1 of wild {
+                   Data.Either.Left e1 -> (# ipv, Data.Either.Left @ e @ a11 e1 #)
+                   Data.Either.Right t
+                   -> case eta1
+                             `cast`
+                           (Trans
+                                (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <b>_R)
+                                (GHC.Types.NTCo:IO[0] <Data.Either.Either e b>_R))
+                             ipv of ds2 { (#,#) ipv2 ipv3 ->
+                      case ipv3 of wild1 {
+                        Data.Either.Left e1 -> (# ipv2, Data.Either.Left @ e @ a11 e1 #)
+                        Data.Either.Right t1
+                        -> (# ipv2, Data.Either.Right @ e @ a11 (t t1) #) } } } }) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fApplicativeErrorIO2 ::
+    GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e) =>
+    forall a b.
+    Language.Futhark.Parser.ErrorIO e a
+    -> Language.Futhark.Parser.ErrorIO e b
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, Data.Either.Either e b #)
+  {- Arity: 4, HasNoCafRefs,
+     Strictness: <S(LC(C(C(S(LS))))),1*U(A,1*C1(C1(C1(U(U,1*U)))))><L,U><L,1*C1(U(U,1*U))><L,U>,
+     Unfolding: (\ @ e
+                   $dFunctor :: GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e)
+                   @ a11
+                   @ b
+                   eta :: Language.Futhark.Parser.ErrorIO e a11
+                   eta1 :: Language.Futhark.Parser.ErrorIO e b
+                   s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 case (GHC.Base.<$
+                         @ (Language.Futhark.Parser.ErrorIO e)
+                         $dFunctor
+                         @ (b -> b)
+                         @ a11
+                         (GHC.Base.id @ b)
+                         eta)
+                        `cast`
+                      (Trans
+                           (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <b -> b>_R)
+                           (GHC.Types.NTCo:IO[0] <Data.Either.Either e (b -> b)>_R))
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 case ipv1 of wild {
+                   Data.Either.Left e1 -> (# ipv, Data.Either.Left @ e @ b e1 #)
+                   Data.Either.Right t
+                   -> case eta1
+                             `cast`
+                           (Trans
+                                (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <b>_R)
+                                (GHC.Types.NTCo:IO[0] <Data.Either.Either e b>_R))
+                             ipv of ds2 { (#,#) ipv2 ipv3 ->
+                      case ipv3 of wild1 {
+                        Data.Either.Left e1 -> ds2
+                        Data.Either.Right t1
+                        -> (# ipv2, Data.Either.Right @ e @ b (t t1) #) } } } }) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fApplicativeErrorIO3 ::
+    GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e) =>
+    forall a b.
+    Language.Futhark.Parser.ErrorIO e (a -> b)
+    -> Language.Futhark.Parser.ErrorIO e a
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, Data.Either.Either e b #)
+  {- Arity: 4, HasNoCafRefs,
+     Strictness: <L,A><C(S(LS)),1*C1(U(U,1*U))><L,1*C1(U(U,1*U))><L,U>,
+     Unfolding: InlineRule (4, True, False)
+                (\ @ e
+                   $dFunctor :: GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e)
+                   @ a11
+                   @ b
+                   m1 :: Language.Futhark.Parser.ErrorIO e (a11 -> b)
+                   m2 :: Language.Futhark.Parser.ErrorIO e a11
+                   s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 case m1
+                        `cast`
+                      (Trans
+                           (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <a11 -> b>_R)
+                           (GHC.Types.NTCo:IO[0] <Data.Either.Either e (a11 -> b)>_R))
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 case ipv1 of wild {
+                   Data.Either.Left e1 -> (# ipv, Data.Either.Left @ e @ b e1 #)
+                   Data.Either.Right t
+                   -> case m2
+                             `cast`
+                           (Trans
+                                (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <a11>_R)
+                                (GHC.Types.NTCo:IO[0] <Data.Either.Either e a11>_R))
+                             ipv of ds2 { (#,#) ipv2 ipv3 ->
+                      case ipv3 of wild1 {
+                        Data.Either.Left e1 -> (# ipv2, Data.Either.Left @ e @ b e1 #)
+                        Data.Either.Right t1
+                        -> (# ipv2, Data.Either.Right @ e @ b (t t1) #) } } } }) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fApplicativeErrorIO4 ::
+    GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e) =>
+    forall a.
+    a
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, Data.Either.Either e a #)
+  {- Arity: 3, HasNoCafRefs, Strictness: <L,A><L,U><L,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ e
+                   $dFunctor :: GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e)
+                   @ a11
+                   x :: a11
+                   s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 (# s, Data.Either.Right @ e @ a11 x #)) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fApplicativeErrorIO_$c*> ::
+    GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e) =>
+    forall a b.
+    Language.Futhark.Parser.ErrorIO e a
+    -> Language.Futhark.Parser.ErrorIO e b
+    -> Language.Futhark.Parser.ErrorIO e b
+  {- Arity: 4, HasNoCafRefs,
+     Strictness: <S(LC(C(C(S(LS))))),1*U(A,1*C1(C1(C1(U(U,1*U)))))><L,U><L,1*C1(U(U,1*U))><L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Parser.$fApplicativeErrorIO2
+                  `cast`
+                (forall e.
+                 <GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e)>_R
+                 ->_R forall a11 b.
+                      <Language.Futhark.Parser.ErrorIO e a11>_R
+                      ->_R <Language.Futhark.Parser.ErrorIO e b>_R
+                      ->_R Trans
+                               (Sym (GHC.Types.NTCo:IO[0] <Data.Either.Either e b>_R))
+                               (Sym (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <b>_R))) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fApplicativeErrorIO_$c<* ::
+    GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e) =>
+    forall a b.
+    Language.Futhark.Parser.ErrorIO e a
+    -> Language.Futhark.Parser.ErrorIO e b
+    -> Language.Futhark.Parser.ErrorIO e a
+  {- Arity: 4, HasNoCafRefs,
+     Strictness: <S(C(C(C(S(LS))))L),1*U(1*C1(C1(C1(U(U,1*U)))),A)><L,U><L,1*C1(U(U,1*U))><L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Parser.$fApplicativeErrorIO1
+                  `cast`
+                (forall e.
+                 <GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e)>_R
+                 ->_R forall a11 b.
+                      <Language.Futhark.Parser.ErrorIO e a11>_R
+                      ->_R <Language.Futhark.Parser.ErrorIO e b>_R
+                      ->_R Trans
+                               (Sym (GHC.Types.NTCo:IO[0] <Data.Either.Either e a11>_R))
+                               (Sym (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <a11>_R))) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fApplicativeErrorIO_$c<*> ::
+    GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e) =>
+    forall a b.
+    Language.Futhark.Parser.ErrorIO e (a -> b)
+    -> Language.Futhark.Parser.ErrorIO e a
+    -> Language.Futhark.Parser.ErrorIO e b
+  {- Arity: 4, HasNoCafRefs,
+     Strictness: <L,A><C(S(LS)),1*C1(U(U,1*U))><L,1*C1(U(U,1*U))><L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Parser.$fApplicativeErrorIO3
+                  `cast`
+                (forall e.
+                 <GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e)>_R
+                 ->_R forall a11 b.
+                      <Language.Futhark.Parser.ErrorIO e (a11 -> b)>_R
+                      ->_R <Language.Futhark.Parser.ErrorIO e a11>_R
+                      ->_R Trans
+                               (Sym (GHC.Types.NTCo:IO[0] <Data.Either.Either e b>_R))
+                               (Sym (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <b>_R))) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fApplicativeErrorIO_$cpure ::
+    GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e) =>
+    forall a. a -> Language.Futhark.Parser.ErrorIO e a
+  {- Arity: 3, HasNoCafRefs, Strictness: <L,A><L,U><L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Parser.$fApplicativeErrorIO4
+                  `cast`
+                (forall e.
+                 <GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e)>_R
+                 ->_R forall a11.
+                      <a11>_R
+                      ->_R Trans
+                               (Sym (GHC.Types.NTCo:IO[0] <Data.Either.Either e a11>_R))
+                               (Sym (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <a11>_R))) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fFunctorErrorIO ::
+    GHC.Base.Functor (Language.Futhark.Parser.ErrorIO e)
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ e.
+                  @ (Language.Futhark.Parser.ErrorIO e)
+                  (Language.Futhark.Parser.$fFunctorErrorIO_$cfmap @ e)
+                  (Language.Futhark.Parser.$fFunctorErrorIO_$c<$ @ e) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fFunctorErrorIO1 ::
+    a
+    -> Language.Futhark.Parser.ErrorIO e b
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, Data.Either.Either e a #)
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,U><C(S(LS)),1*C1(U(U,1*U))><L,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ e
+                   @ a11
+                   @ b
+                   eta :: a11
+                   eta1 :: Language.Futhark.Parser.ErrorIO e b
+                   s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 case eta1
+                        `cast`
+                      (Trans
+                           (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <b>_R)
+                           (GHC.Types.NTCo:IO[0] <Data.Either.Either e b>_R))
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 case ipv1 of wild {
+                   Data.Either.Left e1 -> (# ipv, Data.Either.Left @ e @ a11 e1 #)
+                   Data.Either.Right t
+                   -> (# ipv, Data.Either.Right @ e @ a11 eta #) } }) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fFunctorErrorIO2 ::
+    (a -> b)
+    -> Language.Futhark.Parser.ErrorIO e a
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, Data.Either.Either e b #)
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,1*C1(U)><C(S(LS)),1*C1(U(U,1*U))><L,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ e
+                   @ a11
+                   @ b
+                   f :: a11 -> b
+                   m1 :: Language.Futhark.Parser.ErrorIO e a11
+                   s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 case m1
+                        `cast`
+                      (Trans
+                           (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <a11>_R)
+                           (GHC.Types.NTCo:IO[0] <Data.Either.Either e a11>_R))
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 case ipv1 of wild {
+                   Data.Either.Left e1 -> (# ipv, Data.Either.Left @ e @ b e1 #)
+                   Data.Either.Right t
+                   -> (# ipv, Data.Either.Right @ e @ b (f t) #) } }) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fFunctorErrorIO_$c<$ ::
+    a
+    -> Language.Futhark.Parser.ErrorIO e b
+    -> Language.Futhark.Parser.ErrorIO e a
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,U><C(S(LS)),1*C1(U(U,1*U))><L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Parser.$fFunctorErrorIO1
+                  `cast`
+                (forall e a11 b.
+                 <a11>_R
+                 ->_R <Language.Futhark.Parser.ErrorIO e b>_R
+                 ->_R Trans
+                          (Sym (GHC.Types.NTCo:IO[0] <Data.Either.Either e a11>_R))
+                          (Sym (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <a11>_R))) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fFunctorErrorIO_$cfmap ::
+    (a -> b)
+    -> Language.Futhark.Parser.ErrorIO e a
+    -> Language.Futhark.Parser.ErrorIO e b
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,1*C1(U)><C(S(LS)),1*C1(U(U,1*U))><L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Parser.$fFunctorErrorIO2
+                  `cast`
+                (forall e a11 b.
+                 <a11 -> b>_R
+                 ->_R <Language.Futhark.Parser.ErrorIO e a11>_R
+                 ->_R Trans
+                          (Sym (GHC.Types.NTCo:IO[0] <Data.Either.Either e b>_R))
+                          (Sym (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <b>_R))) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fMonadErrorIO ::
+    GHC.Base.Applicative (Language.Futhark.Parser.ErrorIO e) =>
+    GHC.Base.Monad (Language.Futhark.Parser.ErrorIO e)
+  DFunId[1]
+  {- Arity: 1, Strictness: <L,U>m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ e
+                      $dApplicative1 :: GHC.Base.Applicative
+                                          (Language.Futhark.Parser.ErrorIO e).
+                  @ (Language.Futhark.Parser.ErrorIO e)
+                  $dApplicative1
+                  (Language.Futhark.Parser.$fMonadErrorIO_$c>>= @ e $dApplicative1)
+                  (Language.Futhark.Parser.$fMonadErrorIO_$c>> @ e $dApplicative1)
+                  (Language.Futhark.Parser.$fMonadErrorIO_$creturn
+                     @ e
+                     $dApplicative1)
+                  (Language.Futhark.Parser.$fMonadErrorIO_$cfail
+                     @ e
+                     $dApplicative1) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fMonadErrorIO2 ::
+    GHC.Base.Applicative (Language.Futhark.Parser.ErrorIO e) =>
+    forall a.
+    a
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, Data.Either.Either e a #)
+  {- Arity: 3, HasNoCafRefs, Strictness: <L,A><L,U><L,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ e
+                   $dApplicative1 :: GHC.Base.Applicative
+                                       (Language.Futhark.Parser.ErrorIO e)
+                   @ a11
+                   x :: a11
+                   s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 (# s, Data.Either.Right @ e @ a11 x #)) -}
+e7b53b2541f8c7f2dd4ee16a03d9fa92
+  $fMonadErrorIO3 ::
+    Language.Futhark.Parser.ErrorIO
+      Language.Futhark.Parser.ParseError a
+    -> (a
+        -> Language.Futhark.Parser.ErrorIO
+             Language.Futhark.Parser.ParseError b)
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+          Data.Either.Either Language.Futhark.Parser.ParseError b #)
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <C(S(LS)),1*C1(U(U,1*U))><L,1*C1(C1(U(U,U)))><L,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ a11
+                   @ b
+                   m :: Language.Futhark.Parser.ErrorIO
+                          Language.Futhark.Parser.ParseError a11
+                   g :: a11
+                        -> Language.Futhark.Parser.ErrorIO
+                             Language.Futhark.Parser.ParseError b
+                   s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 case m `cast`
+                      (Trans
+                           (Language.Futhark.Parser.NTCo:ErrorIO[0]
+                                <Language.Futhark.Parser.ParseError>_R <a11>_R)
+                           (GHC.Types.NTCo:IO[0]
+                                <Data.Either.Either Language.Futhark.Parser.ParseError a11>_R))
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 case ipv1 of wild {
+                   Data.Either.Left e
+                   -> (# ipv,
+                         Data.Either.Left @ Language.Futhark.Parser.ParseError @ b e #)
+                   Data.Either.Right t
+                   -> (g t)
+                        `cast`
+                      (Trans
+                           (Language.Futhark.Parser.NTCo:ErrorIO[0]
+                                <Language.Futhark.Parser.ParseError>_R <b>_R)
+                           (GHC.Types.NTCo:IO[0]
+                                <Data.Either.Either Language.Futhark.Parser.ParseError b>_R))
+                        ipv } }) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fMonadErrorIO4 ::
+    GHC.Base.Applicative (Language.Futhark.Parser.ErrorIO e) =>
+    forall a b.
+    Language.Futhark.Parser.ErrorIO e a
+    -> (a -> Language.Futhark.Parser.ErrorIO e b)
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, Data.Either.Either e b #)
+  {- Arity: 4, HasNoCafRefs,
+     Strictness: <L,A><C(S(LS)),1*C1(U(U,1*U))><L,1*C1(C1(U(U,U)))><L,U>,
+     Unfolding: InlineRule (4, True, False)
+                (\ @ e
+                   $dApplicative1 :: GHC.Base.Applicative
+                                       (Language.Futhark.Parser.ErrorIO e)
+                   @ a11
+                   @ b
+                   m :: Language.Futhark.Parser.ErrorIO e a11
+                   g :: a11 -> Language.Futhark.Parser.ErrorIO e b
+                   s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 case m `cast`
+                      (Trans
+                           (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <a11>_R)
+                           (GHC.Types.NTCo:IO[0] <Data.Either.Either e a11>_R))
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 case ipv1 of wild {
+                   Data.Either.Left e1 -> (# ipv, Data.Either.Left @ e @ b e1 #)
+                   Data.Either.Right t
+                   -> (g t)
+                        `cast`
+                      (Trans
+                           (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <b>_R)
+                           (GHC.Types.NTCo:IO[0] <Data.Either.Either e b>_R))
+                        ipv } }) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fMonadErrorIO_$c>> ::
+    GHC.Base.Applicative (Language.Futhark.Parser.ErrorIO e) =>
+    forall a b.
+    Language.Futhark.Parser.ErrorIO e a
+    -> Language.Futhark.Parser.ErrorIO e b
+    -> Language.Futhark.Parser.ErrorIO e b
+  {- Arity: 3, Strictness: <L,U><L,U><L,U>,
+     Inline: INLINE (sat-args=2),
+     Unfolding: InlineRule (3, False, False)
+                (\ @ e
+                   $dApplicative1 :: GHC.Base.Applicative
+                                       (Language.Futhark.Parser.ErrorIO e)
+                   @ a11
+                   @ b
+                   m1 :: Language.Futhark.Parser.ErrorIO e a11
+                   k :: Language.Futhark.Parser.ErrorIO e b
+                   eta :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 (Language.Futhark.Parser.$fMonadErrorIO_$c>>=
+                    @ e
+                    $dApplicative1
+                    @ a11
+                    @ b
+                    m1
+                    (\ ds :: a11 -> k))
+                   `cast`
+                 (Trans
+                      (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <b>_R)
+                      (GHC.Types.NTCo:IO[0] <Data.Either.Either e b>_R))
+                   eta)
+                  `cast`
+                (forall e.
+                 <GHC.Base.Applicative (Language.Futhark.Parser.ErrorIO e)>_R
+                 ->_R forall a11 b.
+                      <Language.Futhark.Parser.ErrorIO e a11>_R
+                      ->_R <Language.Futhark.Parser.ErrorIO e b>_R
+                      ->_R Trans
+                               (Sym (GHC.Types.NTCo:IO[0] <Data.Either.Either e b>_R))
+                               (Sym (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <b>_R))) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fMonadErrorIO_$c>>= ::
+    GHC.Base.Applicative (Language.Futhark.Parser.ErrorIO e) =>
+    forall a b.
+    Language.Futhark.Parser.ErrorIO e a
+    -> (a -> Language.Futhark.Parser.ErrorIO e b)
+    -> Language.Futhark.Parser.ErrorIO e b
+  {- Arity: 4, HasNoCafRefs,
+     Strictness: <L,A><C(S(LS)),1*C1(U(U,1*U))><L,1*C1(C1(U(U,U)))><L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Parser.$fMonadErrorIO4
+                  `cast`
+                (forall e.
+                 <GHC.Base.Applicative (Language.Futhark.Parser.ErrorIO e)>_R
+                 ->_R forall a11 b.
+                      <Language.Futhark.Parser.ErrorIO e a11>_R
+                      ->_R <a11 -> Language.Futhark.Parser.ErrorIO e b>_R
+                      ->_R Trans
+                               (Sym (GHC.Types.NTCo:IO[0] <Data.Either.Either e b>_R))
+                               (Sym (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <b>_R))) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fMonadErrorIO_$cfail ::
+    GHC.Base.Applicative (Language.Futhark.Parser.ErrorIO e) =>
+    forall a. GHC.Base.String -> Language.Futhark.Parser.ErrorIO e a
+  {- Arity: 2, Strictness: <B,A><B,U>b,
+     Unfolding: InlineRule (2, True, True)
+                (\ @ e
+                   $dApplicative1 :: GHC.Base.Applicative
+                                       (Language.Futhark.Parser.ErrorIO e)
+                   @ a11
+                   eta :: [GHC.Types.Char] ->
+                 GHC.Err.error @ (Language.Futhark.Parser.ErrorIO e a11) eta) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fMonadErrorIO_$creturn ::
+    GHC.Base.Applicative (Language.Futhark.Parser.ErrorIO e) =>
+    forall a. a -> Language.Futhark.Parser.ErrorIO e a
+  {- Arity: 3, HasNoCafRefs, Strictness: <L,A><L,U><L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Parser.$fMonadErrorIO2
+                  `cast`
+                (forall e.
+                 <GHC.Base.Applicative (Language.Futhark.Parser.ErrorIO e)>_R
+                 ->_R forall a11.
+                      <a11>_R
+                      ->_R Trans
+                               (Sym (GHC.Types.NTCo:IO[0] <Data.Either.Either e a11>_R))
+                               (Sym (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <a11>_R))) -}
+c82bbb69d86d37f45ced7250e889019f
+  $fMonadErrorIO_$s$c>> ::
+    Language.Futhark.Parser.ErrorIO
+      Language.Futhark.Parser.ParseError a
+    -> Language.Futhark.Parser.ErrorIO
+         Language.Futhark.Parser.ParseError b
+    -> Language.Futhark.Parser.ErrorIO
+         Language.Futhark.Parser.ParseError b
+  {- Arity: 2, Strictness: <L,U><L,U>, Inline: INLINE (sat-args=2),
+     Unfolding: InlineRule (2, False, False)
+                (\ @ a11
+                   @ b
+                   m1 :: Language.Futhark.Parser.ErrorIO
+                           Language.Futhark.Parser.ParseError a11
+                   k :: Language.Futhark.Parser.ErrorIO
+                          Language.Futhark.Parser.ParseError b
+                   eta :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 (Language.Futhark.Parser.$fMonadErrorIO_$s$c>>=
+                    @ a11
+                    @ b
+                    m1
+                    (\ ds :: a11 -> k))
+                   `cast`
+                 (Trans
+                      (Language.Futhark.Parser.NTCo:ErrorIO[0]
+                           <Language.Futhark.Parser.ParseError>_R <b>_R)
+                      (GHC.Types.NTCo:IO[0]
+                           <Data.Either.Either Language.Futhark.Parser.ParseError b>_R))
+                   eta)
+                  `cast`
+                (forall a11 b.
+                 <Language.Futhark.Parser.ErrorIO
+                    Language.Futhark.Parser.ParseError a11>_R
+                 ->_R <Language.Futhark.Parser.ErrorIO
+                         Language.Futhark.Parser.ParseError b>_R
+                 ->_R Trans
+                          (Sym (GHC.Types.NTCo:IO[0]
+                                    <Data.Either.Either Language.Futhark.Parser.ParseError b>_R))
+                          (Sym (Language.Futhark.Parser.NTCo:ErrorIO[0]
+                                    <Language.Futhark.Parser.ParseError>_R <b>_R))) -}
+130d4c09631ec46da7c70818e3af2da1
+  $fMonadErrorIO_$s$c>>= ::
+    Language.Futhark.Parser.ErrorIO
+      Language.Futhark.Parser.ParseError a
+    -> (a
+        -> Language.Futhark.Parser.ErrorIO
+             Language.Futhark.Parser.ParseError b)
+    -> Language.Futhark.Parser.ErrorIO
+         Language.Futhark.Parser.ParseError b
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <C(S(LS)),1*C1(U(U,1*U))><L,1*C1(C1(U(U,U)))><L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Parser.$fMonadErrorIO3
+                  `cast`
+                (forall a11 b.
+                 <Language.Futhark.Parser.ErrorIO
+                    Language.Futhark.Parser.ParseError a11>_R
+                 ->_R <a11
+                       -> Language.Futhark.Parser.ErrorIO
+                            Language.Futhark.Parser.ParseError b>_R
+                 ->_R Trans
+                          (Sym (GHC.Types.NTCo:IO[0]
+                                    <Data.Either.Either Language.Futhark.Parser.ParseError b>_R))
+                          (Sym (Language.Futhark.Parser.NTCo:ErrorIO[0]
+                                    <Language.Futhark.Parser.ParseError>_R <b>_R))) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fMonadIOErrorIO ::
+    GHC.Base.Monad (Language.Futhark.Parser.ErrorIO e) =>
+    Control.Monad.IO.Class.MonadIO (Language.Futhark.Parser.ErrorIO e)
+  DFunId[1]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U>m,
+     Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ e
+                      $dMonad :: GHC.Base.Monad (Language.Futhark.Parser.ErrorIO e).
+                  @ (Language.Futhark.Parser.ErrorIO e)
+                  $dMonad
+                  (Language.Futhark.Parser.$fMonadIOErrorIO_$cliftIO @ e $dMonad) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fMonadIOErrorIO1 ::
+    GHC.Base.Monad (Language.Futhark.Parser.ErrorIO e) =>
+    forall a.
+    GHC.Types.IO a
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, Data.Either.Either e a #)
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,A><C(S),1*C1(U(U,U))><L,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ e
+                   $dMonad :: GHC.Base.Monad (Language.Futhark.Parser.ErrorIO e)
+                   @ a11
+                   io :: GHC.Types.IO a11
+                   s :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 case io `cast` (GHC.Types.NTCo:IO[0] <a11>_R)
+                        s of ds { (#,#) ipv ipv1 ->
+                 (# ipv, Data.Either.Right @ e @ a11 ipv1 #) }) -}
+e500f10dcd319163e1a4608630d5f7c0
+  $fMonadIOErrorIO_$cliftIO ::
+    GHC.Base.Monad (Language.Futhark.Parser.ErrorIO e) =>
+    forall a. GHC.Types.IO a -> Language.Futhark.Parser.ErrorIO e a
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,A><C(S),1*C1(U(U,U))><L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Parser.$fMonadIOErrorIO1
+                  `cast`
+                (forall e.
+                 <GHC.Base.Monad (Language.Futhark.Parser.ErrorIO e)>_R
+                 ->_R forall a11.
+                      <GHC.Types.IO a11>_R
+                      ->_R Trans
+                               (Sym (GHC.Types.NTCo:IO[0] <Data.Either.Either e a11>_R))
+                               (Sym (Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <a11>_R))) -}
+68b40b94461fe04c9d4a1f7ea552379b
+  $fShowParseError ::
+    GHC.Show.Show Language.Futhark.Parser.ParseError
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Parser.ParseError
+                  Language.Futhark.Parser.$fShowParseError_$s$dmshowsPrec
+                  Language.Futhark.Parser.$fShowParseError_$cshow
+                  Language.Futhark.Parser.$fShowParseError_$cshowList -}
+68b40b94461fe04c9d4a1f7ea552379b
+  $fShowParseError1 ::
+    Language.Futhark.Parser.ParseError
+    -> GHC.Base.String -> [GHC.Types.Char]
+  {- Arity: 2, HasNoCafRefs,
+     Unfolding: (\ x :: Language.Futhark.Parser.ParseError
+                   s :: GHC.Base.String[OneShot] ->
+                 case x of wild { Language.Futhark.Parser.ParseError s1 ->
+                 GHC.Base.++ @ GHC.Types.Char s1 s }) -}
+68b40b94461fe04c9d4a1f7ea552379b
+  $fShowParseError_$cshow ::
+    Language.Futhark.Parser.ParseError -> GHC.Base.String
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ ds :: Language.Futhark.Parser.ParseError ->
+                 case ds of wild { Language.Futhark.Parser.ParseError s -> s }) -}
+68b40b94461fe04c9d4a1f7ea552379b
+  $fShowParseError_$cshowList ::
+    [Language.Futhark.Parser.ParseError] -> GHC.Show.ShowS
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><L,U>,
+     Unfolding: (\ ls :: [Language.Futhark.Parser.ParseError]
+                   s :: GHC.Base.String ->
+                 GHC.Show.showList__
+                   @ Language.Futhark.Parser.ParseError
+                   Language.Futhark.Parser.$fShowParseError1
+                   ls
+                   s) -}
+68b40b94461fe04c9d4a1f7ea552379b
+  $fShowParseError_$s$dmshowsPrec ::
+    GHC.Types.Int
+    -> Language.Futhark.Parser.ParseError -> GHC.Show.ShowS
+  {- Arity: 3, HasNoCafRefs, Strictness: <L,A><S(S),1*U(1*U)><L,1*U>,
+     Unfolding: InlineRule (-1, True, False)
+                (\ ds :: GHC.Types.Int
+                   x :: Language.Futhark.Parser.ParseError
+                   s :: GHC.Base.String ->
+                 GHC.Base.augment
+                   @ GHC.Types.Char
+                   (\ @ b c :: GHC.Types.Char -> b -> b[OneShot] n :: b[OneShot] ->
+                    GHC.Base.foldr
+                      @ GHC.Types.Char
+                      @ b
+                      c
+                      n
+                      (Language.Futhark.Parser.$fShowParseError_$cshow x))
+                   s) -}
+e500f10dcd319163e1a4608630d5f7c0
+  newtype ErrorIO e t
+    = ErrorIO {evalErrorIO :: GHC.Types.IO (Data.Either.Either e t)}
+68b40b94461fe04c9d4a1f7ea552379b
+  data ParseError = ParseError GHC.Base.String
+c38b6596de24a6c0678386f220ed6797
+  evalErrorIO ::
+    Language.Futhark.Parser.ErrorIO e t
+    -> GHC.Types.IO (Data.Either.Either e t)
+  RecSel Language.Futhark.Parser.ErrorIO
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Parser.evalErrorIO1
+                  `cast`
+                (forall e t.
+                 <Language.Futhark.Parser.ErrorIO e t>_R
+                 ->_R Language.Futhark.Parser.NTCo:ErrorIO[0] <e>_R <t>_R) -}
+b04db15848db10c6a21631187ddbbab8
+  evalErrorIO1 ::
+    Language.Futhark.Parser.ErrorIO e t
+    -> Language.Futhark.Parser.ErrorIO e t
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, True)
+                (\ @ e @ t ds :: Language.Futhark.Parser.ErrorIO e t -> ds) -}
+f03adb18449f0d655db37af149c2e206
+  parseExp ::
+    GHC.IO.FilePath
+    -> Data.Text.Internal.Text
+    -> Data.Either.Either
+         Language.Futhark.Parser.ParseError
+         Language.Futhark.Attributes.UncheckedExp
+  {- Arity: 2, Strictness: <L,U><L,1*U(U,U,1*U)>,
+     Unfolding: InlineRule (2, True, False)
+                (\ file :: GHC.IO.FilePath program :: Data.Text.Internal.Text ->
+                 case Language.Futhark.Parser.parseInMonad
+                        @ Language.Futhark.Attributes.UncheckedExp
+                        Language.Futhark.Parser.Parser.expression1
+                          `cast`
+                        (Trans
+                             (Sym (Control.Monad.Trans.State.Lazy.NTCo:StateT[0]
+                                       <Language.Futhark.Parser.Parser.ParserEnv>_N
+                                       <Control.Monad.Trans.State.Lazy.StateT
+                                          [Language.Futhark.Parser.Lexer.L
+                                             Language.Futhark.Parser.Lexer.Token]
+                                          Language.Futhark.Parser.Parser.ReadLineMonad>_R
+                                       <Data.Either.Either
+                                          [GHC.Types.Char]
+                                          Language.Futhark.Attributes.UncheckedExp>_N))
+                             (Sym (Control.Monad.Trans.Except.NTCo:ExceptT[0]
+                                       <[GHC.Types.Char]>_N
+                                       <Control.Monad.Trans.State.Lazy.StateT
+                                          Language.Futhark.Parser.Parser.ParserEnv
+                                          (Control.Monad.Trans.State.Lazy.StateT
+                                             [Language.Futhark.Parser.Lexer.L
+                                                Language.Futhark.Parser.Lexer.Token]
+                                             Language.Futhark.Parser.Parser.ReadLineMonad)>_R
+                                       <Language.Futhark.Attributes.UncheckedExp>_N)))
+                        file
+                        program of wild {
+                   Language.Futhark.Parser.Parser.Value x -> x
+                   Language.Futhark.Parser.Parser.GetLine ds1
+                   -> Data.Either.Left
+                        @ Language.Futhark.Parser.ParseError
+                        @ Language.Futhark.Attributes.UncheckedExp
+                        (Language.Futhark.Parser.ParseError
+                           Language.Futhark.Parser.Parser.getNoLines2) }) -}
+b4408742ea8733ccf582e3765505606f
+  parseExp1 ::
+    (Data.Either.Either GHC.Base.String a,
+     [Language.Futhark.Parser.Lexer.L
+        Language.Futhark.Parser.Lexer.Token])
+    -> Language.Futhark.Parser.Parser.ReadLineMonad
+         (Data.Either.Either GHC.Base.String a)
+  {- Arity: 1, HasNoCafRefs,
+     Unfolding: (\ @ a11
+                   ds :: (Data.Either.Either GHC.Base.String a11,
+                          [Language.Futhark.Parser.Lexer.L
+                             Language.Futhark.Parser.Lexer.Token]) ->
+                 Language.Futhark.Parser.Parser.Value
+                   @ (Data.Either.Either GHC.Base.String a11)
+                   (case ds of wild { (,) a12 ds1 -> a12 })) -}
+3aa3e069aa5e523450a18479d8313a46
+  parseExp2 ::
+    ((Data.Either.Either GHC.Base.String a,
+      Language.Futhark.Parser.Parser.ParserEnv),
+     [Language.Futhark.Parser.Lexer.L
+        Language.Futhark.Parser.Lexer.Token])
+    -> Language.Futhark.Parser.Parser.ReadLineMonad
+         (Data.Either.Either GHC.Base.String a,
+          [Language.Futhark.Parser.Lexer.L
+             Language.Futhark.Parser.Lexer.Token])
+  {- Arity: 1, HasNoCafRefs,
+     Unfolding: (\ @ a11
+                   ds :: ((Data.Either.Either GHC.Base.String a11,
+                           Language.Futhark.Parser.Parser.ParserEnv),
+                          [Language.Futhark.Parser.Lexer.L
+                             Language.Futhark.Parser.Lexer.Token]) ->
+                 Language.Futhark.Parser.Parser.Value
+                   @ (Data.Either.Either GHC.Base.String a11,
+                      [Language.Futhark.Parser.Lexer.L
+                         Language.Futhark.Parser.Lexer.Token])
+                   (case ds of wild { (,) a12 s' ->
+                    case a12 of wild1 { (,) a13 ds1 -> a13 } },
+                    case ds of wild { (,) a12 s' -> s' })) -}
+016a1b0dba746062610517a49affea11
+  parseExp3 ::
+    Data.Either.Either GHC.Base.String a
+    -> Language.Futhark.Parser.Parser.ReadLineMonad
+         (Data.Either.Either Language.Futhark.Parser.ParseError a)
+  {- Arity: 1, HasNoCafRefs,
+     Unfolding: (\ @ a11 x :: Data.Either.Either GHC.Base.String a11 ->
+                 Language.Futhark.Parser.Parser.Value
+                   @ (Data.Either.Either Language.Futhark.Parser.ParseError a11)
+                   (case x of wild {
+                      Data.Either.Left x1
+                      -> Data.Either.Left
+                           @ Language.Futhark.Parser.ParseError
+                           @ a11
+                           (Language.Futhark.Parser.ParseError x1)
+                      Data.Either.Right y
+                      -> Data.Either.Right
+                           @ Language.Futhark.Parser.ParseError
+                           @ a11
+                           y })) -}
+9952b61b75c6f56b1fee6e4dbd6ac90b
+  parseExpIncr ::
+    GHC.IO.FilePath
+    -> Data.Text.Internal.Text
+    -> Data.Either.Either
+         Language.Futhark.Parser.ParseError
+         Language.Futhark.Attributes.UncheckedExp
+  {- Arity: 2, Strictness: <L,U><L,1*U(U,U,U)>,
+     Unfolding: (\ file :: GHC.IO.FilePath
+                   program :: Data.Text.Internal.Text ->
+                 case Language.Futhark.Parser.Parser.getLinesFromTexts
+                        @ (Data.Either.Either
+                             Language.Futhark.Parser.ParseError
+                             Language.Futhark.Attributes.UncheckedExp)
+                        (Data.Text.lines program)
+                        (Language.Futhark.Parser.parseInMonad
+                           @ Language.Futhark.Attributes.UncheckedExp
+                           Language.Futhark.Parser.Parser.expression1
+                             `cast`
+                           (Trans
+                                (Sym (Control.Monad.Trans.State.Lazy.NTCo:StateT[0]
+                                          <Language.Futhark.Parser.Parser.ParserEnv>_N
+                                          <Control.Monad.Trans.State.Lazy.StateT
+                                             [Language.Futhark.Parser.Lexer.L
+                                                Language.Futhark.Parser.Lexer.Token]
+                                             Language.Futhark.Parser.Parser.ReadLineMonad>_R
+                                          <Data.Either.Either
+                                             [GHC.Types.Char]
+                                             Language.Futhark.Attributes.UncheckedExp>_N))
+                                (Sym (Control.Monad.Trans.Except.NTCo:ExceptT[0]
+                                          <[GHC.Types.Char]>_N
+                                          <Control.Monad.Trans.State.Lazy.StateT
+                                             Language.Futhark.Parser.Parser.ParserEnv
+                                             (Control.Monad.Trans.State.Lazy.StateT
+                                                [Language.Futhark.Parser.Lexer.L
+                                                   Language.Futhark.Parser.Lexer.Token]
+                                                Language.Futhark.Parser.Parser.ReadLineMonad)>_R
+                                          <Language.Futhark.Attributes.UncheckedExp>_N)))
+                           file
+                           Data.Text.Internal.empty) of wild {
+                   Data.Either.Left x
+                   -> Data.Either.Left
+                        @ Language.Futhark.Parser.ParseError
+                        @ Language.Futhark.Attributes.UncheckedExp
+                        (Language.Futhark.Parser.ParseError x)
+                   Data.Either.Right y -> y }) -}
+a68275fdd9bf92b58557c8a21416e66f
+  parseExpIncrIO ::
+    GHC.IO.FilePath
+    -> Data.Text.Internal.Text
+    -> GHC.Types.IO
+         (Data.Either.Either
+            Language.Futhark.Parser.ParseError
+            Language.Futhark.Attributes.UncheckedExp)
+  {- Arity: 3, Strictness: <L,U><L,1*U(U,U,1*U)><L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Parser.parseExpIncrIO1
+                  `cast`
+                (<GHC.IO.FilePath>_R
+                 ->_R <Data.Text.Internal.Text>_R
+                 ->_R Sym (GHC.Types.NTCo:IO[0]
+                               <Data.Either.Either
+                                  Language.Futhark.Parser.ParseError
+                                  Language.Futhark.Attributes.UncheckedExp>_R)) -}
+5fa791fb1ae54f65303cf43301788dcd
+  parseExpIncrIO1 ::
+    GHC.IO.FilePath
+    -> Data.Text.Internal.Text
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+          Data.Either.Either
+            Language.Futhark.Parser.ParseError
+            Language.Futhark.Attributes.UncheckedExp #)
+  {- Arity: 3, Strictness: <L,U><L,1*U(U,U,1*U)><L,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ file :: GHC.IO.FilePath
+                   program :: Data.Text.Internal.Text
+                   eta :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 Language.Futhark.Parser.Parser.getLinesFromIO1
+                   @ (Data.Either.Either
+                        Language.Futhark.Parser.ParseError
+                        Language.Futhark.Attributes.UncheckedExp)
+                   (Language.Futhark.Parser.parseInMonad
+                      @ Language.Futhark.Attributes.UncheckedExp
+                      Language.Futhark.Parser.Parser.expression1
+                        `cast`
+                      (Trans
+                           (Sym (Control.Monad.Trans.State.Lazy.NTCo:StateT[0]
+                                     <Language.Futhark.Parser.Parser.ParserEnv>_N
+                                     <Control.Monad.Trans.State.Lazy.StateT
+                                        [Language.Futhark.Parser.Lexer.L
+                                           Language.Futhark.Parser.Lexer.Token]
+                                        Language.Futhark.Parser.Parser.ReadLineMonad>_R
+                                     <Data.Either.Either
+                                        [GHC.Types.Char]
+                                        Language.Futhark.Attributes.UncheckedExp>_N))
+                           (Sym (Control.Monad.Trans.Except.NTCo:ExceptT[0]
+                                     <[GHC.Types.Char]>_N
+                                     <Control.Monad.Trans.State.Lazy.StateT
+                                        Language.Futhark.Parser.Parser.ParserEnv
+                                        (Control.Monad.Trans.State.Lazy.StateT
+                                           [Language.Futhark.Parser.Lexer.L
+                                              Language.Futhark.Parser.Lexer.Token]
+                                           Language.Futhark.Parser.Parser.ReadLineMonad)>_R
+                                     <Language.Futhark.Attributes.UncheckedExp>_N)))
+                      file
+                      program)
+                   eta) -}
+46b9b8005702224081599f176c6757e9
+  parseFuthark ::
+    GHC.IO.FilePath
+    -> Data.Text.Internal.Text
+    -> GHC.Types.IO
+         (Data.Either.Either
+            Language.Futhark.Parser.ParseError
+            Language.Futhark.Attributes.UncheckedProg)
+  {- Arity: 3, Strictness: <L,U><L,1*U(U,U,1*U)><L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Parser.parseFuthark1
+                  `cast`
+                (<GHC.IO.FilePath>_R
+                 ->_R <Data.Text.Internal.Text>_R
+                 ->_R Sym (GHC.Types.NTCo:IO[0]
+                               <Data.Either.Either
+                                  Language.Futhark.Parser.ParseError
+                                  Language.Futhark.Attributes.UncheckedProg>_R)) -}
+852bab77a22e8bd6d9b399827a9c15d9
+  parseFuthark1 ::
+    GHC.IO.FilePath
+    -> Data.Text.Internal.Text
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+          Data.Either.Either
+            Language.Futhark.Parser.ParseError
+            Language.Futhark.Attributes.UncheckedProg #)
+  {- Arity: 3, Strictness: <L,U><L,1*U(U,U,1*U)><L,U> -}
+e6aa95798def532da4b914bae68fa62e
+  parseInMonad ::
+    Language.Futhark.Parser.Parser.ParserMonad a
+    -> GHC.IO.FilePath
+    -> Data.Text.Internal.Text
+    -> Language.Futhark.Parser.Parser.ReadLineMonad
+         (Data.Either.Either Language.Futhark.Parser.ParseError a)
+  {- Arity: 3, Strictness: <L,1*C1(C1(U))><L,U><L,1*U(U,U,1*U)>,
+     Unfolding: (\ @ a11
+                   p :: Language.Futhark.Parser.Parser.ParserMonad a11
+                   file :: GHC.IO.FilePath
+                   program :: Data.Text.Internal.Text ->
+                 case Language.Futhark.Parser.Lexer.scanTokens
+                        file
+                        program of wild {
+                   Data.Either.Left x
+                   -> Language.Futhark.Parser.Parser.$fApplicativeReadLineMonad_$c>>=
+                        @ (Data.Either.Either GHC.Base.String a11)
+                        @ (Data.Either.Either Language.Futhark.Parser.ParseError a11)
+                        (Language.Futhark.Parser.Parser.Value
+                           @ (Data.Either.Either GHC.Base.String a11)
+                           (Data.Either.Left @ GHC.Base.String @ a11 x))
+                        (Language.Futhark.Parser.parseExp3 @ a11)
+                   Data.Either.Right y
+                   -> Language.Futhark.Parser.Parser.$fApplicativeReadLineMonad_$c>>=
+                        @ (Data.Either.Either GHC.Base.String a11)
+                        @ (Data.Either.Either Language.Futhark.Parser.ParseError a11)
+                        (Language.Futhark.Parser.Parser.$fApplicativeReadLineMonad_$c>>=
+                           @ (Data.Either.Either GHC.Base.String a11,
+                              [Language.Futhark.Parser.Lexer.L
+                                 Language.Futhark.Parser.Lexer.Token])
+                           @ (Data.Either.Either GHC.Base.String a11)
+                           (Language.Futhark.Parser.Parser.$fApplicativeReadLineMonad_$c>>=
+                              @ ((Data.Either.Either GHC.Base.String a11,
+                                  Language.Futhark.Parser.Parser.ParserEnv),
+                                 [Language.Futhark.Parser.Lexer.L
+                                    Language.Futhark.Parser.Lexer.Token])
+                              @ (Data.Either.Either GHC.Base.String a11,
+                                 [Language.Futhark.Parser.Lexer.L
+                                    Language.Futhark.Parser.Lexer.Token])
+                              ((p `cast`
+                                (Trans
+                                     (Control.Monad.Trans.Except.NTCo:ExceptT[0]
+                                          <GHC.Base.String>_N
+                                          <Control.Monad.Trans.State.Lazy.StateT
+                                             Language.Futhark.Parser.Parser.ParserEnv
+                                             (Control.Monad.Trans.State.Lazy.StateT
+                                                [Language.Futhark.Parser.Lexer.L
+                                                   Language.Futhark.Parser.Lexer.Token]
+                                                Language.Futhark.Parser.Parser.ReadLineMonad)>_R
+                                          <a11>_N)
+                                     (Control.Monad.Trans.State.Lazy.NTCo:StateT[0]
+                                          <Language.Futhark.Parser.Parser.ParserEnv>_N
+                                          <Control.Monad.Trans.State.Lazy.StateT
+                                             [Language.Futhark.Parser.Lexer.L
+                                                Language.Futhark.Parser.Lexer.Token]
+                                             Language.Futhark.Parser.Parser.ReadLineMonad>_R
+                                          <Data.Either.Either GHC.Base.String a11>_N))
+                                  (Language.Futhark.Parser.Parser.ParserEnv
+                                     file
+                                     Futhark.Representation.Primitive.Int32
+                                     Futhark.Representation.Primitive.Float64
+                                     Futhark.Representation.Primitive.$WFloat64Value))
+                                 `cast`
+                               (Control.Monad.Trans.State.Lazy.NTCo:StateT[0]
+                                    <[Language.Futhark.Parser.Lexer.L
+                                        Language.Futhark.Parser.Lexer.Token]>_N
+                                    <Language.Futhark.Parser.Parser.ReadLineMonad>_R
+                                    <(Data.Either.Either GHC.Base.String a11,
+                                      Language.Futhark.Parser.Parser.ParserEnv)>_N)
+                                 y)
+                              (Language.Futhark.Parser.parseExp2 @ a11))
+                           (Language.Futhark.Parser.parseExp1 @ a11))
+                        (Language.Futhark.Parser.parseExp3 @ a11) }) -}
+5e203d389ccda62066a8b1cdf00b726f
+  parseLambda ::
+    GHC.IO.FilePath
+    -> Data.Text.Internal.Text
+    -> Data.Either.Either
+         Language.Futhark.Parser.ParseError
+         Language.Futhark.Attributes.UncheckedLambda
+  {- Arity: 2, Strictness: <L,U><L,1*U(U,U,1*U)>,
+     Unfolding: InlineRule (2, True, False)
+                (\ file :: GHC.IO.FilePath program :: Data.Text.Internal.Text ->
+                 case Language.Futhark.Parser.parseInMonad
+                        @ Language.Futhark.Attributes.UncheckedLambda
+                        Language.Futhark.Parser.Parser.lambda1
+                          `cast`
+                        (Trans
+                             (Sym (Control.Monad.Trans.State.Lazy.NTCo:StateT[0]
+                                       <Language.Futhark.Parser.Parser.ParserEnv>_N
+                                       <Control.Monad.Trans.State.Lazy.StateT
+                                          [Language.Futhark.Parser.Lexer.L
+                                             Language.Futhark.Parser.Lexer.Token]
+                                          Language.Futhark.Parser.Parser.ReadLineMonad>_R
+                                       <Data.Either.Either
+                                          [GHC.Types.Char]
+                                          Language.Futhark.Attributes.UncheckedLambda>_N))
+                             (Sym (Control.Monad.Trans.Except.NTCo:ExceptT[0]
+                                       <[GHC.Types.Char]>_N
+                                       <Control.Monad.Trans.State.Lazy.StateT
+                                          Language.Futhark.Parser.Parser.ParserEnv
+                                          (Control.Monad.Trans.State.Lazy.StateT
+                                             [Language.Futhark.Parser.Lexer.L
+                                                Language.Futhark.Parser.Lexer.Token]
+                                             Language.Futhark.Parser.Parser.ReadLineMonad)>_R
+                                       <Language.Futhark.Attributes.UncheckedLambda>_N)))
+                        file
+                        program of wild {
+                   Language.Futhark.Parser.Parser.Value x -> x
+                   Language.Futhark.Parser.Parser.GetLine ds1
+                   -> Data.Either.Left
+                        @ Language.Futhark.Parser.ParseError
+                        @ Language.Futhark.Attributes.UncheckedLambda
+                        (Language.Futhark.Parser.ParseError
+                           Language.Futhark.Parser.Parser.getNoLines2) }) -}
+d89790d8fba48f336003d04286769f06
+  parseType ::
+    GHC.IO.FilePath
+    -> Data.Text.Internal.Text
+    -> Data.Either.Either
+         Language.Futhark.Parser.ParseError
+         Language.Futhark.Attributes.UncheckedUserType
+  {- Arity: 2, Strictness: <L,U><L,1*U(U,U,1*U)>,
+     Unfolding: InlineRule (2, True, False)
+                (\ file :: GHC.IO.FilePath program :: Data.Text.Internal.Text ->
+                 case Language.Futhark.Parser.parseInMonad
+                        @ Language.Futhark.Attributes.UncheckedUserType
+                        Language.Futhark.Parser.Parser.futharkType1
+                          `cast`
+                        (Trans
+                             (Sym (Control.Monad.Trans.State.Lazy.NTCo:StateT[0]
+                                       <Language.Futhark.Parser.Parser.ParserEnv>_N
+                                       <Control.Monad.Trans.State.Lazy.StateT
+                                          [Language.Futhark.Parser.Lexer.L
+                                             Language.Futhark.Parser.Lexer.Token]
+                                          Language.Futhark.Parser.Parser.ReadLineMonad>_R
+                                       <Data.Either.Either
+                                          [GHC.Types.Char]
+                                          Language.Futhark.Attributes.UncheckedUserType>_N))
+                             (Sym (Control.Monad.Trans.Except.NTCo:ExceptT[0]
+                                       <[GHC.Types.Char]>_N
+                                       <Control.Monad.Trans.State.Lazy.StateT
+                                          Language.Futhark.Parser.Parser.ParserEnv
+                                          (Control.Monad.Trans.State.Lazy.StateT
+                                             [Language.Futhark.Parser.Lexer.L
+                                                Language.Futhark.Parser.Lexer.Token]
+                                             Language.Futhark.Parser.Parser.ReadLineMonad)>_R
+                                       <Language.Futhark.Attributes.UncheckedUserType>_N)))
+                        file
+                        program of wild {
+                   Language.Futhark.Parser.Parser.Value x -> x
+                   Language.Futhark.Parser.Parser.GetLine ds1
+                   -> Data.Either.Left
+                        @ Language.Futhark.Parser.ParseError
+                        @ Language.Futhark.Attributes.UncheckedUserType
+                        (Language.Futhark.Parser.ParseError
+                           Language.Futhark.Parser.Parser.getNoLines2) }) -}
+4554d9f0dc43ac17081324acd46c724f
+  parseValue ::
+    GHC.IO.FilePath
+    -> Data.Text.Internal.Text
+    -> Data.Either.Either
+         Language.Futhark.Parser.ParseError Language.Futhark.Syntax.Value
+  {- Arity: 2, Strictness: <L,U><L,1*U(U,U,1*U)>,
+     Unfolding: InlineRule (2, True, False)
+                (\ file :: GHC.IO.FilePath program :: Data.Text.Internal.Text ->
+                 case Language.Futhark.Parser.parseInMonad
+                        @ Language.Futhark.Syntax.Value
+                        Language.Futhark.Parser.Parser.anyValue1
+                          `cast`
+                        (Trans
+                             (Sym (Control.Monad.Trans.State.Lazy.NTCo:StateT[0]
+                                       <Language.Futhark.Parser.Parser.ParserEnv>_N
+                                       <Control.Monad.Trans.State.Lazy.StateT
+                                          [Language.Futhark.Parser.Lexer.L
+                                             Language.Futhark.Parser.Lexer.Token]
+                                          Language.Futhark.Parser.Parser.ReadLineMonad>_R
+                                       <Data.Either.Either
+                                          [GHC.Types.Char] Language.Futhark.Syntax.Value>_N))
+                             (Sym (Control.Monad.Trans.Except.NTCo:ExceptT[0]
+                                       <[GHC.Types.Char]>_N
+                                       <Control.Monad.Trans.State.Lazy.StateT
+                                          Language.Futhark.Parser.Parser.ParserEnv
+                                          (Control.Monad.Trans.State.Lazy.StateT
+                                             [Language.Futhark.Parser.Lexer.L
+                                                Language.Futhark.Parser.Lexer.Token]
+                                             Language.Futhark.Parser.Parser.ReadLineMonad)>_R
+                                       <Language.Futhark.Syntax.Value>_N)))
+                        file
+                        program of wild {
+                   Language.Futhark.Parser.Parser.Value x -> x
+                   Language.Futhark.Parser.Parser.GetLine ds1
+                   -> Data.Either.Left
+                        @ Language.Futhark.Parser.ParseError
+                        @ Language.Futhark.Syntax.Value
+                        (Language.Futhark.Parser.ParseError
+                           Language.Futhark.Parser.Parser.getNoLines2) }) -}
+e95e9e1d882268a21b951adfe472eef5
+  parseValues ::
+    GHC.IO.FilePath
+    -> Data.Text.Internal.Text
+    -> Data.Either.Either
+         Language.Futhark.Parser.ParseError [Language.Futhark.Syntax.Value]
+  {- Arity: 2, Strictness: <L,U><L,1*U(U,U,1*U)>,
+     Unfolding: InlineRule (2, True, False)
+                (\ file :: GHC.IO.FilePath program :: Data.Text.Internal.Text ->
+                 case Language.Futhark.Parser.parseInMonad
+                        @ [Language.Futhark.Syntax.Value]
+                        Language.Futhark.Parser.Parser.anyValues1
+                          `cast`
+                        (Trans
+                             (Sym (Control.Monad.Trans.State.Lazy.NTCo:StateT[0]
+                                       <Language.Futhark.Parser.Parser.ParserEnv>_N
+                                       <Control.Monad.Trans.State.Lazy.StateT
+                                          [Language.Futhark.Parser.Lexer.L
+                                             Language.Futhark.Parser.Lexer.Token]
+                                          Language.Futhark.Parser.Parser.ReadLineMonad>_R
+                                       <Data.Either.Either
+                                          [GHC.Types.Char] [Language.Futhark.Syntax.Value]>_N))
+                             (Sym (Control.Monad.Trans.Except.NTCo:ExceptT[0]
+                                       <[GHC.Types.Char]>_N
+                                       <Control.Monad.Trans.State.Lazy.StateT
+                                          Language.Futhark.Parser.Parser.ParserEnv
+                                          (Control.Monad.Trans.State.Lazy.StateT
+                                             [Language.Futhark.Parser.Lexer.L
+                                                Language.Futhark.Parser.Lexer.Token]
+                                             Language.Futhark.Parser.Parser.ReadLineMonad)>_R
+                                       <[Language.Futhark.Syntax.Value]>_N)))
+                        file
+                        program of wild {
+                   Language.Futhark.Parser.Parser.Value x -> x
+                   Language.Futhark.Parser.Parser.GetLine ds1
+                   -> Data.Either.Left
+                        @ Language.Futhark.Parser.ParseError
+                        @ [Language.Futhark.Syntax.Value]
+                        (Language.Futhark.Parser.ParseError
+                           Language.Futhark.Parser.Parser.getNoLines2) }) -}
+instance GHC.Base.Applicative [Language.Futhark.Parser.ErrorIO]
+  = Language.Futhark.Parser.$fApplicativeErrorIO
+instance GHC.Base.Functor [Language.Futhark.Parser.ErrorIO]
+  = Language.Futhark.Parser.$fFunctorErrorIO
+instance GHC.Base.Monad [Language.Futhark.Parser.ErrorIO]
+  = Language.Futhark.Parser.$fMonadErrorIO
+instance Control.Monad.IO.Class.MonadIO [Language.Futhark.Parser.ErrorIO]
+  = Language.Futhark.Parser.$fMonadIOErrorIO
+instance GHC.Show.Show [Language.Futhark.Parser.ParseError]
+  = Language.Futhark.Parser.$fShowParseError
+"SPEC $c>> @ ParseError" [ALWAYS] forall $dApplicative1 :: GHC.Base.Applicative
+                                                             (Language.Futhark.Parser.ErrorIO
+                                                                Language.Futhark.Parser.ParseError)
+  Language.Futhark.Parser.$fMonadErrorIO_$c>> @ Language.Futhark.Parser.ParseError
+                                              $dApplicative1
+  = Language.Futhark.Parser.$fMonadErrorIO_$s$c>>
+"SPEC $c>>= @ ParseError" [ALWAYS] forall $dApplicative1 :: GHC.Base.Applicative
+                                                              (Language.Futhark.Parser.ErrorIO
+                                                                 Language.Futhark.Parser.ParseError)
+  Language.Futhark.Parser.$fMonadErrorIO_$c>>= @ Language.Futhark.Parser.ParseError
+                                               $dApplicative1
+  = Language.Futhark.Parser.$fMonadErrorIO_$s$c>>=
+"SPEC/Language.Futhark.Parser $dmshowsPrec @ ParseError" [ALWAYS] forall $dShow :: GHC.Show.Show
+                                                                                     Language.Futhark.Parser.ParseError
+  GHC.Show.$dmshowsPrec @ Language.Futhark.Parser.ParseError $dShow
+  = Language.Futhark.Parser.$fShowParseError_$s$dmshowsPrec
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

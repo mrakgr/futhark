@@ -1,0 +1,2574 @@
+
+==================== FINAL INTERFACE ====================
+2016-08-04 10:11:12.1900913 UTC
+
+interface futha_GJqcXjzuDAgKwUW9oTf4td:Language.Futhark.Core 7103
+  interface hash: fd5e2140eafde4839a2495b5e6e03acd
+  ABI hash: 4d8fcc01b4c0611c71fec8b2caa41d68
+  export-list hash: 944381a39a11da48ff24531dca3a35c8
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: a20a7f2d5e52ead64c4ed58ad291d43e
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Language.Futhark.Core.baseName
+  Language.Futhark.Core.baseString
+  Language.Futhark.Core.baseTag
+  Language.Futhark.Core.blankLongname
+  Language.Futhark.Core.defaultEntryPoint
+  Language.Futhark.Core.locStr
+  Language.Futhark.Core.longnameToName
+  Language.Futhark.Core.longnameToString
+  Language.Futhark.Core.nameFromString
+  Language.Futhark.Core.nameFromText
+  Language.Futhark.Core.nameToString
+  Language.Futhark.Core.nameToText
+  Language.Futhark.Core.textual
+  GHC.Int.Int16
+  GHC.Int.Int32
+  GHC.Int.Int64
+  GHC.Int.Int8
+  Language.Futhark.Core.Commutativity{Language.Futhark.Core.Commutative Language.Futhark.Core.Noncommutative}
+  Language.Futhark.Core.ID{Language.Futhark.Core.ID}
+  Language.Futhark.Core.Name
+  Language.Futhark.Core.QualName
+  Language.Futhark.Core.StreamOrd{Language.Futhark.Core.Disorder Language.Futhark.Core.InOrder}
+  Language.Futhark.Core.Uniqueness{Language.Futhark.Core.Nonunique Language.Futhark.Core.Unique}
+  Language.Futhark.Core.VName
+module dependencies: Futhark.Util.Pretty
+package dependencies: array-0.5.1.0@array_67iodizgJQIIxYVTp4emlA
+                      base-4.8.2.0 binary-0.7.5.0@binar_3uXFWMoAGBg0xKP9MHKRwi
+                      bytestring-0.10.6.0@bytes_6VWy06pWzJq9evDvK2d4w6
+                      containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU
+                      deepseq-1.4.1.1@deeps_6vMKxt5sPFR0XsbRWvvq59 ghc-prim-0.4.0.0
+                      hashable-1.2.4.0@hasha_EalUWgp8NarBYWPbvYAD8I integer-gmp-1.0.0.0
+                      mainland-pretty-0.4.1.4@mainl_KnIUy4mTEecCOphhB8nGQj
+                      srcloc-0.5.1.0@srclo_IrVSavrho0x78ZSJU92mrC
+                      text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne
+orphans: base-4.8.2.0:GHC.Base base-4.8.2.0:GHC.Float
+         binary-0.7.5.0@binar_3uXFWMoAGBg0xKP9MHKRwi:Data.Binary.Generic
+         bytestring-0.10.6.0@bytes_6VWy06pWzJq9evDvK2d4w6:Data.ByteString.Builder
+         hashable-1.2.4.0@hasha_EalUWgp8NarBYWPbvYAD8I:Data.Hashable.Generic
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Lazy
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Show
+family instance modules: base-4.8.2.0:Control.Applicative
+                         base-4.8.2.0:Data.Either base-4.8.2.0:Data.Functor.Identity
+                         base-4.8.2.0:Data.Monoid base-4.8.2.0:Data.Type.Equality
+                         base-4.8.2.0:Data.Void base-4.8.2.0:GHC.Exts
+                         base-4.8.2.0:GHC.Generics
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.IntMap.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.IntSet.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Map.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Sequence
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Set.Base
+                         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text
+                         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Lazy
+import  -/  base-4.8.2.0:Data.Int 1419fa899a36eeb2bd16fdb7f0a89738
+import  -/  base-4.8.2.0:Data.List 3f0782c8d4bf50eecefcd5ea1798aac8
+import  -/  base-4.8.2.0:Data.Monoid 85b292b52bfd80ed619cddb767d638d3
+import  -/  base-4.8.2.0:Data.OldList d8fd80b0e14aa085ce6219cd89dad356
+import  -/  base-4.8.2.0:GHC.Base a4939789b2cfd60b36ed163e56a623cd
+import  -/  base-4.8.2.0:GHC.Int 28d8a9f7cfc272358fb4631d98c579ce
+import  -/  base-4.8.2.0:GHC.Num 9f42750c866f5832ca565146bd660c60
+import  -/  base-4.8.2.0:GHC.Show 0e1d8380a8fb0cfb07ebeda3b70cbf38
+import  -/  base-4.8.2.0:Prelude 694dcaf039efe62df1c44834e2dbd2fb
+import  -/  Futhark.Util.Pretty 601f394d0fcf8c3f9022409f829de03f
+  exports: 1aabf1400c3a1f20da395d5d151ff12f
+  pretty 69a96e47646e696813e8ce5e9b58137e
+import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
+import  -/  ghc-prim-0.4.0.0:GHC.Types 6b27fb3fdbd0e3f0925a4496c66513bb
+import  -/  hashable-1.2.4.0@hasha_EalUWgp8NarBYWPbvYAD8I:Data.Hashable cd89f02614e821fc8b0b3d7bd7501891
+import  -/  hashable-1.2.4.0@hasha_EalUWgp8NarBYWPbvYAD8I:Data.Hashable.Class 15f774badf396c367b54dbfebb40dc74
+import  -/  mainland-pretty-0.4.1.4@mainl_KnIUy4mTEecCOphhB8nGQj:Text.PrettyPrint.Mainland 8fa8b328ca92dfe598e5a18c4976eaac
+import  -/  srcloc-0.5.1.0@srclo_IrVSavrho0x78ZSJU92mrC:Data.Loc f4b2b54fab2c8be1b1da75545acb27c8
+import  -/  text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text a21462e4d9d23b8c5e0572484b88d821
+import  -/  text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Internal 762ad762817f3041e69c24778b8286ab
+import  -/  text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Show f0d5b3ef5924f10bcf05f86769423e58
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fEqCommutativity ::
+    GHC.Classes.Eq Language.Futhark.Core.Commutativity
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.Commutativity
+                  Language.Futhark.Core.$fEqCommutativity_$c==
+                  Language.Futhark.Core.$fEqCommutativity_$c/= -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fEqCommutativity_$c/= ::
+    Language.Futhark.Core.Commutativity
+    -> Language.Futhark.Core.Commutativity -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.Commutativity
+                   b :: Language.Futhark.Core.Commutativity ->
+                 case a of wild {
+                   Language.Futhark.Core.Noncommutative
+                   -> case b of wild1 {
+                        Language.Futhark.Core.Noncommutative -> GHC.Types.False
+                        Language.Futhark.Core.Commutative -> GHC.Types.True }
+                   Language.Futhark.Core.Commutative
+                   -> case b of wild1 {
+                        Language.Futhark.Core.Noncommutative -> GHC.Types.True
+                        Language.Futhark.Core.Commutative -> GHC.Types.False } }) -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fEqCommutativity_$c== ::
+    Language.Futhark.Core.Commutativity
+    -> Language.Futhark.Core.Commutativity -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ ds :: Language.Futhark.Core.Commutativity
+                   ds1 :: Language.Futhark.Core.Commutativity ->
+                 case ds of wild {
+                   Language.Futhark.Core.Noncommutative
+                   -> case ds1 of wild1 {
+                        Language.Futhark.Core.Noncommutative -> GHC.Types.True
+                        Language.Futhark.Core.Commutative -> GHC.Types.False }
+                   Language.Futhark.Core.Commutative
+                   -> case ds1 of wild1 {
+                        Language.Futhark.Core.Noncommutative -> GHC.Types.False
+                        Language.Futhark.Core.Commutative -> GHC.Types.True } }) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fEqID :: GHC.Classes.Eq (Language.Futhark.Core.ID vn)
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ vn.
+                  @ (Language.Futhark.Core.ID vn)
+                  (Language.Futhark.Core.$fEqID_$c== @ vn)
+                  (Language.Futhark.Core.$fEqID_$c/= @ vn) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fEqID_$c/= ::
+    Language.Futhark.Core.ID vn
+    -> Language.Futhark.Core.ID vn -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,U><L,U>,
+     Inline: INLINE (sat-args=2),
+     Unfolding: InlineRule (2, False, False)
+                (\ @ vn
+                   x :: Language.Futhark.Core.ID vn
+                   y :: Language.Futhark.Core.ID vn ->
+                 GHC.Classes.not (Language.Futhark.Core.$fEqID_$c== @ vn x y)) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fEqID_$c== ::
+    Language.Futhark.Core.ID vn
+    -> Language.Futhark.Core.ID vn -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(LS),1*U(A,1*U(U))><S(LS),1*U(A,1*U(U))>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ vn
+                   ds :: Language.Futhark.Core.ID vn
+                   ds1 :: Language.Futhark.Core.ID vn ->
+                 case ds
+                        `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild { (,) ds2 x ->
+                 case ds1
+                        `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild1 { (,) ds3 y ->
+                 GHC.Classes.eqInt x y } }) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fEqName :: GHC.Classes.Eq Language.Futhark.Core.Name
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.Name
+                  Language.Futhark.Core.$fEqName_$c==
+                  Language.Futhark.Core.$fEqName_$c/= -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fEqName_$c/= ::
+    Language.Futhark.Core.Name
+    -> Language.Futhark.Core.Name -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,U><L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Data.Text.$fEqText_$c/=
+                  `cast`
+                (Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R <GHC.Types.Bool>_R) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fEqName_$c== ::
+    Language.Futhark.Core.Name
+    -> Language.Futhark.Core.Name -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S,1*U(U,U,U)><S,1*U(U,U,U)>,
+     Unfolding: InlineRule (0, True, True)
+                Data.Text.$fEqText_$c==
+                  `cast`
+                (Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R <GHC.Types.Bool>_R) -}
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  $fEqStreamOrd :: GHC.Classes.Eq Language.Futhark.Core.StreamOrd
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.StreamOrd
+                  Language.Futhark.Core.$fEqStreamOrd_$c==
+                  Language.Futhark.Core.$fEqStreamOrd_$c/= -}
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  $fEqStreamOrd_$c/= ::
+    Language.Futhark.Core.StreamOrd
+    -> Language.Futhark.Core.StreamOrd -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.StreamOrd
+                   b :: Language.Futhark.Core.StreamOrd ->
+                 case a of wild {
+                   Language.Futhark.Core.InOrder
+                   -> case b of wild1 {
+                        Language.Futhark.Core.InOrder -> GHC.Types.False
+                        Language.Futhark.Core.Disorder -> GHC.Types.True }
+                   Language.Futhark.Core.Disorder
+                   -> case b of wild1 {
+                        Language.Futhark.Core.InOrder -> GHC.Types.True
+                        Language.Futhark.Core.Disorder -> GHC.Types.False } }) -}
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  $fEqStreamOrd_$c== ::
+    Language.Futhark.Core.StreamOrd
+    -> Language.Futhark.Core.StreamOrd -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ ds :: Language.Futhark.Core.StreamOrd
+                   ds1 :: Language.Futhark.Core.StreamOrd ->
+                 case ds of wild {
+                   Language.Futhark.Core.InOrder
+                   -> case ds1 of wild1 {
+                        Language.Futhark.Core.InOrder -> GHC.Types.True
+                        Language.Futhark.Core.Disorder -> GHC.Types.False }
+                   Language.Futhark.Core.Disorder
+                   -> case ds1 of wild1 {
+                        Language.Futhark.Core.InOrder -> GHC.Types.False
+                        Language.Futhark.Core.Disorder -> GHC.Types.True } }) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fEqUniqueness :: GHC.Classes.Eq Language.Futhark.Core.Uniqueness
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.Uniqueness
+                  Language.Futhark.Core.$fEqUniqueness_$c==
+                  Language.Futhark.Core.$fEqUniqueness_$c/= -}
+1ee4326daed7f9d740b94f689a248cad
+  $fEqUniqueness_$c/= ::
+    Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Core.Uniqueness -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.Uniqueness
+                   b :: Language.Futhark.Core.Uniqueness ->
+                 case a of wild {
+                   Language.Futhark.Core.Nonunique
+                   -> case b of wild1 {
+                        Language.Futhark.Core.Nonunique -> GHC.Types.False
+                        Language.Futhark.Core.Unique -> GHC.Types.True }
+                   Language.Futhark.Core.Unique
+                   -> case b of wild1 {
+                        Language.Futhark.Core.Nonunique -> GHC.Types.True
+                        Language.Futhark.Core.Unique -> GHC.Types.False } }) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fEqUniqueness_$c== ::
+    Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Core.Uniqueness -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ ds :: Language.Futhark.Core.Uniqueness
+                   ds1 :: Language.Futhark.Core.Uniqueness ->
+                 case ds of wild {
+                   Language.Futhark.Core.Nonunique
+                   -> case ds1 of wild1 {
+                        Language.Futhark.Core.Nonunique -> GHC.Types.True
+                        Language.Futhark.Core.Unique -> GHC.Types.False }
+                   Language.Futhark.Core.Unique
+                   -> case ds1 of wild1 {
+                        Language.Futhark.Core.Nonunique -> GHC.Types.False
+                        Language.Futhark.Core.Unique -> GHC.Types.True } }) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fHashableID ::
+    Data.Hashable.Class.Hashable (Language.Futhark.Core.ID vn)
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ vn.
+                  @ (Language.Futhark.Core.ID vn)
+                  (Language.Futhark.Core.$fHashableID_$chashWithSalt @ vn)
+                  (Language.Futhark.Core.$fHashableID_$chash @ vn) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fHashableID_$chash :: Language.Futhark.Core.ID vn -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs,
+     Unfolding: (\ @ vn ->
+                 Language.Futhark.Core.$fHashableID_$chashWithSalt
+                   @ vn
+                   Data.Hashable.Class.defaultSalt) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fHashableID_$chashWithSalt ::
+    GHC.Types.Int -> Language.Futhark.Core.ID vn -> GHC.Types.Int
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S,1*U(U)><S(LS),1*U(A,1*U(U))>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ vn salt :: GHC.Types.Int ds :: Language.Futhark.Core.ID vn ->
+                 case ds
+                        `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild { (,) ds1 i ->
+                 GHC.Num.$fNumInt_$c* salt i }) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fHashableName ::
+    Data.Hashable.Class.Hashable Language.Futhark.Core.Name
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.Name
+                  Language.Futhark.Core.$fHashableName_$chashWithSalt
+                  Language.Futhark.Core.$fHashableName_$chash -}
+7df1041bb7d9fa8ad488cd1e87bcd8dd
+  $fHashableName1 :: Data.Text.Internal.Text -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs,
+     Unfolding: (Data.Hashable.Class.$fHashableText_$chashWithSalt1
+                   Data.Hashable.Class.defaultSalt) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fHashableName_$chash ::
+    Language.Futhark.Core.Name -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Core.$fHashableName1
+                  `cast`
+                (Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R <GHC.Types.Int>_R) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fHashableName_$chashWithSalt ::
+    GHC.Types.Int -> Language.Futhark.Core.Name -> GHC.Types.Int
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U(U)><S,1*U(U,U,U)>m,
+     Unfolding: InlineRule (0, True, True)
+                Data.Hashable.Class.$fHashableText_$chashWithSalt1
+                  `cast`
+                (<GHC.Types.Int>_R
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R <GHC.Types.Int>_R) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fHashableUniqueness ::
+    Data.Hashable.Class.Hashable Language.Futhark.Core.Uniqueness
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.Uniqueness
+                  Language.Futhark.Core.$fHashableUniqueness_$chashWithSalt
+                  Language.Futhark.Core.$fHashableUniqueness_$chash -}
+1ee4326daed7f9d740b94f689a248cad
+  $fHashableUniqueness_$chash ::
+    Language.Futhark.Core.Uniqueness -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs,
+     Unfolding: (Language.Futhark.Core.$fHashableUniqueness_$chashWithSalt
+                   Data.Hashable.Class.defaultSalt) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fHashableUniqueness_$chashWithSalt ::
+    GHC.Types.Int -> Language.Futhark.Core.Uniqueness -> GHC.Types.Int
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U(U)><S,1*U>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ salt :: GHC.Types.Int ds :: Language.Futhark.Core.Uniqueness ->
+                 case ds of wild {
+                   Language.Futhark.Core.Nonunique
+                   -> case salt of wild1 { GHC.Types.I# x ->
+                      GHC.Types.I# (GHC.Prim.*# x 2) }
+                   Language.Futhark.Core.Unique -> salt }) -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fMonoidCommutativity ::
+    GHC.Base.Monoid Language.Futhark.Core.Commutativity
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.Commutativity
+                  Language.Futhark.Core.Commutative
+                  Language.Futhark.Core.$fMonoidCommutativity_$cmappend
+                  Language.Futhark.Core.$fMonoidCommutativity_$cmconcat -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fMonoidCommutativity_$cmappend ::
+    Language.Futhark.Core.Commutativity
+    -> Language.Futhark.Core.Commutativity
+    -> Language.Futhark.Core.Commutativity
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Core.$fMonoidCommutativity_$cmin -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fMonoidCommutativity_$cmconcat ::
+    [Language.Futhark.Core.Commutativity]
+    -> Language.Futhark.Core.Commutativity
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: (\ eta :: [Language.Futhark.Core.Commutativity] ->
+                 Language.Futhark.Core.$fMonoidCommutativity_go eta) -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fMonoidCommutativity_$cmin ::
+    Language.Futhark.Core.Commutativity
+    -> Language.Futhark.Core.Commutativity
+    -> Language.Futhark.Core.Commutativity
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x :: Language.Futhark.Core.Commutativity
+                   y :: Language.Futhark.Core.Commutativity ->
+                 case x of wild {
+                   Language.Futhark.Core.Noncommutative
+                   -> case y of wild1 { DEFAULT ->
+                      Language.Futhark.Core.Noncommutative }
+                   Language.Futhark.Core.Commutative -> y }) -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fMonoidCommutativity_go ::
+    [Language.Futhark.Core.Commutativity]
+    -> Language.Futhark.Core.Commutativity
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fMonoidName :: GHC.Base.Monoid Language.Futhark.Core.Name
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.Name
+                  Language.Futhark.Core.$fMonoidName_$cmempty
+                  Language.Futhark.Core.$fMonoidName_$cmappend
+                  Language.Futhark.Core.$fMonoidName_$cmconcat -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fMonoidName_$cmappend ::
+    Language.Futhark.Core.Name
+    -> Language.Futhark.Core.Name -> Language.Futhark.Core.Name
+  {- Arity: 2, Strictness: <S(LLS),1*U(U,U,U)><S,1*U(U,U,U)>m,
+     Unfolding: InlineRule (0, True, True)
+                Data.Text.append
+                  `cast`
+                (Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fMonoidName_$cmconcat ::
+    [Language.Futhark.Core.Name] -> Language.Futhark.Core.Name
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ eta :: [Language.Futhark.Core.Name] ->
+                 Language.Futhark.Core.$fMonoidName_go eta) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fMonoidName_$cmempty :: Language.Futhark.Core.Name
+  {- Unfolding: InlineRule (0, True, True)
+                Data.Text.Internal.empty
+                  `cast`
+                (Sym (Language.Futhark.Core.NTCo:Name[0])) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fMonoidName_go ::
+    [Language.Futhark.Core.Name] -> Language.Futhark.Core.Name
+  {- Arity: 1, Strictness: <S,1*U> -}
+1ee4326daed7f9d740b94f689a248cad
+  $fMonoidUniqueness ::
+    GHC.Base.Monoid Language.Futhark.Core.Uniqueness
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.Uniqueness
+                  Language.Futhark.Core.Unique
+                  Language.Futhark.Core.$fMonoidUniqueness_$cmappend
+                  Language.Futhark.Core.$fMonoidUniqueness_$cmconcat -}
+1ee4326daed7f9d740b94f689a248cad
+  $fMonoidUniqueness_$cmappend ::
+    Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Core.Uniqueness
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ ds :: Language.Futhark.Core.Uniqueness
+                   ds1 :: Language.Futhark.Core.Uniqueness ->
+                 case ds1 of wild {
+                   Language.Futhark.Core.Nonunique -> Language.Futhark.Core.Nonunique
+                   Language.Futhark.Core.Unique -> ds }) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fMonoidUniqueness_$cmconcat ::
+    [Language.Futhark.Core.Uniqueness]
+    -> Language.Futhark.Core.Uniqueness
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: (\ eta :: [Language.Futhark.Core.Uniqueness] ->
+                 Language.Futhark.Core.$fMonoidUniqueness_go eta) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fMonoidUniqueness_go ::
+    [Language.Futhark.Core.Uniqueness]
+    -> Language.Futhark.Core.Uniqueness
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fOrdCommutativity ::
+    GHC.Classes.Ord Language.Futhark.Core.Commutativity
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.Commutativity
+                  Language.Futhark.Core.$fEqCommutativity
+                  Language.Futhark.Core.$fOrdCommutativity_$ccompare
+                  Language.Futhark.Core.$fOrdCommutativity_$c<
+                  Language.Futhark.Core.$fOrdCommutativity_$c<=
+                  Language.Futhark.Core.$fOrdCommutativity_$c>
+                  Language.Futhark.Core.$fOrdCommutativity_$c>=
+                  Language.Futhark.Core.$fOrdCommutativity_$cmax
+                  Language.Futhark.Core.$fMonoidCommutativity_$cmin -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fOrdCommutativity_$c< ::
+    Language.Futhark.Core.Commutativity
+    -> Language.Futhark.Core.Commutativity -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.Commutativity
+                   b :: Language.Futhark.Core.Commutativity ->
+                 case a of wild {
+                   Language.Futhark.Core.Noncommutative
+                   -> case b of wild1 {
+                        Language.Futhark.Core.Noncommutative -> GHC.Types.False
+                        Language.Futhark.Core.Commutative -> GHC.Types.True }
+                   Language.Futhark.Core.Commutative
+                   -> case b of wild1 { DEFAULT -> GHC.Types.False } }) -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fOrdCommutativity_$c<= ::
+    Language.Futhark.Core.Commutativity
+    -> Language.Futhark.Core.Commutativity -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.Commutativity
+                   b :: Language.Futhark.Core.Commutativity ->
+                 case a of wild {
+                   Language.Futhark.Core.Noncommutative
+                   -> case b of wild1 { DEFAULT -> GHC.Types.True }
+                   Language.Futhark.Core.Commutative
+                   -> case b of wild1 {
+                        Language.Futhark.Core.Noncommutative -> GHC.Types.False
+                        Language.Futhark.Core.Commutative -> GHC.Types.True } }) -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fOrdCommutativity_$c> ::
+    Language.Futhark.Core.Commutativity
+    -> Language.Futhark.Core.Commutativity -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.Commutativity
+                   b :: Language.Futhark.Core.Commutativity ->
+                 case a of wild {
+                   Language.Futhark.Core.Noncommutative
+                   -> case b of wild1 { DEFAULT -> GHC.Types.False }
+                   Language.Futhark.Core.Commutative
+                   -> case b of wild1 {
+                        Language.Futhark.Core.Noncommutative -> GHC.Types.True
+                        Language.Futhark.Core.Commutative -> GHC.Types.False } }) -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fOrdCommutativity_$c>= ::
+    Language.Futhark.Core.Commutativity
+    -> Language.Futhark.Core.Commutativity -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.Commutativity
+                   b :: Language.Futhark.Core.Commutativity ->
+                 case a of wild {
+                   Language.Futhark.Core.Noncommutative
+                   -> case b of wild1 {
+                        Language.Futhark.Core.Noncommutative -> GHC.Types.True
+                        Language.Futhark.Core.Commutative -> GHC.Types.False }
+                   Language.Futhark.Core.Commutative
+                   -> case b of wild1 { DEFAULT -> GHC.Types.True } }) -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fOrdCommutativity_$ccompare ::
+    Language.Futhark.Core.Commutativity
+    -> Language.Futhark.Core.Commutativity -> GHC.Types.Ordering
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.Commutativity
+                   b :: Language.Futhark.Core.Commutativity ->
+                 case a of wild {
+                   Language.Futhark.Core.Noncommutative
+                   -> case b of wild1 {
+                        Language.Futhark.Core.Noncommutative -> GHC.Types.EQ
+                        Language.Futhark.Core.Commutative -> GHC.Types.LT }
+                   Language.Futhark.Core.Commutative
+                   -> case b of wild1 {
+                        Language.Futhark.Core.Noncommutative -> GHC.Types.GT
+                        Language.Futhark.Core.Commutative -> GHC.Types.EQ } }) -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fOrdCommutativity_$cmax ::
+    Language.Futhark.Core.Commutativity
+    -> Language.Futhark.Core.Commutativity
+    -> Language.Futhark.Core.Commutativity
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x :: Language.Futhark.Core.Commutativity
+                   y :: Language.Futhark.Core.Commutativity ->
+                 case x of wild {
+                   Language.Futhark.Core.Noncommutative -> y
+                   Language.Futhark.Core.Commutative
+                   -> case y of wild1 { DEFAULT ->
+                      Language.Futhark.Core.Commutative } }) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fOrdID ::
+    GHC.Classes.Eq (Language.Futhark.Core.ID vn) =>
+    GHC.Classes.Ord (Language.Futhark.Core.ID vn)
+  DFunId[1]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U>m,
+     Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ vn
+                      $dEq :: GHC.Classes.Eq (Language.Futhark.Core.ID vn).
+                  @ (Language.Futhark.Core.ID vn)
+                  $dEq
+                  (Language.Futhark.Core.$fOrdID_$ccompare @ vn $dEq)
+                  (Language.Futhark.Core.$fOrdID_$c< @ vn $dEq)
+                  (Language.Futhark.Core.$fOrdID_$c<= @ vn $dEq)
+                  (Language.Futhark.Core.$fOrdID_$c> @ vn $dEq)
+                  (Language.Futhark.Core.$fOrdID_$c>= @ vn $dEq)
+                  (Language.Futhark.Core.$fOrdID_$cmax @ vn $dEq)
+                  (Language.Futhark.Core.$fOrdID_$cmin @ vn $dEq) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fOrdID_$c< ::
+    GHC.Classes.Eq (Language.Futhark.Core.ID vn) =>
+    Language.Futhark.Core.ID vn
+    -> Language.Futhark.Core.ID vn -> GHC.Types.Bool
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,A><S(LS),1*U(A,1*U(U))><S(LS),1*U(A,1*U(U))>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ vn
+                   $dEq :: GHC.Classes.Eq (Language.Futhark.Core.ID vn)
+                   x :: Language.Futhark.Core.ID vn
+                   y :: Language.Futhark.Core.ID vn ->
+                 case x `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild { (,) ds x1 ->
+                 case y `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild1 { (,) ds1 y1 ->
+                 case x1 of wild2 { GHC.Types.I# x# ->
+                 case y1 of wild3 { GHC.Types.I# y# ->
+                 GHC.Prim.tagToEnum#
+                   @ GHC.Types.Bool
+                   (GHC.Prim.<# x# y#) } } } }) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fOrdID_$c<= ::
+    GHC.Classes.Eq (Language.Futhark.Core.ID vn) =>
+    Language.Futhark.Core.ID vn
+    -> Language.Futhark.Core.ID vn -> GHC.Types.Bool
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,A><S(LS),1*U(A,1*U(U))><S(LS),1*U(A,1*U(U))>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ vn
+                   $dEq :: GHC.Classes.Eq (Language.Futhark.Core.ID vn)
+                   x :: Language.Futhark.Core.ID vn
+                   y :: Language.Futhark.Core.ID vn ->
+                 case x `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild { (,) ds x1 ->
+                 case y `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild1 { (,) ds1 y1 ->
+                 case x1 of wild2 { GHC.Types.I# x# ->
+                 case y1 of wild3 { GHC.Types.I# y# ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.<# x# y#) of wild4 {
+                   GHC.Types.False
+                   -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.==# x# y#)
+                   GHC.Types.True -> GHC.Types.True } } } } }) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fOrdID_$c> ::
+    GHC.Classes.Eq (Language.Futhark.Core.ID vn) =>
+    Language.Futhark.Core.ID vn
+    -> Language.Futhark.Core.ID vn -> GHC.Types.Bool
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,A><S(LS),1*U(A,1*U(U))><S(LS),1*U(A,1*U(U))>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ vn
+                   $dEq :: GHC.Classes.Eq (Language.Futhark.Core.ID vn)
+                   x :: Language.Futhark.Core.ID vn
+                   y :: Language.Futhark.Core.ID vn ->
+                 case x `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild { (,) ds x1 ->
+                 case y `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild1 { (,) ds1 y1 ->
+                 case x1 of wild2 { GHC.Types.I# x# ->
+                 case y1 of wild3 { GHC.Types.I# y# ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.<# x# y#) of wild4 {
+                   GHC.Types.False
+                   -> case GHC.Prim.tagToEnum#
+                             @ GHC.Types.Bool
+                             (GHC.Prim.==# x# y#) of wild5 {
+                        GHC.Types.False -> GHC.Types.True
+                        GHC.Types.True -> GHC.Types.False }
+                   GHC.Types.True -> GHC.Types.False } } } } }) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fOrdID_$c>= ::
+    GHC.Classes.Eq (Language.Futhark.Core.ID vn) =>
+    Language.Futhark.Core.ID vn
+    -> Language.Futhark.Core.ID vn -> GHC.Types.Bool
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,A><S(LS),1*U(A,1*U(U))><S(LS),1*U(A,1*U(U))>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ vn
+                   $dEq :: GHC.Classes.Eq (Language.Futhark.Core.ID vn)
+                   x :: Language.Futhark.Core.ID vn
+                   y :: Language.Futhark.Core.ID vn ->
+                 case x `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild { (,) ds x1 ->
+                 case y `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild1 { (,) ds1 y1 ->
+                 case x1 of wild2 { GHC.Types.I# x# ->
+                 case y1 of wild3 { GHC.Types.I# y# ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.<# x# y#) of wild4 {
+                   GHC.Types.False -> GHC.Types.True
+                   GHC.Types.True -> GHC.Types.False } } } } }) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fOrdID_$ccompare ::
+    GHC.Classes.Eq (Language.Futhark.Core.ID vn) =>
+    Language.Futhark.Core.ID vn
+    -> Language.Futhark.Core.ID vn -> GHC.Types.Ordering
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,A><S(LS),1*U(A,1*U(U))><S(LS),1*U(A,1*U(U))>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ vn
+                   $dEq :: GHC.Classes.Eq (Language.Futhark.Core.ID vn)
+                   ds :: Language.Futhark.Core.ID vn
+                   ds1 :: Language.Futhark.Core.ID vn ->
+                 case ds
+                        `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild { (,) ds2 x ->
+                 case ds1
+                        `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild1 { (,) ds3 y ->
+                 GHC.Classes.compareInt x y } }) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fOrdID_$cmax ::
+    GHC.Classes.Eq (Language.Futhark.Core.ID vn) =>
+    Language.Futhark.Core.ID vn
+    -> Language.Futhark.Core.ID vn -> Language.Futhark.Core.ID vn
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,A><S(LS),1*U(U,U(U))><S(LS),1*U(U,U(U))>m,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ vn
+                   $dEq :: GHC.Classes.Eq (Language.Futhark.Core.ID vn)
+                   x :: Language.Futhark.Core.ID vn
+                   y :: Language.Futhark.Core.ID vn ->
+                 case x `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild { (,) ds x1 ->
+                 case y `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild1 { (,) ds1 y1 ->
+                 case x1 of wild2 { GHC.Types.I# x# ->
+                 case y1 of wild3 { GHC.Types.I# y# ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.<# x# y#) of wild4 {
+                   GHC.Types.False
+                   -> case GHC.Prim.tagToEnum#
+                             @ GHC.Types.Bool
+                             (GHC.Prim.==# x# y#) of wild5 {
+                        GHC.Types.False
+                        -> wild `cast` (Sym (Language.Futhark.Core.NTCo:ID[0] <vn>_R))
+                        GHC.Types.True
+                        -> wild1 `cast` (Sym (Language.Futhark.Core.NTCo:ID[0] <vn>_R)) }
+                   GHC.Types.True
+                   -> wild1
+                        `cast`
+                      (Sym (Language.Futhark.Core.NTCo:ID[0] <vn>_R)) } } } } }) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fOrdID_$cmin ::
+    GHC.Classes.Eq (Language.Futhark.Core.ID vn) =>
+    Language.Futhark.Core.ID vn
+    -> Language.Futhark.Core.ID vn -> Language.Futhark.Core.ID vn
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,A><S(LS),1*U(U,U(U))><S(LS),1*U(U,U(U))>m,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ vn
+                   $dEq :: GHC.Classes.Eq (Language.Futhark.Core.ID vn)
+                   x :: Language.Futhark.Core.ID vn
+                   y :: Language.Futhark.Core.ID vn ->
+                 case x `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild { (,) ds x1 ->
+                 case y `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild1 { (,) ds1 y1 ->
+                 case x1 of wild2 { GHC.Types.I# x# ->
+                 case y1 of wild3 { GHC.Types.I# y# ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.<# x# y#) of wild4 {
+                   GHC.Types.False
+                   -> case GHC.Prim.tagToEnum#
+                             @ GHC.Types.Bool
+                             (GHC.Prim.==# x# y#) of wild5 {
+                        GHC.Types.False
+                        -> wild1 `cast` (Sym (Language.Futhark.Core.NTCo:ID[0] <vn>_R))
+                        GHC.Types.True
+                        -> wild `cast` (Sym (Language.Futhark.Core.NTCo:ID[0] <vn>_R)) }
+                   GHC.Types.True
+                   -> wild
+                        `cast`
+                      (Sym (Language.Futhark.Core.NTCo:ID[0] <vn>_R)) } } } } }) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fOrdName :: GHC.Classes.Ord Language.Futhark.Core.Name
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.Name
+                  Language.Futhark.Core.$fEqName
+                  Language.Futhark.Core.$fOrdName_$ccompare
+                  Language.Futhark.Core.$fOrdName_$c<
+                  Language.Futhark.Core.$fOrdName_$c<=
+                  Language.Futhark.Core.$fOrdName_$c>
+                  Language.Futhark.Core.$fOrdName_$c>=
+                  Language.Futhark.Core.$fOrdName_$cmax
+                  Language.Futhark.Core.$fOrdName_$cmin -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fOrdName_$c< ::
+    Language.Futhark.Core.Name
+    -> Language.Futhark.Core.Name -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(LLS),1*U(U,U,U)><S,1*U(U,U,U)>,
+     Unfolding: InlineRule (0, True, True)
+                Data.Text.$fOrdText_$c<
+                  `cast`
+                (Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R <GHC.Types.Bool>_R) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fOrdName_$c<= ::
+    Language.Futhark.Core.Name
+    -> Language.Futhark.Core.Name -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(LLS),1*U(U,U,U)><S,1*U(U,U,U)>,
+     Unfolding: InlineRule (0, True, True)
+                Data.Text.$fOrdText_$c<=
+                  `cast`
+                (Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R <GHC.Types.Bool>_R) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fOrdName_$c> ::
+    Language.Futhark.Core.Name
+    -> Language.Futhark.Core.Name -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(LLS),1*U(U,U,U)><S,1*U(U,U,U)>,
+     Unfolding: InlineRule (0, True, True)
+                Data.Text.$fOrdText_$c>
+                  `cast`
+                (Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R <GHC.Types.Bool>_R) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fOrdName_$c>= ::
+    Language.Futhark.Core.Name
+    -> Language.Futhark.Core.Name -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(LLS),1*U(U,U,U)><S,1*U(U,U,U)>,
+     Unfolding: InlineRule (0, True, True)
+                Data.Text.$fOrdText_$c>=
+                  `cast`
+                (Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R <GHC.Types.Bool>_R) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fOrdName_$ccompare ::
+    Language.Futhark.Core.Name
+    -> Language.Futhark.Core.Name -> GHC.Types.Ordering
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(LLS),1*U(U,U,U)><S,1*U(U,U,U)>,
+     Unfolding: InlineRule (0, True, True)
+                Data.Text.$fOrdText_$ccompare
+                  `cast`
+                (Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R <GHC.Types.Ordering>_R) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fOrdName_$cmax ::
+    Language.Futhark.Core.Name
+    -> Language.Futhark.Core.Name -> Language.Futhark.Core.Name
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(LLS),U(U,U,U)><S,U(U,U,U)>m,
+     Unfolding: InlineRule (0, True, True)
+                Data.Text.$fOrdText_$cmax
+                  `cast`
+                (Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fOrdName_$cmin ::
+    Language.Futhark.Core.Name
+    -> Language.Futhark.Core.Name -> Language.Futhark.Core.Name
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(LLS),U(U,U,U)><S,U(U,U,U)>m,
+     Unfolding: InlineRule (0, True, True)
+                Data.Text.$fOrdText_$cmin
+                  `cast`
+                (Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])) -}
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  $fOrdStreamOrd :: GHC.Classes.Ord Language.Futhark.Core.StreamOrd
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.StreamOrd
+                  Language.Futhark.Core.$fEqStreamOrd
+                  Language.Futhark.Core.$fOrdStreamOrd_$ccompare
+                  Language.Futhark.Core.$fOrdStreamOrd_$c<
+                  Language.Futhark.Core.$fOrdStreamOrd_$c<=
+                  Language.Futhark.Core.$fOrdStreamOrd_$c>
+                  Language.Futhark.Core.$fOrdStreamOrd_$c>=
+                  Language.Futhark.Core.$fOrdStreamOrd_$cmax
+                  Language.Futhark.Core.$fOrdStreamOrd_$cmin -}
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  $fOrdStreamOrd_$c< ::
+    Language.Futhark.Core.StreamOrd
+    -> Language.Futhark.Core.StreamOrd -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.StreamOrd
+                   b :: Language.Futhark.Core.StreamOrd ->
+                 case a of wild {
+                   Language.Futhark.Core.InOrder
+                   -> case b of wild1 {
+                        Language.Futhark.Core.InOrder -> GHC.Types.False
+                        Language.Futhark.Core.Disorder -> GHC.Types.True }
+                   Language.Futhark.Core.Disorder
+                   -> case b of wild1 { DEFAULT -> GHC.Types.False } }) -}
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  $fOrdStreamOrd_$c<= ::
+    Language.Futhark.Core.StreamOrd
+    -> Language.Futhark.Core.StreamOrd -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.StreamOrd
+                   b :: Language.Futhark.Core.StreamOrd ->
+                 case a of wild {
+                   Language.Futhark.Core.InOrder
+                   -> case b of wild1 { DEFAULT -> GHC.Types.True }
+                   Language.Futhark.Core.Disorder
+                   -> case b of wild1 {
+                        Language.Futhark.Core.InOrder -> GHC.Types.False
+                        Language.Futhark.Core.Disorder -> GHC.Types.True } }) -}
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  $fOrdStreamOrd_$c> ::
+    Language.Futhark.Core.StreamOrd
+    -> Language.Futhark.Core.StreamOrd -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.StreamOrd
+                   b :: Language.Futhark.Core.StreamOrd ->
+                 case a of wild {
+                   Language.Futhark.Core.InOrder
+                   -> case b of wild1 { DEFAULT -> GHC.Types.False }
+                   Language.Futhark.Core.Disorder
+                   -> case b of wild1 {
+                        Language.Futhark.Core.InOrder -> GHC.Types.True
+                        Language.Futhark.Core.Disorder -> GHC.Types.False } }) -}
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  $fOrdStreamOrd_$c>= ::
+    Language.Futhark.Core.StreamOrd
+    -> Language.Futhark.Core.StreamOrd -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.StreamOrd
+                   b :: Language.Futhark.Core.StreamOrd ->
+                 case a of wild {
+                   Language.Futhark.Core.InOrder
+                   -> case b of wild1 {
+                        Language.Futhark.Core.InOrder -> GHC.Types.True
+                        Language.Futhark.Core.Disorder -> GHC.Types.False }
+                   Language.Futhark.Core.Disorder
+                   -> case b of wild1 { DEFAULT -> GHC.Types.True } }) -}
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  $fOrdStreamOrd_$ccompare ::
+    Language.Futhark.Core.StreamOrd
+    -> Language.Futhark.Core.StreamOrd -> GHC.Types.Ordering
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.StreamOrd
+                   b :: Language.Futhark.Core.StreamOrd ->
+                 case a of wild {
+                   Language.Futhark.Core.InOrder
+                   -> case b of wild1 {
+                        Language.Futhark.Core.InOrder -> GHC.Types.EQ
+                        Language.Futhark.Core.Disorder -> GHC.Types.LT }
+                   Language.Futhark.Core.Disorder
+                   -> case b of wild1 {
+                        Language.Futhark.Core.InOrder -> GHC.Types.GT
+                        Language.Futhark.Core.Disorder -> GHC.Types.EQ } }) -}
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  $fOrdStreamOrd_$cmax ::
+    Language.Futhark.Core.StreamOrd
+    -> Language.Futhark.Core.StreamOrd
+    -> Language.Futhark.Core.StreamOrd
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x :: Language.Futhark.Core.StreamOrd
+                   y :: Language.Futhark.Core.StreamOrd ->
+                 case x of wild {
+                   Language.Futhark.Core.InOrder -> y
+                   Language.Futhark.Core.Disorder
+                   -> case y of wild1 { DEFAULT ->
+                      Language.Futhark.Core.Disorder } }) -}
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  $fOrdStreamOrd_$cmin ::
+    Language.Futhark.Core.StreamOrd
+    -> Language.Futhark.Core.StreamOrd
+    -> Language.Futhark.Core.StreamOrd
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x :: Language.Futhark.Core.StreamOrd
+                   y :: Language.Futhark.Core.StreamOrd ->
+                 case x of wild {
+                   Language.Futhark.Core.InOrder
+                   -> case y of wild1 { DEFAULT -> Language.Futhark.Core.InOrder }
+                   Language.Futhark.Core.Disorder -> y }) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fOrdUniqueness :: GHC.Classes.Ord Language.Futhark.Core.Uniqueness
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.Uniqueness
+                  Language.Futhark.Core.$fEqUniqueness
+                  Language.Futhark.Core.$fOrdUniqueness_$ccompare
+                  Language.Futhark.Core.$fOrdUniqueness_$c<
+                  Language.Futhark.Core.$fOrdUniqueness_$c<=
+                  Language.Futhark.Core.$fOrdUniqueness_$c>
+                  Language.Futhark.Core.$fOrdUniqueness_$c>=
+                  Language.Futhark.Core.$fOrdUniqueness_$cmax
+                  Language.Futhark.Core.$fOrdUniqueness_$cmin -}
+1ee4326daed7f9d740b94f689a248cad
+  $fOrdUniqueness_$c< ::
+    Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Core.Uniqueness -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.Uniqueness
+                   b :: Language.Futhark.Core.Uniqueness ->
+                 case a of wild {
+                   Language.Futhark.Core.Nonunique
+                   -> case b of wild1 {
+                        Language.Futhark.Core.Nonunique -> GHC.Types.False
+                        Language.Futhark.Core.Unique -> GHC.Types.True }
+                   Language.Futhark.Core.Unique
+                   -> case b of wild1 { DEFAULT -> GHC.Types.False } }) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fOrdUniqueness_$c<= ::
+    Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Core.Uniqueness -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.Uniqueness
+                   b :: Language.Futhark.Core.Uniqueness ->
+                 case a of wild {
+                   Language.Futhark.Core.Nonunique
+                   -> case b of wild1 { DEFAULT -> GHC.Types.True }
+                   Language.Futhark.Core.Unique
+                   -> case b of wild1 {
+                        Language.Futhark.Core.Nonunique -> GHC.Types.False
+                        Language.Futhark.Core.Unique -> GHC.Types.True } }) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fOrdUniqueness_$c> ::
+    Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Core.Uniqueness -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.Uniqueness
+                   b :: Language.Futhark.Core.Uniqueness ->
+                 case a of wild {
+                   Language.Futhark.Core.Nonunique
+                   -> case b of wild1 { DEFAULT -> GHC.Types.False }
+                   Language.Futhark.Core.Unique
+                   -> case b of wild1 {
+                        Language.Futhark.Core.Nonunique -> GHC.Types.True
+                        Language.Futhark.Core.Unique -> GHC.Types.False } }) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fOrdUniqueness_$c>= ::
+    Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Core.Uniqueness -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.Uniqueness
+                   b :: Language.Futhark.Core.Uniqueness ->
+                 case a of wild {
+                   Language.Futhark.Core.Nonunique
+                   -> case b of wild1 {
+                        Language.Futhark.Core.Nonunique -> GHC.Types.True
+                        Language.Futhark.Core.Unique -> GHC.Types.False }
+                   Language.Futhark.Core.Unique
+                   -> case b of wild1 { DEFAULT -> GHC.Types.True } }) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fOrdUniqueness_$ccompare ::
+    Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Core.Uniqueness -> GHC.Types.Ordering
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: Language.Futhark.Core.Uniqueness
+                   b :: Language.Futhark.Core.Uniqueness ->
+                 case a of wild {
+                   Language.Futhark.Core.Nonunique
+                   -> case b of wild1 {
+                        Language.Futhark.Core.Nonunique -> GHC.Types.EQ
+                        Language.Futhark.Core.Unique -> GHC.Types.LT }
+                   Language.Futhark.Core.Unique
+                   -> case b of wild1 {
+                        Language.Futhark.Core.Nonunique -> GHC.Types.GT
+                        Language.Futhark.Core.Unique -> GHC.Types.EQ } }) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fOrdUniqueness_$cmax ::
+    Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Core.Uniqueness
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x :: Language.Futhark.Core.Uniqueness
+                   y :: Language.Futhark.Core.Uniqueness ->
+                 case x of wild {
+                   Language.Futhark.Core.Nonunique -> y
+                   Language.Futhark.Core.Unique
+                   -> case y of wild1 { DEFAULT ->
+                      Language.Futhark.Core.Unique } }) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fOrdUniqueness_$cmin ::
+    Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Core.Uniqueness
+    -> Language.Futhark.Core.Uniqueness
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x :: Language.Futhark.Core.Uniqueness
+                   y :: Language.Futhark.Core.Uniqueness ->
+                 case x of wild {
+                   Language.Futhark.Core.Nonunique
+                   -> case y of wild1 { DEFAULT -> Language.Futhark.Core.Nonunique }
+                   Language.Futhark.Core.Unique -> y }) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fPrettyID ::
+    Text.PrettyPrint.Mainland.Pretty vn =>
+    Text.PrettyPrint.Mainland.Pretty (Language.Futhark.Core.ID vn)
+  DFunId[0]
+  {- Arity: 1, Strictness: <L,U(C(U),A,A)>m,
+     Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ vn
+                      $dPretty :: Text.PrettyPrint.Mainland.Pretty vn.
+                  @ (Language.Futhark.Core.ID vn)
+                  (Language.Futhark.Core.$fPrettyID_$cppr @ vn $dPretty)
+                  (Language.Futhark.Core.$fPrettyID_$cpprPrec @ vn $dPretty)
+                  (Language.Futhark.Core.$fPrettyID_$cpprList @ vn $dPretty) -}
+f0de0e2d158fb768f193c549bcd684bc
+  $fPrettyID1 :: Text.PrettyPrint.Mainland.Doc
+  {- Unfolding: (case GHC.List.$wlenAcc
+                        @ GHC.Types.Char
+                        Language.Futhark.Core.$fPrettyID_s2
+                        0 of ww2 { DEFAULT ->
+                 Text.PrettyPrint.Mainland.String
+                   ww2
+                   Language.Futhark.Core.$fPrettyID_s2 }) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fPrettyID_$cppr ::
+    Text.PrettyPrint.Mainland.Pretty vn =>
+    Language.Futhark.Core.ID vn -> Text.PrettyPrint.Mainland.Doc
+  {- Arity: 2, Strictness: <L,1*U(1*C1(U),A,A)><S,1*U(U,1*U(U))>m9,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ @ vn
+                   w :: Text.PrettyPrint.Mainland.Pretty vn
+                   w1 :: Language.Futhark.Core.ID vn ->
+                 case w1
+                        `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of ww { (,) ww1 ww2 ->
+                 case Language.Futhark.Core.$w$cppr
+                        @ vn
+                        w
+                        ww1
+                        ww2 of ww3 { (#,#) ww4 ww5 ->
+                 Text.PrettyPrint.Mainland.Cat ww4 ww5 } }) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fPrettyID_$cpprList ::
+    Text.PrettyPrint.Mainland.Pretty vn =>
+    [Language.Futhark.Core.ID vn] -> Text.PrettyPrint.Mainland.Doc
+  {- Arity: 2, Strictness: <L,U(C(U),A,A)><S,1*U>m9,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ @ vn
+                   w :: Text.PrettyPrint.Mainland.Pretty vn
+                   w1 :: [Language.Futhark.Core.ID vn] ->
+                 case Language.Futhark.Core.$w$cpprList
+                        @ vn
+                        w
+                        w1 of ww { (#,#) ww1 ww2 ->
+                 Text.PrettyPrint.Mainland.Cat ww1 ww2 }) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fPrettyID_$cpprPrec ::
+    Text.PrettyPrint.Mainland.Pretty vn =>
+    GHC.Types.Int
+    -> Language.Futhark.Core.ID vn -> Text.PrettyPrint.Mainland.Doc
+  {- Arity: 3,
+     Strictness: <L,1*U(1*C1(U),A,A)><L,A><S,1*U(U,1*U(U))>m9,
+     Unfolding: InlineRule (3, True, True)
+                (\ @ vn
+                   $dPretty :: Text.PrettyPrint.Mainland.Pretty vn
+                   ds :: GHC.Types.Int
+                   eta :: Language.Futhark.Core.ID vn ->
+                 Language.Futhark.Core.$fPrettyID_$cppr @ vn $dPretty eta) -}
+59215781fa8fa02aaae2fe4dd4b73c66
+  $fPrettyID_$s$cppr ::
+    Language.Futhark.Core.ID Language.Futhark.Core.Name
+    -> Text.PrettyPrint.Mainland.Doc
+  {- Arity: 1, Strictness: <S,1*U(1*U(U,U,U),1*U(U))>m9,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: Language.Futhark.Core.ID Language.Futhark.Core.Name ->
+                 case w `cast`
+                      (Language.Futhark.Core.NTCo:ID[0]
+                           <Language.Futhark.Core.Name>_R) of ww { (,) ww1 ww2 ->
+                 case Language.Futhark.Core.$w$s$cppr
+                        ww1
+                        ww2 of ww3 { (#,#) ww4 ww5 ->
+                 Text.PrettyPrint.Mainland.Cat ww4 ww5 } }) -}
+1461909e86a0ba9cdecfc816ef3211a6
+  $fPrettyID_s2 :: GHC.Base.String
+  {- Unfolding: (GHC.CString.unpackCString# "_"#) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fPrettyName ::
+    Text.PrettyPrint.Mainland.Pretty Language.Futhark.Core.Name
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.Name
+                  Language.Futhark.Core.$fPrettyName_$cppr
+                  Language.Futhark.Core.$fPrettyName_$cpprPrec
+                  Language.Futhark.Core.$fPrettyName_$cpprList -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fPrettyName_$cppr ::
+    Language.Futhark.Core.Name -> Text.PrettyPrint.Mainland.Doc
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(U,U,U)>m3,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: Language.Futhark.Core.Name ->
+                 case w `cast`
+                      (Language.Futhark.Core.NTCo:Name[0]) of ww { Data.Text.Internal.Text ww1 ww2 ww3 ->
+                 case Language.Futhark.Core.$w$cppr1
+                        ww1
+                        ww2
+                        ww3 of ww4 { (#,#) ww5 ww6 ->
+                 Text.PrettyPrint.Mainland.String ww5 ww6 } }) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fPrettyName_$cpprList ::
+    [Language.Futhark.Core.Name] -> Text.PrettyPrint.Mainland.Doc
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>m9,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: [Language.Futhark.Core.Name] ->
+                 case Language.Futhark.Core.$w$cpprList1 w of ww { (#,#) ww1 ww2 ->
+                 Text.PrettyPrint.Mainland.Cat ww1 ww2 }) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fPrettyName_$cpprPrec ::
+    GHC.Types.Int
+    -> Language.Futhark.Core.Name -> Text.PrettyPrint.Mainland.Doc
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,A>,
+     Unfolding: InlineRule (1, True, True)
+                (\ ds :: GHC.Types.Int eta :: Language.Futhark.Core.Name ->
+                 Language.Futhark.Core.$fPrettyName_$cppr eta) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fPrettyUniqueness ::
+    Text.PrettyPrint.Mainland.Pretty Language.Futhark.Core.Uniqueness
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.Uniqueness
+                  Language.Futhark.Core.$fPrettyUniqueness_$cppr
+                  Language.Futhark.Core.$fPrettyUniqueness_$cpprPrec
+                  Language.Futhark.Core.$fPrettyUniqueness_$cpprList -}
+1ee4326daed7f9d740b94f689a248cad
+  $fPrettyUniqueness_$cppr ::
+    Language.Futhark.Core.Uniqueness -> Text.PrettyPrint.Mainland.Doc
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ ds :: Language.Futhark.Core.Uniqueness ->
+                 case ds of wild {
+                   Language.Futhark.Core.Nonunique -> Text.PrettyPrint.Mainland.Empty
+                   Language.Futhark.Core.Unique
+                   -> Text.PrettyPrint.Mainland.star }) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fPrettyUniqueness_$cpprList ::
+    [Language.Futhark.Core.Uniqueness] -> Text.PrettyPrint.Mainland.Doc
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>m9,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: [Language.Futhark.Core.Uniqueness] ->
+                 case Language.Futhark.Core.$w$cpprList2 w of ww { (#,#) ww1 ww2 ->
+                 Text.PrettyPrint.Mainland.Cat ww1 ww2 }) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fPrettyUniqueness_$cpprPrec ::
+    GHC.Types.Int
+    -> Language.Futhark.Core.Uniqueness
+    -> Text.PrettyPrint.Mainland.Doc
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,A>,
+     Unfolding: InlineRule (1, True, True)
+                (\ ds :: GHC.Types.Int eta :: Language.Futhark.Core.Uniqueness ->
+                 Language.Futhark.Core.$fPrettyUniqueness_$cppr eta) -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fShowCommutativity ::
+    GHC.Show.Show Language.Futhark.Core.Commutativity
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.Commutativity
+                  Language.Futhark.Core.$fShowCommutativity_$cshowsPrec
+                  Language.Futhark.Core.$fShowCommutativity_$cshow
+                  Language.Futhark.Core.$fShowCommutativity_$cshowList -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fShowCommutativity1 ::
+    Language.Futhark.Core.Commutativity -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U><L,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ ds :: Language.Futhark.Core.Commutativity
+                   eta :: GHC.Base.String ->
+                 case ds of wild {
+                   Language.Futhark.Core.Noncommutative
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b c :: GHC.Types.Char -> b -> b[OneShot] n :: b[OneShot] ->
+                         GHC.Base.foldr
+                           @ GHC.Types.Char
+                           @ b
+                           c
+                           n
+                           Language.Futhark.Core.$fShowCommutativity3)
+                        eta
+                   Language.Futhark.Core.Commutative
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b c :: GHC.Types.Char -> b -> b[OneShot] n :: b[OneShot] ->
+                         GHC.Base.foldr
+                           @ GHC.Types.Char
+                           @ b
+                           c
+                           n
+                           Language.Futhark.Core.$fShowCommutativity2)
+                        eta }) -}
+df874ae26383be7611d95dd58a8b6271
+  $fShowCommutativity2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Commutative"#) -}
+d220b30d48ad13a4d151f8f603cdec66
+  $fShowCommutativity3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Noncommutative"#) -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fShowCommutativity_$cshow ::
+    Language.Futhark.Core.Commutativity -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ x :: Language.Futhark.Core.Commutativity ->
+                 case x of wild {
+                   Language.Futhark.Core.Noncommutative
+                   -> Language.Futhark.Core.$fShowCommutativity3
+                   Language.Futhark.Core.Commutative
+                   -> Language.Futhark.Core.$fShowCommutativity2 }) -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fShowCommutativity_$cshowList ::
+    [Language.Futhark.Core.Commutativity] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ Language.Futhark.Core.Commutativity
+                   Language.Futhark.Core.$fShowCommutativity1) -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  $fShowCommutativity_$cshowsPrec ::
+    GHC.Types.Int
+    -> Language.Futhark.Core.Commutativity -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,A><S,1*U><L,1*U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ ds :: GHC.Types.Int
+                   ds1 :: Language.Futhark.Core.Commutativity
+                   eta :: GHC.Base.String ->
+                 case ds1 of wild {
+                   Language.Futhark.Core.Noncommutative
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b c :: GHC.Types.Char -> b -> b[OneShot] n :: b[OneShot] ->
+                         GHC.Base.foldr
+                           @ GHC.Types.Char
+                           @ b
+                           c
+                           n
+                           Language.Futhark.Core.$fShowCommutativity3)
+                        eta
+                   Language.Futhark.Core.Commutative
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b c :: GHC.Types.Char -> b -> b[OneShot] n :: b[OneShot] ->
+                         GHC.Base.foldr
+                           @ GHC.Types.Char
+                           @ b
+                           c
+                           n
+                           Language.Futhark.Core.$fShowCommutativity2)
+                        eta }) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fShowID ::
+    GHC.Show.Show vn => GHC.Show.Show (Language.Futhark.Core.ID vn)
+  DFunId[0]
+  {- Arity: 1, Strictness: <L,U(C(C1(C1(U))),A,A)>m,
+     Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ vn $dShow :: GHC.Show.Show vn.
+                  @ (Language.Futhark.Core.ID vn)
+                  (Language.Futhark.Core.$fShowID_$cshowsPrec @ vn $dShow)
+                  (Language.Futhark.Core.$fShowID_$cshow @ vn $dShow)
+                  (Language.Futhark.Core.$fShowID_$cshowList @ vn $dShow) -}
+bde2e9a624a1806a78afc391aa91fb5a
+  $fShowID1 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0) -}
+758a7f32047f44c0ac417e75c850fae4
+  $fShowID2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "ID "#) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fShowID_$cshow ::
+    GHC.Show.Show vn => Language.Futhark.Core.ID vn -> GHC.Base.String
+  {- Arity: 2,
+     Strictness: <L,1*U(1*C1(C1(C1(U))),A,A)><L,1*U(U,U(U))>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ vn
+                   $dShow :: GHC.Show.Show vn
+                   x :: Language.Futhark.Core.ID vn ->
+                 Language.Futhark.Core.$fShowID_$cshowsPrec
+                   @ vn
+                   $dShow
+                   GHC.Show.shows18
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fShowID_$cshowList ::
+    GHC.Show.Show vn => [Language.Futhark.Core.ID vn] -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,U(C(C1(C1(U))),A,A)><S,1*U><L,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ vn
+                   $dShow :: GHC.Show.Show vn
+                   eta :: [Language.Futhark.Core.ID vn]
+                   eta1 :: GHC.Base.String ->
+                 GHC.Show.showList__
+                   @ (Language.Futhark.Core.ID vn)
+                   (Language.Futhark.Core.$fShowID_$cshowsPrec
+                      @ vn
+                      $dShow
+                      Language.Futhark.Core.$fShowID1)
+                   eta
+                   eta1) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $fShowID_$cshowsPrec ::
+    GHC.Show.Show vn =>
+    GHC.Types.Int -> Language.Futhark.Core.ID vn -> GHC.Show.ShowS
+  {- Arity: 4,
+     Strictness: <L,1*U(1*C1(C1(C1(U))),A,A)><S,1*U(U)><L,1*U(U,U(U))><L,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (4, True, False)
+                (\ @ vn
+                   w :: GHC.Show.Show vn
+                   w1 :: GHC.Types.Int
+                   w2 :: Language.Futhark.Core.ID vn
+                   w3 :: GHC.Base.String ->
+                 case w1 of ww { GHC.Types.I# ww1 ->
+                 Language.Futhark.Core.$w$cshowsPrec @ vn w ww1 w2 w3 }) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fShowName :: GHC.Show.Show Language.Futhark.Core.Name
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.Name
+                  Language.Futhark.Core.$fShowName_$cshowsPrec
+                  Language.Futhark.Core.$fShowName_$cshow
+                  Language.Futhark.Core.$fShowName_$cshowList -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fShowName1 :: Language.Futhark.Core.Name -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (\ w :: Language.Futhark.Core.Name
+                   w1 :: GHC.Base.String ->
+                 Language.Futhark.Core.$w$cshowsPrec1 0 w w1) -}
+6dd97a53ff87efefc1bf7f858b3669d4
+  $fShowName2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Name "#) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fShowName_$cshow :: Language.Futhark.Core.Name -> GHC.Base.String
+  {- Arity: 1, Strictness: <L,1*U(U,U,U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ x :: Language.Futhark.Core.Name ->
+                 Language.Futhark.Core.$fShowName_$cshowsPrec
+                   GHC.Show.shows18
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fShowName_$cshowList ::
+    [Language.Futhark.Core.Name] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ Language.Futhark.Core.Name
+                   Language.Futhark.Core.$fShowName1) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $fShowName_$cshowsPrec ::
+    GHC.Types.Int -> Language.Futhark.Core.Name -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <S,1*U(U)><L,1*U(U,U,U)><L,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, False)
+                (\ w :: GHC.Types.Int
+                   w1 :: Language.Futhark.Core.Name
+                   w2 :: GHC.Base.String ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 Language.Futhark.Core.$w$cshowsPrec1 ww1 w1 w2 }) -}
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  $fShowStreamOrd :: GHC.Show.Show Language.Futhark.Core.StreamOrd
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.StreamOrd
+                  Language.Futhark.Core.$fShowStreamOrd_$cshowsPrec
+                  Language.Futhark.Core.$fShowStreamOrd_$cshow
+                  Language.Futhark.Core.$fShowStreamOrd_$cshowList -}
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  $fShowStreamOrd1 ::
+    Language.Futhark.Core.StreamOrd -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U><L,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ ds :: Language.Futhark.Core.StreamOrd eta :: GHC.Base.String ->
+                 case ds of wild {
+                   Language.Futhark.Core.InOrder
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b c :: GHC.Types.Char -> b -> b[OneShot] n :: b[OneShot] ->
+                         GHC.Base.foldr
+                           @ GHC.Types.Char
+                           @ b
+                           c
+                           n
+                           Language.Futhark.Core.$fShowStreamOrd3)
+                        eta
+                   Language.Futhark.Core.Disorder
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b c :: GHC.Types.Char -> b -> b[OneShot] n :: b[OneShot] ->
+                         GHC.Base.foldr
+                           @ GHC.Types.Char
+                           @ b
+                           c
+                           n
+                           Language.Futhark.Core.$fShowStreamOrd2)
+                        eta }) -}
+afaff1b895c7d9dcb5aa4f528174d6c0
+  $fShowStreamOrd2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Disorder"#) -}
+86873ccddfcb151b320422be01860d40
+  $fShowStreamOrd3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "InOrder"#) -}
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  $fShowStreamOrd_$cshow ::
+    Language.Futhark.Core.StreamOrd -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ x :: Language.Futhark.Core.StreamOrd ->
+                 case x of wild {
+                   Language.Futhark.Core.InOrder
+                   -> Language.Futhark.Core.$fShowStreamOrd3
+                   Language.Futhark.Core.Disorder
+                   -> Language.Futhark.Core.$fShowStreamOrd2 }) -}
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  $fShowStreamOrd_$cshowList ::
+    [Language.Futhark.Core.StreamOrd] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ Language.Futhark.Core.StreamOrd
+                   Language.Futhark.Core.$fShowStreamOrd1) -}
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  $fShowStreamOrd_$cshowsPrec ::
+    GHC.Types.Int -> Language.Futhark.Core.StreamOrd -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,A><S,1*U><L,1*U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ ds :: GHC.Types.Int
+                   ds1 :: Language.Futhark.Core.StreamOrd
+                   eta :: GHC.Base.String ->
+                 case ds1 of wild {
+                   Language.Futhark.Core.InOrder
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b c :: GHC.Types.Char -> b -> b[OneShot] n :: b[OneShot] ->
+                         GHC.Base.foldr
+                           @ GHC.Types.Char
+                           @ b
+                           c
+                           n
+                           Language.Futhark.Core.$fShowStreamOrd3)
+                        eta
+                   Language.Futhark.Core.Disorder
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b c :: GHC.Types.Char -> b -> b[OneShot] n :: b[OneShot] ->
+                         GHC.Base.foldr
+                           @ GHC.Types.Char
+                           @ b
+                           c
+                           n
+                           Language.Futhark.Core.$fShowStreamOrd2)
+                        eta }) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fShowUniqueness :: GHC.Show.Show Language.Futhark.Core.Uniqueness
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Futhark.Core.Uniqueness
+                  Language.Futhark.Core.$fShowUniqueness_$cshowsPrec
+                  Language.Futhark.Core.$fShowUniqueness_$cshow
+                  Language.Futhark.Core.$fShowUniqueness_$cshowList -}
+1ee4326daed7f9d740b94f689a248cad
+  $fShowUniqueness1 ::
+    Language.Futhark.Core.Uniqueness -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U><L,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ ds :: Language.Futhark.Core.Uniqueness eta :: GHC.Base.String ->
+                 case ds of wild {
+                   Language.Futhark.Core.Nonunique
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b c :: GHC.Types.Char -> b -> b[OneShot] n :: b[OneShot] ->
+                         GHC.Base.foldr
+                           @ GHC.Types.Char
+                           @ b
+                           c
+                           n
+                           Language.Futhark.Core.$fShowUniqueness3)
+                        eta
+                   Language.Futhark.Core.Unique
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b c :: GHC.Types.Char -> b -> b[OneShot] n :: b[OneShot] ->
+                         GHC.Base.foldr
+                           @ GHC.Types.Char
+                           @ b
+                           c
+                           n
+                           Language.Futhark.Core.$fShowUniqueness2)
+                        eta }) -}
+67372dc9cbc24724dfd9f284f2a517e5
+  $fShowUniqueness2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Unique"#) -}
+aeec138ddbe72a9263af489c1343b97e
+  $fShowUniqueness3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Nonunique"#) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fShowUniqueness_$cshow ::
+    Language.Futhark.Core.Uniqueness -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ x :: Language.Futhark.Core.Uniqueness ->
+                 case x of wild {
+                   Language.Futhark.Core.Nonunique
+                   -> Language.Futhark.Core.$fShowUniqueness3
+                   Language.Futhark.Core.Unique
+                   -> Language.Futhark.Core.$fShowUniqueness2 }) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fShowUniqueness_$cshowList ::
+    [Language.Futhark.Core.Uniqueness] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ Language.Futhark.Core.Uniqueness
+                   Language.Futhark.Core.$fShowUniqueness1) -}
+1ee4326daed7f9d740b94f689a248cad
+  $fShowUniqueness_$cshowsPrec ::
+    GHC.Types.Int -> Language.Futhark.Core.Uniqueness -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,A><S,1*U><L,1*U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ ds :: GHC.Types.Int
+                   ds1 :: Language.Futhark.Core.Uniqueness
+                   eta :: GHC.Base.String ->
+                 case ds1 of wild {
+                   Language.Futhark.Core.Nonunique
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b c :: GHC.Types.Char -> b -> b[OneShot] n :: b[OneShot] ->
+                         GHC.Base.foldr
+                           @ GHC.Types.Char
+                           @ b
+                           c
+                           n
+                           Language.Futhark.Core.$fShowUniqueness3)
+                        eta
+                   Language.Futhark.Core.Unique
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b c :: GHC.Types.Char -> b -> b[OneShot] n :: b[OneShot] ->
+                         GHC.Base.foldr
+                           @ GHC.Types.Char
+                           @ b
+                           c
+                           n
+                           Language.Futhark.Core.$fShowUniqueness2)
+                        eta }) -}
+c9b5414851b615697e9b7d6606781cc7
+  $w$cppr ::
+    Text.PrettyPrint.Mainland.Pretty vn =>
+    vn
+    -> GHC.Types.Int
+    -> (# Text.PrettyPrint.Mainland.Doc,
+          Text.PrettyPrint.Mainland.Doc #)
+  {- Arity: 3, Strictness: <L,1*U(1*C1(U),A,A)><L,U><L,1*U(U)>,
+     Inline: [0],
+     Unfolding: (\ @ vn
+                   w :: Text.PrettyPrint.Mainland.Pretty vn
+                   ww :: vn
+                   ww1 :: GHC.Types.Int ->
+                 (# Text.PrettyPrint.Mainland.ppr @ vn w ww,
+                    Text.PrettyPrint.Mainland.Cat
+                      Language.Futhark.Core.$fPrettyID1
+                      (case ww1 of ww2 { GHC.Types.I# ww3 ->
+                       case GHC.Show.$wshowSignedInt
+                              0
+                              ww3
+                              (GHC.Types.[] @ GHC.Types.Char) of ww4 { (#,#) ww5 ww6 ->
+                       let {
+                         s2 :: GHC.Base.String = GHC.Types.: @ GHC.Types.Char ww5 ww6
+                       } in
+                       case GHC.List.$wlenAcc @ GHC.Types.Char s2 0 of ww8 { DEFAULT ->
+                       Text.PrettyPrint.Mainland.String ww8 s2 } } }) #)) -}
+b926428c7d75e8b20f18bdf4680fa70d
+  $w$cppr1 ::
+    GHC.Prim.ByteArray#
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> (# GHC.Prim.Int#, GHC.Base.String #)
+  {- Arity: 3, HasNoCafRefs, Strictness: <L,U><L,U><L,U>,
+     Inline: [0],
+     Unfolding: (\ ww :: GHC.Prim.ByteArray#
+                   ww1 :: GHC.Prim.Int#
+                   ww2 :: GHC.Prim.Int# ->
+                 let {
+                   a :: GHC.Prim.Int# = GHC.Prim.+# ww1 ww2
+                 } in
+                 letrec {
+                   $wunfold :: GHC.Prim.Int# -> [GHC.Types.Char]
+                     {- Arity: 1, Strictness: <L,U>, Inline: [0] -}
+                   = \ ww3 :: GHC.Prim.Int# ->
+                     case GHC.Prim.tagToEnum#
+                            @ GHC.Types.Bool
+                            (GHC.Prim.>=# ww3 a) of wild1 {
+                       GHC.Types.False
+                       -> case GHC.Prim.indexWord16Array# ww ww3 of r# { DEFAULT ->
+                          case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.geWord# r# __word 55296) of wild2 {
+                            GHC.Types.False
+                            -> GHC.Types.:
+                                 @ GHC.Types.Char
+                                 (GHC.Types.C# (GHC.Prim.chr# (GHC.Prim.word2Int# r#)))
+                                 ($wunfold (GHC.Prim.+# ww3 1))
+                            GHC.Types.True
+                            -> case GHC.Prim.tagToEnum#
+                                      @ GHC.Types.Bool
+                                      (GHC.Prim.leWord# r# __word 56319) of wild3 {
+                                 GHC.Types.False
+                                 -> GHC.Types.:
+                                      @ GHC.Types.Char
+                                      (GHC.Types.C# (GHC.Prim.chr# (GHC.Prim.word2Int# r#)))
+                                      ($wunfold (GHC.Prim.+# ww3 1))
+                                 GHC.Types.True
+                                 -> case GHC.Prim.indexWord16Array#
+                                           ww
+                                           (GHC.Prim.+# ww3 1) of r#1 { DEFAULT ->
+                                    GHC.Types.:
+                                      @ GHC.Types.Char
+                                      (GHC.Types.C#
+                                         (GHC.Prim.chr#
+                                            (GHC.Prim.+#
+                                               (GHC.Prim.+#
+                                                  (GHC.Prim.uncheckedIShiftL#
+                                                     (GHC.Prim.-# (GHC.Prim.word2Int# r#) 55296)
+                                                     10)
+                                                  (GHC.Prim.-# (GHC.Prim.word2Int# r#1) 56320))
+                                               65536)))
+                                      ($wunfold (GHC.Prim.+# ww3 2)) } } } }
+                       GHC.Types.True -> GHC.Types.[] @ GHC.Types.Char }
+                 } in
+                 let {
+                   s2 :: GHC.Base.String = $wunfold ww1
+                 } in
+                 case GHC.List.$wlenAcc @ GHC.Types.Char s2 0 of ww3 { DEFAULT ->
+                 (# ww3, s2 #) }) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $w$cpprList ::
+    Text.PrettyPrint.Mainland.Pretty vn =>
+    [Language.Futhark.Core.ID vn]
+    -> (# Text.PrettyPrint.Mainland.Doc,
+          Text.PrettyPrint.Mainland.Doc #)
+  {- Arity: 2, Strictness: <L,U(C(U),A,A)><S,1*U>, Inline: [0],
+     Unfolding: (\ @ vn
+                   w :: Text.PrettyPrint.Mainland.Pretty vn
+                   w1 :: [Language.Futhark.Core.ID vn] ->
+                 case GHC.Base.map
+                        @ (Language.Futhark.Core.ID vn)
+                        @ Text.PrettyPrint.Mainland.Doc
+                        (Language.Futhark.Core.$fPrettyID_$cppr @ vn w)
+                        w1 of wild {
+                   []
+                   -> (# Text.PrettyPrint.Mainland.lbracket,
+                         Text.PrettyPrint.Mainland.rbracket #)
+                   : d ds
+                   -> case ds of wild1 {
+                        []
+                        -> (# Text.PrettyPrint.Mainland.lbracket,
+                              Text.PrettyPrint.Mainland.Cat
+                                d
+                                Text.PrettyPrint.Mainland.rbracket #)
+                        : ipv ipv1
+                        -> (# Text.PrettyPrint.Mainland.lbracket,
+                              Text.PrettyPrint.Mainland.Cat
+                                (let {
+                                   d1 :: Text.PrettyPrint.Mainland.Doc
+                                   = Text.PrettyPrint.Mainland.folddoc
+                                       Text.PrettyPrint.Mainland.<+/>
+                                       (Text.PrettyPrint.Mainland.punctuate
+                                          Text.PrettyPrint.Mainland.comma
+                                          wild)
+                                 } in
+                                 let {
+                                   a :: Text.PrettyPrint.Mainland.Doc
+                                   = Text.PrettyPrint.Mainland.flatten d1
+                                 } in
+                                 let {
+                                   d2 :: Text.PrettyPrint.Mainland.Doc
+                                   = Text.PrettyPrint.Mainland.Alt a d1
+                                 } in
+                                 Text.PrettyPrint.Mainland.Column
+                                   (\ k :: GHC.Types.Int ->
+                                    Text.PrettyPrint.Mainland.Nesting
+                                      (\ i :: GHC.Types.Int ->
+                                       case k of wild2 { GHC.Types.I# x ->
+                                       case i of wild3 { GHC.Types.I# y ->
+                                       Text.PrettyPrint.Mainland.Nest (GHC.Prim.-# x y) d2 } })))
+                                Text.PrettyPrint.Mainland.rbracket #) } }) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $w$cpprList1 ::
+    [Language.Futhark.Core.Name]
+    -> (# Text.PrettyPrint.Mainland.Doc,
+          Text.PrettyPrint.Mainland.Doc #)
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>, Inline: [0],
+     Unfolding: (\ w :: [Language.Futhark.Core.Name] ->
+                 case GHC.Base.map
+                        @ Language.Futhark.Core.Name
+                        @ Text.PrettyPrint.Mainland.Doc
+                        Language.Futhark.Core.$fPrettyName_$cppr
+                        w of wild {
+                   []
+                   -> (# Text.PrettyPrint.Mainland.lbracket,
+                         Text.PrettyPrint.Mainland.rbracket #)
+                   : d ds
+                   -> case ds of wild1 {
+                        []
+                        -> (# Text.PrettyPrint.Mainland.lbracket,
+                              Text.PrettyPrint.Mainland.Cat
+                                d
+                                Text.PrettyPrint.Mainland.rbracket #)
+                        : ipv ipv1
+                        -> (# Text.PrettyPrint.Mainland.lbracket,
+                              Text.PrettyPrint.Mainland.Cat
+                                (let {
+                                   d1 :: Text.PrettyPrint.Mainland.Doc
+                                   = Text.PrettyPrint.Mainland.folddoc
+                                       Text.PrettyPrint.Mainland.<+/>
+                                       (Text.PrettyPrint.Mainland.punctuate
+                                          Text.PrettyPrint.Mainland.comma
+                                          wild)
+                                 } in
+                                 let {
+                                   a :: Text.PrettyPrint.Mainland.Doc
+                                   = Text.PrettyPrint.Mainland.flatten d1
+                                 } in
+                                 let {
+                                   d2 :: Text.PrettyPrint.Mainland.Doc
+                                   = Text.PrettyPrint.Mainland.Alt a d1
+                                 } in
+                                 Text.PrettyPrint.Mainland.Column
+                                   (\ k :: GHC.Types.Int ->
+                                    Text.PrettyPrint.Mainland.Nesting
+                                      (\ i :: GHC.Types.Int ->
+                                       case k of wild2 { GHC.Types.I# x ->
+                                       case i of wild3 { GHC.Types.I# y ->
+                                       Text.PrettyPrint.Mainland.Nest (GHC.Prim.-# x y) d2 } })))
+                                Text.PrettyPrint.Mainland.rbracket #) } }) -}
+1ee4326daed7f9d740b94f689a248cad
+  $w$cpprList2 ::
+    [Language.Futhark.Core.Uniqueness]
+    -> (# Text.PrettyPrint.Mainland.Doc,
+          Text.PrettyPrint.Mainland.Doc #)
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>, Inline: [0],
+     Unfolding: (\ w :: [Language.Futhark.Core.Uniqueness] ->
+                 case GHC.Base.map
+                        @ Language.Futhark.Core.Uniqueness
+                        @ Text.PrettyPrint.Mainland.Doc
+                        Language.Futhark.Core.$fPrettyUniqueness_$cppr
+                        w of wild {
+                   []
+                   -> (# Text.PrettyPrint.Mainland.lbracket,
+                         Text.PrettyPrint.Mainland.rbracket #)
+                   : d ds
+                   -> case ds of wild1 {
+                        []
+                        -> (# Text.PrettyPrint.Mainland.lbracket,
+                              Text.PrettyPrint.Mainland.Cat
+                                d
+                                Text.PrettyPrint.Mainland.rbracket #)
+                        : ipv ipv1
+                        -> (# Text.PrettyPrint.Mainland.lbracket,
+                              Text.PrettyPrint.Mainland.Cat
+                                (let {
+                                   d1 :: Text.PrettyPrint.Mainland.Doc
+                                   = Text.PrettyPrint.Mainland.folddoc
+                                       Text.PrettyPrint.Mainland.<+/>
+                                       (Text.PrettyPrint.Mainland.punctuate
+                                          Text.PrettyPrint.Mainland.comma
+                                          wild)
+                                 } in
+                                 let {
+                                   a :: Text.PrettyPrint.Mainland.Doc
+                                   = Text.PrettyPrint.Mainland.flatten d1
+                                 } in
+                                 let {
+                                   d2 :: Text.PrettyPrint.Mainland.Doc
+                                   = Text.PrettyPrint.Mainland.Alt a d1
+                                 } in
+                                 Text.PrettyPrint.Mainland.Column
+                                   (\ k :: GHC.Types.Int ->
+                                    Text.PrettyPrint.Mainland.Nesting
+                                      (\ i :: GHC.Types.Int ->
+                                       case k of wild2 { GHC.Types.I# x ->
+                                       case i of wild3 { GHC.Types.I# y ->
+                                       Text.PrettyPrint.Mainland.Nest (GHC.Prim.-# x y) d2 } })))
+                                Text.PrettyPrint.Mainland.rbracket #) } }) -}
+9bb77724207d7fa386e0d72cd6bf6109
+  $w$cshowsPrec ::
+    GHC.Show.Show vn =>
+    GHC.Prim.Int#
+    -> Language.Futhark.Core.ID vn
+    -> GHC.Base.String
+    -> GHC.Base.String
+  {- Arity: 4,
+     Strictness: <L,1*U(1*C1(C1(C1(U))),A,A)><L,U><L,1*U(U,U(U))><L,U>,
+     Inline: [0],
+     Unfolding: (\ @ vn
+                   w :: GHC.Show.Show vn
+                   ww :: GHC.Prim.Int#
+                   w1 :: Language.Futhark.Core.ID vn
+                   w2 :: GHC.Base.String ->
+                 let {
+                   p :: GHC.Show.ShowS {- Arity: 1, Strictness: <L,U> -}
+                   = \ x :: GHC.Base.String[OneShot] ->
+                     GHC.Base.++
+                       @ GHC.Types.Char
+                       Language.Futhark.Core.$fShowID2
+                       (case w1
+                               `cast`
+                             (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of ww1 { (,) ww2 ww3 ->
+                        GHC.Types.:
+                          @ GHC.Types.Char
+                          GHC.Show.shows9
+                          (GHC.Show.showsPrec
+                             @ vn
+                             w
+                             GHC.Show.shows18
+                             ww2
+                             (GHC.Types.:
+                                @ GHC.Types.Char
+                                GHC.Show.showList__1
+                                (GHC.Show.$fShow(,)_$sgo
+                                   (\ w3 :: GHC.Base.String ->
+                                    case ww3 of ww4 { GHC.Types.I# ww5 ->
+                                    case GHC.Show.$wshowSignedInt 0 ww5 w3 of ww6 { (#,#) ww7 ww8 ->
+                                    GHC.Types.: @ GHC.Types.Char ww7 ww8 } })
+                                   (GHC.Types.[] @ GHC.Show.ShowS)
+                                   (GHC.Types.: @ GHC.Types.Char GHC.Show.shows8 x)))) })
+                 } in
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.>=# ww 11) of wild {
+                   GHC.Types.False -> p w2
+                   GHC.Types.True
+                   -> GHC.Types.:
+                        @ GHC.Types.Char
+                        GHC.Show.shows9
+                        (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows8 w2)) }) -}
+6f31ab23d447a5092c4e7208963f26d4
+  $w$cshowsPrec1 ::
+    GHC.Prim.Int#
+    -> Language.Futhark.Core.Name -> GHC.Base.String -> GHC.Base.String
+  {- Arity: 3, Strictness: <L,U><L,1*U(U,U,U)><L,U>, Inline: [0],
+     Unfolding: (\ ww :: GHC.Prim.Int#
+                   w :: Language.Futhark.Core.Name
+                   w1 :: GHC.Base.String ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.>=# ww 11) of wild {
+                   GHC.Types.False
+                   -> GHC.Base.++
+                        @ GHC.Types.Char
+                        Language.Futhark.Core.$fShowName2
+                        (case Data.Text.Show.$w$cshowsPrec
+                                w `cast` (Language.Futhark.Core.NTCo:Name[0])
+                                w1 of ww1 { (#,#) ww2 ww3 ->
+                         GHC.Types.: @ GHC.Types.Char ww2 ww3 })
+                   GHC.Types.True
+                   -> GHC.Types.:
+                        @ GHC.Types.Char
+                        GHC.Show.shows9
+                        (GHC.Base.++
+                           @ GHC.Types.Char
+                           Language.Futhark.Core.$fShowName2
+                           (case Data.Text.Show.$w$cshowsPrec
+                                   w `cast` (Language.Futhark.Core.NTCo:Name[0])
+                                   (GHC.Types.:
+                                      @ GHC.Types.Char
+                                      GHC.Show.shows8
+                                      w1) of ww1 { (#,#) ww2 ww3 ->
+                            GHC.Types.: @ GHC.Types.Char ww2 ww3 })) }) -}
+a795d24141ca2b2a0c88fd7ad507561f
+  $w$s$cppr ::
+    Language.Futhark.Core.Name
+    -> GHC.Types.Int
+    -> (# Text.PrettyPrint.Mainland.Doc,
+          Text.PrettyPrint.Mainland.Doc #)
+  {- Arity: 2, Strictness: <L,1*U(U,U,U)><L,1*U(U)>, Inline: [0],
+     Unfolding: (\ ww :: Language.Futhark.Core.Name
+                   ww1 :: GHC.Types.Int ->
+                 (# case ww
+                           `cast`
+                         (Language.Futhark.Core.NTCo:Name[0]) of wild { Data.Text.Internal.Text dt dt1 dt2 ->
+                    let {
+                      a :: GHC.Prim.Int# = GHC.Prim.+# dt1 dt2
+                    } in
+                    letrec {
+                      $wunfold :: GHC.Prim.Int# -> [GHC.Types.Char]
+                        {- Arity: 1, Strictness: <L,U>, Inline: [0] -}
+                      = \ ww2 :: GHC.Prim.Int# ->
+                        case GHC.Prim.tagToEnum#
+                               @ GHC.Types.Bool
+                               (GHC.Prim.>=# ww2 a) of wild1 {
+                          GHC.Types.False
+                          -> case GHC.Prim.indexWord16Array# dt ww2 of r# { DEFAULT ->
+                             case GHC.Prim.tagToEnum#
+                                    @ GHC.Types.Bool
+                                    (GHC.Prim.geWord# r# __word 55296) of wild2 {
+                               GHC.Types.False
+                               -> GHC.Types.:
+                                    @ GHC.Types.Char
+                                    (GHC.Types.C# (GHC.Prim.chr# (GHC.Prim.word2Int# r#)))
+                                    ($wunfold (GHC.Prim.+# ww2 1))
+                               GHC.Types.True
+                               -> case GHC.Prim.tagToEnum#
+                                         @ GHC.Types.Bool
+                                         (GHC.Prim.leWord# r# __word 56319) of wild3 {
+                                    GHC.Types.False
+                                    -> GHC.Types.:
+                                         @ GHC.Types.Char
+                                         (GHC.Types.C# (GHC.Prim.chr# (GHC.Prim.word2Int# r#)))
+                                         ($wunfold (GHC.Prim.+# ww2 1))
+                                    GHC.Types.True
+                                    -> case GHC.Prim.indexWord16Array#
+                                              dt
+                                              (GHC.Prim.+# ww2 1) of r#1 { DEFAULT ->
+                                       GHC.Types.:
+                                         @ GHC.Types.Char
+                                         (GHC.Types.C#
+                                            (GHC.Prim.chr#
+                                               (GHC.Prim.+#
+                                                  (GHC.Prim.+#
+                                                     (GHC.Prim.uncheckedIShiftL#
+                                                        (GHC.Prim.-# (GHC.Prim.word2Int# r#) 55296)
+                                                        10)
+                                                     (GHC.Prim.-# (GHC.Prim.word2Int# r#1) 56320))
+                                                  65536)))
+                                         ($wunfold (GHC.Prim.+# ww2 2)) } } } }
+                          GHC.Types.True -> GHC.Types.[] @ GHC.Types.Char }
+                    } in
+                    let {
+                      s2 :: GHC.Base.String = $wunfold dt1
+                    } in
+                    case GHC.List.$wlenAcc @ GHC.Types.Char s2 0 of ww2 { DEFAULT ->
+                    Text.PrettyPrint.Mainland.String ww2 s2 } },
+                    Text.PrettyPrint.Mainland.Cat
+                      Language.Futhark.Core.$fPrettyID1
+                      (case ww1 of ww2 { GHC.Types.I# ww3 ->
+                       case GHC.Show.$wshowSignedInt
+                              0
+                              ww3
+                              (GHC.Types.[] @ GHC.Types.Char) of ww4 { (#,#) ww5 ww6 ->
+                       let {
+                         s2 :: GHC.Base.String = GHC.Types.: @ GHC.Types.Char ww5 ww6
+                       } in
+                       case GHC.List.$wlenAcc @ GHC.Types.Char s2 0 of ww8 { DEFAULT ->
+                       Text.PrettyPrint.Mainland.String ww8 s2 } } }) #)) -}
+a9b53a9c5e95426ee4fa2ad660fdd76e
+  $wa ::
+    [Language.Futhark.Core.Name]
+    -> Language.Futhark.Core.Name -> Data.Text.Internal.Text
+  {- Arity: 2, Strictness: <S,1*U><L,1*U(U,U,U)>, Inline: [0],
+     Unfolding: (\ ww :: [Language.Futhark.Core.Name]
+                   ww1 :: Language.Futhark.Core.Name ->
+                 case Language.Futhark.Core.$wlongnameToString
+                        ww
+                        ww1 of dt { DEFAULT ->
+                 GHC.ST.runSTRep
+                   @ Data.Text.Internal.Text
+                   (\ @ s1 s2 :: GHC.Prim.State# s1[OneShot] ->
+                    case GHC.Prim.newByteArray# @ s1 8 s2 of ds1 { (#,#) ipv ipv1 ->
+                    Language.Futhark.Core.longnameToName3
+                      @ s1
+                      (Data.Text.Array.MArray @ s1 ipv1)
+                      Language.Futhark.Core.longnameToName2
+                      dt
+                      0
+                      ipv }) }) -}
+653bd1ffe7ef1887dd5e9b15034c1aad
+  $wbaseString ::
+    GHC.Prim.ByteArray#
+    -> GHC.Prim.Int# -> GHC.Prim.Int# -> GHC.Base.String
+  {- Arity: 3, HasNoCafRefs, Strictness: <L,U><L,U><L,U>,
+     Inline: [0],
+     Unfolding: (\ ww :: GHC.Prim.ByteArray#
+                   ww1 :: GHC.Prim.Int#
+                   ww2 :: GHC.Prim.Int# ->
+                 let {
+                   a :: GHC.Prim.Int# = GHC.Prim.+# ww1 ww2
+                 } in
+                 letrec {
+                   $wunfold :: GHC.Prim.Int# -> [GHC.Types.Char]
+                     {- Arity: 1, Strictness: <L,U>, Inline: [0] -}
+                   = \ ww3 :: GHC.Prim.Int# ->
+                     case GHC.Prim.tagToEnum#
+                            @ GHC.Types.Bool
+                            (GHC.Prim.>=# ww3 a) of wild1 {
+                       GHC.Types.False
+                       -> case GHC.Prim.indexWord16Array# ww ww3 of r# { DEFAULT ->
+                          case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.geWord# r# __word 55296) of wild2 {
+                            GHC.Types.False
+                            -> GHC.Types.:
+                                 @ GHC.Types.Char
+                                 (GHC.Types.C# (GHC.Prim.chr# (GHC.Prim.word2Int# r#)))
+                                 ($wunfold (GHC.Prim.+# ww3 1))
+                            GHC.Types.True
+                            -> case GHC.Prim.tagToEnum#
+                                      @ GHC.Types.Bool
+                                      (GHC.Prim.leWord# r# __word 56319) of wild3 {
+                                 GHC.Types.False
+                                 -> GHC.Types.:
+                                      @ GHC.Types.Char
+                                      (GHC.Types.C# (GHC.Prim.chr# (GHC.Prim.word2Int# r#)))
+                                      ($wunfold (GHC.Prim.+# ww3 1))
+                                 GHC.Types.True
+                                 -> case GHC.Prim.indexWord16Array#
+                                           ww
+                                           (GHC.Prim.+# ww3 1) of r#1 { DEFAULT ->
+                                    GHC.Types.:
+                                      @ GHC.Types.Char
+                                      (GHC.Types.C#
+                                         (GHC.Prim.chr#
+                                            (GHC.Prim.+#
+                                               (GHC.Prim.+#
+                                                  (GHC.Prim.uncheckedIShiftL#
+                                                     (GHC.Prim.-# (GHC.Prim.word2Int# r#) 55296)
+                                                     10)
+                                                  (GHC.Prim.-# (GHC.Prim.word2Int# r#1) 56320))
+                                               65536)))
+                                      ($wunfold (GHC.Prim.+# ww3 2)) } } } }
+                       GHC.Types.True -> GHC.Types.[] @ GHC.Types.Char }
+                 } in
+                 $wunfold ww1) -}
+7e03d7f0f23fb7c01ecc9f7aa870ba86
+  $wlongnameToString ::
+    [Language.Futhark.Core.Name]
+    -> Language.Futhark.Core.Name -> GHC.Base.String
+  {- Arity: 2, Strictness: <S,1*U><L,1*U(U,U,U)>, Inline: [0],
+     Unfolding: (\ ww :: [Language.Futhark.Core.Name]
+                   ww1 :: Language.Futhark.Core.Name ->
+                 case ww of wild {
+                   []
+                   -> case ww1
+                             `cast`
+                           (Language.Futhark.Core.NTCo:Name[0]) of wild1 { Data.Text.Internal.Text dt dt1 dt2 ->
+                      let {
+                        a :: GHC.Prim.Int# = GHC.Prim.+# dt1 dt2
+                      } in
+                      letrec {
+                        $wunfold :: GHC.Prim.Int# -> [GHC.Types.Char]
+                          {- Arity: 1, Strictness: <L,U>, Inline: [0] -}
+                        = \ ww2 :: GHC.Prim.Int# ->
+                          case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.>=# ww2 a) of wild2 {
+                            GHC.Types.False
+                            -> case GHC.Prim.indexWord16Array# dt ww2 of r# { DEFAULT ->
+                               case GHC.Prim.tagToEnum#
+                                      @ GHC.Types.Bool
+                                      (GHC.Prim.geWord# r# __word 55296) of wild3 {
+                                 GHC.Types.False
+                                 -> GHC.Types.:
+                                      @ GHC.Types.Char
+                                      (GHC.Types.C# (GHC.Prim.chr# (GHC.Prim.word2Int# r#)))
+                                      ($wunfold (GHC.Prim.+# ww2 1))
+                                 GHC.Types.True
+                                 -> case GHC.Prim.tagToEnum#
+                                           @ GHC.Types.Bool
+                                           (GHC.Prim.leWord# r# __word 56319) of wild4 {
+                                      GHC.Types.False
+                                      -> GHC.Types.:
+                                           @ GHC.Types.Char
+                                           (GHC.Types.C# (GHC.Prim.chr# (GHC.Prim.word2Int# r#)))
+                                           ($wunfold (GHC.Prim.+# ww2 1))
+                                      GHC.Types.True
+                                      -> case GHC.Prim.indexWord16Array#
+                                                dt
+                                                (GHC.Prim.+# ww2 1) of r#1 { DEFAULT ->
+                                         GHC.Types.:
+                                           @ GHC.Types.Char
+                                           (GHC.Types.C#
+                                              (GHC.Prim.chr#
+                                                 (GHC.Prim.+#
+                                                    (GHC.Prim.+#
+                                                       (GHC.Prim.uncheckedIShiftL#
+                                                          (GHC.Prim.-#
+                                                             (GHC.Prim.word2Int# r#)
+                                                             55296)
+                                                          10)
+                                                       (GHC.Prim.-# (GHC.Prim.word2Int# r#1) 56320))
+                                                    65536)))
+                                           ($wunfold (GHC.Prim.+# ww2 2)) } } } }
+                            GHC.Types.True -> GHC.Types.[] @ GHC.Types.Char }
+                      } in
+                      $wunfold dt1 }
+                   : ipv ipv1
+                   -> let {
+                        n :: [GHC.Types.Char]
+                        = GHC.CString.unpackAppendCString#
+                            "."#
+                            (case ww1
+                                    `cast`
+                                  (Language.Futhark.Core.NTCo:Name[0]) of wild1 { Data.Text.Internal.Text dt dt1 dt2 ->
+                             let {
+                               a :: GHC.Prim.Int# = GHC.Prim.+# dt1 dt2
+                             } in
+                             letrec {
+                               $wunfold :: GHC.Prim.Int# -> [GHC.Types.Char]
+                                 {- Arity: 1, Strictness: <L,U>, Inline: [0] -}
+                               = \ ww2 :: GHC.Prim.Int# ->
+                                 case GHC.Prim.tagToEnum#
+                                        @ GHC.Types.Bool
+                                        (GHC.Prim.>=# ww2 a) of wild2 {
+                                   GHC.Types.False
+                                   -> case GHC.Prim.indexWord16Array# dt ww2 of r# { DEFAULT ->
+                                      case GHC.Prim.tagToEnum#
+                                             @ GHC.Types.Bool
+                                             (GHC.Prim.geWord# r# __word 55296) of wild3 {
+                                        GHC.Types.False
+                                        -> GHC.Types.:
+                                             @ GHC.Types.Char
+                                             (GHC.Types.C# (GHC.Prim.chr# (GHC.Prim.word2Int# r#)))
+                                             ($wunfold (GHC.Prim.+# ww2 1))
+                                        GHC.Types.True
+                                        -> case GHC.Prim.tagToEnum#
+                                                  @ GHC.Types.Bool
+                                                  (GHC.Prim.leWord# r# __word 56319) of wild4 {
+                                             GHC.Types.False
+                                             -> GHC.Types.:
+                                                  @ GHC.Types.Char
+                                                  (GHC.Types.C#
+                                                     (GHC.Prim.chr# (GHC.Prim.word2Int# r#)))
+                                                  ($wunfold (GHC.Prim.+# ww2 1))
+                                             GHC.Types.True
+                                             -> case GHC.Prim.indexWord16Array#
+                                                       dt
+                                                       (GHC.Prim.+# ww2 1) of r#1 { DEFAULT ->
+                                                GHC.Types.:
+                                                  @ GHC.Types.Char
+                                                  (GHC.Types.C#
+                                                     (GHC.Prim.chr#
+                                                        (GHC.Prim.+#
+                                                           (GHC.Prim.+#
+                                                              (GHC.Prim.uncheckedIShiftL#
+                                                                 (GHC.Prim.-#
+                                                                    (GHC.Prim.word2Int# r#)
+                                                                    55296)
+                                                                 10)
+                                                              (GHC.Prim.-#
+                                                                 (GHC.Prim.word2Int# r#1)
+                                                                 56320))
+                                                           65536)))
+                                                  ($wunfold (GHC.Prim.+# ww2 2)) } } } }
+                                   GHC.Types.True -> GHC.Types.[] @ GHC.Types.Char }
+                             } in
+                             $wunfold dt1 })
+                      } in
+                      case GHC.Base.map
+                             @ Language.Futhark.Core.Name
+                             @ [GHC.Types.Char]
+                             Data.Text.Show.unpack
+                               `cast`
+                             (Sym (Language.Futhark.Core.NTCo:Name[0]) ->_R <GHC.Base.String>_R)
+                             wild of wild1 {
+                        [] -> n
+                        : x xs1
+                        -> GHC.Base.++
+                             @ GHC.Types.Char
+                             (Data.OldList.intercalate_$spoly_go
+                                @ GHC.Types.Char
+                                x
+                                (Data.OldList.prependToAll
+                                   @ [GHC.Types.Char]
+                                   Language.Futhark.Core.longnameToName4
+                                   xs1))
+                             n } }) -}
+038ade5ac0a2f2cf5928a9b55ca6cf46
+  data Commutativity = Noncommutative | Commutative
+    Promotable
+9bb77724207d7fa386e0d72cd6bf6109
+  newtype ID vn = ID (vn, GHC.Types.Int)
+6f31ab23d447a5092c4e7208963f26d4
+  newtype Name = Name Data.Text.Internal.Text
+547b1c7190e0b3c04378e512a39bd687
+  type QualName =
+    ([Language.Futhark.Core.Name], Language.Futhark.Core.Name)
+f0a4ce9da1f8307d5cf53709dbbb2cb1
+  data StreamOrd = InOrder | Disorder
+    Promotable
+1ee4326daed7f9d740b94f689a248cad
+  data Uniqueness = Nonunique | Unique
+    Promotable
+d2183f464cdb8952855d3542065e5d13
+  type VName = Language.Futhark.Core.ID Language.Futhark.Core.Name
+c5c38105ecee71bc5d355e92406545c9
+  baseName :: Language.Futhark.Core.ID vn -> vn
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(SL),1*U(1*U,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ vn ds :: Language.Futhark.Core.ID vn ->
+                 case ds
+                        `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild { (,) vn1 ds1 ->
+                 vn1 }) -}
+38ea1d533bef47d6dec88cba84d9cc35
+  baseString :: Language.Futhark.Core.VName -> GHC.Base.String
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(SL),1*U(1*U(U,U,U),A)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: Language.Futhark.Core.VName ->
+                 case w `cast`
+                      (Language.Futhark.Core.NTCo:ID[0]
+                           <Language.Futhark.Core.Name>_R) of ww { (,) ww1 ww2 ->
+                 case ww1
+                        `cast`
+                      (Language.Futhark.Core.NTCo:Name[0]) of ww3 { Data.Text.Internal.Text ww4 ww5 ww6 ->
+                 Language.Futhark.Core.$wbaseString ww4 ww5 ww6 } }) -}
+6fedf6c6b20e89d240d2981221b91509
+  baseTag :: Language.Futhark.Core.ID vn -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(A,1*U(U))>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ vn ds :: Language.Futhark.Core.ID vn ->
+                 case ds
+                        `cast`
+                      (Language.Futhark.Core.NTCo:ID[0] <vn>_R) of wild { (,) ds1 tag ->
+                 tag }) -}
+3cff18b621d697a716ef86fcbb7b1bee
+  blankLongname :: Language.Futhark.Core.QualName
+  {- Strictness: m,
+     Unfolding: ((GHC.Types.[] @ Language.Futhark.Core.Name,
+                  Data.Text.Internal.empty_
+                    `cast`
+                  (Sym (Language.Futhark.Core.NTCo:Name[0])))) -}
+6a5d599ae6f50eb2d405c412c148c0a4
+  defaultEntryPoint :: Language.Futhark.Core.Name
+  {- Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Core.defaultEntryPoint1
+                  `cast`
+                (Sym (Language.Futhark.Core.NTCo:Name[0])) -}
+8d8ff051fcb4eb3ba392554857497943
+  defaultEntryPoint1 :: Data.Text.Internal.Text
+  {- Unfolding: (Data.Text.Show.unpackCString# "main"#) -}
+3282b7e901c995265c7619bd70ef3231
+  locStr :: Data.Loc.SrcLoc -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ ds :: Data.Loc.SrcLoc ->
+                 case ds `cast` (Data.Loc.NTCo:SrcLoc[0]) of wild {
+                   Data.Loc.NoLoc -> Language.Futhark.Core.locStr1
+                   Data.Loc.Loc dt dt1 dt2 dt3 dt4 dt5 dt6 dt7
+                   -> GHC.Base.++
+                        @ GHC.Types.Char
+                        dt
+                        (GHC.CString.unpackAppendCString#
+                           ":"#
+                           (case GHC.Show.$wshowSignedInt
+                                   0
+                                   dt1
+                                   (GHC.Types.[] @ GHC.Types.Char) of ww4 { (#,#) ww5 ww6 ->
+                            GHC.Base.++
+                              @ GHC.Types.Char
+                              (GHC.Types.: @ GHC.Types.Char ww5 ww6)
+                              (GHC.CString.unpackAppendCString#
+                                 ":"#
+                                 (case GHC.Show.$wshowSignedInt
+                                         0
+                                         dt2
+                                         (GHC.Types.[] @ GHC.Types.Char) of ww1 { (#,#) ww2 ww3 ->
+                                  GHC.Base.++
+                                    @ GHC.Types.Char
+                                    (GHC.Types.: @ GHC.Types.Char ww2 ww3)
+                                    (GHC.CString.unpackAppendCString#
+                                       "-"#
+                                       (case GHC.Show.$wshowSignedInt
+                                               0
+                                               dt5
+                                               (GHC.Types.[]
+                                                  @ GHC.Types.Char) of ww7 { (#,#) ww8 ww9 ->
+                                        GHC.Base.++
+                                          @ GHC.Types.Char
+                                          (GHC.Types.: @ GHC.Types.Char ww8 ww9)
+                                          (GHC.CString.unpackAppendCString#
+                                             ":"#
+                                             (case GHC.Show.$wshowSignedInt
+                                                     0
+                                                     dt6
+                                                     (GHC.Types.[]
+                                                        @ GHC.Types.Char) of ww10 { (#,#) ww11 ww12 ->
+                                              GHC.Types.:
+                                                @ GHC.Types.Char
+                                                ww11
+                                                ww12 })) })) })) })) }) -}
+023e6b2d77c72f4e15e172ee2091af9a
+  locStr1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "unknown location"#) -}
+014ac8855e44b77d8127429008ab7cd7
+  longnameToName ::
+    Language.Futhark.Core.QualName -> Language.Futhark.Core.Name
+  {- Arity: 1, Strictness: <S(SL),1*U(1*U,1*U(U,U,U))>,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Core.longnameToName1
+                  `cast`
+                (<Language.Futhark.Core.QualName>_R
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])) -}
+4d08c432e463311a07bc96d938db4492
+  longnameToName1 ::
+    Language.Futhark.Core.QualName -> Data.Text.Internal.Text
+  {- Arity: 1, Strictness: <S(SL),1*U(1*U,1*U(U,U,U))>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: Language.Futhark.Core.QualName ->
+                 case w of ww { (,) ww1 ww2 ->
+                 Language.Futhark.Core.$wa ww1 ww2 }) -}
+936d203721a8f82bbe4b635e304c3460
+  longnameToName2 :: GHC.Types.Int
+  {- HasNoCafRefs, Unfolding: (GHC.Types.I# 4) -}
+e994d6fefeead6f9b75b23926b90465d
+  longnameToName3 ::
+    Data.Text.Array.MArray s1
+    -> GHC.Types.Int
+    -> [GHC.Types.Char]
+    -> GHC.Prim.Int#
+    -> GHC.Prim.State# s1
+    -> (# GHC.Prim.State# s1, Data.Text.Internal.Text #)
+  {- Arity: 5, Strictness: <L,U(U)><L,U(U)><S,1*U><L,U><L,U>,
+     Inline: [0] -}
+e53bab1278cc704905baf5cd7bc371ec
+  longnameToName4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "."#) -}
+8cf091eeba40fec4525deaa85144f236
+  longnameToString ::
+    Language.Futhark.Core.QualName -> GHC.Base.String
+  {- Arity: 1, Strictness: <S(SL),1*U(1*U,1*U(U,U,U))>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: Language.Futhark.Core.QualName ->
+                 case w of ww { (,) ww1 ww2 ->
+                 Language.Futhark.Core.$wlongnameToString ww1 ww2 }) -}
+1071edbb390f28a0ddf396f3a2b03035
+  nameFromString :: GHC.Base.String -> Language.Futhark.Core.Name
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (0, True, True)
+                Data.Text.pack
+                  `cast`
+                (<GHC.Base.String>_R
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])) -}
+2ca3b8f1a88b7067f79cfb73bd6e71ec
+  nameFromText ::
+    Data.Text.Internal.Text -> Language.Futhark.Core.Name
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(U,U,U)>m,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Core.nameFromText1
+                  `cast`
+                (<Data.Text.Internal.Text>_R
+                 ->_R Sym (Language.Futhark.Core.NTCo:Name[0])) -}
+88efde3cb1a9b0028a55119aabbc70c3
+  nameFromText1 :: Data.Text.Internal.Text -> Data.Text.Internal.Text
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(U,U,U)>m,
+     Unfolding: InlineRule (1, True, True)
+                (\ tpl :: Data.Text.Internal.Text -> tpl) -}
+e6a22ac03c9fc9e9d097c620e5cda5d8
+  nameToString :: Language.Futhark.Core.Name -> GHC.Base.String
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(U,U,U)>,
+     Unfolding: InlineRule (0, True, True)
+                Data.Text.Show.unpack
+                  `cast`
+                (Sym (Language.Futhark.Core.NTCo:Name[0])
+                 ->_R <GHC.Base.String>_R) -}
+d0b380151725dffc0ef8f2a02535f3ca
+  nameToText :: Language.Futhark.Core.Name -> Data.Text.Internal.Text
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(U,U,U)>m,
+     Unfolding: InlineRule (0, True, True)
+                Language.Futhark.Core.nameToText1
+                  `cast`
+                (<Language.Futhark.Core.Name>_R
+                 ->_R Language.Futhark.Core.NTCo:Name[0]) -}
+428ec1674e0c9126439e14e2e0256253
+  nameToText1 ::
+    Language.Futhark.Core.Name -> Language.Futhark.Core.Name
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(U,U,U)>m,
+     Unfolding: InlineRule (1, True, True)
+                (\ ds :: Language.Futhark.Core.Name -> ds) -}
+3f977fdf80173c66b98797ae50bacafa
+  textual :: Language.Futhark.Core.VName -> GHC.Base.String
+  {- Arity: 1, Strictness: <L,1*U(1*U(U,U,U),1*U(U))>,
+     Unfolding: InlineRule (1, True, False)
+                (\ eta :: Language.Futhark.Core.VName ->
+                 Text.PrettyPrint.Mainland.displayS
+                   (Text.PrettyPrint.Mainland.$wrender
+                      80
+                      (Language.Futhark.Core.$fPrettyID_$s$cppr eta))
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+instance GHC.Classes.Eq [Language.Futhark.Core.Commutativity]
+  = Language.Futhark.Core.$fEqCommutativity
+instance GHC.Classes.Eq [Language.Futhark.Core.ID]
+  = Language.Futhark.Core.$fEqID
+instance GHC.Classes.Eq [Language.Futhark.Core.Name]
+  = Language.Futhark.Core.$fEqName
+instance GHC.Classes.Eq [Language.Futhark.Core.StreamOrd]
+  = Language.Futhark.Core.$fEqStreamOrd
+instance GHC.Classes.Eq [Language.Futhark.Core.Uniqueness]
+  = Language.Futhark.Core.$fEqUniqueness
+instance Data.Hashable.Class.Hashable [Language.Futhark.Core.ID]
+  = Language.Futhark.Core.$fHashableID
+instance Data.Hashable.Class.Hashable [Language.Futhark.Core.Name]
+  = Language.Futhark.Core.$fHashableName
+instance Data.Hashable.Class.Hashable [Language.Futhark.Core.Uniqueness]
+  = Language.Futhark.Core.$fHashableUniqueness
+instance GHC.Base.Monoid [Language.Futhark.Core.Commutativity]
+  = Language.Futhark.Core.$fMonoidCommutativity
+instance GHC.Base.Monoid [Language.Futhark.Core.Name]
+  = Language.Futhark.Core.$fMonoidName
+instance GHC.Base.Monoid [Language.Futhark.Core.Uniqueness]
+  = Language.Futhark.Core.$fMonoidUniqueness
+instance GHC.Classes.Ord [Language.Futhark.Core.Commutativity]
+  = Language.Futhark.Core.$fOrdCommutativity
+instance GHC.Classes.Ord [Language.Futhark.Core.ID]
+  = Language.Futhark.Core.$fOrdID
+instance GHC.Classes.Ord [Language.Futhark.Core.Name]
+  = Language.Futhark.Core.$fOrdName
+instance GHC.Classes.Ord [Language.Futhark.Core.StreamOrd]
+  = Language.Futhark.Core.$fOrdStreamOrd
+instance GHC.Classes.Ord [Language.Futhark.Core.Uniqueness]
+  = Language.Futhark.Core.$fOrdUniqueness
+instance Text.PrettyPrint.Mainland.Pretty [Language.Futhark.Core.ID]
+  = Language.Futhark.Core.$fPrettyID
+instance Text.PrettyPrint.Mainland.Pretty [Language.Futhark.Core.Name]
+  = Language.Futhark.Core.$fPrettyName
+instance Text.PrettyPrint.Mainland.Pretty [Language.Futhark.Core.Uniqueness]
+  = Language.Futhark.Core.$fPrettyUniqueness
+instance GHC.Show.Show [Language.Futhark.Core.Commutativity]
+  = Language.Futhark.Core.$fShowCommutativity
+instance GHC.Show.Show [Language.Futhark.Core.ID]
+  = Language.Futhark.Core.$fShowID
+instance GHC.Show.Show [Language.Futhark.Core.Name]
+  = Language.Futhark.Core.$fShowName
+instance GHC.Show.Show [Language.Futhark.Core.StreamOrd]
+  = Language.Futhark.Core.$fShowStreamOrd
+instance GHC.Show.Show [Language.Futhark.Core.Uniqueness]
+  = Language.Futhark.Core.$fShowUniqueness
+"SPEC $cppr @ Name" [ALWAYS] forall $dPretty :: Text.PrettyPrint.Mainland.Pretty
+                                                  Language.Futhark.Core.Name
+  Language.Futhark.Core.$fPrettyID_$cppr @ Language.Futhark.Core.Name
+                                         $dPretty
+  = Language.Futhark.Core.$fPrettyID_$s$cppr
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

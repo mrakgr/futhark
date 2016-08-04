@@ -1,0 +1,287 @@
+
+==================== FINAL INTERFACE ====================
+2016-08-04 10:11:11.6130419 UTC
+
+interface futha_GJqcXjzuDAgKwUW9oTf4td:Futhark.Util.Pretty 7103
+  interface hash: 0376b42576c4cdba9522ebc02c6540bc
+  ABI hash: 601f394d0fcf8c3f9022409f829de03f
+  export-list hash: 1aabf1400c3a1f20da395d5d151ff12f
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: ed31d2c30de449ffefc93d7506e0775d
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Data.Monoid.<>
+  Futhark.Util.Pretty.annot
+  Futhark.Util.Pretty.apply
+  Futhark.Util.Pretty.oneLine
+  Futhark.Util.Pretty.pretty
+  Futhark.Util.Pretty.prettyDoc
+  Futhark.Util.Pretty.prettyText
+  Futhark.Util.Pretty.prettyTuple
+  Text.PrettyPrint.Mainland.<+/>
+  Text.PrettyPrint.Mainland.<+>
+  Text.PrettyPrint.Mainland.<//>
+  Text.PrettyPrint.Mainland.</>
+  Text.PrettyPrint.Mainland.<|>
+  Text.PrettyPrint.Mainland.align
+  Text.PrettyPrint.Mainland.angles
+  Text.PrettyPrint.Mainland.backquote
+  Text.PrettyPrint.Mainland.backquotes
+  Text.PrettyPrint.Mainland.bool
+  Text.PrettyPrint.Mainland.braces
+  Text.PrettyPrint.Mainland.brackets
+  Text.PrettyPrint.Mainland.cat
+  Text.PrettyPrint.Mainland.char
+  Text.PrettyPrint.Mainland.colon
+  Text.PrettyPrint.Mainland.column
+  Text.PrettyPrint.Mainland.comma
+  Text.PrettyPrint.Mainland.commasep
+  Text.PrettyPrint.Mainland.displayLazyText
+  Text.PrettyPrint.Mainland.displayPragmaLazyText
+  Text.PrettyPrint.Mainland.displayPragmaS
+  Text.PrettyPrint.Mainland.displayS
+  Text.PrettyPrint.Mainland.dot
+  Text.PrettyPrint.Mainland.double
+  Text.PrettyPrint.Mainland.dquote
+  Text.PrettyPrint.Mainland.dquotes
+  Text.PrettyPrint.Mainland.empty
+  Text.PrettyPrint.Mainland.enclose
+  Text.PrettyPrint.Mainland.enclosesep
+  Text.PrettyPrint.Mainland.equals
+  Text.PrettyPrint.Mainland.errordoc
+  Text.PrettyPrint.Mainland.faildoc
+  Text.PrettyPrint.Mainland.fill
+  Text.PrettyPrint.Mainland.fillbreak
+  Text.PrettyPrint.Mainland.flatten
+  Text.PrettyPrint.Mainland.float
+  Text.PrettyPrint.Mainland.folddoc
+  Text.PrettyPrint.Mainland.group
+  Text.PrettyPrint.Mainland.hPutDoc
+  Text.PrettyPrint.Mainland.hPutDocLn
+  Text.PrettyPrint.Mainland.hang
+  Text.PrettyPrint.Mainland.indent
+  Text.PrettyPrint.Mainland.int
+  Text.PrettyPrint.Mainland.integer
+  Text.PrettyPrint.Mainland.langle
+  Text.PrettyPrint.Mainland.lazyText
+  Text.PrettyPrint.Mainland.lbrace
+  Text.PrettyPrint.Mainland.lbracket
+  Text.PrettyPrint.Mainland.line
+  Text.PrettyPrint.Mainland.list
+  Text.PrettyPrint.Mainland.lparen
+  Text.PrettyPrint.Mainland.nest
+  Text.PrettyPrint.Mainland.nesting
+  Text.PrettyPrint.Mainland.parens
+  Text.PrettyPrint.Mainland.parensIf
+  Text.PrettyPrint.Mainland.prettyLazyText
+  Text.PrettyPrint.Mainland.prettyPragma
+  Text.PrettyPrint.Mainland.prettyPragmaLazyText
+  Text.PrettyPrint.Mainland.prettyPragmaS
+  Text.PrettyPrint.Mainland.prettyS
+  Text.PrettyPrint.Mainland.punctuate
+  Text.PrettyPrint.Mainland.putDoc
+  Text.PrettyPrint.Mainland.putDocLn
+  Text.PrettyPrint.Mainland.rangle
+  Text.PrettyPrint.Mainland.rational
+  Text.PrettyPrint.Mainland.rbrace
+  Text.PrettyPrint.Mainland.rbracket
+  Text.PrettyPrint.Mainland.render
+  Text.PrettyPrint.Mainland.renderCompact
+  Text.PrettyPrint.Mainland.rparen
+  Text.PrettyPrint.Mainland.semi
+  Text.PrettyPrint.Mainland.semisep
+  Text.PrettyPrint.Mainland.sep
+  Text.PrettyPrint.Mainland.softbreak
+  Text.PrettyPrint.Mainland.softline
+  Text.PrettyPrint.Mainland.space
+  Text.PrettyPrint.Mainland.spaces
+  Text.PrettyPrint.Mainland.spread
+  Text.PrettyPrint.Mainland.squote
+  Text.PrettyPrint.Mainland.squotes
+  Text.PrettyPrint.Mainland.srcloc
+  Text.PrettyPrint.Mainland.stack
+  Text.PrettyPrint.Mainland.star
+  Text.PrettyPrint.Mainland.strictText
+  Text.PrettyPrint.Mainland.string
+  Text.PrettyPrint.Mainland.text
+  Text.PrettyPrint.Mainland.tuple
+  Text.PrettyPrint.Mainland.width
+  Text.PrettyPrint.Mainland.Doc
+  Text.PrettyPrint.Mainland.Pretty{Text.PrettyPrint.Mainland.ppr Text.PrettyPrint.Mainland.pprList Text.PrettyPrint.Mainland.pprPrec}
+  Text.PrettyPrint.Mainland.RDoc{Text.PrettyPrint.Mainland.RChar Text.PrettyPrint.Mainland.REmpty Text.PrettyPrint.Mainland.RLazyText Text.PrettyPrint.Mainland.RLine Text.PrettyPrint.Mainland.RPos Text.PrettyPrint.Mainland.RString Text.PrettyPrint.Mainland.RText}
+module dependencies:
+package dependencies: array-0.5.1.0@array_67iodizgJQIIxYVTp4emlA
+                      base-4.8.2.0 binary-0.7.5.0@binar_3uXFWMoAGBg0xKP9MHKRwi
+                      bytestring-0.10.6.0@bytes_6VWy06pWzJq9evDvK2d4w6
+                      containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU
+                      deepseq-1.4.1.1@deeps_6vMKxt5sPFR0XsbRWvvq59 ghc-prim-0.4.0.0
+                      integer-gmp-1.0.0.0
+                      mainland-pretty-0.4.1.4@mainl_KnIUy4mTEecCOphhB8nGQj
+                      srcloc-0.5.1.0@srclo_IrVSavrho0x78ZSJU92mrC
+                      text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne
+orphans: base-4.8.2.0:GHC.Base base-4.8.2.0:GHC.Float
+         binary-0.7.5.0@binar_3uXFWMoAGBg0xKP9MHKRwi:Data.Binary.Generic
+         bytestring-0.10.6.0@bytes_6VWy06pWzJq9evDvK2d4w6:Data.ByteString.Builder
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Lazy
+         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Show
+family instance modules: base-4.8.2.0:Control.Applicative
+                         base-4.8.2.0:Data.Either base-4.8.2.0:Data.Functor.Identity
+                         base-4.8.2.0:Data.Monoid base-4.8.2.0:Data.Type.Equality
+                         base-4.8.2.0:Data.Void base-4.8.2.0:GHC.Exts
+                         base-4.8.2.0:GHC.Generics
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.IntMap.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.IntSet.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Map.Base
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Sequence
+                         containers-0.5.6.2@conta_2C3ZI8RgPO2LBMidXKTvIU:Data.Set.Base
+                         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text
+                         text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Lazy
+import  -/  base-4.8.2.0:GHC.Base a4939789b2cfd60b36ed163e56a623cd
+import  -/  base-4.8.2.0:Prelude 694dcaf039efe62df1c44834e2dbd2fb
+import  -/  mainland-pretty-0.4.1.4@mainl_KnIUy4mTEecCOphhB8nGQj:Text.PrettyPrint.Mainland 8fa8b328ca92dfe598e5a18c4976eaac
+import  -/  text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text a21462e4d9d23b8c5e0572484b88d821
+import  -/  text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Internal 762ad762817f3041e69c24778b8286ab
+import  -/  text-1.2.2.1@text_HmqVQnZSpjaC156ABqPhne:Data.Text.Lazy fed2a5e3411df6886b83574518c482e4
+0d7ff7fc0c94309bf912f53251dd4a7a
+  $wapply ::
+    [Text.PrettyPrint.Mainland.Doc]
+    -> (# Text.PrettyPrint.Mainland.Doc,
+          Text.PrettyPrint.Mainland.Doc #)
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,1*U>, Inline: [0],
+     Unfolding: (\ w :: [Text.PrettyPrint.Mainland.Doc] ->
+                 (# Text.PrettyPrint.Mainland.lparen,
+                    Text.PrettyPrint.Mainland.Cat
+                      (let {
+                         d :: Text.PrettyPrint.Mainland.Doc
+                         = case Text.PrettyPrint.Mainland.$wcommasep
+                                  (GHC.Base.map
+                                     @ Text.PrettyPrint.Mainland.Doc
+                                     @ Text.PrettyPrint.Mainland.Doc
+                                     Text.PrettyPrint.Mainland.align
+                                     w) of ww { (##) ww1 ->
+                           Text.PrettyPrint.Mainland.Column ww1 }
+                       } in
+                       Text.PrettyPrint.Mainland.Column
+                         (\ k :: GHC.Types.Int ->
+                          Text.PrettyPrint.Mainland.Nesting
+                            (\ i :: GHC.Types.Int ->
+                             case k of wild { GHC.Types.I# x ->
+                             case i of wild1 { GHC.Types.I# y ->
+                             Text.PrettyPrint.Mainland.Nest (GHC.Prim.-# x y) d } })))
+                      Text.PrettyPrint.Mainland.rparen #)) -}
+d8af4bfe95e30d0ebf957122e3a77c87
+  annot ::
+    [Text.PrettyPrint.Mainland.Doc]
+    -> Text.PrettyPrint.Mainland.Doc -> Text.PrettyPrint.Mainland.Doc
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ ds :: [Text.PrettyPrint.Mainland.Doc]
+                   s :: Text.PrettyPrint.Mainland.Doc ->
+                 case ds of wild {
+                   [] -> s
+                   : ipv ipv1
+                   -> Text.PrettyPrint.Mainland.Cat
+                        (Text.PrettyPrint.Mainland.folddoc
+                           Text.PrettyPrint.Mainland.</>
+                           wild)
+                        (Text.PrettyPrint.Mainland.Cat
+                           Text.PrettyPrint.Mainland.Line
+                           s) }) -}
+8d8380dbbaa0e7b0e463f040b6a416eb
+  apply ::
+    [Text.PrettyPrint.Mainland.Doc] -> Text.PrettyPrint.Mainland.Doc
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,1*U>m9,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: [Text.PrettyPrint.Mainland.Doc] ->
+                 case Futhark.Util.Pretty.$wapply w of ww { (#,#) ww1 ww2 ->
+                 Text.PrettyPrint.Mainland.Cat ww1 ww2 }) -}
+e730503b424c3d82768ded996a3e899f
+  oneLine ::
+    Text.PrettyPrint.Mainland.Doc -> Text.PrettyPrint.Mainland.Doc
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U>m3, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: Text.PrettyPrint.Mainland.Doc ->
+                 let {
+                   s2 :: GHC.Base.String
+                   = Text.PrettyPrint.Mainland.displayS
+                       (Text.PrettyPrint.Mainland.renderCompact w)
+                       (GHC.Types.[] @ GHC.Types.Char)
+                 } in
+                 case GHC.List.$wlenAcc @ GHC.Types.Char s2 0 of ww2 { DEFAULT ->
+                 Text.PrettyPrint.Mainland.String ww2 s2 }) -}
+69a96e47646e696813e8ce5e9b58137e
+  pretty ::
+    Text.PrettyPrint.Mainland.Pretty a => a -> GHC.Base.String
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,1*U(1*C1(U),A,A)><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a $dPretty :: Text.PrettyPrint.Mainland.Pretty a eta :: a ->
+                 Text.PrettyPrint.Mainland.displayS
+                   (Text.PrettyPrint.Mainland.$wrender
+                      80
+                      (Text.PrettyPrint.Mainland.ppr @ a $dPretty eta))
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+7ca8ed38659ee594430bfa3e063d6f48
+  prettyDoc ::
+    GHC.Types.Int -> Text.PrettyPrint.Mainland.Doc -> GHC.Base.String
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U(U)><L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Text.PrettyPrint.Mainland.pretty -}
+63b86093b7c7594f9464a54dd800c715
+  prettyText ::
+    Text.PrettyPrint.Mainland.Pretty a => a -> Data.Text.Internal.Text
+  {- Arity: 2, Strictness: <L,1*U(1*C1(U),A,A)><L,U>,
+     Unfolding: (\ @ a
+                   $dPretty :: Text.PrettyPrint.Mainland.Pretty a
+                   eta :: a ->
+                 Data.Text.concat
+                   (Data.Text.Lazy.dropEnd_go
+                      (Data.Text.Internal.Builder.$wtoLazyTextWith
+                         112
+                         (Text.PrettyPrint.Mainland.displayLazyText_go
+                            (Text.PrettyPrint.Mainland.$wrender
+                               80
+                               (Text.PrettyPrint.Mainland.ppr @ a $dPretty eta)))))) -}
+4c9b5f1e1fa5c20aea1e7bf7dff96095
+  prettyTuple ::
+    Text.PrettyPrint.Mainland.Pretty a => [a] -> GHC.Base.String
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,1*U(1*C(U),A,A)><L,1*U>,
+     Unfolding: (\ @ a
+                   $dPretty :: Text.PrettyPrint.Mainland.Pretty a
+                   eta :: [a] ->
+                 Text.PrettyPrint.Mainland.displayS
+                   (Text.PrettyPrint.Mainland.$wrender
+                      80
+                      (Text.PrettyPrint.Mainland.Cat
+                         Text.PrettyPrint.Mainland.lbrace
+                         (Text.PrettyPrint.Mainland.Cat
+                            (let {
+                               d :: Text.PrettyPrint.Mainland.Doc
+                               = case Text.PrettyPrint.Mainland.$wcommasep
+                                        (GHC.Base.map
+                                           @ a
+                                           @ Text.PrettyPrint.Mainland.Doc
+                                           (Text.PrettyPrint.Mainland.ppr @ a $dPretty)
+                                           eta) of ww { (##) ww1 ->
+                                 Text.PrettyPrint.Mainland.Column ww1 }
+                             } in
+                             Text.PrettyPrint.Mainland.Column
+                               (\ k :: GHC.Types.Int ->
+                                Text.PrettyPrint.Mainland.Nesting
+                                  (\ i :: GHC.Types.Int ->
+                                   case k of wild { GHC.Types.I# x ->
+                                   case i of wild1 { GHC.Types.I# y ->
+                                   Text.PrettyPrint.Mainland.Nest (GHC.Prim.-# x y) d } })))
+                            Text.PrettyPrint.Mainland.rbrace)))
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+
