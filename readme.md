@@ -8,6 +8,4 @@ I am tsundere for it at this point.
 
 I've also tested switching the Attoparsec parser to ByteString.Char8, but that did not help it. Here laziness is in fact the culprit.
 
-But for performance now that I know where the hole is, that leaves the door open to integrating it with some library that does operate using continuation passing.
-
-I'll do this at some later date just to bring this thing to a closure.
+But for performance now that I know where the hole is, that leaves the door open to integrating it with some library that does not operate using continuation passing.
